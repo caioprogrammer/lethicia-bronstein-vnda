@@ -1,0 +1,95 @@
+.secondary-infos {
+  margin-top: 6rem;
+  width: 100%;
+
+  > .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 0;
+    row-gap: 1rem;
+  }
+
+  > .tabs .titulo {
+    border-bottom: 2px solid var(--gray-2);
+    line-height: 1.2;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+
+    &.-active {
+      font-weight: bold;
+      border-color: var(--highlight-1);
+    }
+
+    &:last-child {
+      flex: 1;
+    }
+  }
+
+  > .contents {
+    margin-top: 2rem;
+    margin-right: 0;
+  }
+
+  > .contents .content {
+    display: none;
+
+    &.-active {
+      display: block;
+    }
+
+    > *:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+  }
+
+  > .contents .content > h3 {
+    font-size: var(--font-size-small);
+  }
+
+  > .contents .content > ul li {
+    list-style-position: inside;
+    list-style-type: disc;
+    margin-bottom: 0.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  > .contents .content .table {
+    width: 100%;
+    border-spacing: 0;
+    margin-top: 2rem;
+
+    thead {
+      height: 40px;
+    }
+
+    thead th {
+      padding: 0;
+      border-top: 2px solid var(--highlight-1);
+      border-bottom: 2px solid var(--highlight-1);
+      font-size: var(--font-size-small);
+
+      strong {
+        font-weight: bold;
+      }
+    }
+
+    tbody tr {
+      height: 40px;
+
+      &:last-child td {
+        border-bottom: 0;
+      }
+    }
+
+    tbody tr td {
+      border-bottom: 1px solid var(--gray-2);
+
+      em {
+        font-weight: bold;
+      }
+    }
+  }
+}

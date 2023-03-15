@@ -1,0 +1,17 @@
+{% load_menus position: 'principal' %}
+
+{% if mobile %}
+  {% render "partials/content/header/menu_mobile", search_url: search_url, account_url: account_url, loaded_menus: loaded_menus, img_logo: img_logo, template: template, home_url: home_url %}
+{% else %}
+  <nav class="menu">
+    <ul class="menu-list">
+      {% for menu in loaded_menus %}
+        {% if menu.title == blank %}
+          {% continue %}
+        {% endif %}
+
+        {% render 'partials/content/header/menu_desktop', menu: menu %}
+      {% endfor %}
+    </ul>
+  </nav>
+{% endif %}

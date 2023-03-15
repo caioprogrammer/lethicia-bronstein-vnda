@@ -1,0 +1,36 @@
+@import "./fonts";
+@import "./base/mixins";
+@import "./base/variables";
+
+html {
+  color: var(--font-color-base);
+  font-size: 14px;
+  font-weight: var(--font-weight-base);
+}
+
+#wrapper {
+  --font-sans: "Montserrat", sans-serif;
+  --color-highlight: #828080;
+}
+
+#wrapper .cta-button {
+  align-items: center;
+  background-color: var(--highlight-1);
+  border-radius: 3px;
+  color: var(--white);
+  display: flex;
+  font-size: 13px;
+  font-weight: var(--font-weight-button);
+  height: 46px;
+  justify-content: center;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: var(--highlight-2);
+  }
+}
+
+#wrapper .logo {
+  max-width: 150px;
+  object-fit: contain;
+}

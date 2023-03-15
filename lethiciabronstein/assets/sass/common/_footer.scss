@@ -1,0 +1,98 @@
+@import "../base/mixins";
+
+.footer {
+  background-color: var(--white);
+  color: var(--black);
+  font-weight: normal;
+  position: relative;
+  &__container {
+    &--bottom {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+      -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      color: #666;
+      padding: 15px 0;
+    }
+  }
+  &__copyright {
+    -webkit-flex: 0 1 auto;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    font-size: 12px;
+  }
+  &__dev {
+    -webkit-flex: 0 0 auto;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    text-align: right;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  > .content {
+    &.newsletter-section {
+      background-color: #FBFBFB;
+      width: 100%;
+      height: 250px;
+      display: flex;
+      align-items: center;
+    }
+    &:last-child {
+      border-top: 1px solid #ccc;
+    }
+
+    @include media("sm") {
+      
+    }
+
+    @include media("md") {
+
+    }
+
+    > .main-banner {
+      grid-area: banner;
+      left: auto;
+      position: absolute;
+      top: -2rem;
+      right: 2rem;
+      width: fit-content;
+
+      @include media("sm") {
+        left: 5%;
+        top: -3rem;
+        margin: 0;
+      }
+    }
+
+    > .main-banner .image {
+      height: 12rem;
+      width: 12rem;
+    }
+
+    @import "../content/footer/newsletter";
+    @import "../content/footer/social";
+    @import "../content/footer/paragraph";
+    @import "../content/footer/categories";
+    @import "../content/footer/payment";
+    @import "../content/footer/signature";
+  }
+}

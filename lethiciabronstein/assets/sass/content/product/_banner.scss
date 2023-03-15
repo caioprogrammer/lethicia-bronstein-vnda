@@ -1,0 +1,42 @@
+.banner-product {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  @include media("md") {
+    flex-direction: row;
+  }
+
+  > .image-wrapper {
+    width: 100%;
+
+    @include media("md") {
+      width: 50%;
+    }
+  }
+
+  > .image-wrapper .image::after {
+    padding-bottom: 68%;
+  }
+
+  > .text {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding-top: 4rem;
+    text-align: center;
+    width: 100%;
+
+    @include media("md") {
+      align-items: flex-start;
+      padding-top: 0;
+      padding-left: 4rem;
+      text-align: left;
+      width: calc(50% - 4rem);
+    }
+
+    p:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+  }
+}

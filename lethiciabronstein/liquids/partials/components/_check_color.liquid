@@ -1,0 +1,27 @@
+{% assign color_name = color | split: '|' | first %}
+{% assign color_hexa = color | split: '|' | last | downcase %}
+
+{% if color_hexa contains ',' %}
+  {% assign colors_hexa = color_hexa | split: ',' %}
+{% endif %}
+
+{% assign color_white = '' %}
+{% if color_hexa contains '#fff' %}
+  {% assign color_white = 'is-white' %}
+{% endif %}
+
+<div class="outside-color">
+  <span class="tooltip">
+    {{ color_name }}
+  </span>
+
+  {% if colors_hexa %}
+    <span class="color many-colors w-{{ colors_hexa.size }}-colors">
+      {% for color_hexa in colors_hexa %}
+        <span class="part-color " style="background: {{ color_hexa }};"></span>
+      {% endfor %}
+    </span>
+  {% else %}
+    <span class="color {{ color_white }}" style="background: {{ color_hexa }};"></span>
+  {% endif %}
+</div>

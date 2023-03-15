@@ -1,0 +1,25 @@
+{% comment %} Faixas de filtro de preço. Monta arrays com os valores informados {% endcomment %}
+{% load_banners position: 'filtro-preco' limit: 1 %}
+{% for banner in loaded_banners %}
+  {% if banner.description %}
+    {% assign ranges = banner.description | strip_html | split: ',' %}
+  {% endif %}
+{% endfor %}
+
+<div id="component-products-filter-root"></div>
+
+<script>
+  window.filterSettings = {
+    script: "{{ 'products-filter.v7.js' | component_path }}",
+    styles: "{{ 'products-filter.v7.css' | component_path }}",
+    aggregations: {{ aggregations | to_json }},
+    prices_range: [
+      {% if ranges %}
+        {% for range in ranges %}
+          {% assign values = range | strip | split: '-' %}
+          [{{ values[0] | times: 1.00 }}, {{ values[1] | times: 1.00 }}],
+        {% endfor %}
+      {% endif %}
+    ]
+  }
+</script>

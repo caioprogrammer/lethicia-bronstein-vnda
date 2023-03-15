@@ -1,0 +1,30 @@
+@import "../base/mixins";
+
+@import "../content/tag/banner_topo";
+@import "../content/tag/filters";
+@import "../content/tag/empty";
+
+.section-list-products {
+  .list-content {
+    display: flex;
+    flex-direction: column;
+
+    @include media("md") {
+      flex-direction: row;
+    }
+  }
+
+  .list-products {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+
+    @include media("md") {
+      gap: 20px;
+      grid-template-columns: repeat(3, 1fr);
+      padding-left: 5%;
+      width: 80%;
+    }
+  }
+}

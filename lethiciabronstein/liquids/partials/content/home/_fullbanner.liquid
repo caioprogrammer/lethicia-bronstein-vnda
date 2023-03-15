@@ -1,0 +1,118 @@
+{% load_banners position: position %}
+
+{% if loaded_banners.size > 0 %}
+  <section class="section fullbanner {{ resolution }} {{ aux }}" data-fullbanner>
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        {% for banner in loaded_banners %}
+          {% comment %} Config {% endcomment %}
+          {% assign external = '' %}
+          {% assign btn_text = 'Aproveite' %}
+          {% assign position_text = 'center-center' %}
+          {% assign background = '' %}
+
+          {% if banner.subtitle contains '|' %}
+            {% assign btn_text = banner.subtitle | split: '|' | first %}
+            {% assign position_text = banner.subtitle | split: '|' | last %}
+          {% endif %}
+
+          {% if banner.description != blank %}
+            {% assign background = '-white' %}
+          {% endif %}
+
+          <div class="swiper-slide">
+            <a href="{{ banner.url }}" {{ external }}>
+              {% if banner.url contains "youtube" or banner.url contains "vimeo" %}
+
+                {% if banner.url contains "youtube" %}
+                  {% assign video_address = banner.url | split: "?v=" | last %}
+                  {% assign video_code = video_address | split: '&' | first | strip %}
+                  {% assign video_url = video_code | prepend: "https://www.youtube.com/embed/" | append: "?autoplay=0&rel=0&mute=1&muted=1" %}
+                {% elsif banner.url contains "vimeo" %}
+                  {% assign video_code = banner.url | split: "/" | last | strip %}
+                  {% assign video_url = video_code | prepend: "https://player.vimeo.com/video/" | append: "?autoplay=1&title=0&byline=0&portrait=0&&loop=1&background=1&muted=1" %}
+                {% endif %}
+
+                {% if video_url %}
+                  <div class="video {% if resolution contains 'mobile' %}-vertical {% else %} -horizontal {% endif %}">
+                    <iframe
+                      aria-label="{{ banner.title }}"
+                      alt="{{ banner.title }}"
+                      class="swiper-lazy"
+                      data-src="{{ video_url }}"
+                      frameborder="0"
+                      allow="autoplay;  picture-in-picture"
+                      allowfullscreen></iframe>
+                    <div class="skeleton"></div>
+                  </div>
+                {% endif %}
+              {% else %}
+                {% capture data_srcset %}
+                  {{ banner.file_url | resize: '360x' }} 360w,
+                  {{ banner.file_url | resize: '600x' }} 767w,
+                  {{ banner.file_url | resize: '800x' }} 991w,
+                  {{ banner.file_url | resize: '1280x' }} 1280w,
+                  {{ banner.file_url | resize: '1440x' }} 1440w,
+                  {{ banner.file_url | resize: '1920x' }} 1920w,
+                  {{ banner.file_url }} 2000w
+                {% endcapture %}
+
+                {% capture data_sizes %}
+                  (max-width: 360px) 360px,
+                  (max-width: 767px) 767px,
+                                                                                                                                (max-width: 991px) 991px,
+                                                                                                                                (max-width: 1280px) 1280px,
+                                                                                                                                (max-width: 1440px) 1440px,
+                                                                                                                                (max-width: 1920px) 1920px,
+                                                                                                                                (min-width: 1921px) 2000px
+                {% endcapture %}
+
+                <figure class="image {% if resolution contains 'mobile' %}-vertical {% else %} -horizontal {% endif %}">
+                  <img
+                    class="swiper-lazy"
+                    alt="{{ banner.title }}"
+                    data-srcset="{{ data_srcset | strip_newlines | strip }}"
+                    sizes="{{ data_sizes | strip_newlines | strip }}" />
+                  <div class="skeleton"></div>
+                </figure>
+
+                <div
+                  class="text {{ position_text }} {{ background }}"
+                  {% if banner.color != blank %}
+                  style="--fb-color: {{ banner.color }}"
+                  {% endif %}>
+                  {% if banner.description != blank %}
+                    {{ banner.description | replace: '<h3', '<h3 class="upper-title"' | replace: '<h2', '<h2 class="title"' | replace: '<p', '<p class="description"' }}
+                  {% endif %}
+
+                  {% if banner.url != blank %}
+                    {% if banner.external %}
+                      {% assign external = "target='_blank'" %}
+                    {% endif %}
+
+                    {% comment %}
+                    {% if btn_text %}
+                    <a
+                    aria-label="Ir para {{ banner.title }}"
+                    class="fulbanner-button button-default -outlined arrow"
+                    href="{{ banner.url }}"
+                    {{ external }}>
+                    {{ btn_text }}
+                    </a>
+                    {% endif %}
+
+                    {% endcomment %}
+                  {% endif %}
+                </div>
+
+              {% endif %}
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </section>
+{% endif %}

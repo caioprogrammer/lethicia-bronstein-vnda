@@ -1,0 +1,38 @@
+{% if  search  %}
+  <div class="empty-state container">
+    <h2 class="warning">
+      não foram encontrados produtos correspondentes à sua pesquisa
+    </h2>
+    <h3 class="search-description">
+      Refine sua pesquisa ou clique abaixo para voltar ao início e ver nossos produtos disponíveis.
+    </h3>
+
+    <div class="search">
+      <form action="{{ search_url }}">
+        <button aria-label="Botão de pesquisa" class="search-icon" data-action="show-form-search">
+          <svg class="icon">
+            <use xlink:href="#icon-search"></use>
+          </svg>
+        </button>
+        <input name="q" placeholder="Buscar" required type="search"/>
+      </form>
+    </div>
+
+    <a aria-label="Voltar para o início" class="button-default -outlined" href="{{ home_url }}">VOLTAR</a>
+  </div>
+{% else %}
+  <div class="empty-state container">
+    <h2 class="warning">
+      Não encontramos nenhum produto
+    </h2>
+    <h3 class="search-description">
+      Clique abaixo para voltar ao início e ver nossos produtos disponíveis.
+    </h3>
+
+    {% if current_url and current_url contains '?' and current_url contains '=' %}
+      <a aria-label="Limpar filtro" class="button-default -outlined" href="{{ tag.name }}">LIMPAR FILTRO</a>
+    {% else %}
+      <a aria-label="Voltar para o início" class="button-default -outlined" href="{{ home_url }}">VOLTAR</a>
+    {% endif %}
+  </div>
+{% endif %}

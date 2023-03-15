@@ -1,0 +1,45 @@
+{% comment %}{% render 'partials/content/header/top_bar' %}{% endcomment %}
+
+
+<header class="header" id="header">
+  <div class="header__container">
+    <div class="wrap">
+      {% render "partials/content/header/search", search_url: search_url %}
+      <div class="header__content container">
+        <div class="social-links">
+          {% render "partials/content/header/social", position: 'header-social-primario', current_shop: current_shop, home_url: home_url %}
+        </div>
+        {% render "partials/content/header/logo", current_shop: current_shop, img_logo: img_logo, template: template, home_url: home_url %}
+        {% render "partials/content/header/actions", account_url: account_url %}
+      </div>
+    </div>
+
+    <section class="navigation__wrapper">
+      {% render 'partials/content/header/menu', template: template, search_url: search_url, account_url: account_url, img_logo: img_logo, home_url: home_url, mobile: mobile %}
+    </section>
+  </div>
+</header>
+
+{% comment %}
+
+<header class="header" id="header">
+<div class="container content">
+<div class="hamburger-logo">
+<button
+aria-label="Abrir menu"
+class="hamburger"
+data-action="open-menu-mobile">
+<svg class="icon">
+<use href="#icon-hamburger" />
+</svg>
+</button>
+{% render "partials/content/header/logo", current_shop: current_shop, img_logo: img_logo, template: template, home_url: home_url %}
+</div>
+
+{% render "partials/content/header/search", search_url: search_url %}
+{% render "partials/content/header/actions", account_url: account_url %}
+</div>
+
+{% render 'partials/content/header/menu', template: template, search_url: search_url, account_url: account_url, img_logo: img_logo, home_url: home_url, mobile: mobile %}
+</header>
+{% endcomment %}

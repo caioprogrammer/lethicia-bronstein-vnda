@@ -1,0 +1,78 @@
+@import "../../base/mixins";
+
+.contact {
+  display: grid;
+  gap: 4rem;
+  grid-template-columns: 1fr;
+  margin-top: 4rem;
+
+  @include media("md") {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  > .content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  > .content .image.-custom::after {
+    margin-bottom: 66%;
+  }
+
+  > .content .description {
+    margin-top: 2rem;
+
+    @import "../../components/social";
+  }
+
+  > .content .description .title-contact {
+    font-size: var(--font-size-title);
+    font-weight: var(--font-weight-title);
+    margin-bottom: 2rem;
+  }
+
+  > .content .description .subtitle-contact {
+    font-size: var(--font-size-subtitle);
+    font-weight: var(--font-weight-subtitle);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  > .content .description .text {
+    line-height: 2;
+    margin-bottom: 2rem;
+  }
+
+  > .form-wrapper {
+    width: 100%;
+  }
+
+  .form-wrapper .title {
+    font-size: 2.6rem;
+    font-weight: var(--font-weight-title);
+    line-height: 1;
+    margin-bottom: 3rem;
+  }
+
+  > .form-wrapper .label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+  }
+  .form-wrapper .label span {
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  > .form-wrapper .input,
+  .text-area {
+    border-color: var(--highlight-1);
+    width: 100%;
+  }
+
+  > .form-wrapper .button-default {
+    width: 100%;
+  }
+}

@@ -1,0 +1,5 @@
+[submodule "template5.wiki"]
+	path = template5.wiki
+	url = git@gitlab.com:vnda/templates/template5.wiki.git
+
+#Atualizar a url para ../../setup/nome_da_loja.wiki.git

@@ -1,0 +1,22 @@
+{% assign sku_status = '' %}
+{% assign data_skus = '' %}
+
+{% if image.skus == blank %}
+  {% assign sku_status = 'data-without-sku' %}
+{% else %}
+  {% assign sku_status = 'data-with-sku' %}
+  {% assign data_skus = image.skus | join: ',' | prepend: 'data-skus="' | append: ',"' %}
+{% endif %}
+
+<div class="item-image image-{{ forloop.index0 }} swiper-slide" id="image-{{ forloop.index0 }}" {{ sku_status }}  {{ data_skus }} data-image>
+  <a 
+    aria-label="Imagem produto {{ product.name }}"
+    href="{{ image.url | resize: '1000x' }}" 
+    class="MagicZoom"
+    data-gallery="gallery" 
+    data-options="hint:false; zoomMode:off;" 
+    id="image-product-{{ forloop.index0 }}" 
+    data-image-product>
+      <img src="{{ image.url | resize: '800x' }}" alt="{{ product.name }}">
+  </a>
+</div>

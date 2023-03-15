@@ -1,0 +1,75 @@
+{% assign product_images = product.images | group_images_by_url %}
+{% assign qnt_images = product_images.size %}
+
+{% capture html_thumb %}
+  {% for image in product_images %}
+    {% render 'partials/content/product/images/item_image_thumb', image: image, product: product, forloop: forloop %}
+  {% endfor %}
+{% endcapture %}
+
+{% capture html_product_images %}
+  {% for image in product_images %}
+    {% render 'partials/content/product/images/item_main_image', image: image, product: product, forloop: forloop %}
+  {% endfor %}
+{% endcapture %}
+
+{% capture html_product_videos %}
+  {% load_videos %}
+  {% for video in loaded_videos %}
+    {% render 'partials/content/product/images/item_main_video', video: video, qnt_images: qnt_images, product: product %}
+  {% endfor %}
+{% endcapture %}
+
+{% capture html_thumb_videos %}
+  {% load_videos %}
+  {% for video in loaded_videos %}
+    {% render 'partials/content/product/images/item_video_thumb', video: video, qnt_images: qnt_images, product: product %}
+  {% endfor %}
+{% endcapture %}
+
+{% comment %} Se o produto ainda não tem imagem coloca imagem padrão {% endcomment %}
+{% if html_product_images == blank and html_product_videos == blank %}
+  {% capture html_product_images %}
+    <div class="item-image swiper-slide image-without-sku" data-image>
+      <figure class="image -custom">
+        <img class="lazy" alt="{{ product.name }}" data-src="{{ 'placeholder.png' | image_path }}"/>
+        <div class="skeleton"></div>
+      </figure>
+    </div>
+  {% endcapture %}
+
+  {% capture html_thumb %}
+    <div class="item-thumb swiper-slide image-without-sku" data-image-thumb>
+      <figure class="image -custom">
+        <img class="swiper-lazy" data-src="{{ 'placeholder.png' | image_path }}" alt="{{ product.name }}"/>
+        <div class="skeleton"></div>
+      </figure>
+    </div>
+  {% endcapture %}
+{% endif %}
+
+<div class="wrapper-images">
+  <div class="wrapper-thumbs">
+    <div class="swiper" data-slider-thumbs>
+      <div class="swiper-wrapper">
+        {{ html_thumb }}
+        {{ html_thumb_videos }}
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </div>
+
+  <div class="wrapper-slider">
+    <div class="swiper" data-main-slider>
+      <div class="swiper-wrapper">
+        {{ html_product_images }}
+        {{ html_product_videos }}
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+    <div class="swiper-pagination"></div>
+    {% render 'partials/components/flag', product: product %}
+  </div>
+</div>

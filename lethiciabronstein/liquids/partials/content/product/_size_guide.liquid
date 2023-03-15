@@ -1,0 +1,16 @@
+<div class="popup-guia-medidas popup" data-popup="guia-de-medidas">
+  <div class="popup-wrapper">
+    <button aria-label="Fechar guia de medidas" class="close" data-action="toggle-popup" data-popup="guia-de-medidas"></button>
+    <div class="content">
+      <div class="image -vertical">
+        <img class="lazy" data-src="{{ tag_medidas.image_url | resize: '600x' }}" alt="Guia de medidas"/>
+        <div class="skeleton"></div>
+      </div>
+      <div class="text">
+        <div class="text-wrapper">
+          {{ tag_medidas.description | replace: '<table', '<div class="table-responsive"><table class="table table-bordered"' | replace: '</table>', '</table></div>' }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

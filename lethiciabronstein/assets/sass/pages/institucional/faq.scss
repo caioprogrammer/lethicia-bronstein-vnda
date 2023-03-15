@@ -1,0 +1,56 @@
+@import "../../base/mixins";
+
+.page-fullbanner {
+  margin-bottom: 8rem;
+}
+
+.faq {
+  max-width: 920px;
+
+  @include media("lg") {
+    max-width: 1298px;
+  }
+
+  .collapse.-open .handle {
+    &::after {
+      content: "-";
+    }
+  }
+
+  .handle {
+    background-color: transparent;
+    border: 1px solid var(--gray-2);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.4rem;
+    font-weight: var(--font-weight-subtitle);
+    margin-bottom: 2rem;
+    padding: 1rem;
+    position: relative;
+    transition: var(--transition);
+
+    &::after {
+      color: var(--gray-2);
+      content: "+";
+      font-size: 2rem;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      position: absolute;
+    }
+  }
+
+  .collapse .content-wrapper {
+    height: 0;
+    transition: height 0.5s ease;
+    overflow: hidden;
+  }
+
+  .collapse .content-wrapper .content {
+    padding-bottom: 2rem;
+
+    > *:not(:last-child) {
+      margin-bottom: 1.5rem;
+    }
+  }
+}

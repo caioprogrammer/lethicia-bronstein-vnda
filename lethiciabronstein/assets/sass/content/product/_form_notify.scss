@@ -1,0 +1,47 @@
+.form-notify {
+  width: 100%;
+}
+
+.notify-when-arrives {
+  &:not(.-active) {
+    overflow: hidden;
+    height: 0;
+  }
+
+  > .form-wrapper {
+    padding-top: 3rem;
+  }
+
+  > .form-wrapper .notify-title {
+    display: flex;
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-title);
+    line-height: 1;
+    margin-bottom: 1rem;
+    white-space: nowrap;
+  }
+
+  > .form-wrapper .field {
+    display: flex;
+  }
+
+  > .form-wrapper .field .input {
+    border: 1px solid var(--highlight-1);
+    height: 4.2rem;
+    margin-right: 1rem;
+    padding: 1rem;
+    width: 100%;
+
+    @include media("sm") {
+      width: 70%;
+    }
+  }
+
+  > .form-wrapper .field .button-default {
+    width: 100%;
+
+    @include media("sm") {
+      width: 30%;
+    }
+  }
+}

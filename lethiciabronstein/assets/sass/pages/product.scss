@@ -1,0 +1,8 @@
+@import "../base/mixins";
+@import "../content/product/banner";
+@import "../content/product/group_shop";
+@import "../components/carousel";
+
+.mz-zoom-window {
+  z-index: 0 !important;
+}

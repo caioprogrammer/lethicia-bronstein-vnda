@@ -1,0 +1,71 @@
+.payment {
+  display: flex;
+  grid-area: payment;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+
+  @include media("sm") {
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  > .stamps {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+    width: 100%;
+
+    @include media("sm") {
+      margin-bottom: 0;
+      width: 60%;
+    }
+
+    @include media("md") {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include media("lg") {
+      width: 50%;
+    }
+  }
+
+  > .stamps .image {
+    max-width: 14rem;
+    width: 100%;
+
+    @include media("lg") {
+      max-width: 12rem;
+    }
+  }
+
+  > .stamps .image img {
+    object-fit: contain;
+  }
+
+  > .payment-icons {
+    display: flex;
+    justify-content: flex-start;
+
+    @include media("sm") {
+      width: 50%;
+      justify-content: flex-end;
+    }
+
+    > .payment-img {
+      height: 3rem;
+      margin-right: 1rem;
+      object-fit: contain;
+      width: 5rem;
+
+      @include media("sm") {
+        margin-left: 1rem;
+        margin-right: 0;
+      }
+    }
+  }
+}

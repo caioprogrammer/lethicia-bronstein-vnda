@@ -1,0 +1,9 @@
+{% head %}
+<link href="/pages/institucional/custom.css" inline rel="stylesheet" type="text/css">
+{% endhead %}
+
+{% assign position_primary_full = page.slug | append: '-banner-principal' %}
+{% assign position_primary_text = page.slug | append: '-banner-conteudo' %}
+
+{% render 'partials/pages/components/page_fullbanner', page: page, position: position_primary_full, background: false, type: '-custom' %}
+{% render 'partials/pages/components/content', page: page, position: position_primary_text %}

@@ -1,0 +1,37 @@
+.paragraph {
+  border-bottom: 2px solid;
+  display: flex;
+  flex-direction: column;
+  grid-area: paragraph;
+  margin-bottom: 1rem;
+  padding-bottom: 2rem;
+
+  @include media("sm") {
+    border-bottom: 0;
+    border-right: 2px solid;
+    margin-bottom: 2rem;
+    padding-bottom: 0;
+  }
+
+  @include media("md") {
+    margin-right: 1rem;
+    padding-right: 1.5rem;
+  }
+
+  > h2,
+  > h3,
+  > h4,
+  > h5,
+  > h6 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+
+  > p {
+    margin-bottom: 1rem;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}

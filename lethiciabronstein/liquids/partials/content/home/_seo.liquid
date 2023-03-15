@@ -1,0 +1,25 @@
+{% assign external = '' %}
+
+{% load_banners position: position limit: limit %}
+
+{% if loaded_banners.size > 0 %}
+  <section class="section seo container">
+    {% for banner in loaded_banners %}
+      <div class="text">
+        {{ banner.description | replace: '<h3', '<h3 class="upper-title"' | replace: '<h2', '<h2 class="title"' | replace: '<p', '<p class="description"' }}
+
+        {% if banner.url != blank %}
+          {% if banner.external %}
+            {% assign external = "target='_blank'" %}
+          {% endif %}
+
+          {% if banner.subtitle != blank %}
+            <a aria-label="Ir para {{ banner.title }}" class="arrow" href="{{ banner.url }}" {{ external }}>
+              {{ banner.subtitle }}
+            </a>
+          {% endif %}
+        {% endif %}
+      </div>
+    {% endfor %}
+  </section>
+{% endif %}

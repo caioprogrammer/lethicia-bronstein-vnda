@@ -1,0 +1,46 @@
+{% for tag in current_product.tags %}
+  {% if tag.type == 'banner' %}
+    <section class="section banner-product container">
+      <div class="image-wrapper">
+        {% capture data_srcset %}
+          {{ tag.image_url | resize: '260x' }} 320w,
+          {{ tag.image_url | resize: '350x' }} 450w,
+          {{ tag.image_url | resize: '450x' }} 768w,
+          {{ tag.image_url | resize: '650x' }} 1024w,
+          {{ tag.image_url | resize: '850x' }} 1440w,
+          {{ tag.image_url }} 1920w,
+        {% endcapture %}
+
+        {% capture data_sizes %}
+          (max-width: 320px) 320px,
+          (max-width: 450px) 450px,
+          (max-width: 768px) 768px,
+          (max-width: 1024px) 1024px,
+          (max-width: 1440px) 1440px,
+          (min-width: 1920px) 1920px,
+        {% endcapture %}
+
+        <figure class="image -custom">
+          <img class="lazy" data-srcset="{{ data_srcset | strip_newlines | strip }}" data-sizes="{{ data_sizes | strip_newlines | strip }}" alt="{{ tag.title }}"/>
+          <div class="skeleton"></div>
+        </figure>
+      </div>
+
+      <div class="text">
+        {% if tag.subtitle != blank %}
+          <span class="upper-title">{{ tag.subtitle }}</span>
+        {% endif %}
+
+        {% if tag.title != blank %}
+          <h2 class="title">{{tag.title}}</h2>
+        {% endif %}
+
+        {% if tag.description != blank %}
+          {{ tag.description | replace: '<p', '<p class="description"' }}
+        {% endif %}
+      </div>
+    </section>
+    
+    {% break %}
+  {% endif %}
+{% endfor %}

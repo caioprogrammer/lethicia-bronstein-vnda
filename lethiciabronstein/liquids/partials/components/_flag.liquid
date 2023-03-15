@@ -1,0 +1,43 @@
+{% for tag in product.tags %}
+  {% if tag.type contains 'flag' %}
+
+    {% assign text_color = '' %}
+    {% assign background_color = '' %}
+    {% assign position = 'top right' %}
+
+    {% if tag.description contains '</p>' %}
+      {% assign configs = tag.description | split: '</p>' %}
+
+      {% for config in configs %}
+        {% if config contains 'texto' %}
+          {% assign text_color = config | strip_html | split: ': ' | last %}
+        {% elsif config contains 'fundo' %}
+          {% assign background_color = config | strip_html | split: ': ' | last %}
+        {% elsif config contains 'posição' %}
+          {% assign position = config | strip_html | split: ': ' | last %}
+        {% endif %}
+      {% endfor %}
+
+      {% capture style %}
+        style="color: {{ text_color }}; background: {{ background_color }};"
+      {% endcapture %}
+    {% endif %}
+
+    {% assign is_img = '' %}
+    {% if tag.image_url and tag.image_url != '' %}
+      {% assign is_img = 'image' %}
+    {% endif %}
+
+    <div  class="flag {{ position }} {{ is_img }}" {% unless tag.image_url %} {{ style }} {% endunless %}
+    >
+      {% if tag.image_url and tag.image_url != '' %}
+        <img class="lazy" data-src="{{ tag.image_url | resize: '80x' }}" alt="{{ tag.title }}"/>
+      {% else %}
+        <span>
+          {{ tag.title }}
+        </span>
+      {% endif %}
+    </div>
+    {% break %}
+  {% endif %}
+{% endfor %}

@@ -1,0 +1,66 @@
+@import "../base/mixins";
+
+.product-block {
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: var(--transition);
+  width: 100%;
+  justify-content: space-between;
+
+  .swiper-autoheight .swiper-wrapper {
+    height: 100% !important; 
+  }
+
+  &:hover .images figure img:nth-child(2) {
+    opacity: 1;
+    transition: ease .5s opacity;
+  }
+
+  &.sold-out {
+    position: relative;
+    z-index: 1;
+    opacity: 0.5;
+  }
+
+  > .images {
+    margin-bottom: 1rem;
+    position: relative;
+  }
+
+  > .images figure {
+    transition: var(--transition);
+
+    img:nth-child(2) {
+      opacity: 0;
+    }
+  }
+
+  > .description .quantity {
+    font-size: var(--font-size-small);
+    margin-top: 1rem;
+    display: none;
+  }
+
+  > .description .name {
+    transition: var(--transition);
+  }
+
+  > .description .name a {
+    font-size: var(--font-size-small);
+  }
+
+  > .button-default {
+    margin-top: 0rem;
+    width: 100%;
+    opacity: 0;
+  }
+
+  > .add-to-cart {
+    display: none;
+  }
+
+  @import "./flag";
+  @import "./price";
+}

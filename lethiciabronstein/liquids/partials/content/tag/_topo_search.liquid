@@ -1,0 +1,18 @@
+<div class="banner-topo -no-image -search">
+  <div class="text {{ no_image }}">
+    <div class="content">
+      <span class="upper-title">BUSCA POR:</span>
+
+      <h1 class="title">{{ params_search | capitalize }}</h1>
+
+      <p class="subtitle">
+        {{ products.size }}
+        {% if products.size == 1 %}
+          produto encontrado.
+        {% else %}
+          produtos encontrados.
+        {% endif %}
+      </p>
+    </div>
+  </div>
+</div>

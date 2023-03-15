@@ -1,0 +1,79 @@
+.carousel {
+  position: relative;
+  padding-bottom: 7rem;
+
+  @include media("sm") {
+    padding-bottom: 0;
+  }
+
+  > .carousel-header {
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+
+    > .button-default {
+      width: calc(100% - 10%);
+      position: absolute;
+      bottom: 0;
+
+      @include media("sm") {
+        position: initial;
+        width: fit-content;
+      }
+    }
+  }
+
+  > .content {
+    position: relative;
+    //padding para acomodar o swiper-pagination
+    padding-bottom: 6rem;
+
+    .product-block {
+      height: 100%;
+      /* padding: 0.2rem; */
+      border: 1px solid #f0f0f0;
+    }
+
+    .product-block > .description {
+      margin-bottom: 0;
+      padding: 0rem 1rem;
+    }
+
+    .swiper-slide {
+      height: 100%;
+    }
+
+    //config swiper navigation e pagination
+    .swiper-button-prev {
+      bottom: 0;
+      left: 0;
+      top: 0;
+      background-color: rgba(255,255,255, .3);
+      height: 100%;
+      max-height: 100vh;
+      border: 0;
+      border-radius: 0;
+      padding: 40px;
+      pointer-events: unset !important;
+    }
+
+    .swiper-button-next {
+      bottom: 0;
+      right: 0;
+      top: 0;
+      background-color: rgba(255,255,255, .3);
+      height: 100%;
+      max-height: 100vh;
+      border: 0;
+      border-radius: 0;
+      padding: 40px;
+      pointer-events: unset !important;
+    }
+
+    .swiper-pagination {
+      height: 4rem;
+      bottom: 0;
+    }
+  }
+}

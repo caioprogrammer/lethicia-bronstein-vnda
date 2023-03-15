@@ -1,0 +1,10 @@
+@import "../base/mixins";
+
+@import "../content/tag/pagination";
+
+.pagination {
+  @include media("md") {
+    margin-left: auto;
+    width: 80%;
+  }
+}

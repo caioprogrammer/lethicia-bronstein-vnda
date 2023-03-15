@@ -1,0 +1,45 @@
+.flag {
+  align-items: center;
+  color: var(--white);
+  border-radius: 3px;
+  display: flex;
+  font-size: 1.2rem;
+  justify-content: center;
+  text-align: center;
+  padding: 0.5rem 2rem;
+  position: absolute;
+  z-index: 4;
+
+  &.centro {
+    right: 50%;
+    transform: scale(1) translateX(50%);
+  }
+
+  &.direita {
+    right: 0.714rem;
+  }
+
+  &.esquerda {
+    left: 0.714rem;
+  }
+
+  &.topo {
+    top: 0.714rem;
+  }
+
+  &.base {
+    bottom: 0.714rem;
+  }
+
+  img {
+    display: block;
+
+    height: 60px;
+    width: 60px;
+
+    @include media("sm") {
+      height: 80px;
+      width: 80px;
+    }
+  }
+}

@@ -1,0 +1,421 @@
+/* @theme custom */
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
+
+/* General */
+
+*::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+	background-color: #d8d8d8;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: #d8d8d8;
+  box-shadow: inset 1px 1px 9px #d8d8d8;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #7070707a;
+  border-radius: 5px;
+}
+
+body svg {
+  z-index: 3;
+}
+
+section::-webkit-scrollbar {
+	width: 5px;
+	background-color: #d8d8d8;
+}
+
+section::-webkit-scrollbar-track {
+  background-color: #d8d8d8;
+  box-shadow: inset 1px 1px 9px #d8d8d8;
+}
+
+section::-webkit-scrollbar-thumb {
+  background-color: #7070707a;
+  border-radius: 5px;
+}
+
+section {
+  background: #F9F8F8;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  padding: 2.5%;
+  height: 100%;
+  width: 100%;
+  font-size: 12px;
+  font-weight: 500;
+  color: #707070;
+}
+
+section h1,
+section h2 {
+  color: #707070;
+  font-size: 1.5em;
+}
+
+section pre {
+  overflow: auto;
+  background: #f1eaea;
+}
+
+section img {
+  max-width: 100%;
+}
+
+section a {
+  color: #707070;
+  transition: all 200ms ease;
+  display: inline-block;
+  transform-origin: left;
+}
+
+section a:hover {
+  color: #FF6D00;
+  font-weight: 700;
+}
+
+section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+section a {
+  color: #707070;
+  transition: all 200ms ease;
+  display: inline-block;
+  transform-origin: left;
+  text-decoration: none;
+}
+
+section a:hover {
+  color: #FF6D00;
+  font-weight: 700;
+}
+
+
+/* Table of Contents */
+
+section.table-of-contents {
+  background: #fff;
+}
+
+section.table-of-contents > ul {
+  column-count: 3;
+  width: 100%;
+  overflow-x: auto;
+}
+
+section.table-of-contents > ul > li {
+  line-height: 1.5em;
+  margin-bottom: 20px;
+}
+
+section.table-of-contents > ul > li a,
+section.sidebar > ul > li a {
+  text-decoration: none;
+  font-size: 0.8em;
+}
+
+section.table-of-contents > ul > li > h3 {
+  margin: 0;
+}
+
+section.table-of-contents > ul > li > h3 > a {
+  font-weight: 700;
+  font-size: 1em;
+  text-decoration: none;
+}
+
+section.table-of-contents>h1 {
+  text-align: center;
+  font-weight: 600;
+  font-size: 2.6em;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  margin: 2% 0% !important;
+}
+
+section.table-of-contents {
+  height: 70vh;
+  width: 84%;
+  margin: 15vh 8%;
+  border-top: 5vh solid #FAE2C3;
+  border-bottom: 5vh solid #FAE2C3;
+  box-shadow: 0px 0px 3px 1px #00000017;
+  display: flex;
+  padding: 2%;
+  background: #fff;
+  opacity: 0;
+  transition: opacity 200ms ease 1s;
+}
+
+section.table-of-contents>h2>a {
+  pointer-events: none;
+}
+
+section.table-of-contents>h2>a::hover {
+  color: #707070;
+}
+
+section.table-of-contents>h2::after {
+  content: 'selecione →';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 0.4em;
+  letter-spacing: 2px;
+  opacity: 0.8;
+}
+
+section.table-of-contents>h2 {
+  margin-right: 30px;
+  font-size: 3.5em;
+  max-width: 30%;
+  margin-top: 0;
+  margin-bottom: 0;
+  position: relative;
+}
+
+/* sidebar */
+
+section.sidebar {
+  opacity: 1;
+  pointer-events: auto;
+  display: block;
+  z-index: 0;
+  height: 100%;
+  width: 19vw;
+  padding-right: 15px;
+  content-visibility: visible;
+  background: #f7f7f7;
+  overflow-y: auto;
+}
+
+section.sidebar>h1 {
+  display: none;
+}
+
+section.sidebar img {
+  display: none;
+}
+
+section.sidebar > ul > li {
+  margin-bottom: 15px;
+  line-height: 1.3em;
+  display: block;
+  padding-bottom: 7px;
+  margin-top: 0;
+  color: #707070;
+}
+
+section.sidebar {
+  background: #f7f7f7;
+}
+
+section.sidebar > ul > li > ul > li.active a,
+section.sidebar > ul > li > h3.active a {
+  color: #FF6D00;
+  font-weight: 700;
+  transform: translateX(25px);
+}
+
+section.sidebar > ul > li > ul > li a,
+section.sidebar > ul > li > h3 a {
+  background: rgb(249, 248, 248);
+}
+
+section.sidebar > ul > li > ul > li,
+section.sidebar > ul > li > h3 {
+  position: relative;
+}
+
+section.sidebar > ul > li > ul > li::before,
+section.sidebar > ul > li > h3::before {
+  content: '';
+  background: #FF6D00;
+  height: 2px;
+  width: 20px;
+  display: inline-block;
+  position: absolute;
+  top: calc(50% - 1px);
+  z-index: -1;
+}
+
+section.sidebar>h2 {
+  font-size: 1.5em;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 7px;
+  margin-top: 0;
+}
+
+section.sidebar>h2::after {
+  content: '';
+  position: absolute;
+  height: 2px;
+  background: #707070;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0.4;
+}
+
+/* All other slides */
+
+section:not(.table-of-contents):not(.sidebar) h2,
+section:not(.table-of-contents):not(.sidebar) h3 {
+  margin: 50px 0 15px;
+}
+
+h3:not(.table-of-contents):not(.sidebar) + h2:not(.table-of-contents):not(.sidebar) {
+  margin-top: 15px;
+}
+
+section:not(.table-of-contents):not(.sidebar) h1,
+section:not(.table-of-contents):not(.sidebar) h2 {
+  color: #FF6D00;
+}
+
+section:not(.table-of-contents):not(.sidebar) h1::before {
+  content: '►';
+  display: inline-block;
+  margin-right: 10px;
+}
+
+section:not(.table-of-contents):not(.sidebar) h1::after {
+  content: '↓';
+  display: inline-block;
+  margin-left: 10px;
+  font-weight: 500;
+  font-size: 1.5em;
+  color: #707070;
+  opacity: 0.6;
+}
+
+section:not(.table-of-contents):not(.sidebar) {
+  padding-left: 105vh;
+  overflow-y: auto;
+}
+
+section:not(.table-of-contents):not(.sidebar) table, 
+section:not(.table-of-contents):not(.sidebar) th, 
+section:not(.table-of-contents):not(.sidebar) td {
+  border: 3px solid white;
+}
+
+section:not(.table-of-contents):not(.sidebar) th, 
+section:not(.table-of-contents):not(.sidebar) td {
+  padding: 10px;
+}
+
+section:not(.table-of-contents):not(.sidebar) table {
+  border-collapse: collapse;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0px 0px 20px #00000014;
+}
+
+section:not(.table-of-contents):not(.sidebar) table thead {
+  background: white;
+  color: #707070;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: underline;
+}
+
+section:not(.table-of-contents):not(.sidebar) table tr:nth-child(even) {
+  background: white;
+  transition: all 200ms ease;
+}
+
+section:not(.table-of-contents):not(.sidebar) table :not(thead) tr:nth-child(odd) {
+  background: #f1f1f1;
+}
+
+section:not(.table-of-contents):not(.sidebar) table :not(thead) tr:hover {
+  background: #FAE2C3;
+  filter: saturate(1.6) brightness(0.95) contrast(1.1);
+}
+
+section:not(.table-of-contents):not(.sidebar) p {
+  line-height: 1.5em;
+}
+
+section:not(.table-of-contents):not(.sidebar) > ul:first-of-type {
+  display: inline-block;
+  overflow: hidden;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100vh;
+  background: #d4d4d4;
+}
+
+section:not(.table-of-contents):not(.sidebar) > ul:first-of-type > li > ul {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-69.5%);
+  width: 87.5%;
+  max-height: 49.7vh;
+  overflow: hidden;
+  overflow-y: auto;
+  background: transparent;
+
+}
+
+[alt="Logo Vnda"] {
+  position: fixed;
+  top: 0;
+  right: 8%;
+  max-width: 100px;
+}
+
+[src="../images/prints/computer.png"] {
+  object-fit: contain;
+  width: 100vh;
+  height: 100vh;
+  transform: scale(0.95);
+  filter: drop-shadow(0px 129px 89px #000000ad);
+}
+
+[src="../images/prints/computer.png"] + ul > li {
+  position: relative;
+}
+
+[src="../images/prints/computer.png"] + ul > li > ul > li {
+  position: absolute;
+  background: #FF6D00a6;
+  color: #fff;
+  font-weight: bold;
+  transform: translate(-50%, -50%) scale(0.8);
+  width: 25px;
+  height: 25px;
+  line-height: 24px;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+[src="../images/prints/computer.png"] + ul > li > ul > li:hover  {
+  background: #FF6D00;
+  transform: translate(-50%, -50%) scale(1.25);
+  transform-origin: center;
+}
+
+[src="../images/prints/computer.png"] + ul > li > ul > li > a {
+  color: #fff;
+}

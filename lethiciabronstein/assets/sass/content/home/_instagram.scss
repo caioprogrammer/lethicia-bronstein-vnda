@@ -1,0 +1,17 @@
+.instagram {
+  > .content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 4rem;
+  }
+
+  > .swiper {
+    padding-bottom: 6rem;
+
+    .swiper-pagination {
+      bottom: 2rem;
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{% load_banners position: position limit: 4 %}
+
+<section class="section container review">
+  {% if loaded_banners.size > 0 %}
+    <div class="review-content">
+      {% for banner in loaded_banners %}
+        <div class="review-item">
+          {% if banner.file_url != blank %}
+            <figure class="image -square">
+              <img class="lazy" data-src="{{ banner.file_url | resize: '240x' }}" alt="{{banner.title}}">
+              <div class="skeleton"></div>
+            </figure>
+          {% endif %}
+
+          <div class="text">
+            {% if banner.subtitle contains '|' %}
+              {% assign primary_title = banner.subtitle | split: '|' | first %}
+              {% assign secondary_title = banner.subtitle | split: '|' | last %}
+            {% endif %}
+
+            <h3 class="primary-title">
+              {{ primary_title | default: banner.subtitle }}
+            </h3>
+
+            <span class="secondary-title">
+              {{ secondary_title  }}
+            </span>
+
+            <div class="description">
+              {{ banner.description }}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</section>
