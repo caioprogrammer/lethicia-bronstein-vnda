@@ -70,6 +70,36 @@ const Home = {
     
     });
   },
+  setElasUsamBanners: () => {
+    const elasUsamBanners = document.querySelectorAll('.section.elas-usam');
+
+    const swiper = new Swiper('.section.elas-usam .swiper', {
+      // Optional parameters
+      slidesPerView: 4,
+      preloadImages: false,
+      loop: true,
+      autoplay: {
+        delay: 1000,
+        disableOnInteraction: false
+      },
+      speed: 1000,
+      grabCursor: true,
+      mousewheelControl: true,
+      spaceBetween: 15,
+      lazy: {
+        checkInView: false,
+        loadPrevNext: true,
+        loadOnTransitionStart: false,
+      },
+    
+      // Navigation arrows
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    
+    });
+  },
   setInstagramSwiper: function () {
     const instagramSwiper = new Swiper('[data-instagram-swiper]', {
       slidesPerView: 2.3,
@@ -107,6 +137,7 @@ const Home = {
 
     _this.setFullbanner();
     _this.setCategoriesBanners();
+    _this.setElasUsamBanners();
     _this.setInstagramSwiper();
 
     setCarousel();

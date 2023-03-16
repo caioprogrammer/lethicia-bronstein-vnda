@@ -28,7 +28,6 @@
 {% capture html_products %}
   {% for product in products %}
     {% render 'partials/components/product_block', product: product, lazy: 'lazy' %}
-    {{ forloop.index }}
   {% endfor %}
 {% endcapture %}
 

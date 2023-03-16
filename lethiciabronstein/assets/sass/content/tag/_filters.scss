@@ -167,11 +167,28 @@
 
   //limpar filtro desktop
   .vnda-products-filter-vertical-buttons {
-    .vnda-products-filter-vertical-button-apply,
-    .vnda-products-filter-vertical-button-clear {
+  .vnda-products-filter-vertical-button-clear {
       margin-top: 1.4rem;
       @extend %button-default;
     }
+  }
+
+  .vnda-products-filter-vertical-button-apply {
+    align-items: center;
+    background-color: var(--white);
+    border: 1px solid var(--highlight-1);
+    border-radius: 0;
+    color: var(--black);
+    cursor: pointer;
+    display: flex;
+    font-size: var(--font-size-button);
+    font-weight: var(--font-weight-button);
+    height: 3.2rem;
+    justify-content: center;
+    padding: 0.5rem 2rem;
+    position: relative;
+    text-transform: uppercase;
+    transition: var(--transition);
   }
 
   // estilo filter mobile

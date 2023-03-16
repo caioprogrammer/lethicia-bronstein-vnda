@@ -5,6 +5,9 @@
   width: 100%;
   max-width: 940px;
   margin: 0 auto;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
   &__title {
     font-weight: normal;
     font-size: 14px;
@@ -14,6 +17,9 @@
     margin-right: 80px;
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
+    @media screen and (max-width:768px) {
+      margin-right: 0;
+    }
   }
   .content {
     flex: 0 0 auto;
@@ -22,6 +28,9 @@
     position: relative;
     flex: 1 1 auto;
     max-width: 660px;
+    @media screen and (max-width:768px) {
+      width: 100%;
+    }
     &.form-newsletter {
       fieldset {
         display: flex;
@@ -33,6 +42,11 @@
         align-items: flex-end;
         -ms-flex: 1 1 auto;
         flex: 1 1 auto;
+        @media screen and (max-width:768px) {
+          align-items: unset;
+          flex-direction: column;
+          width: 100%;
+        }
         input {
           background-color: transparent;
           border: 0;
