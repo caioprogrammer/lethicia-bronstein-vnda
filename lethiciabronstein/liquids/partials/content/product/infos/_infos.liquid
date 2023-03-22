@@ -1,13 +1,22 @@
 {% render 'partials/content/product/product_name_price', product: product %}
 
+{% comment %}
+
 {% if descricao_curta %}
-  <div class="short-description">
-    {{ descricao_curta }}
+
+<div class="short-description">
+{{ descricao_curta }}
+</div>
+{% endif %}
+
+{% endcomment %}{% if product.description %}
+  <div class="description">
+    {% render 'partials/content/product/description', product: product %}
   </div>
 {% endif %}
 
 <div class="infos-compra">
-  {% render 'partials/content/product/purchase', product: product, show_qtd_selector: true, showButton: true,  text_string: 'Adicionar ao Carrinho', tag_medidas: tag_medidas %}
+  {% render 'partials/content/product/purchase', product: product, show_qtd_selector: true, showButton: true, text_string: 'Adicionar ao Carrinho', tag_medidas: tag_medidas %}
 </div>
 
 <div class="form-notify">

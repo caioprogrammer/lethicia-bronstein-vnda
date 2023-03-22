@@ -32,7 +32,10 @@
   {% capture html_product_images %}
     <div class="item-image swiper-slide image-without-sku" data-image>
       <figure class="image -custom">
-        <img class="lazy" alt="{{ product.name }}" data-src="{{ 'placeholder.png' | image_path }}"/>
+        <img
+          class="lazy"
+          alt="{{ product.name }}"
+          data-src="{{ 'placeholder.png' | image_path }}" />
         <div class="skeleton"></div>
       </figure>
     </div>
@@ -41,7 +44,10 @@
   {% capture html_thumb %}
     <div class="item-thumb swiper-slide image-without-sku" data-image-thumb>
       <figure class="image -custom">
-        <img class="swiper-lazy" data-src="{{ 'placeholder.png' | image_path }}" alt="{{ product.name }}"/>
+        <img
+          class="swiper-lazy"
+          data-src="{{ 'placeholder.png' | image_path }}"
+          alt="{{ product.name }}" />
         <div class="skeleton"></div>
       </figure>
     </div>
@@ -69,7 +75,9 @@
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
     </div>
+    {% comment %}
     <div class="swiper-pagination"></div>
+    {% endcomment %}
     {% render 'partials/components/flag', product: product %}
   </div>
 </div>

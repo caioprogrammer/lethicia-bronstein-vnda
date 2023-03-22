@@ -23,10 +23,66 @@
     z-index: 1;
     opacity: 0.5;
   }
-
+  &:hover {
+    .images {
+      .add-to-cart {
+        opacity: 1;
+        .attributes {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
   > .images {
     margin-bottom: 1rem;
     position: relative;
+    .add-to-cart {
+      display: flex;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      flex-direction: column;
+      width: 100%;
+      opacity: 0;
+      transition: ease .5s opacity;
+      .actions-wrapper {
+        .button-default {
+          width: 100%;
+          border-radius: 0;
+        }
+      }
+      .option-title {
+        font-size: 0;
+      }
+      .attributes {
+        gap: .65rem;
+        justify-items: center;
+        background-color: rgba($color: #fff, $alpha: .8);
+        padding-bottom: .5rem;
+        transform: translateY(25px);
+        transition: ease .5s;
+        >.prod-option {
+          input[type=radio] {
+            &:checked {
+              +.label {
+                .color,
+                .text {
+                  background-color: var(--highlight-1);
+                  color: #fff;
+                  border-color: var(--highlight-1);
+                }
+              }
+            }
+          }
+          .label{
+            .text {
+              border: 1px solid;
+              border-radius: 0;
+            }
+          }
+        }
+      }
+    }
   }
 
   > .images figure {
@@ -55,10 +111,6 @@
     margin-top: 0rem;
     width: 100%;
     opacity: 0;
-  }
-
-  > .add-to-cart {
-    display: none;
   }
 
   @import "./flag";

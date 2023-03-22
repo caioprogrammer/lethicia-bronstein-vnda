@@ -22,6 +22,8 @@ const CartDrawer = {
       display: 'list',
       startOpen: false,
       titleCart: 'Carrinho de compras',
+      suggestedProductsTag: 'home-produtos-listagem',
+      titleSuggested: 'Produtos sugeridos',
       disableShippingCalculation,
       freeShipping: settings.freeShippingValue || 0
     });

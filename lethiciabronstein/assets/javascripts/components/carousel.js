@@ -15,10 +15,12 @@ export default function setCarousel() {
     if (carousel) {
       new Swiper(carousel, {
         autoHeight: true,
-        slidesPerView: 2,
+        slidesPerView: 1,
         spaceBetween: 6,
+        navigation: false,
         watchOverflow: true,
         speed: 1000,
+        autoplay: true,
         //lazy load
         preloadImages: false,
         lazy: {
@@ -31,10 +33,12 @@ export default function setCarousel() {
           768: {
             slidesPerView: 2,
             spaceBetween: 0,
+            autoplay: true
           },
           992: {
             slidesPerView: 3,
             spaceBetween: 0,
+            autoplay: true
           },
         },
         // pagination: {

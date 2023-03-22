@@ -46,6 +46,10 @@
     .left-container {
       @include media("md") {
         width: 60%;
+        .product-images {
+          position: sticky;
+          top: 16vh;
+        }
       }
     }
   }

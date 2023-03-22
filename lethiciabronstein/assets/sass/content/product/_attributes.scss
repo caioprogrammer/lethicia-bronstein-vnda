@@ -6,7 +6,8 @@
 
   > .prod-option .option-title {
     font-weight: var(--font-weight-title);
-    font-size: var(--font-size-small);
+    // font-size: var(--font-size-small);
+    font-size: 0;
     margin-bottom: 0.5rem;
     text-transform: lowercase;
   }

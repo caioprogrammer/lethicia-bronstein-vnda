@@ -2,8 +2,16 @@
 {% head %}
   {% opengraphfor product %}
 
-  <link href="pages/product_above.css" inline rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="{{ 'pages/product.css' | stylesheet_path }}" media="print" onload="this.media='all'"/>
+  <link
+    href="pages/product_above.css"
+    inline
+    rel="stylesheet"
+    type="text/css">
+  <link
+    rel="stylesheet"
+    href="{{ 'pages/product.css' | stylesheet_path }}"
+    media="print"
+    onload="this.media='all'" />
 {% endhead %}
 
 {% body %}
@@ -25,22 +33,27 @@
 {% endif %}
 
 {% assign tag_medidas = product.tags | where: 'type', 'guia-de-medidas' | first %}
-{% assign relacionado =  product.tags | where: 'type', 'relacionado' | first %}
+{% assign relacionado = product.tags | where: 'type', 'relacionado' | first %}
 
 
-<section class="section product-section container" data-product-box data-section-product>
+<section
+  class="section product-section container"
+  data-product-box
+  data-section-product>
   <div class="product-wrap">
     <div class="left-container">
       <div class="product-images" data-product-images>
         {% render 'partials/content/product/images/images', product: product %}
       </div>
+      {% comment %}
       {% if descricao_parts %}
-        <div class="desktop-only">
-          <div class="secondary-infos">
-            {% render 'partials/content/product/secondary_infos', product: product, descricao_parts: descricao_parts, tag_medidas: tag_medidas %}
-          </div>
-        </div>
+      <div class="desktop-only">
+      <div class="secondary-infos">
+      {% render 'partials/content/product/secondary_infos', product: product, descricao_parts: descricao_parts, tag_medidas: tag_medidas %}
+      </div>
+      </div>
       {% endif %}
+      {% endcomment %}
     </div>
 
     <div class="right-container">
@@ -48,13 +61,15 @@
         {% render 'partials/content/product/infos/infos', product: product, descricao_curta: descricao_curta, tag_medidas: tag_medidas, current_shop: current_shop, home_url: home_url %}
       </div>
 
+      {% comment %}
       {% if descricao_parts %}
-        <div class="mobile-only">
-          <div class="secondary-infos">
-            {% render 'partials/content/product/secondary_infos', product: product, descricao_parts: descricao_parts %}
-          </div>
-        </div>
+      <div class="mobile-only">
+      <div class="secondary-infos">
+      {% render 'partials/content/product/secondary_infos', product: product, descricao_parts: descricao_parts %}
+      </div>
+      </div>
       {% endif %}
+      {% endcomment %}
     </div>
   </div>
 </section>
@@ -68,7 +83,7 @@
 
 {% render 'partials/content/product/size_guide', product: product, tag_medidas: tag_medidas %}
 
- {% comment %} Popula com as variants dos produtos para o comportamento de seleção de variants {% endcomment %}
+{% comment %} Popula com as variants dos produtos para o comportamento de seleção de variants {% endcomment %}
 {% body %}
   <script>
     window.mainProduct = {{ product.id }}

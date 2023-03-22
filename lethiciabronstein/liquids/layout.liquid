@@ -25,7 +25,7 @@
     <meta content="#000" name="msapplication-TileColor" />
     <meta name="msapplication-TileImage" content="{{ 'favicon/android-chrome-192x192.png' | image_path }}" />
     <meta content="#000" name="theme-color" />
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link
       href="/main.css"
       inline
@@ -36,7 +36,6 @@
       href="{{ 'style.css' | stylesheet_path }}"
       media="print"
       onload="this.media='all'" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     {{ content_for_head }}
 
@@ -48,10 +47,9 @@
   </head>
 
   {% assign template_class = 'page-' | append: template | replace: '/', '-' | replace: '_', '-' %}
-
+  {% comment %}
   {% assign img_logo = 'https://via.placeholder.com/410x210' %}
-
-  {% load_shop_images position: "logo" %}
+  {% endcomment %}{% load_shop_images position: "logo" %}
 
   {% if loaded_shop_images.size > 0 %}
     {% assign img_logo = loaded_shop_images | first | map: 'url' | first %}
@@ -83,9 +81,5 @@
 
     <script src="{{ 'main.js' | javascript_path }}"></script>
     <script async src="{{ 'lazyload.min.js' | javascript_path }}"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-      AOS.init();
-    </script>
   </body>
 </html>

@@ -14,6 +14,12 @@ body {
   font-weight: var(--font-weight-base) !important;
 
   overflow-x: hidden;
+
+  &:not(.page-home) {
+    main {
+      padding-top: 145px;
+    }
+  }
 }
 
 main {

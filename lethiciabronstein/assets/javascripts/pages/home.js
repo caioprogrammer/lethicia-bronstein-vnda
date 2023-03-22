@@ -52,7 +52,7 @@ const Home = {
 
     const swiper = new Swiper('.section.categories .swiper', {
       // Optional parameters
-      slidesPerView: 2,
+      slidesPerView: 1,
       preloadImages: false,
       loop: true,
       autoplay: true,
@@ -60,6 +60,16 @@ const Home = {
         checkInView: true,
         loadPrevNext: false,
         loadOnTransitionStart: true,
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 0,
+        },
+        992: {
+          slidesPerView: 2,
+          spaceBetween: 0,
+        },
       },
     
       // Navigation arrows
@@ -75,7 +85,7 @@ const Home = {
 
     const swiper = new Swiper('.section.elas-usam .swiper', {
       // Optional parameters
-      slidesPerView: 4,
+      slidesPerView: 1.275,
       preloadImages: false,
       loop: true,
       autoplay: {
@@ -90,6 +100,16 @@ const Home = {
         checkInView: false,
         loadPrevNext: true,
         loadOnTransitionStart: false,
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 0,
+        },
+        992: {
+          slidesPerView: 4,
+          spaceBetween: 0,
+        },
       },
     
       // Navigation arrows
