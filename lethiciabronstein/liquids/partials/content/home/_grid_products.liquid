@@ -1,15 +1,15 @@
 {% load_tag name: tag_name %}
 {% assign tag = loaded_tag %}
 
-{% if tag and tag != blank %}
-  {% load_products tag: tag.name per_page: 4 %}
+  {% if tag and tag != blank %}
+  {% load_products tag: tag.name per_page: 3 %}
   {% assign btn_txt = 'VEJA MAIS +' %}
 
   {% if tag.subtitle %}
     {% assign btn_txt = tag.subtitle %}
   {% endif %}
 
-  <section class="section products grid  section-list-products container">
+  <section class="section products grid  section-list-products">
     {% if tag.title != '' %}
       <h2 class="title">
         {{ tag.title }}
@@ -31,7 +31,7 @@
 
   {% comment %} Popula com as variants dos produtos para o comportamento de seleção de variants {% endcomment %}
   {% body %}
-  <script data-product-variants>
+    <script data-product-variants>
       {% for product in products %}
         productVariants['{{ product.id }}'] = {{ product.variants | to_json }};
       {% endfor %}

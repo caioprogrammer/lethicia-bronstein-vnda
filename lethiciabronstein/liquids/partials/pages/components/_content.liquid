@@ -1,11 +1,24 @@
-{% load_banners position: position limit: 1 %}
+{% if page.slug == 'pagina-padrao' %}
+  {% assign tagNameLoop = '' %}
+  {% load_banners position: "banner-lookbook" %}
+  {% for banner in loaded_banners %}
+    <section class="lookbook-special">
+      {% if banner.file_url %}
+        <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
+      {% endif %}
+      {% render 'partials/content/home/grid_products', tag_name: 'home-produtos-superior', per_page: 3, infinity: false %}
+    </section>
+  {% endfor %}
+{% endif %}
 
+
+{% load_banners position: position limit: 1 %}
 {% for banner in loaded_banners %}
   <section class="section container content-text">
     <div class="title-wrapper">
       {% if banner.subtitle %}
         <h2 class="title">
-          {{banner.subtitle}}
+          {{ banner.subtitle }}
         </h2>
       {% endif %}
     </div>

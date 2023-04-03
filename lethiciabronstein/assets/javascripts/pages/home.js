@@ -1,9 +1,9 @@
-import Swiper, { Navigation, Pagination, Lazy } from 'swiper';
+import Swiper, { Navigation, Pagination, Lazy, Autoplay } from 'swiper';
 import InfinityScroll from '../components/infinityScroll';
 import setCarousel from '../components/carousel';
 import { updatePriceBlock } from '../components/utilities';
 
-Swiper.use([Navigation, Pagination, Lazy]);
+Swiper.use([Navigation, Pagination, Lazy, Autoplay]);
 
 const Home = {
   setFullbanner: () => {

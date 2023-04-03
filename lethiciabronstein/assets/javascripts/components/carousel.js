@@ -1,5 +1,5 @@
-import Swiper, { Navigation, Pagination, Lazy } from 'swiper';
-Swiper.use([Navigation, Pagination, Lazy]);
+import Swiper, { Navigation, Pagination, Lazy, Autoplay } from 'swiper';
+Swiper.use([Navigation, Pagination, Lazy, Autoplay]);
 
 export default function setCarousel() {
   const productsCarousel = document.querySelectorAll(

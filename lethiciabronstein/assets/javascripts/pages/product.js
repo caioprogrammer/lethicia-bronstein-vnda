@@ -6,8 +6,8 @@ import GroupShop from '../components/groupShop.js';
 
 import { updatePriceBlock } from '../components/utilities';
 
-import Swiper, { Manipulation, Navigation, Thumbs, Lazy, Pagination } from 'swiper';
-Swiper.use([Manipulation, Navigation, Thumbs, Lazy, Pagination]);
+import Swiper, { Manipulation, Navigation, Thumbs, Lazy, Pagination, Autoplay } from 'swiper';
+Swiper.use([Manipulation, Navigation, Thumbs, Lazy, Pagination, Autoplay]);
 
 const Product = {
   mainSlider: {

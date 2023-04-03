@@ -18,3 +18,28 @@
 ========================================================================== */
 
 @import "./common/header";
+
+
+.lookbook-special {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .section {
+    margin-bottom: 0;
+    width: 100%;
+  }
+    > img {
+      max-width: 600px;
+      margin-right: 32px;
+    }
+  .content {
+    &.list-products {
+      display: flex;
+      gap: 16px;
+    }
+  }
+  .pagination,
+  .title {
+    display: none;
+  }
+}
