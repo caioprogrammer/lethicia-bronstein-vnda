@@ -8,6 +8,8 @@
 
 {% assign position_primary_full = page.slug | append: '-banner-principal' %}
 {% assign position_primary_text = page.slug | append: '-banner-conteudo' %}
+{% assign position_syde_by_side = page.slug | append: '-banner-destaque' %}
 
 {% render 'partials/pages/components/page_fullbanner', page: page, position: position_primary_full, background: false, type: '-custom' %}
 {% render 'partials/pages/components/content', page: page, position: position_primary_text %}
+{% render 'partials/pages/components/side_by_side', page: page, position: position_syde_by_side %}

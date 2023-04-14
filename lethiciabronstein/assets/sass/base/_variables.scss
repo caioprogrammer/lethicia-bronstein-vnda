@@ -1,13 +1,14 @@
 //// CSS VARIABLES ////
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 :root {
   //// TYPOGRAPHY ////
 
-  --font-family-base: "Montserrat", sans-serif;
+  --font-family-base: "Poppins", sans-serif;
   --font-color-base: #312f4f;
   --font-weight-base: 500;
 
-  --font-family-title: "Montserrat", sans-serif;
+  --font-family-title: "Poppins", sans-serif;
   --font-color-title: #312f4f;
   --font-size-title: 2.8rem;
   --font-weight-title: 700;
@@ -35,8 +36,8 @@
   --gray-3: #808080;
   --gray-4: #383838;
 
-  --highlight-1: #312f4f;
-  --highlight-2: #696d8c;
+  --highlight-1: #d19191;
+  --highlight-2: #f2ccc4;
 
   //////////////////////////////////////////////////////////////////
   //// TRANSITIONS

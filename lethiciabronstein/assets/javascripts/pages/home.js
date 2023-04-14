@@ -55,7 +55,9 @@ const Home = {
       slidesPerView: 1,
       preloadImages: false,
       loop: true,
-      autoplay: true,
+      autoplay: {
+        delay: 3000
+      },
       lazy: {
         checkInView: true,
         loadPrevNext: false,
@@ -89,10 +91,10 @@ const Home = {
       preloadImages: false,
       loop: true,
       autoplay: {
-        delay: 1000,
+        delay: 1,
         disableOnInteraction: false
       },
-      speed: 1000,
+      speed: 10000,
       grabCursor: true,
       mousewheelControl: true,
       spaceBetween: 15,
@@ -113,10 +115,10 @@ const Home = {
       },
     
       // Navigation arrows
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
+      // navigation: {
+      //   nextEl: '.swiper-button-next',
+      //   prevEl: '.swiper-button-prev',
+      // },
     
     });
   },

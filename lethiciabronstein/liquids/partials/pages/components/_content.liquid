@@ -1,12 +1,80 @@
-{% if page.slug == 'pagina-padrao' %}
+{% if page.slug == 'lookbook' %}
   {% assign tagNameLoop = '' %}
-  {% load_banners position: "banner-lookbook" %}
+  {% load_banners position: "banner-lookbook-1" %}
   {% for banner in loaded_banners %}
-    <section class="lookbook-special">
-      {% if banner.file_url %}
-        <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
-      {% endif %}
-      {% render 'partials/content/home/grid_products', tag_name: 'home-produtos-superior', per_page: 3, infinity: false %}
+    <section class="lookbook-special container">
+      <div class="lookbook-special__content">
+        <h2>{{ banner.title }}</h2>
+        {% if banner.file_url %}
+          <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
+        {% endif %}
+      </div>
+      {% render 'partials/content/home/grid_products', tag_name: 'home-produtos-superior', per_page: 4, infinity: false %}
+    </section>
+  {% endfor %}
+
+  {% load_banners position: "banner-lookbook-2" %}
+  {% for banner in loaded_banners %}
+    <section class="lookbook-special container">
+      <div class="lookbook-special__content">
+        <h2>{{ banner.title }}</h2>
+        {% if banner.file_url %}
+          <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
+        {% endif %}
+      </div>
+      {% render 'partials/content/home/grid_products', tag_name: 'home-produtos-superior', per_page: 4, infinity: false %}
+    </section>
+  {% endfor %}
+
+  {% load_banners position: "banner-lookbook-3" %}
+  {% for banner in loaded_banners %}
+    <section class="lookbook-special container">
+      <div class="lookbook-special__content">
+        <h2>{{ banner.title }}</h2>
+        {% if banner.file_url %}
+          <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
+        {% endif %}
+      </div>
+      {% render 'partials/content/home/grid_products', tag_name: 'home-produtos-superior', per_page: 4, infinity: false %}
+    </section>
+  {% endfor %}
+
+  {% load_banners position: "banner-lookbook-4" %}
+  {% for banner in loaded_banners %}
+    <section class="lookbook-special container">
+      <div class="lookbook-special__content">
+        <h2>{{ banner.title }}</h2>
+        {% if banner.file_url %}
+          <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
+        {% endif %}
+      </div>
+      {% render 'partials/content/home/grid_products', tag_name: 'home-produtos-superior', per_page: 4, infinity: false %}
+    </section>
+  {% endfor %}
+
+  {% load_banners position: "banner-lookbook-5" %}
+  {% for banner in loaded_banners %}
+    <section class="lookbook-special container">
+      <div class="lookbook-special__content">
+        <h2>{{ banner.title }}</h2>
+        {% if banner.file_url %}
+          <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
+        {% endif %}
+      </div>
+      {% render 'partials/content/home/grid_products', tag_name: 'home-produtos-superior', per_page: 4, infinity: false %}
+    </section>
+  {% endfor %}
+
+  {% load_banners position: "banner-lookbook-6" %}
+  {% for banner in loaded_banners %}
+    <section class="lookbook-special container">
+      <div class="lookbook-special__content">
+        <h2>{{ banner.title }}</h2>
+        {% if banner.file_url %}
+          <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
+        {% endif %}
+      </div>
+      {% render 'partials/content/home/grid_products', tag_name: 'home-produtos-superior', per_page: 4, infinity: false %}
     </section>
   {% endfor %}
 {% endif %}

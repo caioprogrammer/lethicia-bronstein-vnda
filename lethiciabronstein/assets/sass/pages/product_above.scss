@@ -35,7 +35,14 @@
 
     .right-container {
       padding-top: 4rem;
-
+      @media screen and (max-width: 768px) {
+        position: relative;
+        background-color: #fff;
+        z-index: 9;
+        width: 100vw;
+        background-clip: content-box;
+        top: 40vh;
+      }
       @include media("md") {
         padding-top: 0;
         padding-left: 4rem;
@@ -44,6 +51,14 @@
     }
 
     .left-container {
+      @media screen and (max-width: 768px) {
+        position: fixed;
+        width: 100vw;
+        z-index: 0;
+        height: 55vh;
+        top: 10vh;
+      }
+
       @include media("md") {
         width: 60%;
         .product-images {

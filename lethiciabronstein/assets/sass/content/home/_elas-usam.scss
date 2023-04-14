@@ -2,4 +2,7 @@
   .image.-horizontal:after {
     padding-bottom: 140%;
   }
+  .swiper-wrapper {
+    transition-timing-function: linear;
+  }
 }

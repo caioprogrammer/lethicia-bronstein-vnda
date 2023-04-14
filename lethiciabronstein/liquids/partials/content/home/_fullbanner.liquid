@@ -27,7 +27,7 @@
                 {% if banner.url contains "youtube" %}
                   {% assign video_address = banner.url | split: "?v=" | last %}
                   {% assign video_code = video_address | split: '&' | first | strip %}
-                  {% assign video_url = video_code | prepend: "https://www.youtube.com/embed/" | append: "?autoplay=0&rel=0&mute=1&muted=1" %}
+                  {% assign video_url = video_code | prepend: "https://www.youtube.com/embed/" | append: "?autoplay=1&rel=0&mute=1&muted=1" %}
                 {% elsif banner.url contains "vimeo" %}
                   {% assign video_code = banner.url | split: "/" | last | strip %}
                   {% assign video_url = video_code | prepend: "https://player.vimeo.com/video/" | append: "?autoplay=1&title=0&byline=0&portrait=0&&loop=1&background=1&muted=1" %}
@@ -60,11 +60,11 @@
                 {% capture data_sizes %}
                   (max-width: 360px) 360px,
                   (max-width: 767px) 767px,
-                                                                                                                                (max-width: 991px) 991px,
-                                                                                                                                (max-width: 1280px) 1280px,
-                                                                                                                                (max-width: 1440px) 1440px,
-                                                                                                                                (max-width: 1920px) 1920px,
-                                                                                                                                (min-width: 1921px) 2000px
+                                                                                                                                                  (max-width: 991px) 991px,
+                                                                                                                                                  (max-width: 1280px) 1280px,
+                                                                                                                                                  (max-width: 1440px) 1440px,
+                                                                                                                                                  (max-width: 1920px) 1920px,
+                                                                                                                                                  (min-width: 1921px) 2000px
                 {% endcapture %}
 
                 <figure class="image {% if resolution contains 'mobile' %}-vertical {% else %} -horizontal {% endif %}">
@@ -76,11 +76,7 @@
                   <div class="skeleton"></div>
                 </figure>
 
-                <div
-                  class="text {{ position_text }} {{ background }}"
-                  {% if banner.color != blank %}
-                  style="--fb-color: {{ banner.color }}"
-                  {% endif %}>
+                <div class="text {{ position_text }} {{ background }}" {% if banner.color != blank %}style="--fb-color: {{ banner.color }}"{% endif %}>
                   {% if banner.description != blank %}
                     {{ banner.description | replace: '<h3', '<h3 class="upper-title"' | replace: '<h2', '<h2 class="title"' | replace: '<p', '<p class="description"' }}
                   {% endif %}
