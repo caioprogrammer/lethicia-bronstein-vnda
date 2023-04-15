@@ -21,7 +21,6 @@
           {% endif %}
 
           <div class="swiper-slide">
-            <a href="{{ banner.url }}" {{ external }}>
               {% if banner.url contains "youtube" or banner.url contains "vimeo" %}
 
                 {% if banner.url contains "youtube" %}
@@ -76,7 +75,7 @@
                   <div class="skeleton"></div>
                 </figure>
 
-                <div class="text {{ position_text }} {{ background }}" {% if banner.color != blank %}style="--fb-color: {{ banner.color }}"{% endif %}>
+                <a href="{{ banner.url }}" class="text {{ position_text }} {{ background }}" {% if banner.color != blank %}style="--fb-color: {{ banner.color }}"{% endif %}>
                   {% if banner.description != blank %}
                     {{ banner.description | replace: '<h3', '<h3 class="upper-title"' | replace: '<h2', '<h2 class="title"' | replace: '<p', '<p class="description"' }}
                   {% endif %}
@@ -99,10 +98,8 @@
 
                     {% endcomment %}
                   {% endif %}
-                </div>
-
+                </a>
               {% endif %}
-            </a>
           </div>
         {% endfor %}
       </div>

@@ -1,5 +1,6 @@
 .top-bar {
-  background: var(--bg-top-bar, #312f4f);
+  // background: var(--bg-top-bar, #312f4f);
+  background: #FFF;
   height: 2.8rem;
   text-align: center;
   padding: 0.5rem 5%;
@@ -11,7 +12,8 @@
 
   a,
   p {
-    color: var(--white);
+    // color: var(--white);
+    color: #000;
     font-size: var(--font-size-small);
   }
 
@@ -22,8 +24,10 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
-    color: var(--white);
+    // color: var(--white);
+    color: #000;
     font-size: 1.6rem;
     right: 5%;
+    z-index: 9;
   }
 }

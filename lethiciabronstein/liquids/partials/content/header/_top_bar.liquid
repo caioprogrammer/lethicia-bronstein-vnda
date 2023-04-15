@@ -1,11 +1,21 @@
-{% load_banners position: 'geral-faixa-topo' limit: 1 %}
+{% load_banners position: 'geral-faixa-topo' limit: 2 %}
 
-{% for banner in loaded_banners %}
-  <section class="top-bar" {% if banner.color != blank %} style="--bg-top-bar: {{ banner.color }};" {% endif %}>
-    {{ banner.description }}
-
-    <button aria-label="Fechar faixa topo" class="close" data-button-top onclick="this.parentNode.remove();" type="button">
-      &times;
-    </button>
-  </section>
-{% endfor %}
+<section class="top-bar" {% if banner.color != blank %}style="--bg-top-bar: {{ banner.color }};"{% endif %}>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      {% for banner in loaded_banners %}
+        <div class="item swiper-slide" data-item>
+          {{ banner.description }}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <button
+    aria-label="Fechar faixa topo"
+    class="close"
+    data-button-top
+    onclick="this.parentNode.remove();"
+    type="button">
+    &times;
+  </button>
+</section>

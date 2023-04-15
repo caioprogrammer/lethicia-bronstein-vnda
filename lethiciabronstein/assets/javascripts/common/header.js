@@ -1,3 +1,6 @@
+import Swiper, { Navigation, Pagination, Lazy, Autoplay } from 'swiper';
+Swiper.use([Navigation, Pagination, Lazy, Autoplay]);
+
 const Header = {
   lastScrollTop: -1,
   scrollTop: window.pageYOffset,
@@ -23,12 +26,48 @@ const Header = {
       }
     }
   },
+  setTopbarSwiper: () => {
+    const swiper = new Swiper('.top-bar .swiper', {
+      // Optional parameters
+      slidesPerView: 1,
+      preloadImages: false,
+      loop: true,
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false
+      },
+      spaceBetween: 0,
+      lazy: {
+        checkInView: false,
+        loadPrevNext: true,
+        loadOnTransitionStart: false,
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 1,
+          spaceBetween: 0,
+        },
+        992: {
+          slidesPerView: 1,
+          spaceBetween: 0,
+        },
+      },
+    
+      // Navigation arrows
+      // navigation: {
+      //   nextEl: '.swiper-button-next',
+      //   prevEl: '.swiper-button-prev',
+      // },
+    
+    });
+  },
 
   init: function () {
     const _this = this;
     const { lastScrollTop, scrollTop } = _this;
 
     _this.setScroll(scrollTop, lastScrollTop);
+    _this.setTopbarSwiper();
 
     // cuida quando a página scrolla pra atualizar o header
     window.addEventListener('scroll', function () {

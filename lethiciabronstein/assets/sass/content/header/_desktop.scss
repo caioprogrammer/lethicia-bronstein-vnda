@@ -18,8 +18,10 @@
 }
 
 .menu .menu-list .menu-list-item {
-  margin-right: 1rem;
+  color: #fff;
+  margin-left: 30px;
   padding: 14px 5px;
+  font-size: 14px;
 
   &:last-of-type {
     margin-right: 0;
@@ -28,18 +30,21 @@
   .arrow {
     &::after {
       content: "";
-      border: solid var(--menu-color, #312f4f);
+      // border: solid var(--menu-color, #312f4f);
+      border: solid #fff;
       border-width: 0 0 1px 1px;
       display: inline-block;
       margin: 3px 3px 1px 8px;
       padding: 3px;
-      transform: rotate(-45deg);
+      transform: rotate(-135deg);
+      transition: ease .5s;
     }
   }
 
   > .menu-title {
-    color: var(--menu-color, #312f4f);
-    font-size: 1.4rem;
+    // color: var(--menu-color, #312f4f);
+    color: #fff;
+    font-size: 14px;
     font-weight: var(--font-weight-base);
     padding: 0 0.5rem;
     transition: var(--transition);
@@ -63,11 +68,12 @@
   opacity: 0;
   pointer-events: none;
   position: absolute;
-  top: 98%;
+  top: 0%;
   transform: translateX(-50%);
   transition: var(--transition);
   visibility: hidden;
   width: 100vw;
+  z-index: -2;
 
   > .content {
     display: flex;
@@ -89,8 +95,9 @@
 
     .submenu-title {
       display: block;
-      font-weight: 700;
-      font-size: var(--font-size-base);
+      // font-weight: 700;
+      // font-size: var(--font-size-base);
+      font-size: 14px;
       margin-bottom: 1rem;
 
       &:hover {
@@ -196,9 +203,14 @@
 }
 
 .menu .menu-list .menu-list-item:hover {
+  .arrow:after {
+    transform: rotate(-45deg);
+  }
   > .submenu {
     opacity: 1;
     pointer-events: all;
     visibility: visible;
+    z-index: 99;
+    top: 98%;
   }
 }

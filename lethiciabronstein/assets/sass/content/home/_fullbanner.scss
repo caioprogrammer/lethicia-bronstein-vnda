@@ -1,6 +1,5 @@
 .fullbanner {
   position: relative;
-
   &.-desktop {
     display: none;
 
@@ -133,7 +132,7 @@
   // swiper config
   .swiper-button-next {
     right: 2rem;
-
+    border: none !important;
     @include media("lg") {
       right: 4rem;
     }
@@ -141,7 +140,7 @@
 
   .swiper-button-prev {
     left: 2rem;
-
+    border: none !important;
     @include media("lg") {
       left: 4rem;
     }
@@ -152,5 +151,22 @@
     justify-content: center;
     align-items: center;
     padding: 0 1rem;
+  }
+}
+
+.page-home .fullbanner {
+  .text {
+    border: 1px solid #FFF;
+    background: transparent;
+    color: #FFF;
+    padding: 15px 24px;
+    transition: ease .5s;
+    &:hover {
+      color: #000;
+      background: #FFF;
+    }
+    .upper-title {
+      margin-bottom: 0;
+    }
   }
 }

@@ -6,7 +6,7 @@
     {% load_products tag: tag.name %}
 
     <section class="section products carousel">
-      <div class="carousel-header container">
+      {% comment %}<div class="carousel-header container">
         {% if tag.title != blank %}
           <h2 class="title">
             {{ tag.title }}
@@ -17,6 +17,8 @@
           <a aria-label="Ver mais sobre a categoria {{ tag.title }}" class="button-default -outlined" href="/{{tag.name}}">VEJA MAIS +</a>
         {% endif %}
       </div>
+        
+      {% endcomment %}
 
       <div class="content" data-products-carousel="true">
         <div class="swiper">
