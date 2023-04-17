@@ -97,7 +97,7 @@ const Home = {
       speed: 10000,
       grabCursor: true,
       mousewheelControl: true,
-      spaceBetween: 15,
+      spaceBetween: 30,
       lazy: {
         checkInView: false,
         loadPrevNext: true,
@@ -106,11 +106,11 @@ const Home = {
       breakpoints: {
         768: {
           slidesPerView: 2,
-          spaceBetween: 0,
+          spaceBetween: 30,
         },
         992: {
           slidesPerView: 4,
-          spaceBetween: 0,
+          spaceBetween: 30,
         },
       },
     

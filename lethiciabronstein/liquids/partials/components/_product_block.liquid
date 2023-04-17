@@ -77,13 +77,27 @@
     {% endcapture %}
 
     <div class="price-wrapper">
-      <div
-        class="product-price price {% if discount_amount %} -discount {% endif %}"
-        data-was-processed="false"
-        data-sku=""
-        data-init-price='{{ price_settings }}'
-        data-price="{{ product.price }}"
-        data-discount-percent="{{ discount_amount | default: 0 }}"></div>
+      {% if product.available %}
+        <strong class="price">
+          {% if product.on_sale %}
+            <del>{{ product.price | money_format }}</del>
+            <ins>{{ product | apply_discount | money_format }}</ins>
+          {% else %}
+            {{ product.price | money_format }}
+          {% endif %}
+        </strong>
+        {% if product.installments.size > 1 %}
+          <p class="installments">
+
+            {% assign without_interest = product.installments | max_without_interest %}
+            {% assign with_interest = product.installments | max_with_interest %}
+
+            <strong>{{ without_interest.number }}x</strong> de <strong>{{ without_interest.price | money_format }}</strong>
+          </p>
+        {% endif %}
+      {% else %}
+        <p class="price">ESGOTADO</p>
+      {% endif %}
     </div>
 
     <p class="quantity">{{ product.variants.size }} opções disponíveis</p>
@@ -92,21 +106,25 @@
   {% comment %}
   Renderiza attributos do popup de compra rápida
   Retirar ou comentar caso não for utilizado
-  {% endcomment %}{% if product.available %}
-    <button
-      aria-label="Adicionar produto ao carrinho"
-      class="button-default -outlined"
-      data-open-popup-purchase
-      type="button">
-      <span class="text">COMPRAR</span>
-    </button>
+  {% endcomment %}
+  {% comment %}
+    
+  {% if product.available %}
+  <button
+  aria-label="Adicionar produto ao carrinho"
+  class="button-default -outlined"
+  data-open-popup-purchase
+  type="button">
+  <span class="text">COMPRAR</span>
+  </button>
   {% else %}
-    <button
-      aria-label="Produto indisponível"
-      class="button-default -outlined -unavailable"
-      type="button">
-      <span class="text">PRODUTO INDISPONÍVEL</span>
-    </button>
-  {% endif %}
+  <button
+  aria-label="Produto indisponível"
+  class="button-default -outlined -unavailable"
+  type="button">
+  <span class="text">PRODUTO INDISPONÍVEL</span>
+  </button>
+{% endif %}
+{% endcomment %}
 
 </div>

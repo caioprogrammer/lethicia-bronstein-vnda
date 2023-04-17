@@ -27,17 +27,19 @@
   > .content {
     position: relative;
     //padding para acomodar o swiper-pagination
-    padding-bottom: 6rem;
+    padding-bottom: 0rem;
 
     .product-block {
       height: 100%;
       /* padding: 0.2rem; */
       border: 1px solid #f0f0f0;
+      padding-bottom: 16px;
     }
 
     .product-block > .description {
       margin-bottom: 0;
       padding: 0rem 1rem;
+      text-align: center;
     }
 
     .swiper-slide {

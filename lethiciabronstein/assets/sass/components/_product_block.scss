@@ -104,7 +104,9 @@
   }
 
   > .description .name a {
-    font-size: var(--font-size-small);
+    // font-size: var(--font-size-small);
+    font-weight: 400;
+    font-size: 14px;
   }
 
   > .button-default {

@@ -47,6 +47,10 @@
       {% endif %}
     </div>
   {% endfor %}
-
-  {% render "partials/content/footer/social", position: 'rodape-logo-secundario', current_shop: current_shop, home_url: home_url %}
+  <div class="category {{ hasChildren }}">
+    <h3 class="category-title">
+      FOLLOW US
+    </h3>
+    {% render "partials/content/footer/social", position: 'rodape-logo-secundario', current_shop: current_shop, home_url: home_url %}
+  </div>
 </div>

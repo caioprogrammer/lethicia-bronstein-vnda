@@ -21,6 +21,7 @@ export default function setCarousel() {
         watchOverflow: true,
         speed: 1000,
         autoplay: true,
+        loop: true,
         //lazy load
         preloadImages: false,
         lazy: {
@@ -36,7 +37,7 @@ export default function setCarousel() {
             autoplay: true
           },
           992: {
-            slidesPerView: 3,
+            slidesPerView: 4,
             spaceBetween: 0,
             autoplay: true
           },
