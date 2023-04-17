@@ -473,7 +473,7 @@ window.storeFinder = {
       var point = i + 1 < 9 ? [4, 33] : i + 1 < 100 ? [8, 33] : [12, 33];
 
       var marker = new MarkerWithLabel({
-        position: { lat: place.latitude, lng: place.longitude },
+        position: { lat: parseFloat(place.latitude), lng: parseFloat(place.longitude) },
         map: window.mapPlaces,
         draggable: false,
         placeId: place.id,
@@ -512,11 +512,11 @@ window.storeFinder = {
     var resultsPlaces = [];
 
     var coordinates = {
-      lat: position.coords.latitude,
-      lng: position.coords.longitude,
+      lat: parseFloat(position.coords.latitude),
+      lng: parseFloat(position.coords.longitude),
     };
 
-    // console.info('buscando por', coordinates);
+    console.info('buscando por', coordinates);
 
     window.geocoder.geocode({ location: coordinates, region: 'BR' }, function (results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
@@ -529,7 +529,7 @@ window.storeFinder = {
         });
 
         _this.setQuantityPlaces(resultsPlaces);
-        _this.setPlaceMap({ latitude: coordinates.lat, longitude: coordinates.lng }, false, 11);
+        _this.setPlaceMap({ latitude: parseFloat(coordinates.lat), longitude: parseFloat(coordinates.lng) }, false, 11);
         _this.resetStateSelection();
       }
     });
@@ -695,5 +695,7 @@ const loadShops = (places) => {
 document.addEventListener('DOMContentLoaded', () => {
   $.getJSON('/locais', function (data) {
     loadShops(data);
+
+    console.log('aaaaa', data)
   });
 });

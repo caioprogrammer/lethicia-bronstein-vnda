@@ -38,7 +38,7 @@ export const NewsletterComponent = {
       hasPhoneField: false,
       successMessage: successMessage,
       delay: 500,
-      frequency: '7',
+      frequency: 'always',
       language: 'pt-BR',
     });
 
@@ -47,13 +47,11 @@ export const NewsletterComponent = {
     NewsletterComponent.loaded = true
   },
 
-  loadPopupNewsletter: function(eventType) {
+  loadPopupNewsletter: function() {
     if (!NewsletterComponent.loaded) {
       const { settings } = NewsletterComponent;
       addAsset(settings.script, NewsletterComponent.setPopupNewsletter)
       addAsset(settings.styles)
-      // remove listener após setar assets
-      window.removeEventListener(eventType, NewsletterComponent.loadPopupNewsletter)
     }
   },
 
@@ -64,8 +62,8 @@ export const NewsletterComponent = {
 
     const eventType = (window.innerWidth <= 1024) ? 'scroll' : 'mousemove'
     window.addEventListener(eventType, () => {
-      NewsletterComponent.loadPopupNewsletter(eventType)
-    })
+      NewsletterComponent.loadPopupNewsletter()
+    }, { once: true })
   }
 }
 // ===============================================================
