@@ -2,85 +2,190 @@
 // O cart_drawer não considera isso, então estes resets alteram algumas propriedades para que fiquem com a proporção
 // original, que foi montada considerando 1rem = 16px;
 
+// #component-popup-newsletter-root {
+//   // retira pelicula branca de cima da imagem
+//   .image-box > div:after {
+//     opacity: 0;
+//   }
+
+//   // regulariza tamanhos de acordo com 1rem == 10px
+
+//   // botã de fechar a newsletter
+//   .cmp-newsletter-popup-2de3IYL6pfqD7JbmRpegCC {
+//     height: 3rem;
+//     width: 3rem;
+//     font-size: 2.5rem;
+//     line-height: 2.5rem;
+//     margin: 1rem;
+//   }
+
+//   // wrapper text box
+//   .cmp-newsletter-popup-24VucyBC37Z4CYwIpXpV5X {
+//     padding: 3rem;
+
+//     // título
+//     > h2 {
+//       font-size: 2.8rem;
+//       line-height: 3rem;
+//       margin-bottom: 1.5rem;
+//     }
+
+//     // descrição
+//     > p {
+//       font-size: 1.4rem;
+//       line-height: 1.5;
+//     }
+
+//     // formulário
+//     .cmp-newsletter-popup-2xAs6q-U517OsmRyLtvFtq {
+//       margin-top: 2rem;
+
+//       // fieldset
+//       .cmp-newsletter-popup-3HX15VdvKOso8FyXk1YH8F {
+//         font-size: 1.2rem;
+//         margin-bottom: 1rem;
+//       }
+
+//       // label do input
+//       label {
+//         font-size: 1.3rem;
+//         font-weight: bold;
+//       }
+
+//       // input
+//       .cmp-newsletter-popup-2jqxtRR-PdOFNXZNbLC0rQ {
+//         height: 4.2rem;
+//         font-size: 1.3rem;
+//         padding: 1rem;
+//         margin-top: 0.5rem;
+//       }
+
+//       // estilo do botão
+//       .button-newsletter {
+//         @extend %button-default;
+
+//         margin-top: 2rem;
+//         width: 100%;
+//       }
+
+//       // botão com classe de enviado {
+//       .cmp-newsletter-popup-7uhFyoUtLY5MRJevX7QUE svg {
+//         background: var(--highlight-1);
+//         width: 100%;
+//         left: 0;
+//       }
+
+//       // mensagem de sucesso
+//       > p {
+//         font-size: 1.3rem;
+//         text-align: center;
+//         font-weight: bold;
+//       }
+//     }
+//   }
+// }
+
 #component-popup-newsletter-root {
-  // retira pelicula branca de cima da imagem
-  .image-box > div:after {
-    opacity: 0;
+  .cmp-newsletter-popup-1KYnHqC8aQxqE13k4D-QBm {
+    width: 55vw !important;
+  }
+  .cmp-newsletter-popup-section {
+    .cmp-newsletter-popup-1KYnHqC8aQxqE13k4D-QBm {
+      .cmp-newsletter-popup-2hZB4BDwMjPlnhPyxXTVvF {
+        display: block;
+        .cmp-newsletter-popup-1ifwLhcDpxsQSnOdCWxNGr {
+          width: 100%;
+          .cmp-newsletter-popup-oIYK9nHeRp_d_kVP87wAz {
+            padding-bottom: 0 !important;
+            img {
+              position: unset !important;
+            }
+            &::after {
+              content: unset !important;
+            }
+          }
+        }
+        .cmp-newsletter-popup-2mwcSp7Mad1SCnreUxMqIm {
+          all: unset;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 16px 0;
+          .cmp-newsletter-popup-2xAs6q-U517OsmRyLtvFtq {
+            text-align: left;
+            margin-top: 1.5rem;
+            width: 100%;
+            max-width: 630px;
+            position: relative;
+          }
+        }
+      }
+    }
   }
 
-  // regulariza tamanhos de acordo com 1rem == 10px
-
-  // botã de fechar a newsletter
-  .cmp-newsletter-popup-2de3IYL6pfqD7JbmRpegCC {
-    height: 3rem;
-    width: 3rem;
-    font-size: 2.5rem;
-    line-height: 2.5rem;
-    margin: 1rem;
+  .cmp-newsletter-popup-24VucyBC37Z4CYwIpXpV5X>h2 {
+    font-size: 2.25rem;
+    line-height: unset;
+    margin-bottom: unset;
+    letter-spacing: 2.5px;
+    color: #000;
+    margin: 0;
+    font-weight: 300;
   }
-
-  // wrapper text box
-  .cmp-newsletter-popup-24VucyBC37Z4CYwIpXpV5X {
-    padding: 3rem;
-
-    // título
-    > h2 {
-      font-size: 2.8rem;
-      line-height: 3rem;
-      margin-bottom: 1.5rem;
+  .cmp-newsletter-popup-24VucyBC37Z4CYwIpXpV5X>p,
+  .cmp-newsletter-popup-3HX15VdvKOso8FyXk1YH8F>p {
+    display: none;
+  }
+  .cmp-newsletter-popup-3HX15VdvKOso8FyXk1YH8F {
+    position: relative !important;
+    // &::before {
+    //   content: "Email";
+    //   position: absolute;
+    //   left: 0;
+    //   top: 0;
+    //   z-index: 2;
+    //   color: #000;
+    // }
+  }
+  
+  .cmp-newsletter-popup-2jqxtRR-PdOFNXZNbLC0rQ {
+    padding: 1rem;
+    font-size: 1rem;
+    background-color: #FFF;
+    position: relative;
+    cursor: unset;
+    outline: none;
+    // margin-top: 0;
+    border-bottom: 1px solid #000; 
+    p {
+      display: none;
     }
-
-    // descrição
-    > p {
-      font-size: 1.4rem;
-      line-height: 1.5;
+  }
+  .cmp-newsletter-popup-2t432kRILm79F3WhLGdN6N {
+    position: absolute !important;
+    top: 0;
+    right: 0;
+    color: #000;
+    background-color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &::after {
+      content: '';
+      width: 30px;
+      display: -webkit-flex;
+      display: flex;
+      border-bottom: 1px solid #000;
+      margin-left: 19px;
+      transition: all .2s linear;
     }
-
-    // formulário
-    .cmp-newsletter-popup-2xAs6q-U517OsmRyLtvFtq {
-      margin-top: 2rem;
-
-      // fieldset
-      .cmp-newsletter-popup-3HX15VdvKOso8FyXk1YH8F {
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
-      }
-
-      // label do input
-      label {
-        font-size: 1.3rem;
-        font-weight: bold;
-      }
-
-      // input
-      .cmp-newsletter-popup-2jqxtRR-PdOFNXZNbLC0rQ {
-        height: 4.2rem;
-        font-size: 1.3rem;
-        padding: 1rem;
-        margin-top: 0.5rem;
-      }
-
-      // estilo do botão
-      .button-newsletter {
-        @extend %button-default;
-
-        margin-top: 2rem;
-        width: 100%;
-      }
-
-      // botão com classe de enviado {
-      .cmp-newsletter-popup-7uhFyoUtLY5MRJevX7QUE svg {
-        background: var(--highlight-1);
-        width: 100%;
-        left: 0;
-      }
-
-      // mensagem de sucesso
-      > p {
-        font-size: 1.3rem;
-        text-align: center;
-        font-weight: bold;
+    &:hover {
+      &::after {
+        -webkit-transform: translateX(-15px);
+        transform: translateX(-15px);
       }
     }
   }
 }
+

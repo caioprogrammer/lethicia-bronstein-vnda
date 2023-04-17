@@ -50,8 +50,8 @@ export const NewsletterComponent = {
   loadPopupNewsletter: function() {
     if (!NewsletterComponent.loaded) {
       const { settings } = NewsletterComponent;
-      addAsset(settings.script, NewsletterComponent.setPopupNewsletter)
-      addAsset(settings.styles)
+      addAsset(settings.script, NewsletterComponent.setPopupNewsletter);
+      addAsset(settings.styles);
     }
   },
 
@@ -62,7 +62,10 @@ export const NewsletterComponent = {
 
     const eventType = (window.innerWidth <= 1024) ? 'scroll' : 'mousemove'
     window.addEventListener(eventType, () => {
-      NewsletterComponent.loadPopupNewsletter()
+      NewsletterComponent.loadPopupNewsletter();
+      setTimeout(() => {
+        document.querySelector(".cmp-newsletter-popup-3HX15VdvKOso8FyXk1YH8F input[type='email']").placeholder = 'Email';
+      }, 1000);
     }, { once: true })
   }
 }
