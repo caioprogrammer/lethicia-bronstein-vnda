@@ -34,6 +34,26 @@
   {% render 'partials/content/home/fullbanner', position: 'home-banner-principal', resolution: '-desktop', aux: '-principal' %}
 {% endif %}
 
+<section>
+  <div class="language">
+    <div class="select">
+        <a href="/?language=pt-br">
+          BRA
+        </a>
+        <a href="/?language=en">
+          INTL
+        </a>
+    </div>
+    <div class="conteudo-teste">
+      {% if language == 'en' %}
+        English
+      {% else %}
+        Português
+      {% endif %}
+    </div>
+  </div>
+</section>
+
 {% render 'partials/components/carousel', tag_name: 'home-produtos-superior' %}
 {% render 'partials/content/home/categories', position: 'home-banner-categorias', limit: 12 %}
 {% render 'partials/components/carousel', tag_name: 'home-produtos-inferior' %}

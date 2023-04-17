@@ -36,6 +36,7 @@
   {% render "partials/content/tag/breadcrumb", parent_tag, tag: tag %}
 
   <div class="list-content container">
+    {% comment %}
     <div class="filter-container">
       <button
         aria-label="Abrir filtro"
@@ -46,13 +47,27 @@
         </svg>
         FILTROS
       </button>
-      {% render "partials/content/tag/filters", aggregations: aggregations, template: template %}
-    </div>
+        {% render "partials/content/tag/filters", aggregations: aggregations, template: template %}
+        </div>
+      {% endcomment %}
 
     {% if html_products == blank %}
       {% render "partials/content/tag/empty", tag: tag, search: false, home_url: home_url, current_url: current_url %}
     {% else %}
       <div class="list-products">
+        {% assign position_first_banner = tag.name | append: '-banner-first' %}
+        {% assign position_second_banner = tag.name | append: '-banner-second' %}
+        {% assign position_third_banner = tag.name | append: '-banner-third' %}
+
+        <figure class="bannersGrid__third">
+          {% render 'partials/pages/components/category_banner', position: position_third_banner, background: false %}
+        </figure>
+        <figure class="bannersGrid__second">
+          {% render 'partials/pages/components/category_banner', position: position_second_banner, background: false %}
+        </figure>
+        <figure class="bannersGrid__first">
+          {% render 'partials/pages/components/category_banner', position: position_first_banner, background: false %}
+        </figure>
         {{ html_products }}
       </div>
     {% endif %}

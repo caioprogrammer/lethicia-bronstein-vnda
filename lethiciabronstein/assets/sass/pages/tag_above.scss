@@ -22,9 +22,70 @@
 
     @include media("md") {
       gap: 20px;
-      grid-template-columns: repeat(3, 1fr);
-      padding-left: 5%;
-      width: 80%;
+      grid-template-columns: repeat(4, 1fr);
+      padding-left: 0%;
+      width: 100%;
+    }
+
+    .bannersGrid__first {
+      grid-row: 3;
+      grid-column: span 2
+    }
+
+    @media(min-width: 991px) {
+      .bannersGrid__first {
+        grid-row: 2
+      }
+    }
+
+    .bannersGrid__first img {
+      width: 100%;
+      height: auto
+    }
+
+    .bannersGrid__first.esconder {
+      display: none !important
+    }
+
+    .bannersGrid__second {
+      grid-row: 8;
+      grid-column: span 2
+    }
+
+    @media(min-width: 991px) {
+      .bannersGrid__second {
+        grid-column: 3/5;
+        grid-row: 4
+      }
+    }
+
+    .bannersGrid__second img {
+      width: 100%;
+      height: auto
+    }
+
+    .bannersGrid__second.esconder {
+      display: none !important
+    }
+
+    .bannersGrid__third {
+      grid-row: 12;
+      grid-column: span 2;
+    }
+
+    @media(min-width: 991px) {
+      .bannersGrid__third {
+        grid-row: 6;
+      }
+    }
+
+    .bannersGrid__third img {
+      width: 100%;
+      height: auto
+    }
+
+    .bannersGrid__third.esconder {
+      display: none !important
     }
   }
 }
