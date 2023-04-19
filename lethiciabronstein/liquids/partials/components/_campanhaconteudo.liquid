@@ -1,0 +1,18 @@
+{% load_banners position: home-banner-campanha-conteudo %}
+{% for banner in loaded_banners %}
+  <div class="container campanha-header">
+    <h2>
+      <p>
+        {% if banner.title != blank %}
+        {{ banner.title }}
+      {% endif %}
+      </p>
+      <span>
+        {% if banner.subtitle != blank %}
+        {{ banner.subtitle }}
+      {% endif %}
+      </span>
+    <a aria-label="{{ banner.title }}" {% if banner.external %}target="_blank"{% endif %} class="button-default -outlined about" href="{{ banner.url }}">SAIBA MAIS SOBRE A COLEÇÃO</a>
+    </h2>
+    </div>
+{% endfor %}

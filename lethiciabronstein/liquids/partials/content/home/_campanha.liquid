@@ -1,7 +1,31 @@
-{% load_banners position: position limit: limit %}
+{% comment %}
+{% render 'partials/components/campanhaconteudo', position: 'home-banner-campanha-conteudo' %}
+{% endcomment %}
 
-{% if loaded_banners.size > 0 %}
+
+
   <section class="section elas-usam">
+    {% load_banners position: 'home-banner-campanha-conteudo' %}
+    {% for banner in loaded_banners %}
+      <div class="container campanha-header">
+      <h2>
+          <p>
+            {% if banner.title != blank %}
+              {{ banner.title }}
+            {% endif %}
+          </p>
+          <span>
+            {% if banner.subtitle != blank %}
+              {{ banner.subtitle }}
+            {% endif %}
+          </span>
+          <a aria-label="{{ banner.title }}" {% if banner.external %}target="_blank"{% endif %} class="button-default -outlined about" href="{{ banner.url }}">SAIBA MAIS SOBRE A COLEÇÃO</a>
+      </h2>
+      </div>
+    {% endfor %}
+
+    {% load_banners position: position limit: limit %}
+    {% if loaded_banners.size > 0 %}
     <div class="swiper">
       <div class="swiper-wrapper">
         {% for banner in loaded_banners %}
@@ -66,5 +90,5 @@
         {% endcomment %}
       {% endif %}
     </div>
+    {% endif %}
   </section>
-{% endif %}

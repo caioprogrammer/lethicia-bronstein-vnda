@@ -183,7 +183,16 @@
   .purchase .price-wrapper {
     align-items: flex-start;
     flex-direction: column;
-
+    .price {
+      del {
+        opacity: .6;
+        margin-right: 8px;
+        font-weight: 400;
+      }
+      ins {
+        text-decoration: none;
+      }
+    }
     .discount-wrapper {
       margin-bottom: 0.5rem;
     }

@@ -8,6 +8,17 @@
   font-size: 14px;
   // min-height: 7rem;
 
+  .price {
+    del {
+      opacity: .6;
+      margin-right: 8px;
+      font-weight: 400;
+    }
+    ins {
+      text-decoration: none;
+    }
+  }
+
   > .price-group {
     font-size: var(--font-size-title);
     font-weight: var(--font-weight-title);

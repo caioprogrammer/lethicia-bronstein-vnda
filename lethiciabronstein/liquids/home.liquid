@@ -34,6 +34,7 @@
   {% render 'partials/content/home/fullbanner', position: 'home-banner-principal', resolution: '-desktop', aux: '-principal' %}
 {% endif %}
 
+{% comment %}
 <section>
   <div class="language">
     <div class="select">
@@ -43,28 +44,25 @@
         <a href="/?language=en">
           INTL
         </a>
-    </div>
-    {% comment %}
-    <div class="conteudo-teste">
-      {% if language == 'en' %}
-        English
-      {% else %}
-        Português
-      {% endif %}
-    </div>
-    {% endcomment %}
+    </div> 
   </div>
 </section>
+{% endcomment %}
 
 {% render 'partials/components/carousel', tag_name: 'home-produtos-superior' %}
 {% render 'partials/content/home/categories', position: 'home-banner-categorias', limit: 12 %}
+{% comment %}
 {% render 'partials/components/carousel', tag_name: 'home-produtos-inferior' %}
-{% render 'partials/content/home/elasusam', position: 'home-banner-elas-usam', limit: 12 %}
+{% endcomment %}
+{% render 'partials/content/home/campanha', position: 'home-banner-campanha', limit: 12 %}
+
 {% comment %}
 {% render 'partials/content/home/icons', position: 'home-banner-icones' %}
 {% render 'partials/content/home/fullbanner', position: 'home-banner-secundario', resolution: '-desktop', aux: '-secundario' %}
 {% render 'partials/content/home/fullbanner', position: 'home-banner-secundario-mobile', resolution: '-mobile', aux: '-secundario' %}
 {% render "partials/content/home/seo", position: 'home-banner-seo', limit: 1 %}
 {% render 'partials/content/home/grid_products', tag_name: 'home-produtos-listagem', per_page: 12, infinity: true %}
-{% endcomment %}{% render "partials/content/home/highlight", position: 'home-banner-grid', limit: 1 %}
+{% endcomment %}
+{% render "partials/content/home/highlight", position: 'home-banner-grid', limit: 1 %}
+{% render 'partials/content/home/elasusam', position: 'home-banner-elas-usam', limit: 12 %}
 {% render "partials/content/home/instagram": environment: environment %}

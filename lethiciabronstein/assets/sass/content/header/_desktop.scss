@@ -144,7 +144,7 @@
       img {
         height: 100%;
         left: 0;
-        object-fit: cover;
+        // object-fit: cover;
         position: absolute;
         top: 0;
         width: 100%;
@@ -152,7 +152,7 @@
     }
 
     .image img {
-      object-fit: cover;
+      // object-fit: cover;
       transition: var(--transition);
       width: 100%;
     }

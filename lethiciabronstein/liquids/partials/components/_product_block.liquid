@@ -90,8 +90,8 @@
       {% if product.available %}
         <strong class="price">
           {% if product.on_sale %}
-            <del>{{ product.price | money_format }}</del>
-            <ins>{{ product | apply_discount | money_format }}</ins>
+            <del>De: {{ product.price | money_format }}</del>
+            <ins>Por: {{ product | apply_discount | money_format }}</ins>
           {% else %}
             {{ product.price | money_format }}
           {% endif %}
