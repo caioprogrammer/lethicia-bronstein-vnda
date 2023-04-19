@@ -7,7 +7,7 @@
   {% assign products_count = products.size %}
 
   {% if products_count >= 2 %}
-    <section class="section group-shop container">
+    <section class="section group-shop">
       <h3 class="title">
         {{ tag.subtitle | default: 'Compre Junto' }}
       </h3>
@@ -27,9 +27,7 @@
         <div class="purchase -hidden">
           <form id="form-product" class="form-product" action="{{ cart_item_url }}" enctype="multipart/form-add" data-form-product-group-shop style="display: none;"></form>
 
-          <h4 class="text">Leve os
-            {{ products_count }}
-            por</h4>
+          <h4 class="text">Leve os {{ products_count }} por</h4>
           <div class="price-wrapper">
             <div class="discount-wrapper -hidden">
               <span class="discount-percent"></span>
@@ -40,10 +38,12 @@
           </div>
 
           <button aria-label="Adicionar produtos selecionados ao carrinho" class="button-default -outlined" data-group-shop-add type="button">
+            {% comment %}
             <svg class="icon">
               <use xlink:href="#icon-cart"/>
             </svg>
-            <span>COMPRAR JUNTO</span>
+            {% endcomment %}
+            <span>Adicionar a Sacola</span>
           </button>
           {% comment %}
           <div class="msg-response">

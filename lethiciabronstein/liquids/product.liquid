@@ -73,11 +73,6 @@
 
       {% render 'partials/content/product/banner', current_product: product %}
 
-
-      {% if relacionado %}
-        {% render 'partials/components/carousel', tag_name: relacionado.name, current_product: product %}
-      {% endif %}
-
       {% render 'partials/content/product/size_guide', product: product, tag_medidas: tag_medidas %}
 
       {% comment %} Popula com as variants dos produtos para o comportamento de seleção de variants {% endcomment %}
@@ -90,4 +85,10 @@
     </div>
   </div>
   {% render 'partials/content/product/group_shop', current_product: product %}
+  {% if relacionado %}
+  <div class="related-products">
+    <h2>Você também pode gostar</h2>
+    {% render 'partials/components/carousel', tag_name: relacionado.name, current_product: product, templateInfo: 'product' %}
+  </div>
+  {% endif %}
 </section>

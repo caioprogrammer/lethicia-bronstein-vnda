@@ -59,10 +59,31 @@
 
 
 .header {
+  &.not-homepage {
+    background-color: #fff;
+    .actions {
+      .count ,svg.icon {
+        color: #000;
+      }
+    }
+    .social-links {
+      .social-icons {
+        svg.icon {
+          color: #000;
+        }
+      } 
+    }
+    .menu .menu-list .menu-list-item,
+    .menu .menu-list .menu-list-item>.menu-title {
+      color: #000;
+    }
+    .menu .menu-list .menu-list-item .arrow:after {
+      border-color: #000;
+    }
+  }
   &:hover {
     background-color: var(--white);
     .actions {
-
       .count ,svg.icon {
         color: #000;
       }

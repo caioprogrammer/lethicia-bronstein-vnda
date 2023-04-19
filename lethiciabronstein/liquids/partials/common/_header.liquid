@@ -1,4 +1,4 @@
-<header class="header" id="header">
+<header class="header {% if template != 'home' %}not-homepage{% endif %}" id="header">
 
   <div class="header__container">
     {% render 'partials/content/header/top_bar' %}

@@ -184,18 +184,35 @@ const Product = {
     });
   },
 
+  setImagesOut: function() {
+    const blockProduct = document.querySelectorAll(".product-block>.images figure");
+    const hasIframeVideo = document.querySelector("iframe");
+    blockProduct.forEach((item) => {
+      if (item.contains(hasIframeVideo)) {
+        const images = document.querySelectorAll(".product-block>.images figure .iframe-video ~ img");
+        images.forEach((img) => {
+          img.classList.add("has-iframe")
+        })
+      }
+      else{
+        console.log("no");
+      }
+    })
+  },
+
   init: function () {
     const _this = this;
 
     _this.setGallery();
     _this.setImages();
     _this.setProductTabs();
-
+    _this.setImagesOut();
+    
     Shipping.init();
-
+    
     setCarousel();
     updatePriceBlock();
-
+    
     // Inicializa o compre junto apenas após o load
     window.addEventListener('load', () => {
       GroupShop.init();

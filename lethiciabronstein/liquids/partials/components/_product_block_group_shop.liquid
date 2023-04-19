@@ -90,6 +90,7 @@
                     }
             {% endcapture %}
 
+            {% comment %}
             <div class="price-wrapper">
               <div
                 class="product-price price {% if discount_amount %} -discount {% endif %}"
@@ -99,5 +100,7 @@
                 data-price="{{ product.price }}"
                 data-discount-percent="{{ discount_amount | default: 0 }}"></div>
             </div>
+              
+            {% endcomment %}
           </div>
         </div>

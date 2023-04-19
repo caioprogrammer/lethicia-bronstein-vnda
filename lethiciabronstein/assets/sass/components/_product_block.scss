@@ -27,6 +27,7 @@
     .images {
       .add-to-cart {
         opacity: 1;
+        z-index: 3;
         .attributes {
           transform: translateY(0);
         }
@@ -36,6 +37,19 @@
   > .images {
     margin-bottom: 1rem;
     position: relative;
+    .iframe-video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      iframe {
+        width: 100%;
+        height: 107%;
+      }
+    }
     .add-to-cart {
       display: flex;
       position: absolute;
@@ -101,6 +115,7 @@
 
   > .description .name {
     transition: var(--transition);
+    text-align: center;
   }
 
   > .description .name a {

@@ -15,7 +15,17 @@
   <div class="images">
     <a aria-label="Ir para o produto {{ product.name }}" href="{{ product.url }}">
       {% if image_urls.size > 0 %}
-        <figure class="image -square">
+        <figure class="image -square size-0">
+          {% load_videos %}
+          {% if loaded_videos %} 
+            {% for video in loaded_videos %}
+              <div class="iframe-video">
+                <iframe alt="{{ product.name }} {{forloop.index}}" class="lazy" data-src="{{ video.embed_url }}?autoplay=1&loop=1&autopause=0&muted=1&controls=0" width="440" height="1041" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            {% endfor %}
+          {% endif %}
+          
+
           {% for image in image_urls limit: 2 %}
             {% capture data_srcset %}
               {{ image | resize: '300x' }} 350w,
@@ -44,7 +54,7 @@
           <div class="skeleton"></div>
         </figure>
       {% else %}
-        <figure class="image -square">
+        <figure class="image -square size-auto">
           <img
             alt="{{ product.name }}"
             title="Foto do produto {{ product.name }}"

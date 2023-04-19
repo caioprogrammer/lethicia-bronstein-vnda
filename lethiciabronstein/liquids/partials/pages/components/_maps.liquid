@@ -5,12 +5,14 @@
         <form action="#" data-find-places-form="">
 
           <div class="store-finder-input-wrapper">
-            <label class="store-finder-label" for="pac-input">REVENDAS PRÓXIMAS:</label>
-            <a aria-label="Lojas próxima de mim" class="store-finder-geo-button button-default" data-geolocation type="button">Minha Localização</a>
-            <input aria-label="Procure na sua cidade" class="store-finder-input" id="pac-input" name="placesSearch" placeholder="Procure na sua cidade" type="text" value="">
+            <label class="store-finder-label" for="pac-input">Buscador de Lojas Físicas</label>
+            {% comment %}  
+              <a aria-label="Lojas próxima de mim" class="store-finder-geo-button button-default" data-geolocation type="button">Minha Localização</a>
+            {% endcomment %}
+            <input aria-label="Procure na sua cidade" class="store-finder-input" id="pac-input" name="placesSearch" placeholder="Digite a sua cidade" type="text" value="">
           </div>
 
-          <div class="store-finder-country-dropdown">
+          <div style="display: none;" class="store-finder-country-dropdown">
             <label class="store-finder-label" for="select-states">ESTADO:</label>
             <div class="box-select">
               <select data-select-states="" id="select-states" name="states"></select>
@@ -33,10 +35,18 @@
           <div class="tab-pane pane-open map-pane" data-results-map id="content1" role="tabpanel">
             <div class="map-canvas" data-lat="46" data-lng="4" data-zoom="6" id="map-canvas"></div>
           </div>
-
+        </div>
+      </div>
+    </div>
+    <div class="store-locator-inner">
+      <div class="ups-results-container">
+        <div class="tab-content" tbs-store-finder-results-pane="">
           <div class="tab-pane result-pane ups-points-results-tab open" data-results-places="" id="content0" role="tabpanel" style="left: 0px;">
             <div class="ups-points-results">
-              <p class="found-total" data-results-places-count="">0 Lojas encontradas</p>
+              <p style="display: none;" class="found-total" data-results-places-count="">0 Lojas encontradas</p>
+              <h2 class="result-title">
+                Nossas Lojas
+              </h2>
               <ul class="store-finder-list" data-results-places-list=""></ul>
             </div>
           </div>

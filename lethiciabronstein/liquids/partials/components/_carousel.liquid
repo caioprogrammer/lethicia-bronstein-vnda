@@ -5,7 +5,9 @@
   {% if tag and tag != blank %}
     {% load_products tag: tag.name %}
 
-    <section class="section products carousel">
+    {% assign templateProduct = templateInfo %}
+
+<section class="section products carousel {% if templateProduct != 'product' %}container{% endif %}">
       {% comment %}<div class="carousel-header container">
         {% if tag.title != blank %}
           <h2 class="title">

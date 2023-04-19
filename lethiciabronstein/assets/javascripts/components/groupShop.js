@@ -118,7 +118,8 @@ const GroupShop = {
       const priceEl = document.querySelector('.group-shop .purchase .price-group');
       const totalProducts = selectedProducts.length - unavailableProducts;
 
-      textEl.innerText = `Compre os ${totalProducts} produtos por`;
+      // textEl.innerText = `Compre os ${totalProducts} produtos por`;
+      textEl.innerText = `Combine com`;
       priceEl.innerText = formatMoney(salePriceTotal);
 
       if (discountTotal != 0) {

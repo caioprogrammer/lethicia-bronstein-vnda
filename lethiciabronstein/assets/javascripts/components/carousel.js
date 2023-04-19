@@ -16,11 +16,11 @@ export default function setCarousel() {
       new Swiper(carousel, {
         autoHeight: true,
         slidesPerView: 1,
-        spaceBetween: 6,
+        spaceBetween: 0,
         navigation: false,
         watchOverflow: true,
         speed: 1000,
-        autoplay: true,
+        // autoplay: true,
         loop: true,
         //lazy load
         preloadImages: false,
@@ -33,13 +33,13 @@ export default function setCarousel() {
         breakpoints: {
           768: {
             slidesPerView: 2,
-            spaceBetween: 0,
-            autoplay: true
+            spaceBetween: 30,
+            // autoplay: true
           },
           992: {
             slidesPerView: 4,
-            spaceBetween: 0,
-            autoplay: true
+            spaceBetween: 30,
+            // autoplay: true
           },
         },
         // pagination: {

@@ -1,8 +1,15 @@
 .group-shop {
-  align-items: flex-start;
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  .title {
+    text-align: center;
+    padding: 56px 0;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+  }
 }
 
 .group-shop .products {
@@ -37,7 +44,7 @@
 
     .icon {
       border-radius: 50%;
-      background-color: var(--highlight-1);
+      // background-color: var(--highlight-1);
       display: block;
       height: 28px;
       position: relative;
@@ -93,7 +100,7 @@
 
   .symbol {
     border-radius: 50%;
-    background-color: var(--gray-2);
+    // background-color: var(--gray-2);
     height: 28px;
     position: relative;
     width: 28px;
@@ -169,6 +176,8 @@
     font-size: var(--font-size-big);
     margin-bottom: 1rem;
     text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 3px;
   }
 
   .purchase .price-wrapper {
