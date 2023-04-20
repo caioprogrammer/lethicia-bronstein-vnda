@@ -76,6 +76,12 @@
   }
 }
 
+.section.instagram {
+  .image.-square:after {
+    padding-bottom: 100% !important;
+  }
+}
+
 .hamburger-logo {
   display: flex;
   align-items: center;

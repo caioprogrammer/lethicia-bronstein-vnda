@@ -623,8 +623,8 @@ window.storeFinder = {
       event.preventDefault();
 
       // Fecha a lista e abre o mapa no mobile
-      listWrapper.classList.remove('open');
-      mapWrapper.classList.add('open');
+      // listWrapper.classList.remove('open');
+      // mapWrapper.classList.add('open');
 
       var place = _this.getPlaceById($(this).data('place-id'));
 
@@ -645,46 +645,46 @@ window.storeFinder = {
     });
 
     // Quando usa geolocalização
-    document.querySelector('[data-geolocation]').addEventListener('click', (e) => {
-      e.preventDefault();
+    // document.querySelector('[data-geolocation]').addEventListener('click', (e) => {
+    //   e.preventDefault();
 
-      const getLocation = () => {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(getPosition);
-        } else {
-          x.innerHTML = 'Geolocation is not supported by this browser.';
-        }
-      };
+    //   const getLocation = () => {
+    //     if (navigator.geolocation) {
+    //       navigator.geolocation.getCurrentPosition(getPosition);
+    //     } else {
+    //       x.innerHTML = 'Geolocation is not supported by this browser.';
+    //     }
+    //   };
 
-      const getPosition = (position) => {
-        _this.findPlaceLocation(position);
-      };
+    //   const getPosition = (position) => {
+    //     _this.findPlaceLocation(position);
+    //   };
 
-      getLocation();
-    });
+    //   getLocation();
+    // });
 
     // Lida com a abertura e fechamento da lista e do mapa no mobile
-    document.querySelector('[data-open-list]').addEventListener('click', (e) => {
-      e.preventDefault();
+    // document.querySelector('[data-open-list]').addEventListener('click', (e) => {
+    //   e.preventDefault();
 
-      if (!listWrapper.classList.contains('open')) {
-        listWrapper.classList.add('open');
-      }
-      if (mapWrapper.classList.contains('open')) {
-        mapWrapper.classList.remove('open');
-      }
-    });
+    //   if (!listWrapper.classList.contains('open')) {
+    //     listWrapper.classList.add('open');
+    //   }
+    //   if (mapWrapper.classList.contains('open')) {
+    //     mapWrapper.classList.remove('open');
+    //   }
+    // });
 
-    document.querySelector('[data-open-map]').addEventListener('click', (e) => {
-      e.preventDefault();
+    // document.querySelector('[data-open-map]').addEventListener('click', (e) => {
+    //   e.preventDefault();
 
-      if (!mapWrapper.classList.contains('open')) {
-        mapWrapper.classList.add('open');
-      }
-      if (listWrapper.classList.contains('open')) {
-        listWrapper.classList.remove('open');
-      }
-    });
+    //   if (!mapWrapper.classList.contains('open')) {
+    //     mapWrapper.classList.add('open');
+    //   }
+    //   if (listWrapper.classList.contains('open')) {
+    //     listWrapper.classList.remove('open');
+    //   }
+    // });
   },
 };
 

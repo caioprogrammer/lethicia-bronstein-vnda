@@ -20,19 +20,21 @@
           </div>
         </form>
       </div>
-
+      {% comment %}
+        
       <div class="toggle-content-mobile">
         <button aria-label="Ver lista de lojas" class="button-default" data-open-list type="button">
           Ver lista
-        </button>
-        <button aria-label="Abrir mapa" class="button-default" data-open-map type="button">
-          Abrir Mapa
-        </button>
-      </div>
+          </button>
+          <button aria-label="Abrir mapa" class="button-default" data-open-map type="button">
+            Abrir Mapa
+            </button>
+            </div>
+          {% endcomment %}
 
       <div class="ups-results-container">
         <div class="tab-content" tbs-store-finder-results-pane="">
-          <div class="tab-pane pane-open map-pane" data-results-map id="content1" role="tabpanel">
+          <div class="tab-pane pane-open map-pane open" data-results-map id="content1" role="tabpanel">
             <div class="map-canvas" data-lat="46" data-lng="4" data-zoom="6" id="map-canvas"></div>
           </div>
         </div>

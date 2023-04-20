@@ -16,6 +16,19 @@
     align-items: flex-start;
     justify-content: space-between;
     gap: 64px;
+    @media screen and (max-width: 768px){
+      flex-direction: column;
+      .store-locator-inner {
+        width: 100%;
+        &:first-child {
+          flex: unset
+        }
+        &:last-child {
+          flex: unset;
+          margin-top: 36px;
+        }
+      }
+    }
     .store-locator-inner {
       &:first-child {
         flex: 1 1 auto;

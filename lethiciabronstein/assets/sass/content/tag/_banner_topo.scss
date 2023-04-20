@@ -19,9 +19,9 @@
   }
 
   > .image.-horizontal::after {
-    padding-bottom: 24rem;
+    padding-bottom: 25vw;
     @media screen and (max-width: 768px) {
-      padding-bottom: 15rem;
+      padding-bottom: 25vw;
     }
   }
 

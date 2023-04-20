@@ -13,7 +13,7 @@
   {% assign maxWidth = 550 %}
 
   {% if banner.file_url != blank %}
-    {% assign imageUrl = banner.file_url | resize: '350x' %}
+    {% assign imageUrl = banner.file_url %}
     {% assign maxWidth = 700 %}
   {% endif %}
 
