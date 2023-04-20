@@ -75,7 +75,11 @@
         padding-bottom: .5rem;
         transform: translateY(25px);
         transition: ease .5s;
+        
         >.prod-option {
+          display: flex;
+          align-items: center;
+          gap: 12px;
           input[type=radio] {
             &:checked {
               +.label {

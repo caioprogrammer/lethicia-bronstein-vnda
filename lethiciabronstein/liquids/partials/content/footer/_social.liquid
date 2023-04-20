@@ -3,7 +3,10 @@
 <div class="social">
 
   {%- comment -%} Logo secundário {%- endcomment -%}
+  {% comment %}
+    
   {% render "partials/content/footer/banner", section: 'secondary-banner' position: 'rodape-logo-secundario', type: '-horizontal', limit: 1 %}
+{% endcomment %}
 
   <nav class="social-icons">
     {% for menu in loaded_menus %}

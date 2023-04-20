@@ -18,6 +18,9 @@ body {
   &:not(.page-home) {
     main {
       padding-top: 200px;
+      @media screen and (max-width: 768px) {
+        padding-top: 120px;
+      }
     }
   }
 }

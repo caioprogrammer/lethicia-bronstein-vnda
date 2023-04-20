@@ -44,7 +44,9 @@
     position: sticky;
     top: 175px;
     height: 100%;
-
+    @media screen and (max-width:768px) {
+      position: unset;
+    }
     @include media("sm") {
       align-items: flex-start;
       justify-content: flex-start;
@@ -52,6 +54,7 @@
       margin-top: 0;
       text-align: left;
       width: 50%;
+      
     }
   }
 

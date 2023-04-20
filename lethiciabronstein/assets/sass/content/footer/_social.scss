@@ -64,6 +64,10 @@
     height: 1.4rem;
     transition: var(--transition);
     width: 1.4rem;
+    @media screen and (max-width:768px){
+      width: 2.4rem;
+      height: 2.4rem;
+    }
   }
 
   > .social-icons a:hover .icon {

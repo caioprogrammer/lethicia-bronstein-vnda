@@ -36,12 +36,12 @@
     .right-container {
       padding-top: 4rem;
       @media screen and (max-width: 768px) {
-        position: relative;
+        // position: relative;
         background-color: #fff;
-        z-index: 9;
-        width: 100vw;
+        // z-index: 9;
+        // width: 100vw;
         background-clip: content-box;
-        top: 40vh;
+        // top: 50vh;
       }
       @include media("md") {
         padding-top: 0;
@@ -52,11 +52,11 @@
 
     .left-container {
       @media screen and (max-width: 768px) {
-        position: fixed;
-        width: 100vw;
-        z-index: 0;
-        height: 55vh;
-        top: 10vh;
+        // position: fixed;
+        // width: 100vw;
+        // z-index: 0;
+        height: auto;
+        // top: 15vh;
       }
 
       @include media("md") {

@@ -23,7 +23,7 @@
 
   @include media("md") {
     gap: 0;
-    grid-template-columns: 22% 4% 22% 4% 22% 4% 22%;
+    grid-template-columns: 30% 5% 30% 5% 30%;
     grid-template-rows: 1fr;
   }
 
@@ -115,7 +115,8 @@
     &:before,
     &:after {
       content: "";
-      border-left: 3px solid var(--highlight-1);
+      // border-left: 3px solid var(--highlight-1);
+      border-left: 3px solid #000;
       border-radius: 3px;
       height: 15px;
       left: 13px;
@@ -132,7 +133,8 @@
     &:before,
     &:after {
       content: "";
-      border-left: 3px solid var(--highlight-1);
+      // border-left: 3px solid var(--highlight-1);
+      border-left: 3px solid #000;
       border-radius: 2px;
       height: 15px;
       left: 13px;

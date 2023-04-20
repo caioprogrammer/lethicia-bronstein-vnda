@@ -47,7 +47,8 @@
         display: inline-block;
         margin: 3px 3px 1px 8px;
         padding: 3px;
-        transform: rotate(-135deg);
+        transform: rotate(-45deg);
+        transition: all ease .3s;
       }
     }
 
@@ -57,7 +58,7 @@
       }
 
       > .category-title .arrow.-down::after {
-        transform: rotate(225deg);
+        transform: rotate(45deg);
       }
     }
 

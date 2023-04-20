@@ -3,7 +3,7 @@
 {% assign tag = current_product.tags | where: 'type' , 'compre-junto' | first %}
 
 {% if tag and tag.size > 0  %}
-  {% load_products tag: tag.name per_page: 3 %}
+  {% load_products tag: tag.name per_page: 2 %}
   {% assign products_count = products.size %}
 
   {% if products_count >= 2 %}

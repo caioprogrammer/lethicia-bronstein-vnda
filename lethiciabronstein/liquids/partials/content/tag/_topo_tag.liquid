@@ -31,23 +31,25 @@
         <img class="lazy" alt="{{ banner.title }}" data-srcset="{{ data_srcset | strip_newlines | strip }}" data-sizes="{{ data_sizes | strip_newlines | strip }}" data-sizes="{{ data_sizes }}"/>
       </figure>
     {% endif %}
-
+    {% comment %}
+      
     <div class="text {{ no_image }}">
       <div class="content">
         {% if tag.subtitle and tag.subtitle != blank %}
-          <span class="upper-title">{{ tag.subtitle }}</span>
-        {% endif %}
-
-        {% if tag.title != blank %}
-          <h2 class="title">{{ tag.title }}</h2>
-        {% endif %}
-
-        {% if tag.description != blank and tag.type != "flag" %}
-          <p class="description">
+        <span class="upper-title">{{ tag.subtitle }}</span>
+      {% endif %}
+      
+      {% if tag.title != blank %}
+      <h2 class="title">{{ tag.title }}</h2>
+    {% endif %}
+    
+    {% if tag.description != blank and tag.type != "flag" %}
+    <p class="description">
             {{ tag.description | strip_html }}
-          </p>
-        {% endif %}
-      </div>
-    </div>
+            </p>
+          {% endif %}
+          </div>
+          </div>
+        {% endcomment %}
   </div>
 {% endif %}

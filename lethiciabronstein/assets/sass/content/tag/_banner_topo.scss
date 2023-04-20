@@ -20,6 +20,9 @@
 
   > .image.-horizontal::after {
     padding-bottom: 24rem;
+    @media screen and (max-width: 768px) {
+      padding-bottom: 15rem;
+    }
   }
 
   // acima de 1024 o conteudo do texto fica fixo em cima da imagem

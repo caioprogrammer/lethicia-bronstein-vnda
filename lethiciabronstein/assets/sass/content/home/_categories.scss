@@ -19,7 +19,11 @@
   .category-item {
     // flex: 1;
     position: relative;
-
+    .image {
+      img {
+        object-fit: cover;
+      }
+    }
     &:first-child {
       // margin-bottom: 2rem;
 

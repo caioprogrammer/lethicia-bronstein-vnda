@@ -19,6 +19,9 @@
     gap: 10px;
     grid-template-columns: repeat(2, 1fr);
     width: 100%;
+    @media screen and (max-width:600px){
+      grid-template-columns: 1fr;
+    }
 
     @include media("md") {
       gap: 20px;
@@ -29,7 +32,10 @@
 
     .bannersGrid__first {
       grid-row: 3;
-      grid-column: span 2
+      grid-column: span 2;
+      @media screen and (max-width:768px) {
+        grid-column: 1;
+      }
     }
 
     @media(min-width: 991px) {
@@ -49,7 +55,10 @@
 
     .bannersGrid__second {
       grid-row: 8;
-      grid-column: span 2
+      grid-column: span 2;
+      @media screen and (max-width:768px) {
+        grid-column: 1;
+      }
     }
 
     @media(min-width: 991px) {
@@ -71,6 +80,9 @@
     .bannersGrid__third {
       grid-row: 12;
       grid-column: span 2;
+      @media screen and (max-width:768px) {
+        grid-column: 1;
+      }
     }
 
     @media(min-width: 991px) {
