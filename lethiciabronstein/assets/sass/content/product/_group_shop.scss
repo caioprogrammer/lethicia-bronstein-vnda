@@ -23,7 +23,7 @@
 
   @include media("md") {
     gap: 0;
-    grid-template-columns: 30% 5% 30% 5% 30%;
+    grid-template-columns: 20% 5% 20% 5% 20% 5% 25%;
     grid-template-rows: 1fr;
   }
 

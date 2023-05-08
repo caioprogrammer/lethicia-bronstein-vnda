@@ -59,7 +59,9 @@
     <div class="swiper" data-slider-thumbs>
       <div class="swiper-wrapper">
         {{ html_thumb }}
-        {{ html_thumb_videos }}
+          {% comment %}  
+          {{ html_thumb_videos }}
+        {% endcomment %}
       </div>
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
@@ -69,7 +71,9 @@
   <div class="wrapper-slider">
     <div class="swiper" data-main-slider>
       <div class="swiper-wrapper">
+        {% comment %}  
         {{ html_product_videos }}
+      {% endcomment %}
         {{ html_product_images }}
       </div>
       <div class="swiper-button-next"></div>
