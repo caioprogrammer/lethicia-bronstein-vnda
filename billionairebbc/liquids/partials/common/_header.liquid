@@ -1,0 +1,14 @@
+{% render 'partials/content/header/top_bar' %}
+
+<header class="header" id="header">
+  <div class="container content">
+    <div class="logo-wrapper">
+      {% render "partials/content/header/logo", current_shop: current_shop, img_logo: img_logo, template: template, home_url: home_url %}
+    </div>
+    
+    {% render 'partials/content/header/menu', template: template, search_url: search_url, account_url: account_url, img_logo: img_logo, home_url: home_url, mobile: mobile %}
+
+    {% render "partials/content/header/actions", account_url: account_url, search_url: search_url %}
+  </div>
+
+</header>

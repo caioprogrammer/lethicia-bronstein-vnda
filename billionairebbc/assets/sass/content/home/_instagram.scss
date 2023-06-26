@@ -1,0 +1,28 @@
+.instagram {
+  margin-bottom: 0;
+  margin-top: 4rem;
+
+  > .content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 4rem;
+  }
+
+  > .swiper {
+    padding-bottom: 6rem;
+    
+    .swiper-pagination {
+      bottom: 2rem;
+    }
+
+    @include media('md') {
+      padding-bottom: 0;
+
+      .swiper-pagination {
+        display: none;
+      }
+    }
+  }
+}

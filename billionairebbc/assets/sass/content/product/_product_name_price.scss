@@ -1,0 +1,29 @@
+@import "../../components/price";
+
+.product-name-price {
+  margin-bottom: 2rem;
+
+  > .name-reference .reference {
+    font-size: var(--font-size-small);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    display: none;
+  }
+
+  > .name-reference .name {
+    // font-size: var(--font-size-title);
+    // margin-bottom: 1rem;
+
+    font-size: 1.75rem;
+    line-height: 2rem;
+    margin-bottom: 1.125rem;
+
+    // font-size: 0.875rem;
+    // line-height: 1rem;
+    // margin-bottom: 0.625rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    // font-family: "Verlag-bold";
+    text-transform: uppercase;
+  }
+}

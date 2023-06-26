@@ -1,0 +1,17 @@
+@import "../../components/product_block";
+@import "../../content/tag/pagination";
+
+.grid .content {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+
+  @include media("sm") {
+    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include media("md") {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

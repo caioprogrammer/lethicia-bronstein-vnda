@@ -1,0 +1,73 @@
+.hightlights {
+  > .hightlight-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    width: 100%;
+
+    @include media("sm") {
+      flex-direction: row;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  > .hightlight-item .image {
+    width: 100%;
+
+    &.-custom::after {
+      padding-bottom: 56%;
+    }
+
+    @include media("sm") {
+      width: 65%;
+    }
+  }
+
+  > .hightlight-item .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    text-align: center;
+    width: 100%;
+
+    @include media("sm") {
+      margin-left: 1rem;
+      background-color: #e9e9e9;
+      margin-top: 0;
+      width: 35%;
+    }
+  }
+
+  > .hightlight-item{
+    
+    .description{
+      max-width: 35rem;
+    }
+  }
+
+  > .hightlight-item .text .button-default {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
+    width: fit-content;
+  }
+
+  > .hightlight-item:nth-child(odd) {
+    @include media("sm") {
+      flex-direction: row-reverse;
+    }
+  }
+
+  > .hightlight-item:nth-child(odd) .text {
+    @include media("sm") {
+      margin-left: 0;
+      margin-right: 1rem;
+      background-color: #e9e9e9;
+    }
+  }
+}

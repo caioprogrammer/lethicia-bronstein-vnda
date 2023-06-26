@@ -1,0 +1,139 @@
+.actions {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  width: 15%;
+  z-index: 1;
+
+  > .cart,
+  > .search,
+  > .account,
+  > .hamburger {
+    height: 2.8rem;
+    display: flex;
+    align-items: center;
+    margin-left: 3rem;
+  }
+
+  > .account {
+    display: none;
+
+    @include media('md') {
+      display: flex;
+    }
+  }
+
+  > .cart .btn-cart {
+    position: relative;
+    &.-loading {
+      opacity: 0.5;
+    }
+  }
+
+  > .cart .btn-cart .count {
+    align-items: center;
+    background-color: var(--black);
+    transition: var(--transition);
+    border-radius: 50%;
+    color: var(--white);
+    display: flex;
+    font-size: 1.2rem;
+    height: 1.6rem;
+    width: 1.6rem;
+    line-height: 1;
+    justify-content: center;
+    position: absolute;
+    right: -1.5rem;
+    top: -1.5rem;
+  }
+
+  .search {
+
+    .open-search{
+      cursor: pointer;
+    }
+
+    .wrapper-search .close-search{
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      color: var(--black);
+      cursor: pointer;
+      
+      @include media('sm') {
+        right: 25%;
+        top: 25%;
+      }
+    }
+
+    .wrapper-search{
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,.8);
+      z-index: 1;
+      transform: translateX(200%);
+      opacity: 0;
+      transition: opacity .3s;
+      
+      &.open{
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .form-search {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 90%;
+
+      @include media('sm') {
+        width: 50%;
+      }
+    }
+
+    input {
+      background: transparent;
+      border: 0;
+      font-size: 2rem;
+      min-width: 200px;
+      line-height: 26px;
+      border-bottom: 1px solid var(--black);
+      width: calc(100% - 3rem);
+      height: 4rem;
+      padding-left: 1rem;
+    }
+
+    button {
+      padding: 0;
+      border: 0;
+      background: 0;
+      cursor: pointer;
+      width: 3rem;
+      height: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .hamburger{
+
+    @include media('md') {
+      display: none;
+    }
+  }
+
+  .icon {
+    display: block;
+    height: 2rem;
+    width: 2rem;
+    transition: var(--transition);
+  }
+}

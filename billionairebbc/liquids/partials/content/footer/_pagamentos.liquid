@@ -1,0 +1,13 @@
+
+{% capture html_pagamentos %}
+  {% load_payment_icons %}
+  {% for payment in loaded_payment_icons %}
+    <img class="lazy" data-src="{{ payment.svg_url | resize: '50x' }}" alt="{{ payment.title }}">
+  {% endfor %}
+{% endcapture %}
+
+{% if html_pagamentos != blank %}
+  <div class="pagamentos">
+    {{ html_pagamentos }}
+  </div>
+{% endif %}

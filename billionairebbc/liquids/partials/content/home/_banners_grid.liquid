@@ -1,0 +1,37 @@
+{% load_banners position: position_title  %}
+{% for banner in loaded_banners %}
+  {% capture html_title %}
+    <div class="header">
+      <h2 class="title">{{ banner.subtitle }}</h2>
+    </div>
+  {% endcapture %}
+{% endfor %}
+
+{% load_banners position: position_banners %}
+{% capture html_banners %}
+  {% for banner in loaded_banners %}
+    <div class="grid-item item-{{ forloop.index }}">
+      <a href="{{ banner.url }}" aria-label="{{ banner.title }}">
+        <div class="wrapper">
+          
+          <img class="lazy" data-src="{{ banner.file_url | resize: '600x' }}" alt="{{ banner.title }}" />
+          <div class="skeleton"></div>
+
+          <div class="overlay">
+            <h4>{{ banner.subtitle }}</h4>
+          </div>
+        </div>
+      </a>
+    </div>
+  {% endfor %}
+{% endcapture %}
+
+
+{% if html_banners %}
+  <section class="banners-grid section container">
+    {{ html_title }}
+    <div class="grid">
+      {{ html_banners }}
+    </div>
+  </section>
+{% endif %}

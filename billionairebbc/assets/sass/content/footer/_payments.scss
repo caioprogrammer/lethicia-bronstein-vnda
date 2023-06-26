@@ -1,0 +1,14 @@
+.pagamentos {
+  display: flex;
+  @include media("xs") {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+
+  img {
+    height: 25px;
+    margin-left: 5px;
+  }
+}

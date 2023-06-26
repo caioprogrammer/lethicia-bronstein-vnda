@@ -1,0 +1,69 @@
+@import "../base/mixins";
+
+main{
+  min-height: 70vh;
+}
+
+.page-page .page-fullbanner {
+  position: relative;
+
+  .image {
+    &::after {
+      padding-bottom: 66%;
+    }
+
+    @include media("md") {
+      &.-custom::after {
+        padding-bottom: 15.5%;
+      }
+
+      &.-horizontal::after {
+        padding-bottom: 36%;
+      }
+    }
+  }
+
+  .text {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    justify-content: center;
+    padding: 3rem;
+    text-align: center;
+    position: absolute;
+    right: 5%;
+    left: 5%;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+
+    .title {
+      margin: 0;
+    }
+  
+    .breadcrumbs {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      li {
+        list-style: none;
+        margin-right: 5px;
+        a,
+        span {
+          text-transform: uppercase;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  &.-imageless {
+    background-color: var(--gray-1);
+    height: 24rem;
+  }
+
+  &.-imageless .text {
+    height: 100%;
+  }
+}

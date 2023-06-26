@@ -1,0 +1,151 @@
+.fullbanner {
+  position: relative;
+
+  &.-desktop {
+    display: none;
+
+    @include media("sm") {
+      display: block;
+    }
+
+    &.-secundario {
+      .image::after,
+      .video::after {
+        padding-bottom: 36%;
+      }
+    }
+  }
+
+  &.-mobile {
+    &.-secundario {
+      .image::after,
+      .video::after {
+        padding-bottom: 100%;
+      }
+    }
+
+    @include media("sm") {
+      display: none;
+    }
+  }
+
+  // config text
+  .text {
+    align-items: center;
+    color: var(--fb-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem 1rem;
+    position: absolute;
+    text-align: left;
+    width: 80%;
+
+    .title{
+      color: inherit;
+      text-align: left;
+      margin: 0 0 1rem;
+    }
+    
+    @include media("sm") {
+      width: fit-content;
+      max-width: 30%;
+      padding: 4rem;
+    }
+
+    .fulbanner-button {
+      margin-right: auto;
+      margin-top: 2rem;
+      width: fit-content;
+
+      &:hover {
+        background-color: transparent;
+        color: var(--fb-color);
+      }
+    }
+
+    &.left-center,
+    &.left-top,
+    &.left-bottom {
+      left: 5%;
+
+      &.text {
+        align-items: flex-start;
+      }
+    }
+
+    &.right-center,
+    &.right-top,
+    &.right-bottom {
+      right: 5%;
+
+      &.text {
+        align-items: flex-start;
+      }
+    }
+
+    &.center-top,
+    &.center-bottom {
+      left: 50%;
+      text-align: center;
+      transform: translateX(-50%);
+
+      .fulbanner-button {
+        margin-left: auto;
+      }
+    }
+
+    &.right-top,
+    &.left-top,
+    &.center-top {
+      top: 5%;
+    }
+
+    &.right-bottom,
+    &.left-bottom,
+    &.center-bottom {
+      bottom: 5%;
+    }
+
+    &.right-center,
+    &.left-center {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &.center-center {
+      left: 50%;
+      text-align: center;
+      transform: translate(-50%, -50%);
+      top: 50%;
+
+      .fulbanner-button {
+        margin-left: auto;
+      }
+    }
+  }
+
+  // swiper config
+  .swiper-button-next {
+    right: 2rem;
+
+    @include media("lg") {
+      right: 4rem;
+    }
+  }
+
+  .swiper-button-prev {
+    left: 2rem;
+
+    @include media("lg") {
+      left: 4rem;
+    }
+  }
+
+  .swiper-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+  }
+}

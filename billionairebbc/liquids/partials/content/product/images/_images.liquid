@@ -1,0 +1,55 @@
+{% assign product_images = product.images | group_images_by_url %}
+{% assign qnt_images = product_images.size %}
+
+{% for image in product_images %}
+
+  {% capture html_product_images %}
+    {{ html_product_images }}
+    {% render 'partials/content/product/images/item_main_image', image: image, product: product, forloop: forloop %}
+  {% endcapture %}
+
+  {% capture html_thumb %}
+    {{ html_thumb }}
+    {% render 'partials/content/product/images/item_image_thumb', image: image, product: product, forloop: forloop %}
+  {% endcapture %}
+
+{% endfor %}
+
+{% comment %} ========== {% endcomment %}
+
+{% load_videos %}
+
+{% for video in loaded_videos %}
+  {% capture html_product_videos %}
+    {{ html_product_videos }}
+    {% render 'partials/content/product/images/item_main_video', video: video, qnt_images: qnt_images, product: product %}
+  {% endcapture %}
+
+  {% capture html_thumb_videos %}
+    {{ html_thumb_videos }}
+    {% render 'partials/content/product/images/item_video_thumb', video: video, qnt_images: qnt_images, product: product %}
+  {% endcapture %}
+{% endfor %}
+
+{% comment %} ========== {% endcomment %}
+
+<div class="product-images" data-product-images>
+
+  <div class="slider-thumbs swiper" data-slider-thumbs>
+    <div class="swiper-wrapper">
+      {{ html_thumb }}
+      {{ html_thumb_videos }}
+    </div>
+  </div>
+
+  <div class="main-slider swiper" data-main-slider>
+    <div class="swiper-wrapper">
+      {{ html_product_images }}
+      {{ html_product_videos }}
+    </div>
+    <button type="button" class="swiper-button-next"></button>
+    <button type="button" class="swiper-button-prev"></button>
+    {% render 'partials/components/flag', product: product %}
+  </div>
+
+</div>

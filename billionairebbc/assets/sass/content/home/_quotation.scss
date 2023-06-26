@@ -1,0 +1,37 @@
+.quote {
+  background: var(--gray-1);
+  padding: 75px 0;
+  margin-top: 0;
+  text-align: center;
+  
+  & + .separator {
+    background: var(--gray-1);
+    margin-bottom: 75px;
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    p{
+      max-width: 35rem;
+    }
+
+    .button-default{
+      margin-top: 2rem;
+    }
+  }
+
+  img {
+    margin: 0 auto;
+    margin-bottom: 20px;
+    display: block;
+    border-radius: 50%;
+  }
+
+  figure {
+    position: relative;
+  }
+}

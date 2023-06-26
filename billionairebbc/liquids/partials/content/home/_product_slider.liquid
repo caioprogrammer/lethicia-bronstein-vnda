@@ -1,0 +1,37 @@
+{% assign loaded_tag = nil %}
+
+{% load_tag name: tag_name %}
+
+{% if loaded_tag.subtitle and loaded_tag.subtitle != '' %}
+  {% assign slider_bg_color = loaded_tag.subtitle %}
+{% endif %}
+
+{% if loaded_tag and loaded_tag != nil %}
+  <section class="product-slider section">
+    <div class="img-wrapper lazyload-container">
+      <figure class="image -square">
+        <img class="lazy" data-src="{{ loaded_tag.image_url | resize:'1000x' }}" alt="{{ slider_title }}" />
+        <div class="skeleton"></div>
+      </figure>
+    </div>
+    <div class="slider-wrapper" style="background: {{ slider_bg_color }}">
+      <div class="inner">
+        <div class="header">
+          <h2 class="title">{{ loaded_tag.title }}</h2>
+        </div>
+        <div class="slides swiper" id="swiper-section">
+          <div class="swiper-wrapper">
+            {% load_products tag: tag_name %}
+
+            {% for product in products %}
+              <div class="swiper-slide">
+                {% render 'partials/components/product_block', product: product, lazy: "lazy" %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="swiper-pagination-section"></div>
+      </div>
+    </div>
+  </section>
+{% endif %}

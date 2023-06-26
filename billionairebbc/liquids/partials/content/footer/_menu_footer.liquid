@@ -1,0 +1,31 @@
+{% capture html_menu_footer %}
+  {% load_menus position: 'rodape' %}
+  {% for menu in loaded_menus %}
+    <div class="menu-item">
+      <a href="{{ menu.url }}">
+        <h4>
+          {{menu.title}}
+        </h4>
+      </a>
+      {% if menu.children %}
+        <ul>
+          {% for submenu in menu.children %}
+            <li>
+              <a href="{{ submenu.url }}" {% if submenu.external %} target="_blank" rel="noopener noreferrer" {% endif %} class="underline">{{ submenu.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  {% endfor %}
+{% endcapture %}
+
+{% assign html_menu_footer = html_menu_footer | strip %}
+
+{% if html_menu_footer != '' %}
+  <nav class="menu">
+    <ul class="menus-list">
+      {{ html_menu_footer }}
+    </ul>
+  </nav>
+{% endif %}

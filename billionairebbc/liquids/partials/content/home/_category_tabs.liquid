@@ -1,0 +1,61 @@
+{% load_tags types: 'home-produtos' %}
+
+{% for tag in loaded_tags %}
+  {% assign isActive = false %}
+  {% if forloop.first %}
+    {% assign isActive = true %}
+  {% endif %}
+
+  {% capture html_links %}
+    {{ html_links }}
+    <a href="#{{ tag.name }}" value="{{ forloop.index }}" {% if isActive %} class="title" {% endif %}>{{ tag.title }}</a>
+  {% endcapture %}
+
+  {% capture html_products %}
+    {{ html_products }}
+
+    {% load_products tag: tag.name %}
+
+    {% assign swiperIndex = 'swiper-home-produtos-' | append: forloop.index %}
+    <div class="swiper swiper-home-produtos  {{swiperIndex}} {% if isActive %}active{% endif %}" data-link="#{{ tag.name }}">
+      <div class="content swiper-wrapper">
+        {% for product in products %}
+          <div class="swiper-slide item">
+            {% render "partials/components/product_block", product: product %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    {% comment %} Popula com as variants dos produtos para o comportamento de seleção de variants {% endcomment %}
+    {% body %}
+      <script data-variants-script>
+        {% for product in products %}
+          productVariants['{{ product.id }}'] = {{ product.variants | to_json }};
+        {% endfor %}
+      </script>
+    {% endbody %}
+
+  {% endcapture %}
+{% endfor %}
+
+{% assign html_products = html_products | strip %}
+
+<section class="section container-fluid home-produtos">
+  {% if html_products != '' %}
+    <div class="swiper-master">
+      <div class="swiper-arrow">
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+
+        <div class="swiper-head">
+          <div class="links">
+            {{ html_links }}
+          </div>
+        </div>
+
+      {{ html_products }}
+    </div>
+  {% endif %}
+</section>

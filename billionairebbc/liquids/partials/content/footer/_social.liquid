@@ -1,0 +1,21 @@
+{% capture html_social %}
+  {% load_menus position: 'social' %}
+  {% for menu in loaded_menus %}
+    <a href="{{ menu.url }}" rel="noopener" aria-label="{{ menu.title }}" {% if menu.external %} target="_blank" {% endif %}>
+      <svg class="icon">
+        <use xlink:href="#icon-{{ menu.tooltip }}" />
+      </svg>
+      <div class="tooltip">
+        {{ menu.title }}
+      </div>
+    </a>
+  {% endfor%}
+{% endcapture %}
+
+{% assign html_social = html_social | strip %}
+
+{% if html_social != "" %}
+  <div class="social">
+    {{ html_social }}
+  </div>
+{% endif %}

@@ -1,0 +1,13 @@
+{% if template == 'home' %}
+  <h1 class="logo">
+    <a aria-label="Início da loja" href="{{ home_url }}">
+      <img src="{{ img_logo | resize: '160x' }}" alt="{{ current_shop.name }}"/>
+    </a>
+  </h1>
+{% else %}
+  <div class="logo">
+    <a aria-label="Início da loja" href="{{ home_url }}">
+      <img src="{{ img_logo | resize: '160x' }}" alt="{{ current_shop.name }}"/>
+    </a>
+  </div>
+{% endif %}

@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
+
+html{
+  background: #F9F8F8;
+}
+
+main {
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #707070;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+main h1 {
+  color: #FF6D00;
+  font-size: 2em;
+  margin-top: 75px;
+}
+
+main h2 {
+  color: #707070;
+  font-size: 1.5em;
+  margin-top: 50px;
+}
+
+main pre {
+  overflow: auto;
+  background: #f1eaea;
+  padding: 20px;
+}
+
+main img {
+  max-width: 100%;
+}
+
+main a {
+  color: #707070;
+  transition: all 200ms ease;
+  display: inline-block;
+  transform-origin: left;
+}
+
+main a:hover {
+  color: #FF6D00;
+  font-weight: 700;
+}
+
+main ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+main a {
+  color: #707070;
+  transition: all 200ms ease;
+  display: inline-block;
+  transform-origin: left;
+  text-decoration: none;
+}
+
+main a:hover {
+  color: #FF6D00;
+  font-weight: 700;
+}
+
+table, 
+th, 
+td {
+  border: 3px solid white;
+}
+
+th, 
+td {
+  padding: 10px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0px 0px 20px #00000014;
+  margin-bottom: 25px;
+}
+
+table thead {
+  background: white;
+  color: #707070;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: underline;
+}
+
+table tr:nth-child(even) {
+  background: white;
+  transition: all 200ms ease;
+}
+
+table :not(thead) tr:nth-child(odd) {
+  background: #f1f1f1;
+}
+
+table :not(thead) tr:hover {
+  background: #FAE2C3;
+  filter: saturate(1.6) brightness(0.95) contrast(1.1);
+}

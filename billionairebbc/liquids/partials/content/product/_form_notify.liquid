@@ -1,0 +1,25 @@
+<form class="notify-when-arrives" id="form-notify" data-form-notify data-webform>
+  <fieldset class="form-wrapper">
+    <input type="hidden" name="key" value="{{ current_shop.subdomain }}-avise-me">
+    <input type="hidden" name="sku" value="{{ product.variants[0].sku }}">
+    <input type="hidden" name="nome" value="{{ product.name }}">
+    <input type="hidden" name="url" value="{{ product.url }}">
+    <input type="hidden" name="referencia" value="{{ product.reference }}">
+    <input name="reply_to" type="hidden" value=""/>
+
+    <input type="text" name="vnda" tabindex="-1" autocomplete="off" required />
+
+    <label class="notify-title" for="email-notify-when-arrives">Avise-me quando chegar</label>
+
+    <div class="field">
+      <input class="input" id="email-notify-when-arrives" name="email" placeholder="seu email" required type="email">
+      <button aria-label="Enviar e-mail para receber o aviso de disponível" class="action button-default -outlined" type="button">Enviar</button>
+    </div>
+
+    <div class="messages" data-msg-retorno>
+      <p class="msg-received" data-msg></p>
+      <p class="msg-received msg-error" data-msg-error>Problema ao enviar, tente novamente.</p>
+      <p class="msg-received msg-success" data-msg-success>Você receberá um e-mail quando o produto estiver disponível</p>
+    </div>
+  </fieldset>
+</form>

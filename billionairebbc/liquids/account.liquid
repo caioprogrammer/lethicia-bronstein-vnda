@@ -1,0 +1,38 @@
+{% load_credits %}
+
+{% head %}
+<title>Minha Conta - {{ current_shop.name }}</title>
+<meta content="Minha Conta - {{ current_shop.name }}" name="description"/>
+
+<link href="/pages/account.css" inline rel="stylesheet" type="text/css">
+{% endhead %}
+
+
+<section class="account container">
+  <p class="logout button-default">
+    <a aria-label="Sair da minha conta" href="{{ logout_url }}">Sair</a>
+  </p>
+  <div class="boxed">
+    {% component_account
+        version: "v25"
+        font_family: "Montserrat, sans-serif" 
+        spacing: 0.1 
+        border_radius: 6 
+        primary1_color: "#312f4f" 
+        primary2_color: "#312f4f" 
+        primary3_color: "#312f4f" 
+        accent1_color: "#312f4f" 
+        accent2_color: "#312f4f" 
+        accent3_color: "#312f4f" 
+        text_color: "#312f4f" 
+        secondary_text_color: "#312f4f" 
+        alternate_text_color: "#fff" 
+        canvas_color: "#fff" 
+        border_color: "#e6dbe3" 
+        disabled_color: "#585858" 
+        picker_header_color: "#215A60" 
+        clock_circle_color: "#215A60" 
+        shadow_color: "rgb(0 0 0 / 13%)" 
+      %}
+  </div>
+</section>

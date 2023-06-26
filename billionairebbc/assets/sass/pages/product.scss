@@ -1,0 +1,16 @@
+@import "../base/mixins";
+@import "../content/product/secondary_infos";
+@import "../content/product/banner";
+@import "../content/product/group_shop";
+@import "../components/carousel";
+
+
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    /* text-decoration: underline; */
+    border-bottom: 1px solid;
+    margin-bottom: 1.125rem;
+}

@@ -1,0 +1,26 @@
+{% assign video_variants_ids = video.variant_ids %}
+{% assign sku_status = '' %}
+{% assign video_skus = '' %}
+
+{% for variant in product.variants %}
+  {% if video_variants_ids contains variant.id %}
+    {% assign video_skus = video_skus | append: variant.sku | append: ',' %}
+  {% endif %}
+{% endfor %}
+
+{% if video_skus == blank %}
+  {% assign sku_status = 'data-without-sku' %}
+{% else %}
+  {% assign sku_status = 'data-with-sku' %}
+  {% assign data_skus = video_skus | join: ',' | prepend: 'data-skus-image="' | append: ',"' %}
+{% endif %}
+
+{% if video.embed_url contains 'vimeo' %}
+  {% assign parameters = '?autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1' %}
+{% endif %}
+
+<div class="item-image video-{{ forloop.index0 }} swiper-slide" {{ sku_status }} {{ data_skus }} data-image id="product-{{ forloop.index0 }}-video">
+  <div class="video">
+    <iframe aria-label="{{ product.name }} {{ forloop.index }}" alt="{{ product.name }} {{ forloop.index }}" class="swiper-lazy" data-src="{{ video.embed_url }}{{parameters}}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</div>

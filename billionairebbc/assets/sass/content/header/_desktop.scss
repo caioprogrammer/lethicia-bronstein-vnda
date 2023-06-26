@@ -1,0 +1,228 @@
+.menu {
+  display: none;
+  
+  @include media("md") {
+    display: block;
+    width: 70%;
+    padding-left: 2rem;
+  }
+}
+
+.menu .menu-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+}
+
+.menu .menu-list .menu-list-item {
+  margin-right: 1rem;
+  padding: 2.5rem 0;
+  display: flex;
+  align-items: center;
+  height: 6rem;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  .arrow {
+    &::after {
+      content: "";
+      border: solid var(--menu-color, #000);
+      border-width: 0 0 1px 1px;
+      display: inline-block;
+      margin: 3px 3px 3px 8px;
+      padding: 3px;
+      transform: rotate(-45deg);
+    }
+  }
+
+  > .menu-title {
+    color: var(--menu-color, #000);
+    font-size: 1.4rem;
+    font-weight: var(--font-weight-base);
+    padding: 0 0.5rem;
+    transition: var(--transition);
+    position: relative;
+
+    &:hover {
+      opacity: 0.8;
+
+      &:after {
+        opacity: 1;
+        transform: scaleX(1);
+        transition: transform 250ms ease, opacity 250ms ease;
+      }
+    }
+
+    &:after {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      bottom: 0;
+      left: .5%;
+      bottom: -1rem;
+      height: 2px;
+      border: none;
+      width: 100%;
+      opacity: 0;
+      background: currentColor;
+      transform: scaleX(0);
+      transition: transform 250ms ease, opacity 250ms ease;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  > h2.menu-title {
+    cursor: default;
+  }
+}
+
+.menu .menu-list .menu-list-item.has-submenu > .submenu {
+  background-color: var(--white);
+  border-bottom: 1px solid var(--gray-1);
+  border-top: 1px solid var(--gray-1);
+  left: 0;
+  margin-left: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 98%;
+  transition: var(--transition);
+  visibility: hidden;
+  width: 100vw;
+
+  > .content {
+    display: flex;
+    justify-content: space-between;
+    padding: 3rem 5%;
+  }
+
+  > .content .submenu-list {
+    display: flex;
+  }
+
+  > .content > .submenu-list .submenu-list-item {
+    margin-right: 3rem;
+    min-width: 16rem;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    .submenu-title {
+      display: block;
+      font-weight: 700;
+      font-size: var(--font-size-big);
+      margin-bottom: 1rem;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  > .content > .submenu-list .submenu-list-item .sub-list {
+    .sub-list-item {
+      margin-bottom: 1rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  > .content .banner-menu {
+    display: none;
+    width: 25%;
+
+    @include media("md") {
+      display: block;
+    }
+  }
+
+  > .content .banner-menu > .banner {
+    &:hover .image img {
+      transform: scale(1.2);
+    }
+
+    .image {
+      overflow: hidden;
+      position: relative;
+
+      &::before {
+        content: "";
+        display: block;
+        padding-bottom: 68%;
+      }
+
+      img {
+        height: 100%;
+        left: 0;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+    }
+
+    .image img {
+      object-fit: cover;
+      transition: var(--transition);
+      width: 100%;
+    }
+
+    > .text {
+      padding-top: 2rem;
+
+      > h2,
+      > h3,
+      > h4,
+      > h5,
+      > h6 {
+        font-size: 1.8rem;
+        line-height: 1;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    > .arrow {
+      display: block;
+      font-size: 1.3rem;
+      font-weight: 700;
+      padding-top: 1.4rem;
+
+      &::after {
+        border-bottom-width: 2px;
+        border-left-width: 0;
+        border-right-width: 2px;
+      }
+    }
+  }
+
+  > .all-link {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-top: 3rem;
+    padding: 0 5% 3rem;
+
+    &.arrow {
+      &::after {
+        border-bottom-width: 2px;
+        border-left-width: 0;
+        border-right-width: 2px;
+      }
+    }
+  }
+}
+
+.menu .menu-list .menu-list-item:hover {
+  > .submenu {
+    opacity: 1;
+    pointer-events: all;
+    visibility: visible;
+  }
+}

@@ -1,0 +1,22 @@
+{% if product.available %}
+  <p class="price">
+    {% if product.on_sale %}
+      <del>{{ product.price | money_format }}</del>
+      <ins>{{ product | apply_discount | money_format }}</ins>
+    {% else %}
+      {{ product.price | money_format }}
+    {% endif %}
+  </p>
+
+  {% if product.installments.size > 1 %}
+    <p class="installments">
+
+      {% assign without_interest = product.installments | max_without_interest %}
+      {% assign with_interest = product.installments | max_with_interest %}
+
+      ou {{ without_interest.number }}x de {{ without_interest.price | money_format }}
+    </p>
+  {% endif %}
+{% else %}
+  <p class="price">ESGOTADO</p>
+{% endif %}

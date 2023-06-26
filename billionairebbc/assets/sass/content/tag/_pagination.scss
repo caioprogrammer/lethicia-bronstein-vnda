@@ -1,0 +1,40 @@
+.pagination {
+  padding: 0;
+  margin-top: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .pagination-list {
+    display: flex;
+  }
+
+  .pagination-list > .pagination-list-item {
+    list-style: none;
+    font-size: var(--font-size-big);
+    margin: 0 1rem;
+    text-align: center;
+    border: 2px solid transparent;
+    color: var(--black);
+    font-weight: var(--font-weight-title);
+    
+    > span,
+    > a{
+      padding: 0.6rem 1rem;
+    }
+
+    &.-next, &.-prev{
+      border: none;
+    }
+
+    &.-current {
+      border-color: var(--black);
+    }
+
+    .icon {
+      height: 1rem;
+      width: 1rem;
+    }
+  }
+}

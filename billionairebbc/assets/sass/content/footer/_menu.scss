@@ -1,0 +1,58 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+
+  @include media("xs") {
+    margin-bottom: 30px;
+    width: 100%;
+    align-items: center;
+  }
+
+  .menu-item {
+    display: flex;
+    flex-direction: column;
+    margin-right: 75px;
+
+    @include media("xs") {
+      margin-right: 0;
+      align-items: center;
+      margin-bottom: 15px;
+      width: 50%;
+    }
+  }
+
+  .menus-list {
+    display: flex;
+    align-items: flex-start;
+    
+    @include media("xs") {
+      align-items: flex-start;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+  }
+
+  h4 {
+    margin-bottom: 10px;
+    font-weight: 400;
+
+    @include media("xs") {
+      margin-bottom: 5px;
+    }
+  }
+
+  h4,
+  li {
+    white-space: nowrap;
+
+    @include media("xs") {
+      text-align: center;
+    }
+  }
+
+  li {
+    margin-bottom: 5px;
+    font-size: 12px;
+  }
+}

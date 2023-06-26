@@ -1,0 +1,93 @@
+{% gtm product_detail: product %}
+{% head %}
+  {% opengraphfor product %}
+
+  <link href="pages/product_above.css" inline rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="{{ 'pages/product.css' | stylesheet_path }}" media="print" onload="this.media='all'"/>
+{% endhead %}
+
+{% body %}
+  <script src="{{ 'product.js' | javascript_path }}"></script>
+{% endbody %}
+
+{% comment %} ========== {% endcomment %}
+
+{% assign current_product = product %}
+
+{% assign descricao_curta = false %}
+{% assign descricao_parts = false %}
+
+{% if product.description contains '<hr/>' %}
+  {% assign descricao_curta = product.description | split: '<hr/>' | first %}
+  {% assign descricao_parts = product.description | split: '<hr/>' %}
+{% else %}
+  {% assign descricao_curta = product.description %}
+{% endif %}
+
+{% assign tag_medidas = product.tags | where: 'type', 'guia-de-medidas' | first %}
+{% assign relacionado =  product.tags | where: 'type', 'relacionado' | first %}
+
+
+<section class="section product-section container-fluid" data-product-box data-section-product>
+  <div class="product-wrap">
+    <div class="left-container">
+      {% render 'partials/content/product/images/images', product: product %}
+    </div>
+
+    <div class="right-container">
+      <div class="product-infos">
+        <ol class="breadcrumbs"> 
+          <li>
+            <a class="link" href="{{ home_url }}">Home</a>
+            <svg width="10" height="10" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m5 14 7-6.5L5 1" stroke="#000" stroke-linecap="square"/></svg>
+          </li>
+
+          {% for tag in product.tags %}
+            {% if tag.type == "categoria" %}
+              <li>
+                <a class="link" href="/{{ tag.name }}">{{ tag.title }}</a>
+                <svg width="10" height="10" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m5 14 7-6.5L5 1" stroke="#000" stroke-linecap="square"/></svg>
+              </li>
+              {% break %}
+            {% endif %}
+          {% endfor %}   
+          
+          <li>
+            <span class="link current">{{ product.name }}</span>
+          </li>
+        </ol>
+        {% 
+        render 'partials/content/product/infos/infos', 
+          product: product, 
+          descricao_curta: descricao_curta, 
+          tag_medidas: tag_medidas, 
+          current_shop: current_shop, 
+          home_url: home_url 
+        %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% if descricao_parts %}
+  <div class="secondary-infos container">
+    {% render 'partials/content/product/secondary_infos', product: product, descricao_parts: descricao_parts %}
+  </div>
+{% endif %}
+
+{% render 'partials/content/product/banner', current_product: product %}
+{% render 'partials/content/product/group_shop', current_product: product %}
+
+{% if relacionado %}
+  {% render 'partials/components/carousel', tag_name: relacionado.name, current_product: product %}
+{% endif %}
+
+{% render 'partials/content/product/size_guide', product: product, tag_medidas: tag_medidas %}
+
+{% comment %} Popula com as variants dos produtos para o comportamento de seleção de variants {% endcomment %}
+{% body %}
+  <script>
+    window.mainProduct = {{ product.id }}
+    productVariants['{{ product.id }}'] = {{ product.variants | to_json }};
+  </script>
+{% endbody %}

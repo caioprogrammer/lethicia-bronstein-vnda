@@ -1,0 +1,42 @@
+@import "../base/mixins";
+@import "../content/header/top_bar";
+
+#header {
+  background-color: var(--white-transparency);
+  position: sticky;
+  top: 0;
+  transition: var(--transition);
+  width: 100%;
+  z-index: 20;
+  height: 6rem;
+
+  @include media('sm') {
+
+    &:hover{
+      background-color: var(--white);
+    }
+  }
+
+  > .content {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    justify-content: space-between;
+
+    .logo-wrapper {
+      display: flex;
+      width: 40%;
+
+      @include media("md") {
+        width: 15%;
+      }
+    }
+
+    @import "../content/header/desktop";
+    @import "../content/header/logo";
+    @import "../content/header/actions";
+  }
+}
+
+@import "../content/header/mobile";

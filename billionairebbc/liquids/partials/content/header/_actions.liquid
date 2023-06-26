@@ -1,0 +1,50 @@
+<div class="actions">
+
+  <div class="search">
+    <span class='open-search' data-toggle-search>
+      <svg class="icon">
+        <use xlink:href="#icon-search"></use>
+      </svg>
+    </span>
+    <div class='wrapper-search' data-search-container>
+      <span class='close-search' data-toggle-search>
+        <svg class="icon">
+          <use href="#icon-close" />
+        </svg>
+      </span>
+      <form class="form-search" action="{{ search_url }}">
+        <input name="q" placeholder="Buscar" required type="search"/>
+        <button aria-label="Pesquisar" class="action" data-action="show-form-search">    
+          <svg class="icon">
+            <use xlink:href="#icon-search"></use>
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="account">
+    <a aria-label="Minha Conta" href="{{ account_url }}">
+      <svg class="icon">
+        <use xlink:href="#icon-account"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="cart">
+    <button aria-label="Abrir carrinho" class="btn-cart" data-toggle-cart type="button">
+      <svg class="icon">
+        <use xlink:href="#icon-cart"/>
+      </svg>
+      <span class="count" data-cart-count>
+        0
+      </span>
+    </button>
+  </div>
+
+  <button aria-label="Abrir menu" class="hamburger" data-action="open-menu-mobile">
+    <svg class="icon">
+      <use href="#icon-hamburger"/>
+    </svg>
+  </button>
+</div>

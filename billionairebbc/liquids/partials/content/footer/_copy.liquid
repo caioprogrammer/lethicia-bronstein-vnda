@@ -1,0 +1,6 @@
+{% load_banners position: 'geral-copyright' %}
+{% for banner in loaded_banners %}
+  <div class="copy">
+    {{ banner.description | replace: '</p>', '' }} | <a href="https://www.vnda.com.br/" target="_blank" class="ass-vnda">Vnda - Tecnologia em Ecommerce</a></p>
+  </div>
+{% endfor %}

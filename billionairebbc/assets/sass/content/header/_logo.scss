@@ -1,0 +1,19 @@
+.logo {
+  max-width: 16rem;
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  img {
+    height: 4rem;
+    width: 14rem;
+    object-fit: contain;
+  }
+
+  @include media("md") {
+    margin: 1rem 0;
+  }
+}

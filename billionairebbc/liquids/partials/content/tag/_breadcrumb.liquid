@@ -1,0 +1,41 @@
+<div class="section breadcrumb container">
+  <nav>
+    <ul class="breadcrumb-list">
+      <li class="breadcrumb-list-item">
+        <a aria-label="Início" class="breadcrumb-link" href="/">
+          Home
+          {% if tag.title  %}
+            <span>
+              <svg class="icon">
+                <use href="#icon-arrow-right"/>
+              </svg>
+            </span>
+          {% endif %}
+        </a>
+      </li>
+
+      {% if parent_tag.name %}
+        <li class="breadcrumb-list-item">
+          <a aria-label="{{ parent_tag.title }}" class="breadcrumb-link" href="/{{ parent_tag.name }}">
+
+            {{ parent_tag.title }}
+
+            <span>
+              <svg class="icon">
+                <use href="#icon-arrow-right"/>
+              </svg>
+            </span>
+          </a>
+        </li>
+      {% endif %}
+
+      {% if tag.name %}
+        <li class="breadcrumb-list-item">
+          <a aria-label="{{ tag.title }}" class="breadcrumb-link" href="/{{ tag.name }}">
+            {{ tag.title }}
+          </a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>

@@ -1,0 +1,72 @@
+{% load_banners position: position_title %}
+{% capture html_title %}
+  {% for banner in loaded_banners %}
+    <div class="header">
+      <h2 class="title">{{ banner.subtitle }}</h2>
+    </div>
+  {% endfor %}
+{% endcapture %}
+
+{% load_banners position: position limit: limit %}
+
+{% capture html_categories %}
+  {% for banner in loaded_banners %}
+    {% assign external = '' %}
+    <div class="category-item" data-aos="fade-up" 
+  {% if forloop.index == 1 %}data-aos-duration="1000"{% endif %}
+    {% if forloop.index == 2 %}data-aos-duration="2000"{% endif %}
+    {% if forloop.index == 3 %}data-aos-duration="3000"{% endif %}
+
+    >
+      {% if banner.file_url != blank %}
+        {% capture data_srcset %}
+          {{ banner.file_url | resize: '360x' }} 360w,
+          {{ banner.file_url | resize: '480x' }} 480w,
+          {{ banner.file_url | resize: '780x' }} 780w,
+          {{ banner.file_url }} 1920w,
+        {% endcapture %}
+
+        {% capture data_sizes %}
+          (max-width: 360px) 360px,
+          (max-width: 767px) 480px,
+          (min-width: 768px) 780px,
+          (min-width: 1920px) 1920px,
+        {% endcapture %}
+
+        <figure class="image -square">
+          <img class="lazy" data-srcset="{{ data_srcset | strip_newlines | strip }}" data-sizes="{{ data_sizes | strip_newlines | strip }}" alt="{{ banner.title }}"/>
+          <div class="skeleton"></div>
+        </figure>
+      {% endif %}
+
+      <div class="text" style="--category-color: {{ banner.color }}">
+        {% if banner.description != blank %}
+          {{ banner.description | replace: '<h3', '<h3 class="upper-title"'| replace: '<h2', '<h2 class="title"' | replace: '<p', '<p class="description"' }}
+        {% endif %}
+
+        {% if banner.url != blank %}
+          {% if banner.external %}
+            {% assign external = "target='_blank'" %}
+          {% endif %}
+
+          {% if banner.subtitle != blank %}
+            <a aria-label="Ir para {{ banner.title }}" class="button-default" href="{{ banner.url }}" {{ external }}>
+              {{ banner.subtitle }}
+            </a>
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %}
+{% endcapture %}
+
+{% if loaded_banners.size > 0 %}
+  <section class="section categories">
+
+    {{ html_title }}
+
+    <div class='categories-wrapper'>
+      {{ html_categories }}
+    </div>
+  </section>
+{% endif %}

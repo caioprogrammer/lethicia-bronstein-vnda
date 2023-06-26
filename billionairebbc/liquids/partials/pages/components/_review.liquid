@@ -1,0 +1,42 @@
+{% load_banners position: position %}
+{% for banner in loaded_banners %}
+  {% capture html_depoimentos %}
+    {{ html_depoimentos }}
+    <div class="item">
+      <div class="top">
+        {{ banner.description }}
+      </div>
+      <div class="bottom">
+        <div class="left">
+          <div class="lazyload-container square">
+            <img class="lazy" data-src="{{ banner.file_url | resize: '150x' }}" alt="{{ banner.title }}">  
+            <div class="skeleton"></div>
+          </div>
+        </div>
+        <div class="right">
+          {% if banner.subtitle contains '|' %}
+            {% assign name = banner.subtitle | split: '|' | first %}
+            {% assign subtitle = banner.subtitle | split: '|' | last %}
+          {% else %}
+            {% assign name = banner.subtitle %}
+          {% endif %}
+          <p class="name">{{ name }}</p>
+          {% if subtitle %}
+            <p class="subtitle">{{ subtitle }}</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endcapture %}
+{% endfor %}
+
+{% assign html_depoimentos = html_depoimentos | strip %}
+
+{% if html_depoimentos != blank %}
+<div class="container depoimentos">
+  <h2 class="title">Depoimentos</h2>
+  <div class="content-depoimentos">
+    {{ html_depoimentos }}
+  </div>
+</div>
+{% endif %}

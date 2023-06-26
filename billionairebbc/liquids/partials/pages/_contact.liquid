@@ -1,0 +1,89 @@
+{% head %}
+  <link href="/pages/institucional/contact.css" inline rel="stylesheet" type="text/css">
+{% endhead %}
+
+{% assign position_primary_full = page.slug | append: '-banner-principal' %}
+{% render 'partials/pages/components/page_fullbanner', page: page, position: position_primary_full, background: false, type: '-custom' %}
+
+<div class="container content">
+  {% load_banners position: 'contato-texto' %}
+  {% for banner in loaded_banners %}
+    <div class="text">
+      {{ banner.description | replace: '<h2', '<h2 class="title"' | replace: '<h1', '<h2 class="title"' }}
+    </div>
+  {% endfor %}
+  <div class="infos">
+    <div class="address">
+      {% load_banners position: 'geral-endereco' %}
+      {% for banner in loaded_banners %}
+        <div class="item">
+          <div class="left">
+            <img class="lazy" data-src="{{ banner.file_url | resize: '150x' }}" alt="{{ banner.title }}">
+            <div class="skeleton"></div>
+          </div>
+          <div class="right">
+            {{ banner.description }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="telefone">
+      {% load_banners position: 'geral-telefone' %}
+      {% for banner in loaded_banners %}
+        <div class="item">
+          <div class="left">
+            <img class="lazy" data-src="{{ banner.file_url | resize: '150x' }}" alt="{{ banner.title }}">
+            <div class="skeleton"></div>
+          </div>
+          <div class="right">
+            {{ banner.description }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="horario">
+      {% load_banners position: 'geral-horario' %}
+      {% for banner in loaded_banners %}
+        <div class="item">
+          <div class="left">
+            <img class="lazy" data-src="{{ banner.file_url | resize: '150x' }}" alt="{{ banner.title }}">
+            <div class="skeleton"></div>
+          </div>
+          <div class="right">
+            {{ banner.description }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% load_banners position: 'contato-mapa' %}
+  {% for banner in loaded_banners %}
+    <div class="mapa">
+      {{ banner.description }}
+    </div>
+  {% endfor %}
+  <div class="form">
+    <h2 class="title">Fale Conosco</h2>
+    <form data-webform="contact" id="contact-form">
+      <fieldset form="contact-form">
+        <input type="hidden" name="key" value="{{ current_shop.subdomain }}-contato">
+        <input type="hidden" name="reply_to" id="reply_to" value="">
+        <input type="text" name="vnda" tabindex="-1" autocomplete="off" required />
+        <input type="text" name="nome" placeholder="Nome" required>
+        <input type="email" name="email" placeholder="E-mail" required>
+        <textarea name="mensagem" placeholder="Mensagem" rows="5" required></textarea>
+        <button class="button-default action" type="button" data-webform-button>Enviar contato</button>        
+      </fieldset>
+
+      <div class="messages" data-msg-retorno>
+        <span class="msg-received" data-msg></span>
+        <span class="msg-received msg-success" data-msg-success>
+          Obrigado! Enviado com sucesso.
+        </span>
+        <span class="msg-received msg-error" data-msg-error>
+          Problema ao enviar, tente novamente.
+        </span>
+      </div>
+    </form>
+  </div>
+</div>
