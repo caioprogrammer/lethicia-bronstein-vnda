@@ -1,0 +1,86 @@
+// Nota: o REM nesta loja foi alterado para ser 1rem = 10px, afim de facilitar o uso da unidade de medida.
+// O cart_drawer não considera isso, então estes resets alteram algumas propriedades para que fiquem com a proporção
+// original, que foi montada considerando 1rem = 16px;
+
+#component-popup-newsletter-root {
+  // retira pelicula branca de cima da imagem
+  .image-box > div:after {
+    opacity: 0;
+  }
+
+  // regulariza tamanhos de acordo com 1rem == 10px
+
+  // botã de fechar a newsletter
+  .cmp-newsletter-popup-2de3IYL6pfqD7JbmRpegCC {
+    height: 3rem;
+    width: 3rem;
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+    margin: 1rem;
+  }
+
+  // wrapper text box
+  .cmp-newsletter-popup-24VucyBC37Z4CYwIpXpV5X {
+    padding: 3rem;
+
+    // título
+    > h2 {
+      font-size: 2.8rem;
+      line-height: 3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    // descrição
+    > p {
+      font-size: 1.4rem;
+      line-height: 1.5;
+    }
+
+    // formulário
+    .cmp-newsletter-popup-2xAs6q-U517OsmRyLtvFtq {
+      margin-top: 2rem;
+
+      // fieldset
+      .cmp-newsletter-popup-3HX15VdvKOso8FyXk1YH8F {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+
+      // label do input
+      label {
+        font-size: 1.3rem;
+        font-weight: bold;
+      }
+
+      // input
+      .cmp-newsletter-popup-2jqxtRR-PdOFNXZNbLC0rQ {
+        height: 4.2rem;
+        font-size: 1.3rem;
+        padding: 1rem;
+        margin-top: 0.5rem;
+      }
+
+      // estilo do botão
+      .button-newsletter {
+        @extend %button-default;
+
+        margin-top: 2rem;
+        width: 100%;
+      }
+
+      // botão com classe de enviado {
+      .cmp-newsletter-popup-7uhFyoUtLY5MRJevX7QUE svg {
+        background: var(--primary-color);
+        width: 100%;
+        left: 0;
+      }
+
+      // mensagem de sucesso
+      > p {
+        font-size: 1.3rem;
+        text-align: center;
+        font-weight: bold;
+      }
+    }
+  }
+}

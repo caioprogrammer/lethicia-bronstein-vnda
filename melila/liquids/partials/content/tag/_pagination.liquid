@@ -1,0 +1,63 @@
+<div class="pagination">
+  {% if infinity == blank %}
+    <ul class="pagination-list">
+      {% if pagination.prev_url and pagination.current_page != 1 %}
+        <li class="pagination-list-item -prev">
+          <a aria-label="Página nterior" href="{{ pagination.prev_url }}">
+            <svg class="icon">
+              <use xlink:href="#icon-arrow-left"/>
+            </svg>
+          </a>
+        </li>
+      {% endif %}
+
+      {% for page in pagination.pages  %}
+        {% if current_url == page.url %}
+          <li class="pagination-list-item -current">
+            <span>{{ page.number }}</span>
+          </li>
+        {% else %}
+          <li class="pagination-list-item">
+            <a aria-label="Página atual" href="{{ page.url }}">
+              <span>{{ page.number }}</span>
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+
+      {% if pagination.next_url and pagination.current_page != pagination.total_pages %}
+        <li class="pagination-list-item -next">
+          <a aria-label="Próximo página" href="{{ pagination.next_url }}" title="Próximo">
+            <svg class="icon">
+              <use xlink:href="#icon-arrow-right"/>
+            </svg>
+          </a>
+        </li>
+      {% endif %}
+    </ul>
+  {% elsif infinity %}
+    <script>
+      var arrPages = [];
+      {% for arr_pages in pagination.pages %}
+        arrPages.push({
+          url: "{{ arr_pages.url | replace: 'http://', 'https://' }}",
+          number: {{ arr_pages.number }}
+        })
+      {% endfor %}
+    
+      window._pagination = {
+        totalPages: {{ pagination.total_pages }},
+        currentPage: 1,
+        prevPage: false,
+        nextPage: true,
+        pages: arrPages,
+        prevUrl: '{{ pagination.prev_url | replace: "http://", "https://" }}',
+        nextUrl: '{{ pagination.next_url | replace: "http://", "https://" }}'
+      }
+    </script>
+
+    <button aria-label="Carregar mais produtos" class="button-default -outlined" data-load-more type="button">
+      VEJA MAIS +
+    </button>
+  {% endif %}
+</div>

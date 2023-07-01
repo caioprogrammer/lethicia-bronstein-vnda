@@ -1,0 +1,44 @@
+{% load_banners position: position limit: limit %}
+
+{% if loaded_banners.size > 0 %}
+  <section class="section hightlights container">
+    {% for banner in loaded_banners %}
+      <div class="hightlight-item">
+        {% capture data_srcset %}
+          {{ banner.file_url | resize: '260x' }} 320w,
+          {{ banner.file_url | resize: '350x' }} 450w,
+          {{ banner.file_url | resize: '450x' }} 768w,
+          {{ banner.file_url | resize: '650x' }} 1024w,
+          {{ banner.file_url | resize: '850x' }} 1440w,
+          {{ banner.file_url }} 1920w,
+        {% endcapture %}
+
+        {% capture data_sizes %}
+          (max-width: 320px) 320px,
+          (max-width: 450px) 450px,
+          (max-width: 768px) 768px,
+          (max-width: 1024px) 1024px,
+          (max-width: 1440px) 1440px,
+          (min-width: 1920px) 1920px,
+        {% endcapture %}
+
+        <figure class="image -custom">
+          <img class="lazy" data-srcset="{{ data_srcset | strip_newlines | strip }}" data-sizes="{{ data_sizes | strip_newlines | strip }}" alt="{{ tag.title }}"/>
+          <div class="skeleton"></div>
+        </figure>
+
+        <div class="text">
+          {% if banner.description != blank %}
+            {{ banner.description | replace: '<h3', '<h3 class="upper-title"'| replace: '<h2', '<h2 class="title"' | replace: '<p', '<p class="description"' }}
+          {% endif %}
+
+          {% if banner.subtitle != blank %}
+            <a aria-label="Ir para {{ banner.title }}" class="button-default" {% if banner.color != blank %} style="--hl-color: {{ banner.color }}" {% endif %} {% if banner.external %} target="_blank" {% endif %} href="{{ banner.url }}">
+              {{ banner.subtitle }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </section>
+{% endif %}

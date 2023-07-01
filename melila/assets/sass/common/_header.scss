@@ -1,0 +1,55 @@
+@import "../base/mixins";
+
+@import "../content/header/top_bar";
+@import "../content/header/desktop";
+@import "../content/header/mobile";
+
+#header {
+  background-color: var(--white);
+  position: sticky;
+  top: 0;
+  transition: var(--transition);
+  width: 100%;
+  z-index: 20;
+
+  &:not(.on-top) {
+    .content {
+      position: relative;
+    }
+    .search {
+      // display: none;
+    }
+    .menu {
+      // position: absolute;
+      // top: 0;
+    }
+  }
+
+  > .content {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+
+    @include media("md") {
+      justify-content: space-between;
+      padding-bottom: 1rem;
+    }
+
+    .hamburger-logo {
+      display: flex;
+      width: 85%;
+
+      @include media("md") {
+        width: 25%;
+
+        .hamburger {
+          display: none;
+        }
+      }
+    }
+
+    @import "../content/header/logo";
+    @import "../content/header/search";
+    @import "../content/header/actions";
+  }
+}

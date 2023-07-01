@@ -1,0 +1,79 @@
+@import "../base/mixins";
+
+.footer {
+  // background-color: var(--primary-color);
+  background-color: #f47e62;
+  color: var(--white);
+  font-weight: normal;
+  position: relative;
+
+  > .content {
+    display: grid;
+    grid-gap: 1rem;
+    padding-left: 5%;
+    padding-right: 5%;
+
+    grid-template-areas:
+      // "banner"
+      "newsletter"
+      "social"
+      "paragraph"
+      "categories"
+      "payment"
+      "signature";
+
+    grid-template-rows: 0fr 0.8fr 0.3fr 0.5fr auto 0.3fr 0fr;
+    grid-template-columns: 1fr;
+
+    @include media("sm") {
+      grid-template-areas:
+        "newsletter newsletter"
+        "social social"
+        "paragraph paragraph"
+        "categories categories"
+        "payment payment"
+        "signature signature";
+
+      grid-template-rows: 1fr 0.5fr 0.5fr auto 0.5fr 0fr;
+      grid-template-columns: 1.5fr 0.5fr;
+    }
+
+    @include media("md") {
+      grid-template-areas:
+      "newsletter newsletter newsletter "
+      "social social social"
+      "paragraph categories categories"
+      "payment payment payment"
+      "signature signature signature";
+      grid-template-rows: 0.8fr 0.5fr 1fr 0.5fr 0fr;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    > .main-banner {
+      grid-area: banner;
+      left: auto;
+      position: absolute;
+      top: -2rem;
+      right: 2rem;
+      width: fit-content;
+
+      @include media("sm") {
+        left: 5%;
+        top: -3rem;
+        margin: 0;
+      }
+    }
+
+    > .main-banner .image {
+      height: 12rem;
+      width: 12rem;
+    }
+
+    @import "../content/footer/newsletter";
+    @import "../content/footer/social";
+    @import "../content/footer/paragraph";
+    @import "../content/footer/categories";
+    @import "../content/footer/payment";
+    @import "../content/footer/signature";
+  }
+}

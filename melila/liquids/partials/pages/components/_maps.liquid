@@ -1,0 +1,67 @@
+<div class="location">
+  <div class="store-locator-wrapper">
+    <div class="store-locator-inner">
+      <div class="store-finder-search-container tbs-form">
+        <form action="#" data-find-places-form="">
+
+          <div class="store-finder-input-wrapper">
+            <label class="store-finder-label" for="pac-input">REVENDAS PRÓXIMAS:</label>
+            <a aria-label="Lojas próxima de mim" class="store-finder-geo-button button-default" data-geolocation type="button">Minha Localização</a>
+            <input aria-label="Procure na sua cidade" class="store-finder-input" id="pac-input" name="placesSearch" placeholder="Procure na sua cidade" type="text" value="">
+          </div>
+
+          <div class="store-finder-country-dropdown">
+            <label class="store-finder-label" for="select-states">ESTADO:</label>
+            <div class="box-select">
+              <select data-select-states="" id="select-states" name="states"></select>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="toggle-content-mobile">
+        <button aria-label="Ver lista de lojas" class="button-default" data-open-list type="button">
+          Ver lista
+        </button>
+        <button aria-label="Abrir mapa" class="button-default" data-open-map type="button">
+          Abrir Mapa
+        </button>
+      </div>
+
+      <div class="ups-results-container">
+        <div class="tab-content" tbs-store-finder-results-pane="">
+          <div class="tab-pane pane-open map-pane" data-results-map id="content1" role="tabpanel">
+            <div class="map-canvas" data-lat="46" data-lng="4" data-zoom="6" id="map-canvas"></div>
+          </div>
+
+          <div class="tab-pane result-pane ups-points-results-tab open" data-results-places="" id="content0" role="tabpanel" style="left: 0px;">
+            <div class="ups-points-results">
+              <p class="found-total" data-results-places-count="">0 Lojas encontradas</p>
+              <ul class="store-finder-list" data-results-places-list=""></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% body %}
+{% assign api_key_maps = 'AIzaSyAx_HWsg0rU6a9_sx86H4NRlKZIwRKcZxo' %}
+
+<script src="{{ 'storeFinder.js' | javascript_path }}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{ api_key_maps }}&libraries=places"></script>
+
+{% assign token_places = '' %}
+
+{% if environment == "production" %}
+  {% assign token_places = 'bc9f500bb66905438365d3e9c7f50779' %}
+{% else %}
+  {% assign token_places = 'fd3ee8a6ecafa27b48cef35d7f159c49' %}
+{% endif %}
+
+<input type="hidden" data-value="{{ environment }}">
+
+<script src="{{ 'markerClusterer.js' | javascript_path }}"></script>
+<script src="{{ 'markerWithLabel.min.js' | javascript_path }}"></script>
+{% endbody %}

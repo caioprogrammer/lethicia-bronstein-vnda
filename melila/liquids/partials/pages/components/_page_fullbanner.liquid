@@ -1,0 +1,49 @@
+{% load_banners position: position limit: 1 %}
+
+{% for banner in loaded_banners %}
+  {% if banner.file_url == blank %}
+    {% assign no_image = '-imageless' %}
+  {% endif %}
+
+  <section class="section page-fullbanner {{ no_image }}">
+    {% if banner.file_url != blank %}
+      {% capture data_srcset %}
+        {{ banner.file_url | resize: '350x' }} 350w,
+        {{ banner.file_url | resize: '600x' }} 767w,
+        {{ banner.file_url | resize: '800x' }} 991w,
+        {{ banner.file_url | resize: '1280x' }} 1280w,
+        {{ banner.file_url | resize: '1440x' }} 1440w,
+        {{ banner.file_url }} 1920w,
+      {% endcapture %}
+
+      {% capture data_sizes %}
+        (max-width: 350px) 350px,
+        (max-width: 767px) 767px,
+        (max-width: 991px) 991px,
+        (max-width: 1280px) 1280px,
+        (max-width: 1440px) 1440px,
+        (max-width: 1920px) 1920px,
+      {% endcapture %}
+
+      <figure class="image {{ type }}">
+        <img alt="{{ banner.title }}" srcset="{{ data_srcset | strip_newlines | strip }}" sizes="{{ data_sizes | strip_newlines | strip }}"/>
+      </figure>
+    {% endif %}
+
+    <div class="text {{ no_image }} {% if background %} -white {% endif %}" {% if banner.color != blank %} style="--color: {{ banner.color }}" {% endif %}>
+      {% if banner.subtitle and banner.subtitle != blank %}
+        <span class="upper-title">{{ banner.subtitle }}</span>
+      {% endif %}
+
+      {% if banner.description != blank %}
+        {{ banner.description | replate: '<h1', '<h2 class="title"' | replace: '<h2', '<h2 class="title"' | replace: '<p', '<p class="description"' }}
+      {% endif %}
+    </div>
+  </section>
+{% endfor %}
+
+<p class="page-breadcrumbs container">
+  <a href="/" class="link">Home</a>
+  <span class="divisor">/</span>
+  <span class="link -current">{{ page.title }}</span>
+</p>

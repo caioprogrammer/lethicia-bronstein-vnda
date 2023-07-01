@@ -1,0 +1,25 @@
+.instagram {
+
+  @include media('md') {
+    margin-bottom: 0;
+  }
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  > .swiper {
+    padding-bottom: 6rem;
+
+    @include media('md') {
+      padding-bottom: 0;
+    }
+
+    .swiper-pagination {
+      bottom: 2rem;
+    }
+  }
+}

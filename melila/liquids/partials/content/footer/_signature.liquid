@@ -1,0 +1,15 @@
+{% load_banners position: 'geral-infos-loja' %}
+
+<div class="signature">
+  {% for banner in loaded_banners limit: 1 %}
+    <p>
+      {{ banner.subtitle }}
+    </p>
+  {% endfor %}
+
+  <p>
+    <a aria-label="Ir para o site da Vnda" href="//www.vnda.com.br" rel="noopener" target="_blank">
+      Vnda - Tecnologia em E-commerce
+    </a>
+  </p>
+</div>

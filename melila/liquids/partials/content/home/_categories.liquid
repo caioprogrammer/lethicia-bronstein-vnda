@@ -1,0 +1,50 @@
+{% load_banners position: position limit: limit %}
+
+{% if loaded_banners.size > 0 %}
+  <section class="section categories container">
+    {% for banner in loaded_banners %}
+      {% assign external = '' %}
+
+      <div class="category-item">
+        {% if banner.file_url != blank %}
+          {% capture data_srcset %}
+            {{ banner.file_url | resize: '360x' }} 360w,
+            {{ banner.file_url | resize: '480x' }} 480w,
+            {{ banner.file_url | resize: '780x' }} 780w,
+            {{ banner.file_url }} 1920w,
+          {% endcapture %}
+
+          {% capture data_sizes %}
+            (max-width: 360px) 360px,
+            (max-width: 767px) 480px,
+            (min-width: 768px) 780px,
+            (min-width: 1920px) 1920px,
+          {% endcapture %}
+
+          <figure class="image -horizontal">
+            <img class="lazy" data-srcset="{{ data_srcset | strip_newlines | strip }}" data-sizes="{{ data_sizes | strip_newlines | strip }}" alt="{{ banner.title }}"/>
+            <div class="skeleton"></div>
+          </figure>
+        {% endif %}
+
+        <div class="text" {% if disable_background %} style="background: none;" {% endif %}>
+          {% if banner.description != blank %}
+            {{ banner.description | replace: '<h3', '<h3 class="upper-title"'| replace: '<h2', '<h2 class="title"' | replace: '<p', '<p class="description"' }}
+          {% endif %}
+
+          {% if banner.url != blank %}
+            {% if banner.external %}
+              {% assign external = "target='_blank'" %}
+            {% endif %}
+
+            {% if banner.subtitle != blank %}
+              <a aria-label="Ir para {{ banner.title }}" class="arrow" href="{{ banner.url }}" {{ external }}>
+                {{ banner.subtitle }}
+              </a>
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </section>
+{% endif %}

@@ -1,0 +1,37 @@
+.seo {
+  > .text {
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+
+    @include media("sm") {
+      max-width: 50%;
+    }
+
+    > .arrow {
+      color: var(--primary-color);
+      display: block;
+      font-size: var(--font-size-big);
+      font-weight: 700;
+      margin-top: 2rem;
+      transition: var(--transition);
+      text-transform: uppercase;
+
+      &:hover {
+        transform: translateX(1.5rem);
+      }
+
+      &:after {
+        content: "";
+        display: inline-block;
+        padding: 3px;
+        transform: rotate(-45deg);
+        border-width: 0 2px 2px 0;
+        margin: 3px 3px 1px 8px;
+        border-color: var(--primary-color);
+        border-style: solid;
+        transition: var(--transition);
+      }
+    }
+  }
+}

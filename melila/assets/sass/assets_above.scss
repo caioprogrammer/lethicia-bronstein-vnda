@@ -1,0 +1,57 @@
+@import "./base/mixins";
+
+// Mmenu Light
+@import "../../node_modules/mmenu-light/src/mmenu-light.scss";
+
+// Swiper
+$themeColor: var(--primary-color);
+$colors: (
+  "white": var(--white),
+  "black": var(--primary-color),
+);
+
+@import "../../node_modules/swiper/swiper.scss";
+@import "../../node_modules/swiper/modules/navigation/navigation.scss";
+@import "../../node_modules/swiper/modules/pagination/pagination.scss";
+@import "../../node_modules/swiper/modules/lazy/lazy.scss";
+@import "../../node_modules/swiper/modules/zoom/zoom.scss";
+
+.swiper-button-next,
+.swiper-button-prev {
+  --swiper-navigation-size: 1.5rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 50%;
+  height: 3.5rem;
+  width: 3.5rem;
+
+  &:after {
+    font-weight: bold;
+  }
+}
+
+.swiper-button-next {
+  padding: 0.5rem 0.5rem 0.5rem 0.8rem;
+}
+.swiper-button-prev {
+  padding: 0.5rem 0.8rem 0.5rem 0.5rem;
+}
+
+.swiper-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80% !important;
+  left: 10% !important;
+}
+
+.swiper-pagination-bullet {
+  border: 1px solid var(--primary-color) !important;
+  background: transparent !important;
+  opacity: 1 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--primary-color) !important;
+  height: 10px !important;
+  width: 10px !important;
+}

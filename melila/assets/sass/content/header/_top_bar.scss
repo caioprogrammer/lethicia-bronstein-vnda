@@ -1,0 +1,29 @@
+.top-bar {
+  background: var(--bg-top-bar, #f47e62);
+  height: 2.8rem;
+  text-align: center;
+  padding: 0.5rem 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+
+  a,
+  p {
+    color: var(--white);
+    font-size: var(--font-size-small);
+  }
+
+  > .close {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: var(--white);
+    font-size: 1.6rem;
+    right: 5%;
+  }
+}

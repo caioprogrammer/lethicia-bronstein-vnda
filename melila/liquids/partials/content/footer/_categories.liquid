@@ -1,0 +1,39 @@
+{% load_menus position: 'rodape' %}
+
+{% assign togglable = false %}
+
+<div class="categories">
+  {% for menu in loaded_menus %}
+    {% assign hasChildren = '' %}
+
+    {% if menu.children %}
+      {% assign hasChildren = '-has-children' %}
+    {% endif %}
+
+    <div class="category {{ hasChildren }}" {% if menu.children %} data-action="toggle-menu-footer" {% endif %}>
+      <h3 class="category-title">
+        {% if menu.url != '#' %}
+          <a aria-label="Ir para o menu {{ menu.title }}" href="{{ menu.url }}">{{ menu.title }}</a>
+        {% else %}
+          {{ menu.title }}
+        {% endif %}
+
+        {% if menu.children %}
+          <div class="arrow -down"></div>
+        {% endif %}
+      </h3>
+
+      {% if menu.children %}
+        <ul class="menu-footer" data-action="toggle-menu">
+          {% for menu in menu.children %}
+            <li class="menu-footer-item">
+              <a aria-label="Menu {{ menu.title }}" classs="menu-footer-title" href="{{ menu.url }}" {% if menu.external %} rel="external" target="_blank" {% endif %}>
+                {{ menu.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>

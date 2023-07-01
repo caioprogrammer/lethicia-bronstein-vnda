@@ -1,0 +1,206 @@
+// Nota: o REM nesta loja foi alterado para ser 1rem = 10px, afim de facilitar o uso da unidade de medida.
+// O cart_drawer não considera isso, então estes resets alteram algumas propriedades para que fiquem com a proporção
+// original, que foi montada considerando 1rem = 16px;
+
+#component-cart-drawer-root > .vnda-cart-drawer {
+  .cart-drawer-z-50 {
+    z-index: 999 !important;
+  }
+
+  .cart-drawer-content {
+    max-width: 44.8rem !important;
+  }
+
+  // ------------------------------------------------
+  // WIDTH / HEIGHT
+  // ------------------------------------------------
+  .cart-drawer-w-3 {
+    width: 1.4rem;
+  }
+
+  .cart-drawer-w-5 {
+    width: 2rem;
+  }
+
+  .cart-drawer-w-6 {
+    width: 2.4rem;
+  }
+
+  .cart-drawer-w-24 {
+    width: 9.6rem;
+  }
+
+  .cart-drawer-h-3 {
+    height: 1.2rem;
+  }
+
+  .cart-drawer-h-5 {
+    height: 2rem;
+  }
+
+  .cart-drawer-h-6 {
+    height: 2.4rem;
+  }
+
+  // ------------------------------------------------
+  // MARGENS
+  // ------------------------------------------------
+  .cart-drawer-mt-1 {
+    margin-top: 0.4rem;
+  }
+
+  .cart-drawer-ml-2 {
+    margin-left: 0.8rem;
+  }
+
+  .cart-drawer-mb-3 {
+    margin-bottom: 1.2rem;
+  }
+
+  .cart-drawer-mx-4 {
+    margin-left: 1.6rem;
+    margin-right: 1.6rem;
+  }
+
+  .cart-drawer-my-1 {
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .cart-drawer-my-2 {
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  // ------------------------------------------------
+  // PADDINGS
+  // ------------------------------------------------
+  .cart-drawer-p-1 {
+    padding: 0.4rem;
+  }
+
+  .cart-drawer-p-2 {
+    padding: 0.8rem;
+  }
+
+  .cart-drawer-p-4 {
+    padding: 1.6rem;
+  }
+
+  .cart-drawer-pt-1 {
+    padding-top: 0.4rem;
+  }
+
+  .cart-drawer-pt-2 {
+    padding-top: 0.8rem;
+  }
+
+  .cart-drawer-pt-3 {
+    padding-top: 1.2rem;
+  }
+
+  .cart-drawer-pb-2 {
+    padding-bottom: 0.8rem;
+  }
+
+  .cart-drawer-px-1 {
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+  }
+  .cart-drawer-px-2 {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
+
+  .cart-drawer-px-4 {
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+  }
+
+  .cart-drawer-py-2 {
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+  }
+
+  // ------------------------------------------------
+  // TEXTOS
+  // ------------------------------------------------
+  .cart-drawer-text-xs {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+  }
+
+  .cart-drawer-text-sm {
+    font-size: 1.3rem;
+    line-height: 2rem;
+  }
+
+  .cart-drawer-text-lg {
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+  }
+
+  // ------------------------------------------------
+  // BORDER RADIUS
+  // ------------------------------------------------
+  .cart-drawer-rounded-sm {
+    border-radius: 0.2rem;
+  }
+
+  .cart-drawer-rouded-md {
+    border-radius: 0.6rem;
+  }
+
+  .cart-drawer-focusable {
+    border-radius: 0.4rem;
+  }
+}
+
+// Estilo custom cart drawer
+#cart-drawer-el {
+  --color-highlight: 235, 184, 199;
+
+  background-color: #ffffff8c;
+
+  .cmp-cart-drawer-free-shipping-progress-complete {
+    background-color: var(--primary-color);
+  }
+
+  .cart-drawer-tracking-tight > div:first-child {
+    margin-left: 0;
+    margin-right: 0;
+
+    img {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .cart-drawer-tracking-tight > div:last-child {
+    flex: 1;
+  }
+
+  .cart-drawer-outline input:focus-within ~ label,
+  .cart-drawer-outline input:not(:placeholder-shown) ~ label,
+  .cart-drawer-outline textarea:focus-within ~ label,
+  .cart-drawer-outline textarea:not(:placeholder-shown) ~ label {
+    --tw-translate-y: -1.4rem !important;
+  }
+
+  .card-drawer-cta {
+    background-color: var(--primary-color);
+    border-radius: 3px;
+    color: var(--white);
+    display: flex;
+    font-size: var(--font-size-button);
+    font-weight: var(--font-weight-button);
+    height: 4.2rem;
+    justify-content: space-between;
+    text-transform: uppercase;
+    width: 100%;
+
+    &:hover {
+      background-color: var(--secondary-color);
+    }
+  }
+}

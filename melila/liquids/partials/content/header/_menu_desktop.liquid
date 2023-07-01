@@ -1,0 +1,62 @@
+{% if menu.children.size > 0 %}
+  <li class="menu-list-item has-submenu" {% if menu.tooltip %} style="--menu-color: {{ menu.tooltip }};" {% endif %}>
+    {% if menu.url == "#" %}
+      <h2 class="menu-title arrow">{{ menu.title }}</h2>
+    {% else %}
+      <a aria-label="Menu {{ menu.title }}" class="menu-title arrow" href="{{ menu.url }}" {% if menu.external %} target="_blank" {% endif %}>
+        {{ menu.title }}
+      </a>
+    {% endif %}
+
+    <div class="submenu">
+      <div class="content">
+        <ul class="submenu-list">
+          {% for sub_item in menu.children %}
+            {% if sub_item.children.size > 0 %}
+              <li class="submenu-list-item has-submenu">
+                {% if sub_item.url == "#" %}
+                  <h2 class="submenu-title">{{ sub_item.title }}</h2>
+                {% else %}
+                  <a aria-label="Submenu {{ menu.title }}" class="submenu-title" href="{{ sub_item.url }}" {% if sub_item.external %} target="_blank" {% endif %}>
+                    {{ sub_item.title }}
+                  </a>
+                {% endif %}
+
+                <ul class="sub-list">
+                  {% for subsub_item in sub_item.children %}
+                    <li class="sub-list-item">
+                      <a aria-label="Submenu {{ menu.title }}" href="{{ subsub_item.url }}" {% if subsub_item.external %} target="_blank" {% endif %}>
+                        {{ subsub_item.title }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </li>
+            {% else %}
+              <li class="submenu-list-item">
+                <a aria-label="Submenu {{ menu.title }}" class="submenu-title" href="{{ sub_item.url }}" {% if sub_item.external %} target="_blank" {% endif %}>
+                  {{ sub_item.title }}
+                </a>
+              </li>
+            {% endif %}
+
+          {% endfor %}
+        </ul>
+
+        {% render 'partials/content/header/banner_menu', menu: menu %}
+      </div>
+
+      {% if menu.url != '#' %}
+        <a aria-label="Todos os produtos" class="all-link arrow" href="{{ menu.url }}">
+          TODOS OS PRODUTOS
+        </a>
+      {% endif %}
+    </div>
+  </li>
+{% else %}
+  <li class="menu-list-item" {% if menu.tooltip %} style="--menu-color: {{ menu.tooltip }};" {% endif %}>
+    <a aria-label="Menu {{ menu.title }}" class="menu-title" href="{{ menu.url }}" {% if menu.external %} target="_blank" {% endif %}>
+      {{ menu.title }}
+    </a>
+  </li>
+{% endif %}

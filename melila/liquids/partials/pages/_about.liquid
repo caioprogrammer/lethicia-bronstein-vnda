@@ -1,0 +1,17 @@
+{% head %}
+  <link href="/pages/institucional/about.css" inline rel="stylesheet" type="text/css">
+{% endhead %}
+
+{% assign position_primary_full = page.slug | append: '-banner-principal' %}
+{% assign position_primary_text = page.slug | append: '-banner-conteudo' %}
+{% assign position_secondary_text = page.slug | append: '-banner-conteudo-secundario' %}
+{% assign position_secondary_full = page.slug | append: '-banner-secundario' %}
+{% assign position_syde_by_side = page.slug | append: '-banner-destaque' %}
+{% assign position_review = page.slug | append: '-banner-depoimento' %}
+
+{% render 'partials/pages/components/page_fullbanner', page: page, position: position_primary_full, background: false, type: '-custom' %}
+{% render 'partials/pages/components/content', page: page, position: position_primary_text %}
+{% render 'partials/pages/components/side_by_side', page: page, position: position_syde_by_side %}
+{% render 'partials/pages/components/content', page: page, position: position_secondary_text %}
+{% render 'partials/pages/components/page_fullbanner', page: page, position: position_secondary_full, background: true, type: '-horizontal' %}
+{% render 'partials/pages/components/review', page: page, position: position_review %}

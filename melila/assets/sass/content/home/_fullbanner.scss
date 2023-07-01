@@ -1,0 +1,102 @@
+.fullbanner {
+  position: relative;
+
+  // config text
+  .text {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    max-width: calc(32.5rem + 2rem);
+    padding: 3rem 1rem;
+    color: var(--fb-color, --primary-color);
+    text-align: left;
+
+    @include media("sm") {
+      padding: 4rem;
+      max-width: calc(32.5rem + 8rem);
+    }
+
+    &.left-center,
+    &.left-top,
+    &.left-bottom {
+      left: 5%;
+
+      &.text {
+        align-items: flex-start;
+      }
+    }
+
+    &.right-center,
+    &.right-top,
+    &.right-bottom {
+      right: 5%;
+
+      &.text {
+        align-items: flex-start;
+      }
+    }
+
+    &.center-top,
+    &.center-bottom {
+      left: 50%;
+      text-align: center;
+      transform: translateX(-50%);
+
+      .fulbanner-button {
+        margin-left: auto;
+      }
+    }
+
+    &.right-top,
+    &.left-top,
+    &.center-top {
+      top: 5%;
+    }
+
+    &.right-bottom,
+    &.left-bottom,
+    &.center-bottom {
+      bottom: 5%;
+    }
+
+    &.right-center,
+    &.left-center {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &.center-center {
+      left: 50%;
+      text-align: center;
+      transform: translate(-50%, -50%);
+      top: 50%;
+
+      .fulbanner-button {
+        margin-left: auto;
+      }
+    }
+  }
+
+  .text .button-default {
+    margin-top: 2rem;
+  }
+
+  // swiper config
+  .swiper-button-next {
+    right: 2%;
+  }
+
+  .swiper-button-prev {
+    left: 2%;
+  }
+
+  .swiper-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+  }
+}

@@ -1,0 +1,53 @@
+{% if tag.image_url == blank %}
+  {% assign no_image = '-no-image' %}
+{% endif %}
+
+{% assign description = tag.description %}
+
+{% if tag.title != nil or tag.image_url != blank  %}
+  <div class="banner-topo {{ no_image }} -tag">
+    {% if tag.image_url != blank %}
+      {% capture data_srcset %}
+        {{ tag.image_url | resize: '360x' }} 360w,
+        {{ tag.image_url | resize: '600x' }} 767w,
+        {{ tag.image_url | resize: '800x' }} 991w,
+        {{ tag.image_url | resize: '1280x' }} 1280w,
+        {{ tag.image_url | resize: '1440x' }} 1440w,
+        {{ tag.image_url | resize: '1920x' }} 1920w,
+        {{ tag.image_url }} 2000w
+      {% endcapture %}
+
+      {% capture data_sizes %}
+        (max-width: 360px) 360px,
+        (max-width: 767px) 767px,
+        (max-width: 991px) 991px,
+        (max-width: 1280px) 1280px,
+        (max-width: 1440px) 1440px,
+        (max-width: 1920px) 1920px,
+        (min-width: 1921px) 2000px
+      {% endcapture %}
+      
+      <figure class="image -horizontal">
+        <img alt="{{ banner.title }}" srcset="{{ data_srcset | strip_newlines | strip }}" sizes="{{ data_sizes | strip_newlines | strip }}"/>
+      </figure>
+    {% endif %}
+
+    <div class="text {{ no_image }}">
+      <div class="content">
+        {% if tag.subtitle and tag.subtitle != blank %}
+          <span class="upper-title">{{ tag.subtitle }}</span>
+        {% endif %}
+
+        {% if tag.title != blank %}
+          <h2 class="title">{{ tag.title }}</h2>
+        {% endif %}
+
+        {% if tag.description != blank and tag.type != "flag" %}
+          <p class="description">
+            {{ tag.description | strip_html }}
+          </p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endif %}

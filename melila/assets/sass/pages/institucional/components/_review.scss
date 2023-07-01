@@ -1,0 +1,40 @@
+.review .review-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+
+  .review-item {
+    width: 100%;
+
+    .image {
+      border-radius: 50%;
+      max-width: 240px;
+      margin: 0 auto;
+      margin-bottom: 4rem;
+      overflow: hidden;
+    }
+  }
+
+  .review-item .text {
+    text-align: center;
+
+    .primaty-title {
+      font-size: var(--font-size-big);
+      font-weight: var(--font-weight-subtitle);
+    }
+
+    .secondary-title {
+      color: var(--highlight-1);
+      font-size: var(--font-size-small);
+      text-transform: uppercase;
+    }
+
+    .description {
+      font-size: 1.4rem;
+      margin-top: 2rem;
+      > *:not(:last-child) {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}

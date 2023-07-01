@@ -1,0 +1,31 @@
+{% if product.discount_rule != null and product.discount_rule.type == 'percentage' %}
+  {% assign discount_amount = product.discount_rule.amount %}
+{% endif %}
+
+<div class="product-name-price" data-name-price>
+  <div class="name-reference">
+    <p class="reference">{{ product.reference }}</p>
+    <h1 class="name">{{ product.name }}</h1>
+  </div>
+
+  {% capture price_settings %}
+    {
+      "productId": {{ product.id }},
+      "showInstallmentsWithoutInterest": true,
+      "showInstallmentsWithInterest": false, 
+      "mode": "medium",
+      "htmlTag": "h2"
+    }
+  {% endcapture %}
+
+  <div class="price-wrapper">
+    <div class="product-price"
+      data-main-product-price
+      data-was-processed="false" 
+      data-sku="" 
+      data-init-price='{{ price_settings }}'
+      data-price="{{ product.price }}"
+      data-discount-percent="{{ discount_amount | default: 0 }}"  
+    ></div>
+  </div>
+</div>

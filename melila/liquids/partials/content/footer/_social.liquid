@@ -1,0 +1,17 @@
+{% load_menus position: 'social' %}
+
+<div class="social">
+
+  {%- comment -%} Logo secundário {%- endcomment -%}
+  {% render "partials/content/footer/banner", section: 'secondary-banner' position: 'rodape-logo-secundario', type: '-horizontal', limit: 1 %}
+
+  <nav class="social-icons">
+    {% for menu in loaded_menus %}
+      <a aria-label="Ir para {{ menu.title }}" href="{{ menu.url }}" {% if menu.external %} rel="external" target="_blank" {% endif %}>
+        <svg class="icon">
+          <use xlink:href="#icon-{{ menu.tooltip }}"/>
+        </svg>
+      </a>
+    {% endfor %}
+  </nav>
+</div>

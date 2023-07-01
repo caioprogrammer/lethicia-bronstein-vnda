@@ -1,0 +1,76 @@
+{% comment %} =============================== {% endcomment %}
+{% comment %} FAIXAS DE PREÇO                 {% endcomment %}
+{% comment %} =============================== {% endcomment %}
+{% load_banners position: 'filtro-preco' limit: 1 %}
+{% for banner in loaded_banners %}
+  {% if banner.description %}
+    {% assign ranges = banner.description | strip_html | split: ',' %}
+  {% endif %}
+{% endfor %}
+
+{% comment %} =============================== {% endcomment %}
+{% comment %} ESTAMPAS NOS ATRIBUTOS          {% endcomment %}
+{% comment %} =============================== {% endcomment %}
+{% assign patterns_list = '' %}
+{% assign patterns = '' %}
+
+{% comment %}
+  Adiciona atributo de cor para verificar estampas.
+  Para adicionar mais atributos, use o filtro concat
+  https://shopify.dev/docs/api/liquid/filters/array-filters#concat
+{% endcomment %}
+{% assign attributes_to_check = aggregations.properties.property1 %}
+
+{% for attribute in attributes_to_check %}
+  {% if attribute.value contains '|' %}
+    {% unless attribute.value contains '#' %}
+      
+      {% comment %} Busca tags de estampa uma vez {% endcomment %}
+      {% if patterns == blank %}
+        {% load_tags types: 'estampa' %}
+        {% assign patterns = loaded_tags %}
+      {% endif %}
+
+      {% comment %} Procura imagem da estampa {% endcomment %}
+      {% assign pattern_image = '' %}
+      {% for pattern in patterns %}
+        {% if attribute.value contains pattern.name %}
+          {% assign pattern_image = pattern.image_url | resize: '25x25' %}
+        {% endif %}
+      {% endfor %}
+
+      {% comment %} Monta objeto da estampa para uso do componente {% endcomment %}
+      {% capture patterns_list %}
+        {{ patterns_list }},{
+          "value": "{{ attribute.value }}",
+          "pattern": "{{ pattern_image }}"
+        }
+      {% endcapture %}
+
+    {% endunless %}
+  {% endif %}
+{% endfor %}
+
+{% assign patterns_list = patterns_list | prepend: '[' | append: ']' | remove_first: ',' | from_json %}
+
+{% comment %} =============================== {% endcomment %}
+{% comment %} OBJ PARA MONTAGEM DO COMPONENTE {% endcomment %}
+{% comment %} =============================== {% endcomment %}
+<div id="component-products-filter-root"></div>
+
+<script>
+  window.filterSettings = {
+    script: "{{ 'products-filter.v12.js' | component_path }}",
+    styles: "{{ 'products-filter.v12.css' | component_path }}",
+    aggregations: {{ aggregations | to_json }},
+    patterns: {{ patterns_list | to_json }},
+    prices_range: [
+      {% if ranges %}
+        {% for range in ranges %}
+          {% assign values = range | strip | split: '-' %}
+          [{{ values[0] | times: 1.00 }}, {{ values[1] | times: 1.00 }}],
+        {% endfor %}
+      {% endif %}
+    ]
+  }
+</script>

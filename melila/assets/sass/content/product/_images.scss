@@ -1,0 +1,122 @@
+@keyframes fadeOut {
+  from { opacity: 0.7 }
+  to { opacity: 0 }
+}
+
+.product-images {
+  width: 100%;
+  position: relative;
+  @include media('sm') {
+    display: flex;
+  }
+
+  @import "../../components/flag";
+
+  > .slider-thumbs {
+    width: 18%;
+    height: 100%;
+    margin-right: 1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    @include media('sm') {
+      display: block;
+    }
+  }
+
+  > .slider-thumbs .swiper-slide {
+    width: 100%;
+    height: fit-content;
+    border: 1px solid transparent;
+    opacity: 0.7;
+    transition: opacity 0.2s, border-color 0.1s;
+    cursor: pointer;
+    &.swiper-slide-thumb-active {
+      opacity: 1;
+      border-color: var(--color-accent);
+    }
+  }
+
+  > .slider-thumbs .image {
+    pointer-events: none;
+    img { pointer-events: none }
+  }
+
+  > .main-slider {
+    @include media('sm') {
+      width: calc(82% - 1rem);
+      margin-left: auto;
+      margin-right: 0;
+    }
+
+    // Label do zoom
+    &.swiper-initialized::after {
+      content: 'Toque duas vezes para zoom';
+      position: absolute;
+      z-index: 5;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      border-radius: 10px;
+      background-color: var(--gray-3);
+      opacity: 0.7;
+      font-size: 1rem;
+      color: var(--white);
+      white-space: nowrap;
+      animation: fadeOut 2s 5s forwards;
+      @include media('md') {
+        content: 'Clique duas vezes para zoom';
+      }
+    }
+
+    // Texto do label quando está definido como zoom no hover
+    &.-hover-zoom {
+      &::after {
+        @include media('md') {
+          content: 'Passe o mouse para zoom';
+        }
+      }
+      
+      .swiper-slide.-zoomed { cursor: zoom-in !important }
+    }
+  }
+
+  > .main-slider .swiper-slide {
+    cursor: zoom-in;
+    &.-zoomed {
+      cursor: zoom-out;
+      .image {
+        transition: transform 0.05s linear !important;
+      }
+    }
+  }
+
+  > .main-slider .image img {
+    object-fit: cover !important;
+  }
+
+  // Garante funcionamento do zoom, e ajusta proporção
+  > .main-slider .swiper-slide .image,
+  > .main-slider .swiper-slide .video {
+    overflow: unset;
+    &::after { padding-bottom: 140% }
+  }
+
+  // Slides inativos/escondidos conforme troca de SKU
+  > .slider-thumbs .swiper-slide,
+  > .main-slider .swiper-slide {
+    &.-inactive { display: none }
+  }
+
+  > .swiper-pagination {
+    bottom: -1.6rem !important;
+    left: 0 !important;
+    justify-content: flex-start;
+    @include media('md') {
+      left: calc(18% + 1rem) !important;
+    }
+  }
+}

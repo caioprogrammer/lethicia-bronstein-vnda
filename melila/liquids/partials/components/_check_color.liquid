@@ -1,0 +1,35 @@
+{% assign color_name = color | split: '|' | first %}
+{% assign color_hexa = color | split: '|' | last | downcase %}
+
+{% comment %} 
+
+  - Caso a cor seja branca adiciona uma classe para colocar uma borda
+
+{% endcomment %}
+{% assign color_white = '' %}
+{% if color_hexa contains '#fff' %}
+  {% assign color_white = '-white' %}
+{% endif %}
+
+<div class="colors {{ color_white }}">
+  {% assign colors = color_hexa | split: ',' %}
+  {% for color in colors %}
+
+    {% assign value = color | strip %}
+
+    {% if value contains '#' %}
+      {% comment %} Cor sólida {% endcomment %}
+      <span class="color" style="background-color: {{ value }}"></span>
+    {% else %}
+      {% comment %} Estampa - busca a tag no próprio produto {% endcomment %}
+      {% for tag in product.tags %}
+        {% if tag.name contains value %}
+          <span class="color" style="background-image: url({{ tag.image_url | resize: '50x50' }})"></span>
+          {% break %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+</div>
+
+<span class="tooltip">{{ color_name }}</span>

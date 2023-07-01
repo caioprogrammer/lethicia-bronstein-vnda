@@ -1,0 +1,14 @@
+<footer class="footer">
+  <div class="content">
+    {% comment %}  
+    {% render "partials/content/footer/banner", section: 'main-banner' position: 'rodape-logo-principal', type: '-square', limit: 1 %}
+    {% endcomment %}
+    {% render "partials/content/footer/newsletter", current_shop: current_shop %}
+    {% render "partials/content/footer/social", position: 'rodape-logo-secundario', current_shop: current_shop, home_url: home_url %}
+    {% render "partials/content/footer/paragraph" %}
+    {% render "partials/content/footer/categories" %}
+    {% render "partials/content/footer/payment" %}
+    {% comment %} 
+    {% render "partials/content/footer/signature" %}
+    {% endcomment %}</div>
+</footer>

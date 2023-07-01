@@ -1,0 +1,14 @@
+.signature {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: var(--font-size-small);
+  gap: 0.5rem;
+  grid-area: signature;
+  margin-bottom: 2rem;
+
+  @include media("sm") {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

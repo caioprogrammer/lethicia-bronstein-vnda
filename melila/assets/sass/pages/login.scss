@@ -1,0 +1,118 @@
+@import "../base/mixins";
+
+@keyframes loaderSpin {
+  0% { transform: rotate(0deg) }
+  100% { transform: rotate(360deg) }
+}
+
+.page-login {
+  .login-header {
+    padding-top: 6rem;
+    text-align: center;
+
+    .title {
+      font-size: 2.8rem;
+    }
+  }
+
+  .login-body {
+    padding-bottom: 6rem;
+  }
+
+  #component-login-static-root {
+    text-align: center;
+    > .loader {
+      display: inline-block;
+      position: relative;
+      width: 80px;
+      height: 80px;
+      margin: 0 auto;
+    }
+
+    > .loader div {
+      box-sizing: border-box;
+      display: block;
+      position: absolute;
+      width: 64px;
+      height: 64px;
+      margin: 8px;
+      border: 8px solid var(--primary-color);
+      border-radius: 50%;
+      animation: loaderSpin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+      border-color: var(--primary-color) transparent transparent transparent;
+
+      &:nth-child(1) { animation-delay: -0.45s }
+      &:nth-child(2) { animation-delay: -0.3s }
+      &:nth-child(3) { animation-delay: -0.15s }
+    }
+
+    //wrapper do input
+    .cmp-login-mb-6 {
+      margin-bottom: 1rem;
+    }
+
+    // fonte do label antes de preencher input
+    .cmp-login-text-gray-400 {
+      font-size: 1.5rem;
+    }
+
+    // fonte do label depois de preencher input
+    .cmp-login-text-xs {
+      font-size: 1.2rem;
+    }
+
+    .cmp-login-text-sm {
+      font-size: 1.2rem;
+    }
+
+    // fonte do label quando o input está focus
+    input:focus + label {
+      font-size: 1.3rem;
+    }
+
+    input {
+      border: 1px solid var(--secondary-color);
+      height: 5rem;
+      font-size: 1.3rem;
+      padding-top: 2.2rem;
+    }
+
+    input:focus {
+      padding-top: 2.5rem;
+      font-size: 1.4rem;
+      outline-color: var(--primary-color);
+    }
+
+    button.cmp-login-block {
+      @extend %button-default;
+
+      margin-top: 3rem;
+      height: 4.8rem;
+    }
+
+    // tamanho do container do componente
+    .cmp-login-w-4\/5 {
+      width: 100%;
+
+      @include media("xlg") {
+        width: 80%;
+      }
+    }
+
+    // retira o fundo das divs de login e cadastro
+    .cmp-login-bg-gray-50 {
+      background-color: transparent;
+    }
+
+    // tamanho e cor do botão de esqueci a senha e voltar
+    button[type="button"] {
+      font-size: 1.3rem;
+      color: var(--secondary-color);
+      cursor: pointer;
+
+      &:hover {
+        color: var(--font-color-base);
+      }
+    }
+  }
+}

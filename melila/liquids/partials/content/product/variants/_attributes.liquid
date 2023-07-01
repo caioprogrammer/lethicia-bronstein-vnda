@@ -1,0 +1,85 @@
+{% assign has_attributes = attributes | join: '' %}
+
+{% assign hidden_class = '-hidden' %}
+{% if attributes.size > 1 %}
+  {% assign hidden_class = '' %}
+{% endif %}
+
+{% assign attributes = attributes | sort %}
+
+{% for prop in attributes %}
+  {% assign value = prop %}
+  {% assign sort = 0 %}
+
+  {% case value %}
+    {% when 'PP' %}
+      {% assign sort = 1 %}
+    {% when 'P' %}
+      {% assign sort = 2 %}
+    {% when 'M' %}
+      {% assign sort = 3 %}
+    {% when 'G' %}
+      {% assign sort = 4 %}
+    {% when 'GG' %}
+      {% assign sort = 5 %}
+    {% when 'XG' %}
+      {% assign sort = 6 %}
+    {% when 'XGG' %}
+      {% assign sort = 7 %}
+    {% when '1XG' %}
+      {% assign sort = 8 %}
+    {% when '2XG' %}
+      {% assign sort = 9 %}
+    {% when '3XG' %}
+      {% assign sort = 10 %}
+    {% when '4XG' %}
+      {% assign sort = 11 %}
+    {% when '5XG' %}
+      {% assign sort = 12 %}
+    {% when 'U' %}
+      {% assign sort = 13 %}
+    {% when 'UNICO' %}
+      {% assign sort = 14 %}
+  {% endcase %}
+
+  {% capture json_props %}
+    {{ json_props }},
+    {
+      "value": "{{ value }}",
+      "sort": {{ sort }}
+    }
+  {% endcapture %}
+{% endfor %}
+
+{% assign sorted_props = json_props | prepend: '[' | append: ']' | remove_first: ',' | from_json %}
+{% assign attributes = sorted_props | sort: 'sort' | map: 'value' %}
+
+{% if has_attributes and has_attributes != blank %}
+  <div class="prod-option {{ hidden_class }} option-input option-{{ attributes_name }}" data-attribute-name='{{ attributes_name }}' data-prod-option data-attribute="{{ attributes_index }}" data-selecao-style="input" data-qtd="{{ attributes.size }}" data-items="{{ attributes | join: ' // ' }}">
+
+    <p class="option-title">{{ attributes_name }}</p>
+
+    <div class="inner" data-produto="{{ attributes_name }}-attribute">
+      {% for attribute in attributes %}
+        {% if attribute != blank %}
+          <input type="radio" name="attribute-{{ attributes_name }}" value="{{ attribute }}" id="{{ product.id }}-{{ attributes_name }}-attribute-{{ forloop.index }}-{{ random }}" class="input"/>
+
+          <label for="{{ product.id }}-{{ attributes_name }}-attribute-{{ forloop.index }}-{{ random }}" class="label" data-text="{{ attribute }}" data-attribute-value="{{ attribute }}" data-attribute-index="{{ attributes_index }}">
+            {% if attribute contains '|' %}
+              {% render 'partials/components/check_color', color: attribute %}
+            {% else %}
+              <span class="text">{{ attribute }}</span>
+            {% endif %}
+          </label>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% if tag_medidas %}
+      <button aria-label="Abrir guia de medidas" class="btn-medidas" data-action="toggle-popup" data-popup="guia-de-medidas" type="button">
+        <span>Guia de tamanhos</span>
+        <span class="arrow"></span>
+      </button>
+    {% endif %}
+  </div>
+{% endif %}

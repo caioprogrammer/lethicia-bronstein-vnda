@@ -1,0 +1,15 @@
+{% load_banners position: position limit: limit %}
+
+<div class="{{ section }}">
+  {% for banner in loaded_banners %}
+    {% if banner.url != blank %}
+      <a aria-label="Ir para {{ banner.title }}" href="{{ banner.url }}" {% if banner.external %} target="_blank" {% endif %}>
+    {% endif %}
+      <figure class="image {{ type }}">
+        <img class="lazy" data-src="{{ banner.file_url | resize: '300x' }}" alt="{{ banner.title }}" loading="lazy"/>
+      </figure>
+      {% if banner.url != blank %}
+      </a>
+    {% endif %}
+  {% endfor %}
+</div>

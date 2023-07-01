@@ -1,0 +1,42 @@
+{% assign tabs = '' %}
+{% assign content = '' %}
+
+{% comment %} Tabs por Descrição Content {% endcomment %}
+{% for part in descricao_parts %}
+  {% unless forloop.first %}
+    {% if forloop.index == 2 %}
+      {% assign class = "-active" %}
+    {% else %}
+      {% assign class = "" %}
+    {% endif %}
+    {% if part contains "</h2>" %}
+      {% assign p = part | split:"</h2>" %}
+      {% capture tabs %}
+        {{ tabs }}
+        <span class="titulo {{class}}" data-content="#id-{{forloop.index}}">
+          {{ p[0] | strip_html }}
+        </span>
+      {% endcapture %}
+      {% capture content %}
+        {{ content }}
+        <div class="content {{class}}" id="id-{{forloop.index}}">
+          {{ p[1] | replace: '<table', '<table class="table"' }}
+        </div>
+      {% endcapture %}
+    {% endif %}
+  {% endunless %}
+{% endfor %}
+
+{% if tabs and tabs != "" %}
+  <div class="tabs">
+    {{ tabs }}
+    {{ dimentions_tab }}
+  </div>
+{% endif %}
+
+{% if content and content != "" %}
+  <div class="contents">
+    {{ content }}
+    {{ dimensions_content }}
+  </div>
+{% endif %}

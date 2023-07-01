@@ -1,0 +1,63 @@
+{% assign products_count = 0 %}
+
+{% assign tag = current_product.tags | where: 'type' , 'compre-junto' | first %}
+
+{% if tag and tag.size > 0  %}
+  {% load_products tag: tag.name per_page: 3 %}
+  {% assign products_count = products.size %}
+
+  {% if products_count >= 2 %}
+    <section class="section group-shop container">
+      <h3 class="title">
+        {{ tag.subtitle | default: 'Compre Junto' }}
+      </h3>
+
+      <div class="products">
+        {% render 'partials/components/product_block_group_shop', product: current_product, showAttributes: true, showDelete: false%}
+
+        {% for product in products %}
+          {% if product.id != current_product.id %}
+            <div class="symbol plus"></div>
+            {% render 'partials/components/product_block_group_shop', product: product, showAttributes: true, showDelete: true %}
+          {% endif %}
+        {% endfor %}
+
+        <div class="symbol equal"></div>
+
+        <div class="purchase -hidden">
+          <form id="form-product" class="form-product" action="{{ cart_item_url }}" enctype="multipart/form-add" data-form-product-group-shop style="display: none;"></form>
+
+          <h4 class="text">Compre os {{ products_count }} produtos por</h4>
+          <div class="price-wrapper">
+            <div class="discount-wrapper -hidden">
+              <span class="discount-percent"></span>
+              <span class="original-price"></span>
+            </div>
+            <span class="price-group"></span>
+            <span class="warning" data-warning></span>
+          </div>
+
+          <button aria-label="Adicionar produtos selecionados ao carrinho" class="button-default -outlined" data-group-shop-add type="button">
+            <svg class="icon">
+              <use xlink:href="#icon-cart"/>
+            </svg>
+            <span>COMPRAR JUNTO</span>
+          </button>
+
+          <div class="msg-response">
+            <span class="msg-error"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {% comment %} Popula com as variants dos produtos para o comportamento de seleção de variants {% endcomment %}
+    {% body %}
+    <script>
+        {% for product in products %}
+          productVariants['{{ product.id }}'] = {{ product.variants | to_json }};
+        {% endfor %}
+      </script>
+    {% endbody %}
+  {% endif %}
+{% endif %}

@@ -1,0 +1,60 @@
+@import "../../base/mixins";
+
+.banner-topo {
+  position: relative;
+  margin-bottom: 2rem;
+
+  &.-no-image {
+    background-color: var(--gray-2);
+    height: 24rem;
+  }
+
+  &.-search {
+    display: flex;
+    margin-bottom: 6rem;
+  }
+
+  &.-tag .text .content {
+    background-color: var(--white);
+  }
+
+  > .image.-horizontal::after {
+    padding-bottom: 24rem;
+  }
+
+  // acima de 1024 o conteudo do texto fica fixo em cima da imagem
+  > .text {
+    left: 5%;
+    right: 5%;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    @include media("sm") {
+      position: absolute;
+    }
+  }
+
+  > .text .content {
+    height: fit-content;
+    padding: 2rem;
+    text-align: center;
+    width: 100%;
+
+    @include media("sm") {
+      text-align: left;
+      width: 50%;
+    }
+  }
+
+  > .text .content .title {
+    margin-bottom: 0;
+  }
+
+  > .text .content .description {
+    margin-top: 1rem;
+  }
+}

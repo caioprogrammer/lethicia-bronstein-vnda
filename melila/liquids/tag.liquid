@@ -1,0 +1,62 @@
+{% getparam 'sort' as params_sort %}
+{% getparam 'type_tags' as params_type %}
+{% getparam 'property1_values' as params_property %}
+
+{% head %}
+  {% opengraphfor tag %}
+
+  <link href="/pages/tag_above.css" inline rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="{{ 'pages/tag.css' | stylesheet_path }}" media="print" onload="this.media='all'"/>
+{% endhead %}
+
+{% body %}
+  <script src="{{ 'tag.js' | javascript_path }}"></script>
+{% endbody %}
+
+{% comment %} ========== {% endcomment %}
+
+{% load_products tag: tag.name parent_tag: parent_tag.name per_page: 12 sort: params_sort %}
+
+{% capture html_products %}
+  {% for product in products %}
+    {% render 'partials/components/product_block', product: product, lazy: 'lazy' %}
+  {% endfor %}
+{% endcapture %}
+
+<section class="section section-list-products">
+  {% render 'partials/content/tag/topo_tag', tag: tag %}
+  {% render "partials/content/tag/breadcrumb", parent_tag, tag: tag %}
+
+  <div class="list-content container">
+    <div class="filter-container">
+      <button aria-label="Abrir filtro" class="button-default -outlined" id="open-filter-mobile">
+        <svg class="icon">
+          <use xlink:href="#icon-filter"/>
+        </svg>
+        FILTROS
+      </button>
+      {% render "partials/content/tag/filters", aggregations: aggregations, template: template %}
+    </div>
+
+    {% if html_products == blank %}
+      {% render "partials/content/tag/empty", tag: tag, search: false, home_url: home_url, current_url: current_url %}
+    {% else %}
+      <div class="list-products">
+        {{ html_products }}
+      </div>
+    {% endif %}
+  </div>
+
+  {% if pagination.total_pages > 1 %}
+    {% render 'partials/content/tag/pagination', pagination: pagination, infinity: true, current_url: current_url %}
+  {% endif %}
+</section>
+
+{% comment %} Popula com as variants dos produtos para o comportamento de seleção de variants {% endcomment %}
+{% body %}
+  <script data-variants-script>
+    {% for product in products %}
+      productVariants['{{ product.id }}'] = {{ product.variants | to_json }};
+    {% endfor %}
+  </script>
+{% endbody %}

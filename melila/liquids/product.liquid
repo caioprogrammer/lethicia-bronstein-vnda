@@ -1,0 +1,35 @@
+{% gtm product_detail: product %}
+{% head %}
+  {% opengraphfor product %}
+
+  <link href="pages/product_above.css" inline rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="{{ 'pages/product.css' | stylesheet_path }}" media="print" onload="this.media='all'"/>
+{% endhead %}
+
+{% body %}
+  <script src="{{ 'product.js' | javascript_path }}"></script>
+{% endbody %}
+
+{% comment %} ========== {% endcomment %}
+
+{% assign current_product = product %}
+
+{% assign tag_medidas = product.tags | where: 'type', 'guia-de-medidas' | first %}
+{% assign relacionado =  product.tags | where: 'type', 'relacionado' | first %}
+
+{% render 'partials/content/product/product_section', product: product %}
+
+{% render 'partials/content/product/size_guide', product: product, tag_medidas: tag_medidas %}
+
+{% comment %} Popula com as variants dos produtos para o comportamento de seleção de variants {% endcomment %}
+{% body %}
+  <script>
+    window.mainProduct = {{ product.id }}
+    productVariants['{{ product.id }}'] = {{ product.variants | to_json }};
+  </script>
+{% endbody %}
+{% render 'partials/content/product/banner', current_product: product %}
+{% render 'partials/content/product/group_shop', current_product: product %}
+{% if relacionado %}
+  {% render 'partials/components/carousel', tag_name: relacionado.name, current_product: product %}
+{% endif %}

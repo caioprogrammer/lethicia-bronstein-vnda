@@ -1,0 +1,15 @@
+.social-icons {
+  display: flex;
+
+  .social-icon {
+    margin-right: 1rem;
+  }
+
+  .social-icon:last-child {
+    margin-right: 0;
+  }
+
+  .social-icon .icon {
+    color: var(--primary-color);
+  }
+}

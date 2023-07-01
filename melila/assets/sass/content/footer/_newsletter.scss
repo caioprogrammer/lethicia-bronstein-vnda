@@ -1,0 +1,77 @@
+.newsletter {
+  display: flex;
+  flex-direction: column;
+  grid-area: newsletter;
+  justify-content: space-around;
+  margin-top: 2rem;
+  align-items: center;
+  padding: 0 12px;
+
+  background: #ffffff;
+  border-radius: 10px;
+  outline: none;
+
+  @include media("sm") {
+    flex-direction: row;
+    margin-top: 10rem;
+  }
+
+  @include media("md") {
+    margin-top: 3rem;
+  }
+
+  > .content {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 2rem 0;
+    width: calc(100% - 14rem);
+
+    @include media("sm") {
+      margin: 0 3rem 0 0;
+      width: 80%;
+    }
+    > p {
+      color: #f47e62;
+    }
+    > .subtitle {
+      text-transform: uppercase;
+      color: #f47e62;
+    }
+  }
+
+  >.form-newsletter {
+    width: 100%;
+    
+    @include media("sm") {
+      width:100%;
+    }
+
+    > fieldset {
+      display: flex;
+      width: 100%;
+      gap: 10px;
+
+      > .input {
+        margin-bottom: 1rem;
+        width: 100%;
+        border: 1px solid #f47e62;
+      }
+
+      > .action {
+        width: 100%;
+        max-width: 150px;
+        border: 1px solid #f47e62;
+        color: #f47e62;
+
+        &:hover {
+          background-color: #f47e62;
+          border: 1px solid #f47e62;
+          color: #ffffff;
+        }
+      }
+      > .messages {
+        display: none;
+      }
+    }
+  }
+}

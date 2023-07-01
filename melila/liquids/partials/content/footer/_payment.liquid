@@ -1,0 +1,12 @@
+{% load_banners position: 'rodape-selos' limit: 4 %}
+{% load_payment_icons %}
+
+<div class="payment">
+  {% render "partials/content/footer/banner", section: 'stamps' position: 'rodape-selos', type: '-horizontal', limit: 4 %}
+
+  <div class="payment-icons">
+    {% for payment in loaded_payment_icons %}
+      <img class="lazy payment-img" data-src="{{ payment.svg_url }}" alt="{{ payment.title }}"/>
+    {% endfor %}
+  </div>
+</div>

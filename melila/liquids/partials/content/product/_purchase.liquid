@@ -1,0 +1,54 @@
+{% unless extra_class %}
+  {% assign extra_class = '' %}
+{% endunless %}
+
+{% unless show_qtd_selector %}
+  {% assign show_qtd_selector = false %}
+{% endunless %}
+
+{% unless show_short_desc %}
+  {% assign show_short_desc = false %}
+{% endunless %}
+
+{% unless text_string %}
+  {% assign text_string = '<span>Adicionar ao carrinho</span>' %}
+{% endunless %}
+
+{% comment %} ========== {% endcomment %}
+
+<form action="{{ cart_item_url }}" class="add-to-cart" enctype="multipart/form-add" data-product-purchase data-product-id="{{ product.id }}" data-processed="false" data-form-product>
+
+  {% if show_short_desc and product.description != blank %}
+    <div class="description">{{ product.description | split: '<hr/>' | first }}</div>
+  {% endif %}
+
+  <div class="attributes" data-product-attributes>
+    {% render 'partials/content/product/variants/variants', product: product, random: random, tag_medidas: tag_medidas %}
+  </div>
+
+  <div class="last-units"></div>
+
+  <div class="actions-wrapper">
+    {% if show_qtd_selector %}
+      <div class="quantity-selector">
+        <label class="quantity" for="quantity">
+          <button aria-label="Diminuir quantidade de itens" class="control -minus" data-qtd-minus type="button">&minus;</button>
+          <input class="input" data-available-quantity="{{ product.variants[0].quantity }}" name="quantity" readonly type="number" value="1"/>
+          <button aria-label="Aumentar quantidade de itens" class="control -plus" data-qtd-plus type="button">&plus;</button>
+        </label>
+      </div>
+    {% else %}
+      <input aria-label="Quantidade de itens" name="quantity" type="hidden" value="1"/>
+    {% endif %}
+
+    {% if show_button %}
+      <button aria-label="Adicionar no carrinho" type="submit" class="add-to-cart-button button-default {{ extra_class }}" data-text-available='{{ text_string }}' data-text-unavailable="<span>Indisponível</span>" data-text-added='<span>Adicionado</span><svg class="icon"><use xlink:href="#icon-check"/></svg>' data-action="add-cart" data-event="addToCart" data-event-json='{% gtm item: product %}'>
+        {{ text_string }}
+      </button>
+    {% endif %}
+  </div>
+
+  <div class="msg-response">
+    <span class="msg-error"></span>
+  </div>
+</form>

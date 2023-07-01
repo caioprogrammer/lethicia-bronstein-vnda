@@ -1,0 +1,7 @@
+{% load_banners position: 'rodape-texto'  %}
+
+{% for banner in loaded_banners limit: 1 %}
+  <div class="paragraph">
+    {{ banner.description }}
+  </div>
+{% endfor %}
