@@ -26,22 +26,30 @@
               {{ image | resize: '800x' }} 1920w,
               {{ image }} 2000w
             {% endcapture %}
-      
+
             {% capture data_sizes %}
               (max-width: 350px) 350px,
               (max-width: 767px) 767px,
-              (max-width: 991px) 991px,
-              (max-width: 1440px) 1440px,
-              (max-width: 1920px) 1920px,
-              (min-width: 1921px) 2000px
+                                          (max-width: 991px) 991px,
+                                          (max-width: 1440px) 1440px,
+                                          (max-width: 1920px) 1920px,
+                                          (min-width: 1921px) 2000px
             {% endcapture %}
 
-            <img class="{{ lazy | default: 'lazy' }}" data-srcset="{{ data_srcset | strip_newlines | strip }}" data-sizes="{{ data_sizes | strip_newlines | strip }}" alt="Foto do produto {{ product.name }}"/>
+            <img
+              class="{{ lazy | default: 'lazy' }}"
+              data-srcset="{{ data_srcset | strip_newlines | strip }}"
+              data-sizes="{{ data_sizes | strip_newlines | strip }}"
+              alt="Foto do produto {{ product.name }}" />
           {% endfor %}
         </figure>
       {% else %}
         <figure class="image -square">
-          <img alt="{{ product.name }}" title="Foto do produto {{ product.name }}" class="lazy" data-src="{{ 'placeholder.png' | image_path }}"/>
+          <img
+            alt="{{ product.name }}"
+            title="Foto do produto {{ product.name }}"
+            class="lazy"
+            data-src="{{ 'placeholder.png' | image_path }}" />
         </figure>
       {% endif %}
 
@@ -50,11 +58,19 @@
     </a>
 
     {% if product.available %}
-      <button aria-label="Adicionar produto ao carrinho" class="button-default -outlined" data-open-popup-purchase type="button">
+      <button
+        style="background-color: #ffffff;"
+        aria-label="Adicionar produto ao carrinho"
+        class="button-default -outlined"
+        data-open-popup-purchase
+        type="button">
         <span class="text">COMPRAR</span>
       </button>
     {% else %}
-      <button aria-label="Produto indisponível" class="button-default -outlined -unavailable" type="button">
+      <button
+        aria-label="Produto indisponível"
+        class="button-default -outlined -unavailable"
+        type="button">
         <span class="text">PRODUTO INDISPONÍVEL</span>
       </button>
     {% endif %}
@@ -70,23 +86,27 @@
 
     {% capture price_settings %}
       {
-        "productId": {{ product.id }},
-        "showInstallmentsWithoutInterest": true,
-        "showInstallmentsWithInterest": false, 
-        "mode": "short",
-        "htmlTag": "p"
-      }
+      "productId": {{ product.id }},
+      "showInstallmentsWithoutInterest": true,
+                    "showInstallmentsWithInterest": false, 
+                    "mode": "short",
+                    "htmlTag": "p"
+                  }
     {% endcapture %}
 
     <div class="price-wrapper">
-      <div class="product-price price {% if discount_amount %} -discount {% endif %}" data-was-processed="false" data-sku="" data-init-price='{{ price_settings }}' data-price="{{ product.price }}" data-discount-percent="{{ discount_amount | default: 0 }}"></div>
+      <div
+        class="product-price price {% if discount_amount %} -discount {% endif %}"
+        data-was-processed="false"
+        data-sku=""
+        data-init-price='{{ price_settings }}'
+        data-price="{{ product.price }}"
+        data-discount-percent="{{ discount_amount | default: 0 }}"></div>
     </div>
   </div>
 
   {% comment %}
-    Renderiza attributos do popup de compra rápida
-    Retirar ou comentar caso não for utilizado
-  {% endcomment %}
-
-  {% render 'partials/content/product/purchase', product: product, showButton: true %}
+  Renderiza attributos do popup de compra rápida
+  Retirar ou comentar caso não for utilizado
+  {% endcomment %}{% render 'partials/content/product/purchase', product: product, showButton: true %}
 </div>

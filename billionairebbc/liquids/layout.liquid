@@ -1,23 +1,46 @@
 <!doctype html>
 <html lang="{{ language }}">
   <head>
-    <meta charset="UTF-8"/>
-    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
-    <meta content="initial-scale=1, width=device-width, maximum-scale=1" name="viewport"/>
+    <meta charset="UTF-8" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="initial-scale=1, width=device-width, maximum-scale=1" name="viewport" />
 
-    <link rel="shortcut icon" href="{{ 'favicon.ico' | favicon_path }}"/>
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ 'favicon/apple-touch-icon.png' | image_path }}"/>
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ 'favicon/favicon-32x32.png' | image_path }}"/>
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ 'favicon/favicon-16x16.png' | image_path }}"/>
-    <link rel="manifest" href="{{ 'favicon/manifest.json' | image_path }}"/>
+    <link rel="shortcut icon" href="{{ 'favicon.ico' | favicon_path }}" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="{{ 'favicon/apple-touch-icon.png' | image_path }}" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{{ 'favicon/favicon-32x32.png' | image_path }}" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{{ 'favicon/favicon-16x16.png' | image_path }}" />
+    <link rel="manifest" href="{{ 'favicon/manifest.json' | image_path }}" />
 
-    <meta content="#000" name="msapplication-TileColor"/>
-    <meta name="msapplication-TileImage" content="{{ 'favicon/android-chrome-192x192.png' | image_path }}"/>
-    <meta content="#000" name="theme-color"/>
+    <meta content="#000" name="msapplication-TileColor" />
+    <meta name="msapplication-TileImage" content="{{ 'favicon/android-chrome-192x192.png' | image_path }}" />
+    <meta content="#000" name="theme-color" />
 
-    <link href="/main.css" inline rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="{{ 'style.css' | stylesheet_path }}" media="print" onload="this.media='all'"/>
-    <link rel="preload" href="{{ 'cart-drawer.v16.css' | component_path }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link
+      href="/main.css"
+      inline
+      rel="stylesheet"
+      type="text/css" />
+    <link
+      rel="stylesheet"
+      href="{{ 'style.css' | stylesheet_path }}"
+      media="print"
+      onload="this.media='all'" />
+    <link
+      rel="preload"
+      href="{{ 'cart-drawer.v16.css' | component_path }}"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'">
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
@@ -30,11 +53,11 @@
     </script>
   </head>
 
-  {% assign template_class = 'page-'| append: template | replace: '/','-' | replace: '_','-' %}
+  {% assign template_class = 'page-' | append: template | replace: '/', '-' | replace: '_', '-' %}
 
   {% assign img_logo = 'https://via.placeholder.com/410x210' %}
 
-  {% load_shop_images  position: "logo" %}
+  {% load_shop_images position: "logo" %}
 
   {% if loaded_shop_images.size > 0 %}
     {% assign img_logo = loaded_shop_images | first | map: 'url' | first %}
@@ -55,8 +78,8 @@
     </div>
 
     {% comment %}
-      Renderiza popup de compra rápida
-      Retirar ou comentar caso não for utilizado
+    Renderiza popup de compra rápida
+    Retirar ou comentar caso não for utilizado
     {% endcomment %}
     {% render 'partials/common/popup_purchase' %}
 

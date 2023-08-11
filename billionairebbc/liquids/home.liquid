@@ -1,17 +1,25 @@
 {% head %}
   {% if tag != blank %}
     <meta property="og:description" content="{{ tag.description }}">
-    <meta property="og:image" content="{{ tag.image_url }}"/>
-    <meta property="og:url" content="{{ home_url }}"/>
+    <meta property="og:image" content="{{ tag.image_url }}" />
+    <meta property="og:url" content="{{ home_url }}" />
     <meta name="description" content="{{ tag.description }}">
-    <meta name="image" content="{{ tag.image_url }}"/>
-    <meta meta="url" content="{{ home_url }}"/>
+    <meta name="image" content="{{ tag.image_url }}" />
+    <meta meta="url" content="{{ home_url }}" />
 
     <title>{{ tag.title }}</title>
   {% endif %}
 
-  <link href="pages/home_above.css" inline rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="{{ 'pages/home.css' | stylesheet_path }}" media="print" onload="this.media='all'"/>
+  <link
+    href="pages/home_above.css"
+    inline
+    rel="stylesheet"
+    type="text/css">
+  <link
+    rel="stylesheet"
+    href="{{ 'pages/home.css' | stylesheet_path }}"
+    media="print"
+    onload="this.media='all'" />
 {% endhead %}
 
 {% body %}
@@ -26,11 +34,10 @@
   {% render 'partials/content/home/fullbanner', position: 'home-banner-principal', aux: '-principal', mobile: mobile %}
 {% endif %}
 
-{% render 'partials/content/home/categories', position: 'home-banner-categoria', position_title: 'home-banner-categoria-titulo', limit: 4 %}
 {% render 'partials/components/carousel', tag_name: 'popular' %}
 {% comment %}
+{% render 'partials/content/home/categories', position: 'home-banner-categoria', position_title: 'home-banner-categoria-titulo', limit: 4 %}
 {% render 'partials/content/home/category_tabs', menu_position: "home-produtos", position_title: "home-titulo-tabs" %}
-  {% render 'partials/content/home/quotation', position: 'home-banner-frase' %}
-{% endcomment %}
-{% render "partials/content/home/highlight", position: 'home-banner-grid', limit: 6 %}
+{% render 'partials/content/home/quotation', position: 'home-banner-frase' %}
+{% endcomment %}{% render "partials/content/home/highlight", position: 'home-banner-grid', limit: 6 %}
 {% render "partials/content/home/instagram": environment: environment %}

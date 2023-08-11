@@ -4,9 +4,21 @@
 {% getparam 'q' as params_search %}
 
 {% head %}
-  <link href="/pages/tag_above.css" inline rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="{{ 'pages/tag.css' | stylesheet_path }}" media="print" onload="this.media='all'"/>
-  <link rel="stylesheet" href="{{ 'products-filter.v6.css' | component_path }}" media="print" onload="this.media='all'"/>
+  <link
+    href="/pages/tag_above.css"
+    inline
+    rel="stylesheet"
+    type="text/css">
+  <link
+    rel="stylesheet"
+    href="{{ 'pages/tag.css' | stylesheet_path }}"
+    media="print"
+    onload="this.media='all'" />
+  <link
+    rel="stylesheet"
+    href="{{ 'products-filter.v6.css' | component_path }}"
+    media="print"
+    onload="this.media='all'" />
 {% endhead %}
 
 {% body %}
@@ -47,4 +59,3 @@
     {% endfor %}
   </script>
 {% endbody %}
-

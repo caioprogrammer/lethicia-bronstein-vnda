@@ -1,1 +1,64 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@font-face {
+    font-family: 'Sequel Sans';
+    src: url('../fonts/sequelsans/sequel-sans-light.ttf');
+    src: local('Sequel Sans'), local('Sequel Sans'),
+        url('../fonts/sequelsans/sequel-sans-light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sequel Sans';
+    src: url('../fonts/sequelsans/sequel-sans-book.ttf');
+    src: local('Sequel Sans'), local('Sequel Sans'),
+        url('../fonts/sequelsans/sequel-sans-book.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sequel Sans';
+    src: url('../fonts/sequelsans/sequel-sans-medium.ttf');
+    src: local('Sequel Sans'), local('Sequel Sans'),
+        url('../fonts/sequelsans/sequel-sans-medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sequel Sans';
+    src: url('../fonts/sequelsans/sequel-sans-semi-bold.ttf');
+    src: local('Sequel Sans'), local('Sequel Sans'),
+        url('../fonts/sequelsans/sequel-sans-semi-bold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sequel Sans';
+    src: url('../fonts/sequelsans/sequel-sans-bold.ttf');
+    src: local('Sequel Sans'), local('Sequel Sans'),
+        url('../fonts/sequelsans/sequel-sans-bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sequel Sans';
+    src: url('../fonts/sequelsans/sequel-sans-heavy.ttf');
+    src: local('Sequel Sans'), local('Sequel Sans'),
+        url('../fonts/sequelsans/sequel-sans-heavy.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sequel Sans';
+    src: url('../fonts/sequelsans/sequel-sans-black.ttf');
+    src: local('Sequel Sans'), local('Sequel Sans'),
+        url('../fonts/sequelsans/sequel-sans-black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}

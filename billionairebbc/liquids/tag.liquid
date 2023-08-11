@@ -5,9 +5,21 @@
 {% head %}
   {% opengraphfor tag %}
 
-  <link href="/pages/tag_above.css" inline rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="{{ 'pages/tag.css' | stylesheet_path }}" media="print" onload="this.media='all'"/>
-  <link rel="stylesheet" href="{{ 'products-filter.v6.css' | component_path }}" media="print" onload="this.media='all'"/>
+  <link
+    href="/pages/tag_above.css"
+    inline
+    rel="stylesheet"
+    type="text/css">
+  <link
+    rel="stylesheet"
+    href="{{ 'pages/tag.css' | stylesheet_path }}"
+    media="print"
+    onload="this.media='all'" />
+  <link
+    rel="stylesheet"
+    href="{{ 'products-filter.v6.css' | component_path }}"
+    media="print"
+    onload="this.media='all'" />
 {% endhead %}
 
 {% body %}
@@ -30,9 +42,13 @@
   <div class="list-content container">
     <div class="filter-container">
       <div class="count-products">
-        <strong>{{ pagination.count }}</strong> produtos encontrados
+        <strong>{{ pagination.count }}</strong>
+        produtos encontrados
       </div>
-      <button aria-label="Abrir filtro" class="open-filter" id="open-filter-mobile">
+      <button
+        aria-label="Abrir filtro"
+        class="open-filter"
+        id="open-filter-mobile">
         + FILTRAR
       </button>
       {% render "partials/content/tag/filters", aggregations: aggregations, template: template %}

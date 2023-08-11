@@ -2,8 +2,16 @@
 {% head %}
   {% opengraphfor product %}
 
-  <link href="pages/product_above.css" inline rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="{{ 'pages/product.css' | stylesheet_path }}" media="print" onload="this.media='all'"/>
+  <link
+    href="pages/product_above.css"
+    inline
+    rel="stylesheet"
+    type="text/css">
+  <link
+    rel="stylesheet"
+    href="{{ 'pages/product.css' | stylesheet_path }}"
+    media="print"
+    onload="this.media='all'" />
 {% endhead %}
 
 {% body %}
@@ -25,10 +33,13 @@
 {% endif %}
 
 {% assign tag_medidas = product.tags | where: 'type', 'guia-de-medidas' | first %}
-{% assign relacionado =  product.tags | where: 'type', 'relacionado' | first %}
+{% assign relacionado = product.tags | where: 'type', 'relacionado' | first %}
 
 
-<section class="section product-section container-fluid" data-product-box data-section-product>
+<section
+  class="section product-section container-fluid"
+  data-product-box
+  data-section-product>
   <div class="product-wrap">
     <div class="left-container">
       {% render 'partials/content/product/images/images', product: product %}
@@ -36,34 +47,49 @@
 
     <div class="right-container">
       <div class="product-infos">
-        <ol class="breadcrumbs"> 
+        <ol class="breadcrumbs">
           <li>
             <a class="link" href="{{ home_url }}">Home</a>
-            <svg width="10" height="10" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m5 14 7-6.5L5 1" stroke="#000" stroke-linecap="square"/></svg>
+            <svg
+              width="10"
+              height="10"
+              viewBox="0 0 15 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"><path
+                d="m5 14 7-6.5L5 1"
+                stroke="#000"
+                stroke-linecap="square" /></svg>
           </li>
 
           {% for tag in product.tags %}
             {% if tag.type == "categoria" %}
               <li>
                 <a class="link" href="/{{ tag.name }}">{{ tag.title }}</a>
-                <svg width="10" height="10" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m5 14 7-6.5L5 1" stroke="#000" stroke-linecap="square"/></svg>
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"><path
+                    d="m5 14 7-6.5L5 1"
+                    stroke="#000"
+                    stroke-linecap="square" /></svg>
               </li>
               {% break %}
             {% endif %}
-          {% endfor %}   
-          
+          {% endfor %}
+
           <li>
             <span class="link current">{{ product.name }}</span>
           </li>
         </ol>
-        {% 
-        render 'partials/content/product/infos/infos', 
-          product: product, 
-          descricao_curta: descricao_curta, 
-          tag_medidas: tag_medidas, 
-          current_shop: current_shop, 
-          home_url: home_url 
-        %}
+        {%
+           render 'partials/content/product/infos/infos',
+           product: product,
+           descricao_curta: descricao_curta,
+           tag_medidas: tag_medidas,
+           current_shop: current_shop,
+           home_url: home_url %}
       </div>
     </div>
   </div>
