@@ -1,0 +1,112 @@
+{%- comment -%}
+Produtos personalizados são aqueles produtos onde o cliente escolhe uma gravação, como por exemplo o nome e número em uma camiseta de time. Ou, ainda, produtos como móveis onde o cliente pode escolher o puxador, o material, a cor de uma determinada parte e etc.
+
+Essa funcionalidade precisa ser ativada na loja em: /admin/config/gerais/extras
+
+Para saber como cadastrar as personalizações disponíveis, olhe o artigo no Ajuda http://ajuda.vnda.com.br/pt-BR/articles/1763398-funcionalidades-produtos-personalizados
+{%- endcomment -%}
+
+{%- comment -%}
+Precisamos chamar a tag load_customizations, passando como parâmetro o id do produto.
+Essa tag irá retornar dois arrays loaded_customization - que retorna todas as personalizações disponíveis - e loaded_customization_types - que retorna as personalizações disponíveis agrupadas por tipo de personalização.
+
+O mais comum é utilizarmos a loaded_customization_types
+{%- endcomment -%}{% load_customizations product_id: product.id %}
+
+{%- comment -%}
+Aqui fazemos um loop no loaded_customization_types para montar a seleção de personalizações.
+
+As personalizações podem ser de dois tipos: texto ou opção
+
+- Opção: são personalizações com opções disponíveis e o buyer precisa selecionar uma dentre as opções pré-estabelecidas
+- Texto: são personalizações de texto, onde o cliente digita a personalização desejada.
+
+Cada uma dessas personalizações, tem uma estrutura HTML diferente, sendo inputs do tipo text ou inputs do tipo checkbox ou radio. Pra setar a estrutura correspondente, verificamos se a personalização é de opções ou não (if customization.options)
+{%- endcomment -%}{% for customization in loaded_customization_types %}
+    {% if customization.options %}
+    {%- comment -%}
+    Se a personalização for de opções, nós ordenamos as opções disponíveis em ordem alfabética (sort: 'name');
+
+    E fazemos um loops nas opções disponíveis.
+    {%- endcomment -%}
+
+    {% assign options_list = customization.customizations | sort: 'name' %}
+      <div class="prod-option"> <p class="option-title">{{ customization.name }}
+        <strong id="selected-option"></strong>
+      </p>
+      <div class="inner teste1">
+        {% for option in options_list %}
+          {%- comment -%}
+          Para cada opção de personalização, vamos ter um input, do tipo (type) radio ou checkbox, e uma label.
+
+          É muito importante que o name dos inputs siga a seguinte estrutura: 
+
+          name="customizations[][{{ customization.name }}]" 
+          {%- endcomment -%}
+
+          <input
+            type="radio"
+            name="customizations[][{{ customization.name }}]"
+            value="{{ option.name }}"
+            id="{{ customization.name }}-customization-{{ forloop.index }}"
+            class="input"
+            required
+            data-customization
+            {% comment %}
+            {% if forloop.first %}checked{% endif %}{% endcomment %} />
+          <label for="{{ customization.name }}-customization-{{ forloop.index }}" class="label">
+            {%- comment -%}
+            Caso seja uma personalização de cor, e queremos que apareça uma "bolinha" de cor, precisamos cadastrar a cor em hexadecinal no nome da personalização, seguindo a estrutura "Nome da cor | Cor em hexadecimal"
+
+            Para montar a estrutura HTML, verificamos se o nome da opção contém | e #, e se tiver, mostramos a "bolinha/quadradinho" da cor
+            {%- endcomment -%}
+
+            {% if option.name contains '|' and option.name contains '#' %}
+              {% assign color_name = color | split: '|' | first %}
+              {% assign color_hexa = color | split: '|' | last | downcase %}
+
+              {% comment %}
+              Caso a cor seja branca é bom adicionar uma classe para colocar uma borda (caso o fundo seja branco e a cor branca)
+              {% endcomment %}
+
+              {% assign color_white = '' %}
+              {% if color_hexa contains '#fff' %}
+                {% assign color_white = 'is-white' %}
+              {% endif %}
+
+              <span class="color {{ color_white }}" style="background: {{ color_hexa }};">
+                <span class="tooltip">{{ color_name }}</span>
+              </span>
+            {% else %}
+              {%- comment -%}
+              Caso não seja uma cor, apenas mostramos o texto cadastrado no nome da opção.
+              {%- endcomment -%}
+              <div class="option-image">
+                <img src="{{ option.image_url }}" />
+              </div>
+              <span class="text">{{ option.name }}</span>
+            {% endif %}
+          </label>
+        {% endfor %}
+      </div>
+    </div>
+  {% else %}
+    <div class="prod-option">
+      <p class="option-title">{{ customization.name }}</p>
+      <div class="inner teste2">
+        {%- comment -%}
+        Caso a personalização seja de texto, devemos montar o input de tipo (type) texto (text). 
+        {%- endcomment -%}
+        {% for option in customization.customizations limit: 1 %}
+          <input
+            type="text"
+            name="customizations[][{{ customization.name }}]"
+            value=""
+            id="{{ customization.name }}-customization-{{ forloop.index }}"
+            required
+            data-customization />
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}

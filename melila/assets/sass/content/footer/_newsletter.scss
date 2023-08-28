@@ -4,10 +4,11 @@
   grid-area: newsletter;
   justify-content: space-around;
   margin-top: 2rem;
+  margin-bottom: 4rem;
   align-items: center;
   padding: 0 12px;
 
-  background: #ffffff;
+  // background: #ffffff;
   border-radius: 10px;
   outline: none;
 
@@ -31,11 +32,11 @@
       width: 80%;
     }
     > p {
-      color: #f47e62;
+      color: #ffffff;
     }
     > .subtitle {
       text-transform: uppercase;
-      color: #f47e62;
+      color: #ffffff;
     }
   }
 
@@ -54,19 +55,19 @@
       > .input {
         margin-bottom: 1rem;
         width: 100%;
-        border: 1px solid #f47e62;
+        border: 1px solid #ffffff;
       }
 
       > .action {
         width: 100%;
         max-width: 150px;
-        border: 1px solid #f47e62;
-        color: #f47e62;
+        border: 1px solid #ffffff;
+        color: #ffffff;
 
         &:hover {
-          background-color: #f47e62;
-          border: 1px solid #f47e62;
-          color: #ffffff;
+          background-color: #ffffff;
+          border: 1px solid #ffffff;
+          color: #f47e62;
         }
       }
       > .messages {

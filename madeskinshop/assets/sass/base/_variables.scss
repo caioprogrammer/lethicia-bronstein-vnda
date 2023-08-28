@@ -1,0 +1,46 @@
+//// CSS VARIABLES ////
+
+:root {
+  //// TYPOGRAPHY ////
+
+  --font-family-base: "Roboto", sans-serif;
+  --font-color-base: #000;
+  --font-weight-base: 400;
+
+  --font-family-title: "Noto Sans", sans-serif;
+  --font-color-title: #000;
+  --font-size-title: 3.8rem;
+  --font-weight-title: 900;
+
+  --font-size-subtitle: 2.2rem;
+  --font-weight-subtitle: 600;
+
+  --font-size-button: 1.3rem;
+  --font-weight-button: 600;
+
+  --line-height: 1.5;
+
+  --font-size-small: 1.2rem;
+  --font-size-base: 1.4rem;
+  --font-size-big: 1.8rem;
+
+  //// COLORS ////
+  --white: #fff;
+  --black: #000;
+  --red: #ff0000;
+
+  --gray-1: #f5f5f5;
+  --gray-2: #d9d9d9;
+  --gray-3: #808080;
+  --gray-4: #383838;
+
+  --primary-color: #8a4f7d;
+  --secondary-color: #b8b08d;
+
+  --white-transparency: #ffffffb3;
+
+  //////////////////////////////////////////////////////////////////
+  //// TRANSITIONS
+  //////////////////////////////////////////////////////////////////
+  --transition: all 0.4s ease;
+}

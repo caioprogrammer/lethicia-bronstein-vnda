@@ -1,0 +1,12 @@
+{
+  "template": "bare",
+  "theme": "custom",
+  "themeSet": "docs/documentation.css",
+  "title": "Orientações de cadastro",
+  "options": {
+    "minifyCSS": true,
+    "markdown": {
+      "linkify": true
+    }
+  }
+}

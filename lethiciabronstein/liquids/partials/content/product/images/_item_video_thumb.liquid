@@ -8,9 +8,23 @@
   {% assign data_skus = image.skus | join: ',' | prepend: 'data-skus-image="' | append: ',"' %}
 {% endif %}
 
-<div class="image-thumb swiper-slide" {{ without_sku }} {{ data_skus }} data-image-thumb>
+<div
+  class="image-thumb swiper-slide"
+  {{ without_sku }}
+  {{ data_skus }}
+  data-image-thumb>
   <figure class="image -custom">
-    <img class="swiper-lazy" data-src="{{ video.thumbnail_url | resize: '150x'}}" alt="{{ product.name }}"/>
+    {% if video.thumbnail_url %}
+      <img
+        class="swiper-lazy"
+        data-src="{{ video.thumbnail_url | resize: '150x'}}"
+        alt="{{ product.name }}" />
+    {% else %}
+      <img
+        class="swiper-lazy"
+        data-src="https://i.vimeocdn.com/video/499134794-0e30b7b4f310669590490d68c546fe9a4c00f2a16a66579bfb7cff3451fd3ea3-d"
+        alt="{{ product.name }}" />
+    {% endif %}
     <div class="skeleton"></div>
   </figure>
 </div>

@@ -1,19 +1,44 @@
 {% load_menus position: 'social' %}
 
-<div class="social">
+  <div class="social">
 
   {%- comment -%} Logo secundário {%- endcomment -%}
   {% comment %}
-    
-  {% render "partials/content/footer/banner", section: 'secondary-banner' position: 'rodape-logo-secundario', type: '-horizontal', limit: 1 %}
-{% endcomment %}
 
-  <nav class="social-icons">
-    {% for menu in loaded_menus %}
-      <a aria-label="Ir para {{ menu.title }}" href="{{ menu.url }}" {% if menu.external %} rel="external" target="_blank" {% endif %}>
+  {% render "partials/content/footer/banner", section: 'secondary-banner' position: 'rodape-logo-secundario', type: '-horizontal', limit: 1 %}
+  {% endcomment %}
+
+    <nav class="social-icons"> {% for menu in loaded_menus %}
+      <a
+        aria-label="Ir para {{ menu.title }}"
+        href="{{ menu.url }}"
+        {% if menu.external %}rel="external"target="_blank"{% endif %}>
         <svg class="icon">
-          <use xlink:href="#icon-{{ menu.tooltip }}"/>
+          <use xlink:href="#icon-{{ menu.tooltip }}" />
         </svg>
+        {% if menu.tooltip == "youtube" %}
+          <span>Lethicia Bronstein
+          </span>
+        {% endif %}
+        {% if menu.tooltip == "facebook" %}
+          <span>Le Bronstein
+          </span>
+        {% endif %}
+        {% if menu.url == "https://www.instagram.com/lebronstein" %}
+          <span>Le Bronstein
+          </span>
+        {% endif %}
+        {% if menu.url == "https://www.instagram.com/pietrabylethicia" %}
+          <span>Pietra by Lethicia
+          </span>
+        {% endif %}
+        {% if menu.url == "https://www.instagram.com/lethiciabronsteinbridal" %}
+          <span>Lethicia Bronstein Bridal
+          </span>
+        {% endif %}
+        {% if menu.url == "https://www.instagram.com/lethiciabronstein" %}
+          <span>Lethicia Bronstein</span>
+        {% endif %}
       </a>
     {% endfor %}
   </nav>

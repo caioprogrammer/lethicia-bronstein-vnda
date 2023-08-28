@@ -1,4 +1,6 @@
 import { slideToggle, slideDown } from '../components/utilities';
+import Swiper, { Navigation, Pagination, Lazy, Autoplay } from 'swiper';
+Swiper.use([Navigation, Pagination, Lazy, Autoplay]);
 
 const Page = {
   accordionsFaq: function () {
@@ -43,10 +45,51 @@ const Page = {
       });
     });
   },
+  setSpecialBanner: () => {
+    console.log("funcionei")
+    const specialbanners = document.querySelectorAll('[data-special-banner]');
+
+    // Remove o fullbanner que não é da resolução do dispositivo
+
+    specialbanners.forEach((section) => {
+      const carousel = section.querySelector('.swiper');
+      const next = section.querySelector('.swiper-button-next');
+      const prev = section.querySelector('.swiper-button-prev');
+
+      new Swiper(carousel, {
+        slidesPerView: 'auto',
+        watchOverflow: true,
+        preloadImages: false,
+        speed: 1000,
+        spaceBetween: 20,
+        lazy: {
+          checkInView: true,
+          loadPrevNext: false,
+          loadOnTransitionStart: true,
+        },
+        navigation: {
+          nextEl: next,
+          prevEl: prev,
+        },
+      });
+    });
+    console.log("terminei")
+  },
+  setAppearsSections: () => {
+    var value = 1;
+    window.addEventListener("scroll", (event) => {
+      console.log(window.pageYOffset)
+      if(window.pageYOffset%3000 == 0) {
+        document.querySelector(`.special-projects__texts div[id='s${value++}']`).classList.add("active");
+      }
+    });
+  },
   init: function () {
     var _this = this;
 
     _this.accordionsFaq();
+    // _this.setAppearsSections();
+    _this.setSpecialBanner();
   },
 };
 

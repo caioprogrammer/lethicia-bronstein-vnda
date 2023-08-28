@@ -1,0 +1,135 @@
+.price-wrapper {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 1rem;
+  min-height: 7rem;
+
+  > .price-group {
+    font-size: var(--font-size-title);
+    font-weight: var(--font-weight-title);
+  }
+
+  > .-discount {
+    min-height: 6.8rem;
+  }
+
+  > .discount-wrapper {
+    display: flex;
+    &.-hidden { display: none }
+  }
+
+  > .discount-wrapper .discount-percent {
+    align-items: center;
+    background-color: var(--red);
+    border-radius: 33px;
+    color: var(--white);
+    display: flex;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-subtitle);
+    justify-content: center;
+    line-height: 1;
+    margin-right: 1rem;
+    max-height: 2.6rem;
+    padding: 0.4rem 1rem;
+    text-align: center;
+    width: fit-content;
+  }
+
+  > .discount-wrapper .original-price {
+    align-items: center;
+    color: var(--red);
+    display: flex;
+    font-size: 1.4rem;
+    justify-content: flex-start;
+  }
+
+  .cmp-price-container {
+    > h2 {
+      align-items: flex-start;
+      display: flex;
+      flex-wrap: wrap;
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-base);
+    }
+
+    > h2 .cmp-price-sale-price {
+      font-size: 2.6rem;
+      font-weight: bold;
+    }
+
+    > h2 .cmp-price-price {
+      font-size: 2.6rem;
+      font-weight: bold;
+    }
+
+    > p {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      font-weight: var(--font-size-base);
+      font-weight: var(--font-weight-base);
+    }
+
+    > p .cmp-price-sale-price {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    > p .cmp-price-price {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .prefix { display: none }
+
+    .cmp-price-sold-out {
+      font-size: var(--font-size-subtitle);
+      font-weight: var(--font-weight-subtitle);
+    }
+
+    .cmp-price-sold-out + .cmp-price-price {
+      display: none;
+    }
+
+    .cmp-price-sale-price {
+      display: inline-block;
+      width: 100%;
+      ins { text-decoration: none }
+    }
+
+    .cmp-price-original-price {
+      align-items: center;
+      display: flex;
+      font-size: var(--font-size-small);
+      color: var(--red);
+      margin-bottom: 0.3rem;
+      position: relative;
+      del { text-decoration: none }
+
+      &::before {
+        content: var(--discount);
+        align-items: center;
+        background-color: var(--red);
+        border-radius: 33px;
+        color: var(--white);
+        display: flex;
+        font-size: 1.2rem;
+        font-weight: var(--font-weight-title);
+        justify-content: center;
+        line-height: 1;
+        margin-right: 0.8rem;
+        max-height: 2.4rem;
+        padding: 0.4rem 0.8rem;
+        text-align: center;
+        width: fit-content;
+      }
+    }
+
+    .cmp-price-installments {
+      font-size: var(--font-size-small);
+      width: 100%;
+    }
+  }
+}

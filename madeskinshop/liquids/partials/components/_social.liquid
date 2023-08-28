@@ -1,0 +1,11 @@
+{% load_menus position: 'social' %}
+
+<nav class="social-icons">
+  {% for menu in loaded_menus %}
+    <a aria-label="Ir para {{ menu.title }}" class="social-icon" aria-label="{{ menu.tooltip | capitalize }}" href="{{ menu.url }}" {% if menu.external %} rel="external" target="_blank" {% endif %}>
+      <svg class="icon">
+        <use xlink:href="#icon-{{ menu.tooltip }}"/>
+      </svg>
+    </a>
+  {% endfor %}
+</nav>

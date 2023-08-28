@@ -1,15 +1,18 @@
 .hightlights {
   h2 {
-    text-align: center;
-    font-size: 50px;
     margin: 30px 0 10px;
-    font-weight: 300;
+    text-align: center;
+    font-size: 48px;
+    font-weight: 500;
+    letter-spacing: 5px;
   }
   > .hightlight-item {
     display: flex;
     flex-direction: column;
     margin-bottom: 4rem;
     width: 100%;
+    align-items: center;
+    justify-content: center;
 
     @include media("sm") {
       flex-direction: row;
@@ -17,7 +20,7 @@
 
     &:last-child {
       margin-bottom: 0;
-      gap: 36px;
+      gap: 5rem;
     }
   }
 
@@ -30,6 +33,7 @@
 
     @include media("sm") {
       width: 50%;
+      max-width: 450px;
     }
   }
 
@@ -41,20 +45,23 @@
     margin-top: 2rem;
     text-align: center;
     width: 100%;
-    position: sticky;
-    top: 175px;
+    // position: sticky;
+    // top: 175px;
     height: 100%;
     @media screen and (max-width:768px) {
       position: unset;
     }
     @include media("sm") {
-      align-items: flex-start;
+      align-items: center;
       justify-content: flex-start;
       margin-left: 4rem;
       margin-top: 0;
-      text-align: left;
+      text-align: center;
       width: 50%;
       
+    }
+    .description {
+      font-size: var(--font-size-base);
     }
   }
 

@@ -5,6 +5,15 @@
   {% for image in product_images %}
     {% render 'partials/content/product/images/item_image_thumb', image: image, product: product, forloop: forloop %}
   {% endfor %}
+  <div class="image-thumb swiper-slide" data-image-thumb>
+    <figure class="image -custom">
+      <img
+        class="swiper-lazy"
+        src="https://i.vimeocdn.com/video/499134794-0e30b7b4f310669590490d68c546fe9a4c00f2a16a66579bfb7cff3451fd3ea3-d"
+        alt="{{ product.name }}" />
+      <div class="skeleton"></div>
+    </figure>
+  </div>
 {% endcapture %}
 
 {% capture html_product_images %}
@@ -59,9 +68,6 @@
     <div class="swiper" data-slider-thumbs>
       <div class="swiper-wrapper">
         {{ html_thumb }}
-          {% comment %}  
-          {{ html_thumb_videos }}
-        {% endcomment %}
       </div>
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
@@ -71,9 +77,7 @@
   <div class="wrapper-slider">
     <div class="swiper" data-main-slider>
       <div class="swiper-wrapper">
-        {% comment %}  
         {{ html_product_videos }}
-      {% endcomment %}
         {{ html_product_images }}
       </div>
       <div class="swiper-button-next"></div>

@@ -1,0 +1,93 @@
+{% gtm product_impression: product %}
+
+{% assign image_urls = product.images | map: 'url' | uniq %}
+{% assign class_sold_out = '' %}
+
+{% unless product.available %}
+  {% assign class_sold_out = 'sold-out' %}
+{% endunless %}
+
+{% if product.discount_rule != null and product.discount_rule.type == 'percentage' %}
+  {% assign discount_amount = product.discount_rule.amount %}
+{% endif %}
+
+{% capture price_settings %}
+  {
+    "productId": {{ product.id }},
+    "showInstallmentsWithoutInterest": true,
+    "showInstallmentsWithInterest": false, 
+    "mode": "medium",
+    "htmlTag": "p"
+  }
+{% endcapture %}
+
+{% comment %} ========== {% endcomment %}
+
+<div class="product-block {{ class_sold_out }}" data-product-box>
+  <div class="images">
+    <a aria-label="Ir para o produto {{ product.name }}" href="{{ product.url }}">
+      {% if image_urls.size > 0 %}
+        <figure class="image -square">
+          {% for image in image_urls limit: 2 %}
+            {% capture data_srcset %}
+              {{ image | resize: '300x' }} 350w,
+              {{ image | resize: '400x' }} 767w,
+              {{ image | resize: '500x' }} 991w,
+              {{ image | resize: '600x' }} 1440w,
+              {{ image | resize: '800x' }} 1920w,
+              {{ image }} 2000w
+            {% endcapture %}
+      
+            {% capture data_sizes %}
+              (max-width: 350px) 350px,
+              (max-width: 767px) 767px,
+              (max-width: 991px) 991px,
+              (max-width: 1440px) 1440px,
+              (max-width: 1920px) 1920px,
+              (min-width: 1921px) 2000px
+            {% endcapture %}
+
+            <img class="{{ lazy | default: 'lazy' }}" data-srcset="{{ data_srcset | strip_newlines | strip }}" data-sizes="{{ data_sizes | strip_newlines | strip }}" alt="Foto do produto {{ product.name }}"/>
+          {% endfor %}
+        </figure>
+      {% else %}
+        <figure class="image -square">
+          <img alt="{{ product.name }}" title="Foto do produto {{ product.name }}" class="lazy" data-src="{{ 'placeholder.png' | image_path }}"/>
+        </figure>
+      {% endif %}
+
+      {% render 'partials/components/flag', product: product %}
+    </a>
+  </div>
+
+  <div class="description">
+    <h3 class="name">
+      <a aria-label="Ir para o produto {{ product.name }}" href="{{ product.url }}">
+        {{ product.name }}
+      </a>
+    </h3>
+
+    <div class="price-wrapper">
+      <div class="product-price price {% if discount_amount %} -discount {% endif %}" data-was-processed="false" data-sku="" data-init-price='{{ price_settings }}' data-price="{{ product.price }}" data-discount-percent="{{ discount_amount | default: 0 }}"></div>
+    </div>
+
+    <p class="quantity">{{ product.variants.size }} opções disponíveis</p>
+  </div>
+
+  {% comment %}
+    Renderiza attributos do popup de compra rápida
+    Retirar ou comentar caso não for utilizado
+  {% endcomment %}
+
+  {% if product.available %}
+    <button aria-label="Adicionar produto ao carrinho" class="button-default -outlined" data-open-popup-purchase type="button">
+      <span class="text">COMPRAR</span>
+    </button>
+  {% else %}
+    <button aria-label="Produto indisponível" class="button-default -outlined -unavailable" type="button">
+      <span class="text">PRODUTO INDISPONÍVEL</span>
+    </button>
+  {% endif %}
+
+  {% render 'partials/content/product/purchase', product: product, show_button: true, show_short_desc: true %}
+</div>

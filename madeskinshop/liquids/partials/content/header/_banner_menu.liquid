@@ -1,0 +1,19 @@
+{% assign banner_position = menu.title | downcase | replace: " ", "-" | replace: "á", "a" | replace: "é", "e" | replace: "í", "i" | replace: "ó", "o" | replace: "ú", "u" | replace: "ã", "a" | replace: "ẽ", "e" | replace: "ç", "c" | prepend: "banner-menu-" %}
+
+{% load_banners position: banner_position limit: 1 %}
+
+{% if loaded_banners.size > 0 %}
+  <div class="banner-menu">
+    {% for banner in loaded_banners %}
+      <div class="banner">
+        <figure class="image">
+          <img class="lazy" data-src="{{ banner.file_url | resize: '300x' }}" alt="{{ banner.title }}"/>
+        </figure>
+
+        <div class="text">
+          {{ banner.description }}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}

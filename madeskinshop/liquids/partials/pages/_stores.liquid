@@ -1,0 +1,11 @@
+{% head %}
+<link href="pages/institucional/stores.css" inline rel="stylesheet" type="text/css">
+{% endhead %}
+
+{% assign position_full = page.slug | append: '-banner-principal' %}
+
+{% render 'partials/pages/components/page_fullbanner', page: page, position: position_full, background: false, type: '-custom' %}
+
+<section class="section container stores">
+  {% render 'partials/pages/components/maps' %}
+</section>

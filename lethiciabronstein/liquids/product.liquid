@@ -85,10 +85,12 @@
     </div>
   </div>
   {% render 'partials/content/product/group_shop', current_product: product %}
-  {% if relacionado %}
-  <div class="related-products">
-    <h2>Você também pode gostar</h2>
-    {% render 'partials/components/carousel', tag_name: relacionado.name, current_product: product, templateInfo: 'product' %}
-  </div>
+  {% comment %}  
+  {% render 'partials/content/product/combine_with', current_product: product %}
+  {% endcomment %}{% if relacionado %}
+    <div class="related-products">
+      <h2>Você também pode gostar</h2>
+      {% render 'partials/components/carousel', tag_name: relacionado.name, current_product: product, templateInfo: 'product' %}
+    </div>
   {% endif %}
 </section>

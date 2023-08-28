@@ -36,5 +36,5 @@ window.addEventListener('DOMContentLoaded', () => {
   PriceComponent.init();
   Webforms.init();
   NewsletterComponent.init();
-  if (window.innerWidth < 992) MenuMobile.init()
+  if (window.innerWidth < 992) MenuMobile.init();
 });

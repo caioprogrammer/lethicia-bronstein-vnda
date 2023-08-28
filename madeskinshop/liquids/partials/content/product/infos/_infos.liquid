@@ -1,0 +1,24 @@
+{% render 'partials/content/product/product_name_price', product: product %}
+
+<div class="infos-compra">
+  {% render 'partials/content/product/purchase', product: product, show_qtd_selector: true, show_button: true,  text_string: 'Adicionar ao Carrinho', tag_medidas: tag_medidas %}
+</div>
+
+<div class="form-notify">
+  {% render 'partials/content/product/form_notify', classNotify: classNotify, product: product, current_shop: current_shop %}
+</div>
+
+{% render 'partials/content/product/shipping' %}
+
+<div class="divider"></div>
+
+<div class="share-wrapper">
+  <p class="share-title">compartilhar</p>
+  {% render 'partials/content/product/share', product: product, current_shop: current_shop %}
+</div>
+
+{% if descricao_parts %}
+  <div class="secondary-infos">
+    {% render 'partials/content/product/secondary_infos', product: product, descricao_curta: descricao_curta, descricao_parts: descricao_parts %}
+  </div>
+{% endif %} 

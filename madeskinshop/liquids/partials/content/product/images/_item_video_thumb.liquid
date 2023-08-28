@@ -1,0 +1,15 @@
+{% assign sku_status = '' %}
+{% assign data_skus = '' %}
+
+{% if image.skus == blank %}
+  {% assign sku_status = 'data-without-sku' %}
+{% else %}
+  {% assign sku_status = 'data-with-sku' %}
+  {% assign data_skus = image.skus | join: ',' | prepend: 'data-skus-image="' | append: ',"' %}
+{% endif %}
+
+<div class="image-thumb swiper-slide" {{ sku_status }} {{ data_skus }} data-image-thumb>
+  <figure class="image -square">
+    <img class="swiper-lazy" data-src="{{ video.thumbnail_url | resize: '150x150'}}" alt="{{ product.name }}"/>
+  </figure>
+</div>

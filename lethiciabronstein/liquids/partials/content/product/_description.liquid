@@ -37,62 +37,60 @@ no cadastro informamos *** no markdown, e product.description irá retornar o ht
 o filtro split nos retorna um array com os valores, e iremos pegar o primeiro (first) e armazenaremos na variável shortDescription
 
 e armazenaremos o array inteiro na variável descriptionParts, para depois montarmos os collapses
-{% endcomment %}{% if product.description contains '<hr/>' %}
-  {% assign shortDescription = product.description | split: '<hr/>' | first %}
-{% assign descriptionParts = product.description | split: '<hr/>' %}
+{% endcomment %}{% if product.description contains 'Composição' %}
+  {% assign shortDescription = product.description | split: 'Composição' | first %}
+{% assign descriptionParts = product.description | split: 'Composição' %}
 {% endif %}
 
 {% comment %}
 fazemos um loop na variável descriptionParts para montar os collapses
 lembrando que descriptionParts é um array
 {% endcomment %}
-  <ul class="m-d expand-list"> {% for desc in descriptionParts %}
-    {% if desc contains '</h2>' %}
+  <ul class="m-d expand-list"> <li data-md-content="500">
+    <label
+      name="tab"
+      for="tab-descricao"
+      tabindex="-1"
+      class="tab_lab"
+      role="tab">
+      <h2>Descrição</h2>
+    </label>
+    <input
+      type="checkbox"
+      class="tab"
+      id="tab-descricao"
+      tabindex="0"
+      checked />
+    <span class="open-close-icon">
+      <i class="fas fa-plus"></i>
+      <i class="fas fa-minus"></i>
+    </span>
+    <div class="content">
+      {{ descriptionParts | first | remove: 'Descrição' | remove: 'DESCRIÇÃO' }}
+    </div>
 
 
-      {% assign tab_title = desc | split: '</h2>' | first | strip_html %}
-      {% assign tab_content = desc | split: '</h2>' | last %}
-
-        {% capture html_description_tabs %}
-        {{ html_description_tabs }}
-        {% comment %}
-
-        <div class="tab-container"> <a
-        class="tab-title"
-        open-tab
-        data-tab="tab-{{ forloop.index }}">{{ tab_title }}</a>
-        <div class="content">
-        {{ tab_content }}
-        </div>
-        </div>
-        {% endcomment %}
-
-        <li data-md-content="500">
-          <label
-            name="tab"
-            for="tab{{ forloop.index }}"
-            tabindex="-1"
-            class="tab_lab"
-            role="tab">
-            <h3>{{ tab_title }}</h3>
-          </label>
-          <input
-            type="checkbox"
-            {% if forloop.index == 1 %}checked{% endif %}
-            class="tab"
-            id="tab{{ forloop.index }}"
-            tabindex="0" />
-          <span class="open-close-icon">
-            <i class="fas fa-plus"></i>
-            <i class="fas fa-minus"></i>
-          </span>
-          <div class="content">
-            {{ tab_content }}
-          </div>
-        </li>
-      {% endcapture %}
-    {% endif %}
-  {% endfor %}
-
-  {{ html_description_tabs }}
+  </li>
+  <li data-md-content="500">
+    <label
+      name="tab"
+      for="tab-composicao"
+      tabindex="-1"
+      class="tab_lab"
+      role="tab">
+      <h2>Composição</h2>
+    </label>
+    <input
+      type="checkbox"
+      class="tab"
+      id="tab-composicao"
+      tabindex="0" />
+    <span class="open-close-icon">
+      <i class="fas fa-plus"></i>
+      <i class="fas fa-minus"></i>
+    </span>
+    <div class="content">
+      {{ descriptionParts | last }}
+    </div>
+  </li>
 </ul>

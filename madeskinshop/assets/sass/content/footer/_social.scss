@@ -1,0 +1,21 @@
+.wrap-social {
+  margin: 20px 0px;
+
+  .menu {
+    display: flex;
+    justify-content: center;
+
+    li:not(:last-child) {
+      margin-right: 1rem;
+    }
+
+    a {
+      display: inline-block;
+    }
+
+    .icon {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+}

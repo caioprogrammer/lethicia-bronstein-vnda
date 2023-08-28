@@ -1,0 +1,42 @@
+@import "../../base/mixins";
+
+.contact {
+  margin-top: 4rem;
+  max-width: 920px;
+
+  @include media("lg") {
+    max-width: 1298px;
+  }
+
+  > .form-wrapper {
+    width: 100%;
+  }
+
+  .form-wrapper .title {
+    font-size: 2.6rem;
+    font-weight: var(--font-weight-title);
+    line-height: 1;
+    margin-bottom: 3rem;
+  }
+
+  > .form-wrapper .label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+  }
+  .form-wrapper .label span {
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  > .form-wrapper .input,
+  .text-area {
+    border-color: var(--highlight-1);
+    width: 100%;
+  }
+
+  > .form-wrapper .button-default {
+    width: 100%;
+  }
+}

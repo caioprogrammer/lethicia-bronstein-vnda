@@ -1,0 +1,90 @@
+
+.special-projects {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: row-reverse;
+    @media screen and (max-width: 1024px) {
+        flex-direction: column-reverse;
+    }
+    &__video {
+        .video.-horizontal:after {
+            padding-bottom: 56%;
+        }
+    }
+    &__texts {
+        width: 40%;
+        @media screen and (max-width: 1024px) {
+            width: 100%;
+        }
+        // position: sticky;
+        // top: 150px;
+        .content {
+            border-top: 3px solid #000;
+            line-height: 1.45rem;
+            margin-bottom: 24px;
+            margin-left: 36px;
+            margin-right: 10%;
+            @media screen and (max-width:1024px) {
+                margin-left: 5%;
+                margin-right: 5%;
+            }
+            p {
+                margin-bottom: 10px;
+            }
+            h2 {
+                font-size: 2.4rem;
+                margin-top: 2.3rem;
+                margin-bottom: 2rem;
+                line-height: 1.3rem;
+                text-align: left;
+            }
+        }
+    }
+    &__images {
+        width: 60%;
+        margin-right: 36px;
+        @media screen and (max-width:1024px) {
+            width: 100%;
+            margin-right: 0;
+            padding: 0 15px;
+        }
+    }
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        img {
+            object-fit: cover;
+        }
+    }
+    &__slider {
+        margin-bottom: 20px;
+        .swiper-slide.video {
+            width: 100%;
+        }
+        figure {
+            width: 50%;
+        }
+        img {
+            object-fit: cover;
+        }
+        // position: relative;
+        // padding-top: 5%;
+        // width: 60%;
+        // left: 30%;
+        // clear: both;
+        // .slider-wrapper {
+        //     display: flex;
+        //     gap: 36px;
+        //     flex-wrap: wrap;
+        //     justify-content: space-between;
+        //     figure {
+        //         width: calc(50% - 20px);
+        //         &:nth-child(3n + 1) {
+        //             width: 100%;
+        //         }
+        //     }
+        // }
+    }
+}

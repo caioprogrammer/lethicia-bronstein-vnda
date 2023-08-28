@@ -1,0 +1,46 @@
+{% assign sku_status = '' %}
+{% assign data_skus = '' %}
+
+{% if image.skus == blank %}
+  {% assign sku_status = 'data-without-sku' %}
+{% else %}
+  {% assign sku_status = 'data-with-sku' %}
+  {% assign data_skus = image.skus | join: ',' | prepend: 'data-skus="' | append: ',"' %}
+{% endif %}
+
+{% capture data_srcset %}
+  {{ image.url | resize: '360x' }} 360w,
+  {{ image.url | resize: '480x' }} 480w,
+  {{ image.url | resize: '550x' }} 550w,
+  {{ image.url | resize: '780x' }} 780w
+{% endcapture %}
+
+{% capture data_sizes %}
+  (max-width: 360px) 360px,
+  (max-width: 480px) 480px,
+  (max-width: 767px) 780px,
+  (max-width: 991px) 360px,
+  (max-width: 1280px) 480px,
+  (max-width: 1440px) 550px,
+  780px
+{% endcapture %}
+
+<div class="item-image image-{{ forloop.index0 }} swiper-slide" id="image-{{ forloop.index0 }}" {{ sku_status }}  {{ data_skus }} data-image>
+  <figure class="image swiper-zoom-container">
+    {% if forloop.first %}
+      <img
+        class="swiper-zoom-target"
+        srcset="{{ data_srcset | strip_newlines | strip }}"
+        sizes="{{ data_sizes | strip_newlines | strip }}"
+        alt="Foto do produto {{ product.name }}"
+      />
+    {% else %}
+      <img
+        class="swiper-lazy swiper-zoom-target"
+        data-srcset="{{ data_srcset | strip_newlines | strip }}"
+        sizes="{{ data_sizes | strip_newlines | strip }}"
+        alt="Foto do produto {{ product.name }}"
+      />
+    {% endif %}
+  </figure>
+</div>

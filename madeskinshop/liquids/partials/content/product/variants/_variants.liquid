@@ -1,0 +1,33 @@
+{% assign min = 354351645 %}
+{% assign max = 6843516843215424641321485 %}
+{% assign diff = max | minus: min %}
+{% assign random = "now" | date: "%H%M%S%L" | modulo: diff | plus: min %}
+
+{% comment %}
+- Inicia com o primeiro sku, ele será alterado por js depois caso tenha mais de um disponível
+{% endcomment %}
+<input type="hidden" name="sku" value="{{ product.variants[0].sku }}">
+
+
+{% comment %}  
+- Pega o nome dos atributos no array (usar o map evita que o name venha vazio quando um atributo não estiver preenchido)
+{% endcomment %}
+{% assign attributes_1_name = product.variants | map: 'properties' | map: 'property1' | map: 'name' | uniq %}
+{% assign attributes_2_name = product.variants | map: 'properties' | map: 'property2' | map: 'name' | uniq %}
+{% assign attributes_3_name = product.variants | map: 'properties' | map: 'property3' | map: 'name' | uniq %}
+
+
+{% comment %}  
+- Unifica os atributos
+{% endcomment %}
+{% assign attributes_1 = product.variants | map: 'properties' | map: 'property1' | map: 'value' | uniq %}
+{% assign attributes_2 = product.variants | map: 'properties' | map: 'property2' | map: 'value' | uniq %}
+{% assign attributes_3 = product.variants | map: 'properties' | map: 'property3' | map: 'value' | uniq %}
+
+
+{% comment %}  
+- Monta o html dos atributos
+{% endcomment %}
+{% render 'partials/content/product/variants/attributes', attributes: attributes_1, attributes_name: attributes_1_name, attributes_index: 1, random: random, product: product %}
+{% render 'partials/content/product/variants/attributes', attributes: attributes_2, attributes_name: attributes_2_name, attributes_index: 2, random: random, product: product, tag_medidas: tag_medidas %}
+{% render 'partials/content/product/variants/attributes', attributes: attributes_3, attributes_name: attributes_3_name, attributes_index: 3, random: random, product: product %}

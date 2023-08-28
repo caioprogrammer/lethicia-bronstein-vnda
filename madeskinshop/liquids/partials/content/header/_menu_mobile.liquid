@@ -1,0 +1,77 @@
+<nav class="mm-menu-mobile" id="mm-menu-mobile" style="display: none;">
+  <ul class="mm-menu-list">
+    <li class="mm-menu-logo">
+
+      <button aria-label="Fechar menu" class="mm-menu-close" data-action="close-menu-mobile">
+        <svg class="icon">
+          <use xlink:href="#icon-close"/>
+        </svg>
+      </button>
+    </li>
+
+    <li class="mm-menu-search">
+      <form class="search-form" action="{{ search_url }}">
+        <button aria-label="Pesquisar" class="action">
+          <svg class="icon">
+            <use xlink:href="#icon-search"></use>
+          </svg>
+        </button>
+        <div class="field">
+          <input autocomplete="off" name="q" placeholder="Buscar" required type="search"/>
+        </div>
+      </form>
+    </li>
+
+    {% for menu in loaded_menus %}
+      {% if menu.title == blank %}
+        {% continue %}
+      {% endif %}
+
+      <li>
+        <a aria-label="Menu {{ menu.title }}" href="{{ menu.url }}" {% if menu.external %} target="_blank" {% endif %} {% if menu.tooltip %} style="color: {{ menu.tooltip }}; font-weight: 700" {% endif %} alt="{{ menu.title }}">
+          {{ menu.title }}
+        </a>
+        {% if menu.children %}
+          <ul>
+            {% for sub_item in menu.children %}
+              <li>
+                <a aria-label="Submenu {{ menu.title }}" href="{{ sub_item.url }}" {% if sub_item.external %} target="_blank" {% endif %} {% if menu.tooltip %} style="color: {{ sub_item.tooltip }}; font-weight: 700" {% endif %} alt="{{ sub_item.title }}">
+                  {{ sub_item.title }}
+                </a>
+                {% if sub_item.children %}
+                  <ul>
+                    {% for subsub_item in sub_item.children %}
+                      <li>
+                        <a aria-label="Submenu {{ menu.title }}" href="{{ subsub_item.url }}" {% if subsub_item.external %} target="_blank" {% endif %} {% if menu.tooltip %} style="color: {{ subsub_item.tooltip }}; font-weight: 700" {% endif %} alt="{{ subsub_item.title }}">
+                          {{ subsub_item.title }}
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+
+    <li class="mm-menu-action">
+      <button aria-label="Abrir carrinho" class="open-cart -mobile" data-toggle-cart>
+        <svg class="icon">
+          <use xlink:href="#icon-cart"/>
+        </svg>
+        Carrinho
+      </button>
+    </li>
+
+    <li class="mm-menu-action">
+      <a aria-label="Minha Conta" class="account-mobile" href="{{ account_url }}">
+        <svg class="icon">
+          <use xlink:href="#icon-account"/>
+        </svg>
+        Minha Conta
+      </a>
+    </li>
+  </ul>
+</nav>

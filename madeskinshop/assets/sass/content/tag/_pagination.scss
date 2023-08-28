@@ -1,0 +1,33 @@
+.pagination {
+  padding: 0;
+  margin-top: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .pagination-list {
+    display: flex;
+  }
+
+  .pagination-list > .pagination-list-item {
+    list-style: none;
+    font-size: var(--font-size-big);
+    margin: 0 1rem;
+    text-align: center;
+    padding: 0.6rem 1rem;
+    background-color: var(--gray-2);
+    border: 2px solid transparent;
+    border-radius: 6px;
+    font-weight: var(--font-weight-title);
+
+    &.-current {
+      border-color: var(--primary-color);
+    }
+
+    .icon {
+      height: 1rem;
+      width: 1rem;
+    }
+  }
+}

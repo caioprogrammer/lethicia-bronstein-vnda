@@ -1,0 +1,22 @@
+{% head %}
+  {% opengraphfor page %}
+  <link href="pages/page_above.css" inline rel="stylesheet" type="text/css">
+{% endhead %}
+
+{% body %}
+  <script src="{{ 'pages.js' | javascript_path }}"></script>
+{% endbody %}
+
+{% comment %} ========== {% endcomment %}
+
+{% if page.slug == "onde-encontrar" %}
+  {% render "partials/pages/stores", page: page %}
+{% elsif page.slug == 'atendimento'  %}
+  {% render "partials/pages/contact", page: page, current_shop: current_shop %}
+{% elsif page.slug == 'sobre'  %}
+  {% render "partials/pages/about", page: page %}
+{% elsif page.slug == 'termos'  %}
+  {% render "partials/pages/faq", page: page %}
+{% else %}
+  {% render "partials/pages/custom", page: page, current_shop: current_shop %}
+{% endif %}

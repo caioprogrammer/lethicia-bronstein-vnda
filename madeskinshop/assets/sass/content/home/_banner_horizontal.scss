@@ -1,0 +1,30 @@
+.section-banner-horizontal {
+
+  .banner-inner{
+    position: relative;
+  }
+  
+  .banner {
+    .image::after {
+      padding-bottom: 50%;
+    }
+
+    @include media('sm') {
+      .image::after {
+        padding-bottom: 20%;
+      }
+    }
+  }
+
+  .content{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}

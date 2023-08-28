@@ -1,0 +1,35 @@
+@import "../base/mixins";
+
+.footer {
+  padding: 4rem 0 0;
+  background-color: var(--gray-4);
+  color: var(--white);
+
+  @import "../content/footer/newsletter";
+
+  .phrase {
+    margin: 0;
+  }
+  
+  @import "../content/footer/social";
+  @import "../content/footer/menu";  
+
+  .bottom {
+    font-size: var(--font-size-small);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    
+    @include media('sm') {
+      
+      .wrap-infos-loja {
+        margin-right: 3rem;
+        text-align: center;
+      }
+    }
+  }
+}

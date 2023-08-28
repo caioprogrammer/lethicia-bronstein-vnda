@@ -1,0 +1,65 @@
+.shipping {
+  width: 100%;
+  margin-top: 3rem;
+
+  > .shipping-form .shipping-title {
+    display: flex;
+    font-size: var(--font-size-small);
+    line-height: 1;
+    margin-bottom: 1rem;
+    white-space: nowrap;
+  }
+
+  > .shipping-form .field {
+    display: flex;
+  }
+
+  > .shipping-form .field .input {
+    border: 1px solid var(--primary-color);
+    border-radius: 0;
+    height: 4.2rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    width: 70%;
+  }
+
+  > .shipping-form .field .button-default {
+    width: 30%;
+    color: var(--black);
+    border-color: var(--black);
+    border-left: none;
+    height: 4.2rem;
+
+    &:hover{
+      color: var(--white);
+    }
+  }
+
+  > .shipping-list-wrapper .street {
+    margin: 2rem 0;
+    text-align: center;
+  }
+
+  .shipping-list-wrapper .shipping-list {
+    font-size: var(--font-size-small);
+  }
+
+  > .shipping-list-wrapper .shipping-list .shipping-list-item {
+    border: solid var(--primary-color);
+    border-width: 1px 1px 0 1px;
+    padding: 1rem;
+
+    &:last-child {
+      border-bottom-width: 1px;
+    }
+  }
+
+  > .shipping-list-wrapper .shipping-list .shipping-list-item .method {
+    align-items: center;
+    display: flex;
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-title);
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+}

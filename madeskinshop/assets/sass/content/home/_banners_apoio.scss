@@ -1,0 +1,67 @@
+.banners-apoio {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @include media("sm") {
+    flex-direction: row;
+  }
+
+  .category-item {
+    flex: 1;
+    margin-right: 0;
+    margin-bottom: 2rem;
+    position: relative;
+    
+    @include media("sm") {
+      margin-right: 2rem;
+      margin-bottom: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+
+      @include media("sm") {
+        margin-right: 0;
+      }
+    }
+
+    .image img{
+      transition: var(--transition);
+    }
+  }
+
+  .category-item:hover{
+
+    @include media('sm') {
+      
+      .image img{
+        filter: blur(3px);
+        transform: scale(1.5);
+      }
+    }
+
+  }
+
+  .category-item .text {
+    padding: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    .description{
+      font-size: var(--font-size-subtitle);
+    }
+  }
+
+  .category-item .text .button-default{
+    width: fit-content;
+  }
+}

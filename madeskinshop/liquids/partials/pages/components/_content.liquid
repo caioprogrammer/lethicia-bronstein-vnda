@@ -1,0 +1,15 @@
+{% load_banners position: position limit: 1 %}
+
+{% for banner in loaded_banners %}
+  <section class="section container content-text">
+    <div class="title-wrapper">
+      {% if banner.subtitle %}
+        <h2 class="title">
+          {{banner.subtitle}}
+        </h2>
+      {% endif %}
+    </div>
+
+    {{ banner.description | replace: '<h1', '<h2 ' }}
+  </section>
+{% endfor %}

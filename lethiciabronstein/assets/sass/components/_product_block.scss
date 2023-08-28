@@ -47,7 +47,7 @@
       z-index: 2;
       iframe {
         width: 100%;
-        height: 107%;
+        height: 127%;
       }
     }
     .add-to-cart {
@@ -73,6 +73,7 @@
         justify-items: center;
         background-color: rgba($color: #fff, $alpha: .8);
         padding-bottom: .5rem;
+        padding-top: 0.5rem;
         transform: translateY(25px);
         transition: ease .5s;
         

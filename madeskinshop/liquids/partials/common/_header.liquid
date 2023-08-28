@@ -1,0 +1,16 @@
+{% render 'partials/content/header/top_bar' %}
+
+<header class="header {{ template }}" id="header">
+  <div class="container content">
+    <div class="hamburger-logo">
+      <button aria-label="Abrir menu" class="hamburger" data-action="open-menu-mobile">
+        <svg class="icon">
+          <use href="#icon-hamburger"/>
+        </svg>
+      </button>
+    </div>
+    {% render "partials/content/header/actions", account_url: account_url %}
+  </div>
+
+  {% render 'partials/content/header/menu', template: template, search_url: search_url, account_url: account_url, img_logo: img_logo, home_url: home_url, mobile: mobile %}
+</header>

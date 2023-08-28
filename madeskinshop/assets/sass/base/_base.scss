@@ -1,0 +1,285 @@
+html {
+  color: var(--font-color-base);
+  font-size: 62.5%; // 1rem = 10px
+  line-height: var(--line-height);
+
+  @include media("lg") {
+    font-size: 75%; // 1rem = 12px
+  }
+}
+
+body {
+  font-size: var(--font-size-base) !important;
+  font-family: var(--font-family-base) !important;
+  font-weight: var(--font-weight-base) !important;
+
+  overflow-x: hidden;
+}
+
+main {
+  min-height: 50vh;
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
+}
+
+a,
+button,
+input {
+  // para remover as bordas arredondadas do safari mob
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  -webkit-appearance: none;
+
+  &:focus {
+    //configurar
+  }
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Section and Containers Formatter */
+.section {
+  margin-bottom: 6rem;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: calc(1368px + 10%);
+  padding-left: 5%;
+  padding-right: 5%;
+  width: 100%;
+}
+
+/* Images e Videos Config */
+.skeleton {
+  @extend %skeleton;
+}
+
+.image {
+  overflow: hidden;
+  position: relative;
+
+  &::after {
+    content: "";
+    display: block;
+  }
+
+  &.-square::after {
+    padding-bottom: 100%;
+  }
+
+  &.-horizontal::after {
+    padding-bottom: 46%;
+  }
+
+  &.-vertical::after {
+    padding-bottom: 146%;
+  }
+
+  > img {
+    height: 100%;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
+.video {
+  overflow: hidden;
+  position: relative;
+
+  &::after {
+    content: "";
+    display: block;
+  }
+
+  &.-square::after {
+    padding-bottom: 100%;
+  }
+
+  &.-horizontal::after {
+    padding-bottom: 46%;
+  }
+
+  &.-vertical::after {
+    padding-bottom: 146%;
+  }
+
+  > iframe {
+    height: 100%;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
+/* Vanilla Lazy Load */
+.lazy {
+  opacity: 0;
+  transition: var(--transition);
+
+  &.loaded {
+    opacity: 1;
+
+    & + .skeleton {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}
+
+/* Lazy Swiper */
+.swiper-lazy {
+  opacity: 0;
+  transition: var(--transition);
+  
+  &.swiper-lazy-loaded {
+    opacity: 1;
+    & + .skeleton {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}
+
+/* Text Formatter */
+.upper-title {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-subtitle);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: var(--font-family-title);
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-title);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: var(--font-size-subtitle);
+  font-weight: var(--font-weight-subtitle);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.description {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-base);
+  margin-bottom: 1rem;
+}
+
+.divider {
+  align-self: stretch;
+  background-color: var(--primary-color);
+  height: 1px;
+  margin: 3rem 0;
+}
+
+.breadcrumb .breadcrumb-list {
+  display: flex;
+  flex-direction: row;
+}
+
+.breadcrumb .breadcrumb-list-item {
+  color: var(--secondary-color);
+  font-size: 1.3rem;
+  margin-right: 2rem;
+
+  &:last-child {
+    color: var(--primary-color);
+    margin-right: auto;
+  }
+}
+
+.breadcrumb .breadcrumb-link > span {
+  margin-left: 2rem;
+
+  .icon {
+    color: var(--primary-color);
+    height: 1rem;
+    stroke: var(--primary-color);
+    width: 1rem;
+  }
+}
+
+.input,
+.text-area {
+  @extend %input;
+}
+
+.button-default {
+  @extend %button-default;
+}
+
+.button-white {
+  @extend %button-white;
+}
+
+.icon {
+  color: currentColor;
+  height: 2rem;
+  width: 2rem;
+}
+
+// .msg-response {
+//   .msg-success,
+//   .msg-error {
+//     display: none;
+//     font-size: 1.2rem;
+//     margin-top: 1rem;
+
+//     &.-visible {
+//       display: block;
+//     }
+//   }
+// }
+
+//Webforms - Antispam
+form[data-webform] {
+  position: relative;
+
+  > fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+
+    > [name="vnda"] {
+      position: absolute;
+      left: -90000000px;
+      top: 0;
+      z-index: -9;
+    }
+
+    input,
+    textarea {
+      &.-emphasis::placeholder { color: var(--red) !important }
+    }
+  }
+
+  [data-msg-retorno] {
+    width: 100%;
+
+    .msg-received {
+      display: none;
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      &.-visible { display: block }
+    }
+  }
+}

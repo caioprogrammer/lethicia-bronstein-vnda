@@ -6,6 +6,12 @@
     align-items: flex-start;
   }
 
+  .description {
+    h2 {
+      font-size: 16px;
+    }
+  }
+
   > .short-description {
     margin-bottom: 2rem;
   }
@@ -148,6 +154,7 @@
     line-height: 1;
     margin-bottom: 1rem;
     white-space: nowrap;
+    color: var(--highlight-1);
   }
 
   > .share-wrapper .social-media {
@@ -156,6 +163,7 @@
     .icon {
       height: 2rem;
       width: 2rem;
+      color: var(--highlight-1) !important;
     }
 
     & > *:not(:first-child) {

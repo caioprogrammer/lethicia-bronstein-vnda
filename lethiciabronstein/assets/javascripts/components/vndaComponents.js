@@ -38,7 +38,7 @@ export const NewsletterComponent = {
       hasPhoneField: false,
       successMessage: successMessage,
       delay: 500,
-      frequency: 'always',
+      frequency: 1,
       language: 'pt-BR',
     });
 

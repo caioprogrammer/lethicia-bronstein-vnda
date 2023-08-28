@@ -1,0 +1,90 @@
+.actions {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  width: 15%;
+  z-index: 1;
+
+  >.cart, .search, .account{
+    height: 2.8rem;
+  }
+
+  > .account {
+
+    @include media('xs') {
+      display: none;
+    }
+  }
+
+  > .cart .btn-cart {
+    position: relative;
+  }
+
+  > .cart .btn-cart .count {
+    align-items: center;
+    background-color: var(--yellow);
+    transition: var(--transition);
+    border-radius: 50%;
+    color: var(--black);
+    display: flex;
+    font-size: 12px;
+    height: 16px;
+    line-height: 1;
+    justify-content: center;
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    width: 16px;
+  }
+
+  .search {
+    @include media("xs") {
+      display: none;
+    }
+
+    form {
+      position: relative;
+
+      &:hover {
+        label {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+
+    label {
+      position: absolute;
+      right: 0;
+      top: 100%;
+      opacity: 0;
+      background: white;
+      padding: 1rem 2rem;
+      visibility: hidden;
+      border: 1px solid black;
+
+      input {
+        background: transparent;
+        border: 0;
+        font-size: 0.9em;
+        min-width: 200px;
+        line-height: 26px;
+      }
+    }
+
+    button {
+      padding: 0;
+      border: 0;
+      background: 0;
+      cursor: pointer;
+    }
+  }
+
+  .icon {
+    display: block;
+    margin-left: 3rem;
+    height: 2.8rem;
+    width: 2.8rem;
+    transition: var(--transition);
+  }
+}

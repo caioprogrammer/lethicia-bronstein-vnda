@@ -1,0 +1,23 @@
+{% assign descricao_curta = false %}
+{% assign descricao_parts = false %}
+
+{% if product.description contains '<hr/>' %}
+    {% assign descricao_curta = product.description | split: '<hr/>' | first %}
+    {% assign descricao_parts = product.description | split: '<hr/>' %}
+{% else %}
+    {% assign descricao_curta = product.description %}
+{% endif %}
+
+<section class="section product-section container" data-product-box data-section-product>
+    <div class="product-wrap">
+        <div class="left-container">
+            {% render 'partials/content/product/images/images', product: product %}
+        </div>
+
+        <div class="right-container">
+            <div class="product-infos">
+                {% render 'partials/content/product/infos/infos', product: product, descricao_curta: descricao_curta, descricao_parts: descricao_parts, tag_medidas: tag_medidas, current_shop: current_shop, home_url: home_url %}
+            </div>
+        </div>
+    </div>
+</section>

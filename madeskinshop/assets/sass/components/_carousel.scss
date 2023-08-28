@@ -1,0 +1,65 @@
+.carousel {
+  position: relative;
+  padding-bottom: 7rem;
+
+  @include media("sm") {
+    padding-bottom: 0;
+  }
+
+  > .header {
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+
+    > .button-default {
+      width: calc(100% - 10%);
+      position: absolute;
+      bottom: 0;
+
+      @include media("sm") {
+        position: relative;
+        width: fit-content;
+      }
+    }
+  }
+
+  > .content {
+    position: relative;
+    //padding para acomodar o swiper-pagination
+    padding-bottom: 6rem;
+
+    .product-block {
+      height: 100%;
+      padding: 0.2rem;
+    }
+
+    .product-block > .description {
+      margin-bottom: auto;
+    }
+
+    .swiper-slide {
+      height: 100%;
+    }
+
+    //config swiper navigation e pagination
+    .swiper-button-prev {
+      bottom: 0;
+      left: -5%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .swiper-button-next {
+      bottom: 0;
+      top: 50%;
+      right: -5%;
+      transform: translateY(-50%);
+    }
+
+    .swiper-pagination {
+      height: 4rem;
+      bottom: 0;
+    }
+  }
+}

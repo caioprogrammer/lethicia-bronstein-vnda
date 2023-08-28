@@ -43,7 +43,7 @@
     z-index: 2;
     bottom: 48px;
     left: 3.5vw;
-    color: #fff;
+    color: var(--highlight-1);
 
     .upper-title {
       display: inline-block;
@@ -85,7 +85,7 @@
     &:after {
       content: "";
       display: inline-block;
-      border-color: #ffff;
+      border-color: var(--highlight-1);
       border-style: solid;
       border-width: 0 2px 2px 0;
       margin: 3px 3px 1px 8px;

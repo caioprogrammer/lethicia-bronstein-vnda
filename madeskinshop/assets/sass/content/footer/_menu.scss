@@ -1,0 +1,31 @@
+.wrap-menu {
+  max-width: 286px;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+
+  .menu {
+    margin: 0px auto 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+
+    li {
+      a {
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.menu-footer {
+  max-width: 286px;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+}

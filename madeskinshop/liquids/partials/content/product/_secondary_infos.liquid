@@ -1,0 +1,36 @@
+
+{% for desc in descricao_parts %}
+  {% if desc contains '</h2>' %}
+    {% assign tab_title = desc | split: '</h2>' | first | strip_html %}
+    {% assign tab_content = desc | split: '</h2>' | last %}
+
+    {% capture html_descricao_tabs %}
+      {{html_descricao_tabs}}
+      <div class="tab-container">
+        <a class="tab-title" open-tab data-tab="tab-{{ forloop.index }}">
+          <span>{{ tab_title }}</span>
+          <span class="plus">
+            <svg class="icon">
+              <use href="#icon-arrow-down"/>
+            </svg>
+          </span>
+          <span class="minus">
+            <svg class="icon">
+              <use href="#icon-arrow-up"/>
+            </svg>
+          </span>
+        </a>
+            
+        <div class="content">
+          {{ tab_content }}
+        </div>
+      </div>
+    {% endcapture %}
+  {% endif %}
+{% endfor %}
+
+<div class="descricao-curta">
+  {{ descricao_curta }}
+</div>
+{{ html_descricao_tabs }}
+

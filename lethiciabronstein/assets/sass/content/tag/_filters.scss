@@ -4,6 +4,7 @@
   // min 992
   @include media("md") {
     width: 20%;
+    margin-right: 15px;
   }
 
   > .button-default {
@@ -178,7 +179,7 @@
     background-color: var(--white);
     border: 1px solid var(--highlight-1);
     border-radius: 0;
-    color: var(--black);
+    color: var(--highlight-1);
     cursor: pointer;
     display: flex;
     font-size: var(--font-size-button);

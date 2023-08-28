@@ -1,0 +1,27 @@
+{% if menu.children.size > 0 %}
+  <li class="menu-list-item has-submenu" {% if menu.tooltip %} style="--menu-color: {{ menu.tooltip }};" {% endif %}>
+    {% if menu.url == "#" %}
+      <h2 class="menu-title arrow">{{ menu.title }}</h2>
+    {% else %}
+      <a aria-label="Menu {{ menu.title }}" class="menu-title arrow" href="{{ menu.url }}" {% if menu.external %} target="_blank" {% endif %}>
+        {{ menu.title }}
+      </a>
+    {% endif %}
+
+    <ul class="submenu">
+      {% for submenu in menu.children %}
+        <li>
+          <a href="{{ submenu.url }}" {% if submenu.external %} target="_blank" {% endif %}>
+            {{ submenu.title }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </li>
+{% else %}
+  <li class="menu-list-item" {% if menu.tooltip %} style="--menu-color: {{ menu.tooltip }};" {% endif %}>
+    <a aria-label="Menu {{ menu.title }}" class="menu-title" href="{{ menu.url }}" {% if menu.external %} target="_blank" {% endif %}>
+      {{ menu.title }}
+    </a>
+  </li>
+{% endif %}

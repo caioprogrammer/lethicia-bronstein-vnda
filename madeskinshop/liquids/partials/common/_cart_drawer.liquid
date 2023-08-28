@@ -1,0 +1,19 @@
+{% assign free_shipping_value = 00001 %}
+  
+{% load_banners position: 'frete-gratis' %}
+{% for banner in loaded_banners %}
+  {% if banner.title != blank %}
+    {% assign free_shipping_value = banner.subtitle | plus: 0 %}
+  {% endif %}
+{% endfor %}
+
+<div id="component-cart-drawer-root"></div>
+
+<script>
+  window.cartDrawerSettings = {
+    script: "{{ 'cart-drawer.v20.js' | component_path }}",
+    styles: "{{ 'cart-drawer.v20.css' | component_path }}",
+    freeShippingValue: {{ free_shipping_value }},
+    instance: false
+  }
+</script>

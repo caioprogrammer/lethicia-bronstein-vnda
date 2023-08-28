@@ -3,12 +3,28 @@
 <header class="header" id="header">
   <div class="container content">
     <div class="hamburger-logo">
-      <button aria-label="Abrir menu" class="hamburger" data-action="open-menu-mobile">
+      <button
+        aria-label="Abrir menu"
+        class="hamburger"
+        data-action="open-menu-mobile">
         <svg class="icon">
-          <use href="#icon-hamburger"/>
+          <use href="#icon-hamburger" />
         </svg>
       </button>
       {% render "partials/content/header/logo", current_shop: current_shop, img_logo: img_logo, template: template, home_url: home_url %}
+    </div>
+    <div class="account left">
+      <a aria-label="Minha Conta" href="{{ account_url }}">
+        <svg class="icon">
+          <use xlink:href="#icon-account" />
+        </svg>
+        <p>
+          Faça
+          <strong>login</strong>
+          ou
+          <strong>cadastre-se</strong>
+        </p>
+      </a>
     </div>
 
     {% render "partials/content/header/search", search_url: search_url %}

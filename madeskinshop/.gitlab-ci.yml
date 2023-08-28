@@ -1,0 +1,18 @@
+stages:
+  - clone
+  - build
+  - deploy
+  - audit
+
+audit:
+  image: node:16
+  stage: audit
+  script:
+    - yarn
+    - yarn audit
+
+# Documentação: https://gitlab.com/vnda/setup/cadastros
+
+include:
+  - project: "vnda/setup/cadastros"
+    file: "/.gitlab-ci.yml"

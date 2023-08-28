@@ -1,0 +1,120 @@
+{% load_banners position: position %}
+
+{% if loaded_banners.size > 0 %}
+  <section class="section fullbanner {{ resolution }} {{ aux }}" data-fullbanner>
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        {% for banner in loaded_banners %}
+          {% comment %} Config {% endcomment %}
+          {% assign external = '' %}
+          {% assign btn_text = banner.subtitle %}
+          {% assign position_text = 'center-center' %}
+
+          {% if banner.subtitle contains '|' %}
+            {% assign btn_text = banner.subtitle | split: '|' | first %}
+            {% assign position_text = banner.subtitle | split: '|' | last %}
+          {% endif %}
+
+          {% if banner.external %}
+            {% assign external = "target='_blank'" %}
+          {% endif %}
+
+          {% capture data_srcset %}
+            {{ banner.file_url | resize: '360x' }} 360w,
+            {{ banner.file_url | resize: '480x' }} 480w,
+            {{ banner.file_url | resize: '780x' }} 780w,
+            {{ banner.file_url | resize: '991x' }} 991w,
+            {{ banner.file_url | resize: '1280x' }} 1280w,
+            {{ banner.file_url | resize: '1440x' }} 1440w,
+            {{ banner.file_url }} 1920w,
+          {% endcapture %}
+          
+          {% capture data_sizes %}
+            (max-width: 360px) 360px,
+            (max-width: 480px) 480px,
+            (max-width: 767px) 780px,
+            (max-width: 991px) 991px,
+            (max-width: 1280px) 1280px,
+            (max-width: 1440px) 1440px,
+            1920px
+          {% endcapture %}
+
+          <div class="swiper-slide">
+            {% if banner.url contains "youtube" or banner.url contains "vimeo" %}
+
+              {% comment %} BANNER COM VIDEO {% endcomment %}
+              {% if banner.url contains "youtube" %}
+                {% assign video_address = banner.url | split: "?v=" | last %}
+                {% assign video_code = video_address | split: '&' | first | strip %}
+                {% assign video_url = video_code | prepend: "https://www.youtube.com/embed/" | append: "?autoplay=1&rel=0&mute=1&muted=1" %}
+              {% elsif banner.url contains "vimeo" %}
+                {% assign video_code = banner.url | split: "/" | last | strip %}
+                {% assign video_url = video_code | prepend: "https://player.vimeo.com/video/" | append: "?autoplay=1&title=0&byline=0&portrait=0&&loop=1&background=1&muted=1" %}
+              {% endif %}
+
+              {% if video_url %}
+                <div class="video {% if resolution contains 'mobile' %}-vertical {% else %} -horizontal {% endif %}">
+                  <iframe
+                    aria-label="{{ banner.title }}"
+                    alt="{{ banner.title }}"
+                    class="swiper-lazy"
+                    data-src="{{ video_url }}"
+                    frameborder="0"
+                    allow="autoplay;  picture-in-picture"
+                    allowfullscreen>
+                  </iframe>
+                  <div class="skeleton"></div>
+                </div>
+              {% endif %}
+
+            {% else %}
+
+              {% if banner.url != blank %}
+                <a href="{{ banner.url }}" {{ external }} class="link">
+              {% endif %}
+
+              {% comment %} BANNER SIMPLES, COM IMAGEM {% endcomment %}
+              <figure class="image {% if mobile %} -vertical {% else %} -horizontal {% endif %}">
+                {% if forloop.first %}
+                  <img
+                    alt="{{ banner.title }}"
+                    srcset="{{ data_srcset | strip_newlines | strip }}"
+                    sizes="{{ data_sizes | strip_newlines | strip }}"
+                  />
+                {% else %}
+                  <img
+                    class="swiper-lazy"
+                    alt="{{ banner.title }}"
+                    data-srcset="{{ data_srcset | strip_newlines | strip }}"
+                    sizes="{{ data_sizes | strip_newlines | strip }}"
+                  />
+                  <div class="skeleton"></div>
+                {% endif %}
+              </figure>
+
+              <div class="text {{ position_text }}" {% if banner.color != blank %} style="--fb-color: {{ banner.color }}" {% endif %}>
+                {% if banner.description != blank %}
+                  {{ banner.description | replace: '<h2', '<h2 class="title"' | replace: '<p', '<p class="description"' }}
+                {% endif %}
+
+                {% if banner.url != blank and btn_text != blank %}
+                  <button type="button" class="button-default">
+                    {{ btn_text }}
+                  </button>
+                {% endif %}
+              </div>
+
+              {% if banner.url != blank %}
+                </a>
+              {% endif %}
+
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+      <button type="button" class="swiper-button-next" aria-label="Próximo slide"></button>
+      <button type="button" class="swiper-button-prev" aria-label="Slide anterior"></button>
+      <div class="swiper-pagination"></div>
+    </div>
+  </section>
+{% endif %}

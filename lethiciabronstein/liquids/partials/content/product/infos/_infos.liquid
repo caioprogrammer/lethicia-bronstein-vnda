@@ -14,6 +14,20 @@
     {% render 'partials/content/product/description', product: product %}
   </div>
 {% endif %}
+<div class="attribute attributes">
+  <div class="prod-option option-input">
+    <button
+      aria-label="Abrir guia de medidas"
+      data-size="size"
+      class="btn-medidas"
+      data-action="toggle-popup"
+      data-popup="guia-de-medidas"
+      type="button">
+      <span>Guia de tamanhos</span>
+      <span class="arrow"></span>
+    </button>
+  </div>
+</div>
 
 <div class="infos-compra">
   {% render 'partials/content/product/purchase', product: product, show_qtd_selector: true, showButton: true, text_string: 'Adicionar ao Carrinho', tag_medidas: tag_medidas %}
@@ -30,6 +44,6 @@
 <div class="divider"></div>
 
 <div class="share-wrapper">
-  <p class="share-title">compartilhar</p>
+  <p class="share-title">Compartilhar</p>
   {% render 'partials/content/product/share', product: product, home_url: home_url %}
 </div>

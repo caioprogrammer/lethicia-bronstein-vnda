@@ -53,6 +53,10 @@ img {
   max-width: 100%;
 }
 
+.fa-classic, .fa-regular, .fa-solid, .far, .fas {
+  font-family: "Font Awesome 6 Free" !important;
+}
+
 /* Section and Containers Formatter */
 .section {
   margin-bottom: 3rem;
@@ -63,6 +67,11 @@ img {
     @media screen and (max-width: 768px){
       gap: 16px;
       grid-template-columns: 1fr;
+    }
+  }
+  > .side-by-side-content {
+    .image:after {
+      padding-bottom: 100% !important;
     }
   }
 }
@@ -93,7 +102,9 @@ img {
   &.-square::after {
     padding-bottom: 140%;
   }
-
+  &.-medidas::after {
+    padding-bottom: 70%;
+  }
   &.-horizontal::after {
     padding-bottom: 46%;
   }
@@ -202,7 +213,7 @@ img {
 }
 
 .description {
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-small);
   font-weight: var(--font-weight-base);
   margin-bottom: 1rem;
 }
@@ -297,7 +308,9 @@ form[data-webform] {
 
   [data-msg-retorno] {
     width: 100%;
-
+    position: absolute;
+    top: 0;
+    left: 100%;
     .msg-received {
       display: none;
       font-size: 1.2rem;

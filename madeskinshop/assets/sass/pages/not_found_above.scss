@@ -1,0 +1,23 @@
+@import "../base/variables";
+
+.not-found {
+  max-width: 144rem;
+  margin-top: 15rem;
+  margin-bottom: 15rem;
+  padding-left: 10%;
+  padding-right: 10%;
+
+  > .title {
+    font-family: var(--font-family-title);
+    color: var(--primary-color);
+    margin-bottom: 5rem;
+  }
+
+  > .description {
+    margin-bottom: 2.5rem;
+  }
+
+  > .button-default {
+    width: fit-content;
+  }
+}

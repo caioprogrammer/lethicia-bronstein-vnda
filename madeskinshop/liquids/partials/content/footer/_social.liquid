@@ -1,0 +1,14 @@
+<div class="wrap-social">
+  <ul class="menu">
+    {% load_menus position: 'social' %}
+    {% for menu in loaded_menus %}
+      <li class="{{ menu.tooltip }}">
+        <a href="{{ menu.url }}" target="_blank">
+          <svg class="icon">
+            <use xlink:href="#icon-{{ menu.tooltip }}" />
+          </svg>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

@@ -45,7 +45,7 @@
   {% capture json_props %}
     {{ json_props }},
     {
-                  "value": "{{ value }}",
+                                  "value": "{{ value }}",
     "sort": {{ sort }}
     }
   {% endcapture %}
@@ -91,18 +91,20 @@
         {% endif %}
       {% endfor %}
     </div>
-
+    {% comment %}
     {% if tag_medidas %}
-      <button
-        aria-label="Abrir guia de medidas"
-        data-size="size"
-        class="btn-medidas"
-        data-action="toggle-popup"
-        data-popup="guia-de-medidas"
-        type="button">
-        <span>Guia de tamanhos</span>
-        <span class="arrow"></span>
-      </button>
+    <button
+    aria-label="Abrir guia de medidas"
+    data-size="size"
+    class="btn-medidas"
+    data-action="toggle-popup"
+    data-popup="guia-de-medidas"
+    type="button">
+    <span>Guia de tamanhos</span>
+    <span class="arrow"></span>
+    </button>
     {% endif %}
-  </div>
+
+
+    {% endcomment %}</div>
 {% endif %}

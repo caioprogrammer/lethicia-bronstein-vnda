@@ -8,7 +8,7 @@
   "config": {
     "liquid": "4.0.3",
     "url": "https://melila.vnda.dev",
-    "nameprod": "melila.com.br",
+    "nameprod": "www.melila.com.br",
     "debug": "true"
   },
   "scripts": {

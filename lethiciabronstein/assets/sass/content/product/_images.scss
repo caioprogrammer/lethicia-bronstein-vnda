@@ -108,10 +108,13 @@
         display: block;
         height: 100%;
         left: 0;
-        position: absolute;
+        position: unset;
         top: 0;
         width: 100%;
         z-index: 2;
+        iframe {
+          position: unset;
+        }
       }
     }
   }
@@ -121,6 +124,7 @@
     width: 100%;
     object-fit: cover;
     position: absolute;
+    max-width: 800px;
   }
 
   > .wrapper-images .wrapper-slider .swiper .swiper-slide {

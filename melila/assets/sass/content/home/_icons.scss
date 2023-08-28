@@ -8,7 +8,7 @@
     display: flex;
     flex: 1;
     margin-bottom: 2rem;
-    flex-direction: column;
+    // flex-direction: column;
     gap: 10px;
     text-align: center;
 
@@ -22,7 +22,7 @@
     }
 
     .image-icon {
-      height: 100px;
+      height: 60px;
       margin-right: 1rem;
       position: relative;
       width: 30%;

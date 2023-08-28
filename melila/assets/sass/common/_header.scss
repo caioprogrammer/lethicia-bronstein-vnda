@@ -40,10 +40,41 @@
       width: 85%;
 
       @include media("md") {
-        width: 25%;
+        width: 10%;
 
         .hamburger {
           display: none;
+        }
+      }
+    }
+
+    .account {
+      &.left {
+        width: 15%;
+        font-size: 12px;
+        a {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+      }
+    }
+    .menu-social-topo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      gap: 12px;
+      margin-right: 12px;
+      li {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        justify-content: center;
+        a {
+          display: flex;
+          align-items: flex-start;
+          flex-direction: column;
         }
       }
     }

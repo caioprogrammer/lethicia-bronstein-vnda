@@ -1,0 +1,33 @@
+{% head %}
+  {% if tag != blank %}
+    <meta property="og:description" content="{{ tag.description }}">
+    <meta property="og:image" content="{{ tag.image_url }}"/>
+    <meta property="og:url" content="{{ home_url }}"/>
+    <meta name="description" content="{{ tag.description }}">
+    <meta name="image" content="{{ tag.image_url }}"/>
+    <meta meta="url" content="{{ home_url }}"/>
+
+    <title>{{ tag.title }}</title>
+  {% endif %}
+
+  <link href="pages/home_above.css" inline rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="{{ 'pages/home.css' | stylesheet_path }}" media="print" onload="this.media='all'"/>
+{% endhead %}
+
+{% body %}
+  <script src="{{ 'home.js' | javascript_path }}"></script>
+{% endbody %}
+
+{% comment %} ========== {% endcomment %}
+
+{% if mobile %}
+  {% render 'partials/content/home/fullbanner', position: 'home-banner-principal-mobile', aux: '-principal', mobile: mobile %}
+{% else %}
+  {% render 'partials/content/home/fullbanner', position: 'home-banner-principal', aux: '-principal', mobile: mobile %}
+{% endif %}
+{% render 'partials/content/home/section_banners_apoio', position: 'home-banner-apoio', limit: 3 %}
+{% render 'partials/content/home/section_banners_horizontal' %}
+{% render 'partials/content/home/icons', position: 'home-icones' %}
+{% render 'partials/content/home/section_banners_posts', position: 'home-posts', position_title: 'home-titulo-posts', limit: 4 %}
+{% render 'partials/components/carousel', tag_name: 'home-produtos' %}
+{% render 'partials/content/home/instagram', environment: environment %}

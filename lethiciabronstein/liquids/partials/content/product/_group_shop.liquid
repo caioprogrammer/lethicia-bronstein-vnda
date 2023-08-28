@@ -3,13 +3,13 @@
 {% assign tag = current_product.tags | where: 'type' , 'compre-junto' | first %}
 
 {% if tag and tag.size > 0  %}
-  {% load_products tag: tag.name per_page: 2 %}
+  {% load_products tag: tag.name per_page: 3 %}
   {% assign products_count = products.size %}
 
-  {% if products_count >= 2 %}
+  {% if products_count >= 3 %}
     <section class="section group-shop">
       <h3 class="title">
-        {{ tag.subtitle | default: 'Compre Junto' }}
+        {{ tag.subtitle | default: 'Combine Com' }}
       </h3>
 
       <div class="products">

@@ -1,7 +1,33 @@
-{% load_banners position: position limit: limit %}
+{% comment %}
+{% render 'partials/components/campanhaconteudo', position: 'home-banner-campanha-conteudo' %}
+{% endcomment %}
 
-{% if loaded_banners.size > 0 %}
-  <section class="section elas-usam">
+
+
+<section class="section elas-usam">
+  {% load_banners position: 'home-banner-elas-usam-conteudo' %}
+  {% for banner in loaded_banners %}
+    <div class="container campanha-header">
+      <h2>
+        <p>
+          {% if banner.title != blank %}
+            {{ banner.title }}
+          {% endif %}
+        </p>
+        <span>
+          {% if banner.subtitle != blank %}
+            {{ banner.subtitle }}
+          {% endif %}
+        </span>
+        <a aria-label="{{ banner.title }}" {% if banner.external %}target="_blank"{% endif %}class="button-default -outlined about"href="{{ banner.url }}">
+          CONHEÇA A PÁGINA "GET THE LOOK"
+        </a>
+      </h2>
+    </div>
+  {% endfor %}
+
+  {% load_banners position: position limit: limit %}
+  {% if loaded_banners.size > 0 %}
     <div class="swiper">
       <div class="swiper-wrapper">
         {% for banner in loaded_banners %}
@@ -21,8 +47,8 @@
               {% capture data_sizes %}
                 (max-width: 360px) 360px,
                 (max-width: 767px) 480px,
-                                                                                                                                                                                                                                                                                                                                                        (min-width: 768px) 780px,
-                                                                                                                                                                                                                                                                                                                                                        (min-width: 1920px) 1920px,
+                                                                                                                                                                                                                                                                                                                                                                                      (min-width: 768px) 780px,
+                                                                                                                                                                                                                                                                                                                                                                                      (min-width: 1920px) 1920px,
               {% endcapture %}
 
               <figure class="image -horizontal">
@@ -66,5 +92,5 @@
         {% endcomment %}
       {% endif %}
     </div>
-  </section>
-{% endif %}
+  {% endif %}
+</section>

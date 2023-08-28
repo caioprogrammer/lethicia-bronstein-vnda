@@ -1,0 +1,30 @@
+{% head %}
+  <title>Entrar - {{ current_shop.name }}</title>
+  <meta content="Logar ou cadastrar para acessar a área de pedidos" name="description"/>
+  <link href="pages/login.css" inline rel="stylesheet"/>
+  <link rel="stylesheet" href="{{ 'login.v5.css' | component_path }}">
+{% endhead %}
+
+{% body %}
+  <script src="{{ 'login.v5.js' | component_path }}"></script>
+  <script src="{{ 'login_page.js' | javascript_path }}"></script>
+{% endbody %}
+
+{% comment %} ========== {% endcomment %}
+
+<section class="section login container">
+  <div class="login-header">
+    <h1 class="title">Conecte-se aqui</h1>
+  </div>
+
+  <div class="login-body" data-content-login>
+    <div id="component-login-static-root" data-facebook="{{ facebook_connect_url }}">
+      <div class="loader">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+</section>

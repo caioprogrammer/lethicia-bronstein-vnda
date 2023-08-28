@@ -1,0 +1,51 @@
+{% if tag_name and tag_name != blank %}
+  {% load_tag name: tag_name %}
+  {% assign tag = loaded_tag %}
+
+  {% if tag and tag != blank %}
+    {% load_products tag: tag.name per_page: 10 %}
+
+    <section class="section products carousel container">
+      <div class="header">
+        {% if tag.title != blank %}
+          <h2 class="title">
+            {{ tag.title }}
+          </h2>
+        {% endif %}
+
+        {% if pagination.total_pages > 1 %}
+          <a aria-label="Ver mais sobre a categoria {{ tag.title }}" class="button-default -outlined" href="/{{ tag.name }}">VEJA MAIS +</a>
+        {% endif %}
+      </div>
+
+      <div class="content" data-products-carousel>
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            {% for product in products %}
+              {% if current_product and current_product.id == product.id %}
+                {% continue %}
+              {% else %}
+                <div class="item swiper-slide" data-item>
+                  {% render 'partials/components/product_block', product: product, lazy: 'swiper-lazy' %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+
+    {% comment %} Popula com as variants dos produtos para o comportamento de seleção de variants {% endcomment %}
+    {% body %}
+      <script>
+        {% for product in products %}
+          productVariants['{{ product.id }}'] = {{ product.variants | to_json }};
+        {% endfor %}
+      </script>
+    {% endbody %}
+  {% endif %}
+{% endif %}

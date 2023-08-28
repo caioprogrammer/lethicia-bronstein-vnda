@@ -1,0 +1,47 @@
+.banners-posts {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @include media("sm") {
+    flex-direction: row;
+  }
+
+  .category-item {
+    flex: 1;
+    margin-right: 0;
+    margin-bottom: 2rem;
+    position: relative;
+    
+    @include media("sm") {
+      margin-right: 2rem;
+      margin-bottom: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+
+      @include media("sm") {
+        margin-right: 0;
+      }
+    }
+
+    .image::after{
+      padding-bottom: 42%;
+    }
+  }
+
+  .category-item .image::after {
+    padding-bottom: 66%;
+  }
+
+  .category-item .text {
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .category-item .text .title{
+    font-size: var(--font-size-subtitle);
+  }
+
+}

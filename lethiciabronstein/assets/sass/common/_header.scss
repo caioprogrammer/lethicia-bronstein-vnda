@@ -64,6 +64,7 @@
 
 
 .header {
+
   &.not-homepage {
     background-color: #fff;
     .actions {
@@ -141,7 +142,7 @@
         img {
           max-height: 80px;
           max-width: 350px;
-          filter: invert(1);
+          // filter: invert(1);
           @media screen and (max-width: 480px) {
             max-width: 195px;
             margin: 0 10px;
@@ -149,8 +150,12 @@
         }
       }
     }
+    .social-links {
+      opacity: 0;
+      pointer-events: none;
+    }
     .actions, .logo, .social-links {
-      min-width: 115px
+      min-width: 115px;
     }
     .actions {
       display: flex;
@@ -267,6 +272,26 @@
     }
     .menu .menu-list .menu-list-item .arrow:after {
       border-color: #000;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .actions {
+      .count ,svg.icon {
+        color: #000;
+      }
+    }
+    .hamburger-logo {
+      .icon {
+        color: #000;
+      }
+    }
+    .social-links {
+      .social-icons {
+        svg.icon {
+          color: #000;
+        }
+      } 
     }
   }
 }

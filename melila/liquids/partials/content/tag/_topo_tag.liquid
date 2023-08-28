@@ -4,7 +4,7 @@
 
 {% assign description = tag.description %}
 
-{% if tag.title != nil or tag.image_url != blank  %}
+{% if tag.title != nil or tag.image_url != blank %}
   <div class="banner-topo {{ no_image }} -tag">
     {% if tag.image_url != blank %}
       {% capture data_srcset %}
@@ -20,19 +20,22 @@
       {% capture data_sizes %}
         (max-width: 360px) 360px,
         (max-width: 767px) 767px,
-        (max-width: 991px) 991px,
-        (max-width: 1280px) 1280px,
-        (max-width: 1440px) 1440px,
-        (max-width: 1920px) 1920px,
-        (min-width: 1921px) 2000px
+                (max-width: 991px) 991px,
+                (max-width: 1280px) 1280px,
+                (max-width: 1440px) 1440px,
+                (max-width: 1920px) 1920px,
+                (min-width: 1921px) 2000px
       {% endcapture %}
-      
+
       <figure class="image -horizontal">
-        <img alt="{{ banner.title }}" srcset="{{ data_srcset | strip_newlines | strip }}" sizes="{{ data_sizes | strip_newlines | strip }}"/>
+        <img
+          alt="{{ banner.title }}"
+          srcset="{{ data_srcset | strip_newlines | strip }}"
+          sizes="{{ data_sizes | strip_newlines | strip }}" />
       </figure>
     {% endif %}
 
-    <div class="text {{ no_image }}">
+    <div style="display: none" class="text {{ no_image }}">
       <div class="content">
         {% if tag.subtitle and tag.subtitle != blank %}
           <span class="upper-title">{{ tag.subtitle }}</span>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="{{ language }}">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta content="initial-scale=1, width=device-width, maximum-scale=1" name="viewport"/>
+
+    <link rel="shortcut icon" href="{{ 'favicon.ico' | favicon_path }}"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ 'favicon/apple-touch-icon.png' | image_path }}"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ 'favicon/favicon-32x32.png' | image_path }}"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ 'favicon/favicon-16x16.png' | image_path }}"/>
+    <link rel="manifest" href="{{ 'favicon/manifest.json' | image_path }}"/>
+
+    <meta content="#000" name="msapplication-TileColor"/>
+    <meta name="msapplication-TileImage" content="{{ 'favicon/android-chrome-192x192.png' | image_path }}"/>
+    <meta content="#000" name="theme-color"/>
+
+    <link href="/main.css" inline rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="{{ 'style.css' | stylesheet_path }}" media="print" onload="this.media='all'"/>
+
+    {{ content_for_head }}
+
+    <script>
+      var filterRange = [];
+      window.productVariants = {};
+      window.priceComponent = "{{ 'price.v9.js' | component_path }}"
+    </script>
+  </head>
+
+  {% assign template_class = 'page-'| append: template | replace: '/','-' | replace: '_','-' %}
+
+  {% assign img_logo = 'https://via.placeholder.com/410x210' %}
+
+  {% load_shop_images  position: "logo" %}
+
+  {% if loaded_shop_images.size > 0 %}
+    {% assign img_logo = loaded_shop_images | first | map: 'url' | first %}
+  {% endif %}
+
+  <body class="{{ template_class }}" data-page="{{ template }}">
+    <div class="wrapper" id="wrapper">
+      {% render 'partials/common/header', home_url: home_url, template: template, search_url: search_url, account_url: account_url, current_shop: current_shop, img_logo: img_logo, mobile: mobile %}
+
+      <main>
+        {{ yield }}
+      </main>
+
+      {% render 'partials/common/footer', current_shop: current_shop, img_logo: img_logo, home_url: home_url %}
+      {% render 'partials/common/popup_newsletter', current_shop: current_shop %}
+      {% render 'partials/common/cart_drawer' %}
+      {% render 'partials/common/icons' %}
+    </div>
+
+    {% comment %}
+      Renderiza popup de compra rápida
+      Retirar ou comentar caso não for utilizado
+    {% endcomment %}
+    {% render 'partials/common/popup_purchase' %}
+
+    <script src="{{ 'jquery.min.js' | javascript_path }}"></script>
+
+    {{ content_for_body }}
+
+    <script src="{{ 'main.js' | javascript_path }}"></script>
+    <script async src="{{ 'lazyload.min.js' | javascript_path }}"></script>
+  </body>
+</html>

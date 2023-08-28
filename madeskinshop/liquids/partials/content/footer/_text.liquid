@@ -1,0 +1,8 @@
+<div class="wrap-infos-loja">
+  {% load_banners position: 'geral-texto-rodape' %}
+  {% for banner in loaded_banners %}
+    <p class="cnpj">
+      {{ banner.description }}
+    </p>
+  {% endfor %}
+</div>

@@ -1,0 +1,34 @@
+{% load_banners position: 'newsletter-popup' limit: 1 %}
+
+{% for banner in loaded_banners %}
+  {% assign successMessage = 'Obrigado!' %}
+  {% assign b_description = banner.description | strip_html | strip %}
+
+  {% if banner.description contains '<hr/>' %}
+    {% assign successMessage = banner.description | split: '<hr/>' | last | strip_html | strip %}
+    {% assign b_description = banner.description | split: '<hr/>' | first | strip_html | strip %}
+  {% endif %}
+
+  {% assign imageUrl = '' %}
+  {% assign maxWidth = 550 %}
+
+  {% if banner.file_url != blank %}
+    {% assign imageUrl = banner.file_url | resize: '480x' %}
+    {% assign maxWidth = 700 %}
+  {% endif %}
+
+  <script>
+    window.popupNewsletterSettings = {
+      script: "{{ 'newsletter-popup.v3.js' | component_path }}",
+      styles: "{{ 'newsletter-popup.v3.css' | component_path }}",
+      maxWidth: '{{ maxWidth }}',
+      imageUrl: '{{ imageUrl }}',
+      title: '{{ banner.subtitle }}',
+      description: '{{ b_description }}',
+      subdomain: '{{ current_shop.subdomain }}',
+      success: '{{ successMessage }}'
+    }
+  </script>
+
+  <div id="component-popup-newsletter-root"></div>
+{% endfor %}

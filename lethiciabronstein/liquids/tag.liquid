@@ -32,11 +32,11 @@
 {% endcapture %}
 
 <section class="section section-list-products">
+  {% comment %} 
   {% render 'partials/content/tag/topo_tag', tag: tag %}
-  {% render "partials/content/tag/breadcrumb", parent_tag, tag: tag %}
+  {% endcomment %}{% render "partials/content/tag/breadcrumb", parent_tag, tag: tag %}
 
   <div class="list-content container">
-    {% comment %}
     <div class="filter-container">
       <button
         aria-label="Abrir filtro"
@@ -47,9 +47,8 @@
         </svg>
         FILTROS
       </button>
-        {% render "partials/content/tag/filters", aggregations: aggregations, template: template %}
-        </div>
-      {% endcomment %}
+      {% render "partials/content/tag/filters", aggregations: aggregations, template: template %}
+    </div>
 
     {% if html_products == blank %}
       {% render "partials/content/tag/empty", tag: tag, search: false, home_url: home_url, current_url: current_url %}

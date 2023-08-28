@@ -1,0 +1,71 @@
+{% assign html_instagram_posts = '' %}
+{% load_posts from: 'instagram' %}
+
+{% comment %} Se colocar resize na imagem, elas quebram em produção {% endcomment %}
+{% capture html_instagram_posts %}
+  {% assign count_posts = 0 %}
+  {% for post in loaded_posts %}
+    {% if count_posts < 6 %}
+      {% unless post.image contains '.mp4' %}
+        {% unless post.permalink == null %}
+          {% unless post.permalink contains 'reel' %}
+            <div class="swiper-slide">
+              <a aria-label="Ir para {{ post.title }}" href="{{ post.permalink }}" rel="external" target="_blank">
+                <div class="image -square">
+                  <img class="swiper-lazy" data-src="{{ post.image }}" alt="{{ post.title }}"/>
+                  <div class="skeleton"></div>
+                </div>
+              </a>
+            </div>
+            {% assign count_posts = count_posts | plus: 1 %}
+          {% endunless %}
+        {% endunless %}
+      {% endunless %}
+    {% endif %}
+  {% endfor %}
+{% endcapture %}
+
+{% comment %} Placeholder para staging {% endcomment %}
+{% if html_instagram_posts == blank and environment != 'production' %}
+  {% capture html_instagram_posts %}
+    {% for i in (1..6) %}
+      <div class="swiper-slide">
+        <a aria-label="Post placeholder {{ forloop.index }}" href="#" rel="external" target="_blank">
+          <div class="image -square">
+            <img alt="Instagram Post" class="swiper-lazy" data-src="https://picsum.photos/600"/>
+            <div class="skeleton"></div>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  {% endcapture %}
+{% endif %}
+
+{% comment %} ========== {% endcomment %}
+
+{% if html_instagram_posts != blank %}
+  <section class="section instagram">
+    {% load_banners position: 'home-texto-instagram' limit: 1 %}
+    {% for banner in loaded_banners %}
+      <div class="header -background-title">
+        {% if banner.url != blank %}
+          <a aria-label="Ir para o instagram da loja" href="{{ banner.url }}" target="_blank">
+          {% endif %}
+          <h2 class="title">{{ banner.subtitle }}</h2>
+          {% if banner.url != blank %}
+          </a>
+        {% endif %}
+        <p class="description">
+          {{ banner.description | strip_html }}
+        </p>
+      </div>
+    {% endfor %}
+
+    <div class="swiper" data-instagram-swiper>
+      <div class="swiper-wrapper">
+        {{ html_instagram_posts }}
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </section>
+{% endif %}

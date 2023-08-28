@@ -1,8 +1,12 @@
 {% head %}
-<link href="/pages/institucional/contact.css" inline rel="stylesheet" type="text/css">
+  <link
+    href="/pages/institucional/contact.css"
+    inline
+    rel="stylesheet"
+    type="text/css">
 {% endhead %}
 
-{% load_banners position: 'fale-conosco-banner-conteudo'  limit: 1 %}
+{% load_banners position: 'trabalhe-conosco-banner-conteudo' limit: 1 %}
 
 <section class="section container contact">
   <div class="content">
@@ -17,61 +21,127 @@
       {% capture data_sizes %}
         (max-width: 360px) 360px,
         (max-width: 767px) 480px,
-        (min-width: 768px) 780px,
-        (min-width: 1920px) 1920px,
+                                                                                                                                            (min-width: 768px) 780px,
+                                                                                                                                            (min-width: 1920px) 1920px,
       {% endcapture %}
 
       <figure class="image -custom">
-        <img class="lazy" data-srcset="{{ data_srcset | strip_newlines | strip }}" data-sizes="{{ data_sizes | strip_newlines | strip }}" alt="{{ banner.title }}"/>
+        <img
+          class="lazy"
+          data-srcset="{{ data_srcset | strip_newlines | strip }}"
+          data-sizes="{{ data_sizes | strip_newlines | strip }}"
+          alt="{{ banner.title }}" />
         <div class="skeleton"></div>
       </figure>
 
+      {% comment %}
       <div class="description">
-        <h3 class="title-contact">
-          {{ banner.subtitle }}</h3>
+      <h3 class="title-contact">
+      {{ banner.subtitle }}</h3>
 
-        <div class="text">
-          {{ banner.description | replace: '<h2', '<h2 class="subtitle-contact"'}}
-        </div>
-
-        {% render 'partials/components/social' %}
+      <div class="text">
+      {{ banner.description | replace: '<h2', '<h2 class="subtitle-contact"'}}
       </div>
+
+      {% render 'partials/components/social' %}
+      </div>
+
+      {% endcomment %}
     {% endfor %}
   </div>
 
   <div class="form-wrapper">
+    {% comment %}  
     <h1 class="title">{{ page.title }}</h1>
+    {% endcomment %}
+    <h1 class="title">Faça parte do time LB</h1>
+    <p>Cadastre-se em nosso banco de dados:</p>
 
-    <form class="contact-form" data-webform="contact" name="form-contact" id="contact-form">
+    <form
+      class="contact-form"
+      data-webform="contact"
+      name="form-contact"
+      id="contact-form">
       <fieldset form="contact-form">
-        <input type="hidden" name="key" value="{{ current_shop.subdomain }}-contato">
-        <input id="reply_to" name="reply_to" type="hidden" value="">
+        <input
+          type="hidden"
+          name="key"
+          value="{{ current_shop.subdomain }}-contato">
+        <input
+          id="reply_to"
+          name="reply_to"
+          type="hidden"
+          value="">
 
-        <input type="text" name="vnda" tabindex="-1" autocomplete="off" required />
+        <input
+          type="text"
+          name="vnda"
+          tabindex="-1"
+          autocomplete="off"
+          required />
 
         <label class="label" for="name">
           <span>nome *</span>
-          <input class="input" id="name" name="name" placeholder="  Seu nome completo..." required type="text">
+          <input
+            class="input"
+            id="name"
+            name="name"
+            placeholder="  Seu nome completo..."
+            required
+            type="text">
         </label>
 
         <label class="label" for="email">
           <span>e-mail *</span>
-          <input class="input" id="email" name="email" placeholder="  Seu email..." required type="email">
+          <input
+            class="input"
+            id="email"
+            name="email"
+            placeholder="  Seu email..."
+            required
+            type="email">
         </label>
 
         <label class="label" for="phone">
-          <span>telefone</span>
-          <input class="input" id="phone" name="phone" placeholder="  Seu telefone..." required type="tel">
+          <span>telefone *</span>
+          <input
+            class="input"
+            id="phone"
+            name="phone"
+            placeholder="  Seu telefone..."
+            required
+            type="tel">
         </label>
 
         <label class="label" for="subject">
-          <span>assunto *</span>
-          <input class="input" id="subject" name="subject" placeholder="  O assunto..." required type="tel">
+          <span>objetivo *</span>
+          <input
+            class="input"
+            id="subject"
+            name="subject"
+            placeholder="Objetivo..."
+            required
+            type="tel">
+        </label>
+        <label class="label" for="foo">
+          <span>seu CV *</span>
+          <input
+            class="input"
+            name="foo"
+            required
+            accept="application/msword, application/vnd.ms-excel, 
+                                                                                                                                                                                  application/vnd.ms-powerpoint,text/plain, application/pdf, image/*"
+            type="file">
         </label>
 
         <label class="label" for="message">
           <span>mensagem *</span>
-          <textarea class="text-area" id="message" name="message" placeholder="  A sua mensagem..." required></textarea>
+          <textarea
+            class="text-area"
+            id="message"
+            name="message"
+            placeholder="  A sua mensagem..."
+            required></textarea>
         </label>
 
         <div class="messages" data-msg-retorno>
@@ -84,8 +154,11 @@
           </p>
         </div>
 
-        <button aria-label="Enviar formulário de contato" class="action button-default -outlined" type="button">
-          Enviar Mensagem
+        <button
+          aria-label="Enviar formulário de contato"
+          class="action button-default -outlined"
+          type="button">
+          Enviar
         </button>
       </fieldset>
     </form>

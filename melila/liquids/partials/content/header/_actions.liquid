@@ -1,15 +1,28 @@
 <div class="actions">
-  <div class="account">
-    <a aria-label="Minha Conta" href="{{ account_url }}">
-      <svg class="icon">
-        <use xlink:href="#icon-account"/>
-      </svg>
-    </a>
-  </div>
-
+  <ul class="menu-social-topo">
+    {% load_menus position: "menu-social-topo" %}
+    {% for menu in loaded_menus %}
+      <li class="{{ menu.tooltip }}">
+        <svg class="icon">
+          <use xlink:href="#icon-{{ menu.tooltip }}" />
+        </svg>
+        <a
+          class="insta"
+          href="{{ menu.url }}"
+          {% if menu.external %}target="_blank"{% endif %}>
+          {{ menu.description }}
+          <strong>{{ menu.title }}</strong>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
   <div class="cart">
-    <button type="button" class="btn-cart" aria-label="Abrir carrinho" data-toggle-cart>
-      <svg class="icon"><use xlink:href="#icon-cart"/></svg>
+    <button
+      type="button"
+      class="btn-cart"
+      aria-label="Abrir carrinho"
+      data-toggle-cart>
+      <svg class="icon"><use xlink:href="#icon-cart" /></svg>
       <span class="count" data-cart-count>0</span>
     </button>
   </div>

@@ -1,0 +1,240 @@
+@import "../base/mixins";
+
+// Nota: o REM nesta loja foi alterado para ser 1rem = 10px, afim de facilitar o uso da unidade de medida.
+// O cart_drawer não considera isso, então estes resets alteram algumas propriedades para que fiquem com a proporção
+// original, que foi montada considerando 1rem = 16px;
+
+#cmp-account-container {
+  input:focus-within ~ label,
+  input:not(:placeholder-shown) ~ label {
+    --tw-translate-y: -1.2rem;
+  }
+
+  input#firstName,
+  input#lastName,
+  input#email,
+  input#password,
+  input#passwordConfirmation {
+    padding-top: 2.2rem;
+    font-size: 1.4rem !important;
+  }
+
+  // ------------------------------------------------
+  // WIDTH / HEIGHT
+  // ------------------------------------------------
+  .cmp-account-w-3 {
+    width: 1.2rem;
+  }
+
+  .cmp-account-w-5 {
+    width: 2rem;
+  }
+
+  .cmp-account-w-6 {
+    width: 2.4rem;
+  }
+
+  .cmp-account-w-10 {
+    width: 4rem;
+  }
+
+  .cmp-account-w-24 {
+    width: 9.6rem;
+  }
+
+  .cmp-account-h-3 {
+    height: 1.2rem;
+  }
+
+  .cmp-account-h-5 {
+    height: 2rem;
+  }
+
+  .cmp-account-h-6 {
+    height: 2.4rem;
+  }
+
+  .cmp-account-h-10 {
+    height: 4rem;
+  }
+
+  // ------------------------------------------------
+  // MARGENS
+  // ------------------------------------------------
+  .cmp-account-mt-1 {
+    margin-top: 0.4rem;
+  }
+
+  .cmp-account-ml-2 {
+    margin-left: 0.8rem;
+  }
+
+  .cmp-account-mb-3 {
+    margin-bottom: 1.2rem;
+  }
+
+  .cmp-account-mb-4 {
+    margin-bottom: 1.6rem;
+  }
+
+  .cmp-account-mx-4 {
+    margin-left: 1.6rem;
+    margin-right: 1.6rem;
+  }
+
+  .cmp-account-my-1 {
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .cmp-account-my-2 {
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .cmp-account-my-4 {
+    margin-top: 1.6rem;
+    margin-bottom: 1.6rem;
+  }
+
+  // ------------------------------------------------
+  // PADDINGS
+  // ------------------------------------------------
+  .cmp-account-p-1 {
+    padding: 0.4rem;
+  }
+
+  .cmp-account-p-2 {
+    padding: 0.8rem;
+  }
+
+  .cmp-account-p-4 {
+    padding: 1.6rem;
+  }
+
+  .cmp-account-pt-1 {
+    padding-top: 0.4rem;
+  }
+
+  .cmp-account-pt-2 {
+    padding-top: 0.8rem;
+  }
+
+  .cmp-account-pt-3 {
+    padding-top: 1.2rem;
+  }
+
+  .cmp-account-pb-2 {
+    padding-bottom: 0.8rem;
+  }
+
+  .cmp-account-px-1 {
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+  }
+
+  .cmp-account-px-2 {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
+
+  .cmp-account-px-4 {
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+  }
+
+  .cmp-account-py-1 {
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+  }
+
+  .cmp-account-py-2 {
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+  }
+
+  .cmp-account-py-4 {
+    padding-top: 1.6rem;
+    padding-bottom: 1.6rem;
+  }
+
+  // ------------------------------------------------
+  // TEXTOS
+  // ------------------------------------------------
+  .cmp-account-text-xs {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+  }
+
+  .cmp-account-text-sm {
+    font-size: 1.4rem;
+    line-height: 2rem;
+  }
+
+  .cmp-account-text-lg {
+    font-size: 1.8rem;
+    line-height: 2.8rem;
+  }
+
+  .md\:cmp-account-text-sm {
+    font-size: 1.4rem;
+    line-height: 1.5;
+  }
+
+  // ------------------------------------------------
+  // POSITIONING
+  // ------------------------------------------------
+  .cmp-account-left-1 {
+    left: 0.4rem;
+  }
+
+  .cmp-account-right-2 {
+    right: 0.8rem;
+  }
+
+  // ------------------------------------------------
+  // BORDER RADIUS
+  // ------------------------------------------------
+  .cmp-account-rounded-sm {
+    border-radius: 0.2rem;
+  }
+
+  .cmp-account-rouded-md {
+    border-radius: 0.6rem;
+  }
+
+  .cmp-account-focusable {
+    border-radius: 0.4rem;
+  }
+}
+
+// Estilo página
+
+.account .logout {
+  margin-left: auto;
+  margin-top: 4rem;
+  min-width: 12rem;
+  width: fit-content;
+}
+
+#component-account-root {
+  margin-bottom: 4rem;
+
+  .cmp-account-bg-gray-400 {
+    background-color: var(--primary-color);
+  }
+
+  .cmp-account-bg-gray-200,
+  .cmp-account-border-red-600 {
+    height: 4.8rem;
+
+    label.cmp-account-text-sm {
+      font-size: 1.3rem;
+    }
+  }
+
+  button.cmp-account\:button-color {
+    height: 4.2rem;
+    border-radius: 6px;
+  }
+}

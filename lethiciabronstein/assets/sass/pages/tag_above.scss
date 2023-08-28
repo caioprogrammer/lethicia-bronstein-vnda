@@ -45,8 +45,9 @@
     }
 
     .bannersGrid__first img {
+      height: 100%;
       width: 100%;
-      height: auto
+      object-fit: cover;
     }
 
     .bannersGrid__first.esconder {
@@ -69,8 +70,9 @@
     }
 
     .bannersGrid__second img {
+      height: 100%;
       width: 100%;
-      height: auto
+      object-fit: cover;
     }
 
     .bannersGrid__second.esconder {
@@ -92,8 +94,9 @@
     }
 
     .bannersGrid__third img {
+      height: 100%;
       width: 100%;
-      height: auto
+      object-fit: cover;
     }
 
     .bannersGrid__third.esconder {

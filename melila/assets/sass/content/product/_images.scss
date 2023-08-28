@@ -8,6 +8,8 @@
   position: relative;
   @include media('sm') {
     display: flex;
+    position: sticky;
+    top: 140px;
   }
 
   @import "../../components/flag";
@@ -102,7 +104,7 @@
   > .main-slider .swiper-slide .image,
   > .main-slider .swiper-slide .video {
     overflow: unset;
-    &::after { padding-bottom: 140% }
+    &::after { padding-bottom: 100% }
   }
 
   // Slides inativos/escondidos conforme troca de SKU

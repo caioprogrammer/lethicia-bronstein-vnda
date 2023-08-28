@@ -16,7 +16,7 @@
     grid-template-areas:
       // "banner"
       "newsletter"
-      "social"
+      // "social"
       "paragraph"
       "categories"
       "payment"
@@ -28,24 +28,24 @@
     @include media("sm") {
       grid-template-areas:
         "newsletter newsletter"
-        "social social"
+        // "social social"
         "paragraph paragraph"
         "categories categories"
         "payment payment"
         "signature signature";
 
-      grid-template-rows: 1fr 0.5fr 0.5fr auto 0.5fr 0fr;
+      grid-template-rows: auto;
       grid-template-columns: 1.5fr 0.5fr;
     }
 
     @include media("md") {
       grid-template-areas:
       "newsletter newsletter newsletter "
-      "social social social"
+      // "social social social"
       "paragraph categories categories"
       "payment payment payment"
       "signature signature signature";
-      grid-template-rows: 0.8fr 0.5fr 1fr 0.5fr 0fr;
+      grid-template-rows: auto;
       grid-template-columns: 1fr 1fr;
     }
 

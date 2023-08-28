@@ -1,0 +1,132 @@
+.mm-ocd--open {
+  .mm-menu-mobile {
+    display: block !important;
+  }
+}
+
+.mm-menu-mobile {
+  color: var(--primary-color) !important;
+
+  @include media("md") {
+    display: none;
+  }
+}
+
+// título do mmenu da tela principal
+.mm-spn.mm-spn--navbar.mm-spn--main:after {
+  display: none; // esconder título
+}
+
+// título do mmenu da tela dos submenus
+.mm-spn.mm-spn--navbar:not(.mm-spn--main):after {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+// corpo do mmenu
+.mm-menu-list:not(.mm-spn--parent) {
+  top: 0 !important; // colocar no topo por esconder o título
+}
+
+//list logo
+.mm-menu-logo {
+  display: flex !important;
+  margin-top: 2rem !important;
+  justify-content: flex-end;
+
+  &:before,
+  &:after {
+    display: none !important;
+  }
+}
+
+// close button
+.mm-menu-close {
+  padding: 0 2rem;
+
+  > .icon {
+    height: 1.6rem;
+    width: 1.6rem;
+  }
+}
+
+//input de pesquisa
+.mm-menu-search {
+  display: flex !important;
+  align-items: center;
+  padding: 2rem !important;
+  border-bottom: 1px solid #d9d9d9;
+
+  &:before,
+  &:after {
+    display: none !important;
+  }
+
+  > .search-form {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    border: 1px solid;
+    border-radius: 0;
+    height: 4.2rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+  }
+
+  > .search-form > .field > input {
+    background-color: transparent;
+    border: 0;
+    box-shadow: 0 2px 0 transparent;
+    height: 100%;
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-base);
+    transition: var(--transition);
+    width: calc(100% - 3rem);
+    -webkit-appearance: none;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: var(--primary-color);
+    }
+  }
+
+  > .search-form > .action {
+    display: flex;
+    padding: 0 1rem 0 0;
+  }
+
+  > .search-form > .action > .icon {
+    height: 1.6rem;
+    width: 1.6rem;
+  }
+}
+
+//list item
+.mm-spn li:after {
+  margin-left: 0;
+}
+
+//action minha conta e cart drawer
+
+.mm-menu-action {
+  > .open-cart.-mobile {
+    display: flex;
+    gap: 1rem;
+    padding: calc(var(--mm-spn-item-height) / 2 - var(--mm-spn-line-height) / 2) var(--mm-spn-item-indent);
+    font-weight: var(--font-weight-base);
+    align-items: center;
+  }
+
+  > .account-mobile {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+  }
+
+  &:before {
+    display: none !important;
+  }
+}

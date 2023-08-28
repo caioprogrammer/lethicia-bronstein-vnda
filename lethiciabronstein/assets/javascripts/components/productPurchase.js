@@ -323,6 +323,10 @@ const ProductPurchase = {
       // possui somente uma variante e não possui atributos,
       // define como disponível/indisponível com base na variante em si
       if (currentProduct.querySelectorAll('.prod-option').length === 0) {
+
+        // Atualiza as últimas quantidades disponíveis
+        ProductPurchase.setLastUnits(currentProduct, variants[0]);
+        
         return variants[0].available
           ? ProductPurchase.setAvailable(currentProduct)
           : ProductPurchase.setUnavailable(currentProduct, true, variants[0].sku);
@@ -618,6 +622,8 @@ const ProductPurchase = {
           }
         }
       });
+
+    window.ProductPurchase = ProductPurchase
   },
 };
 

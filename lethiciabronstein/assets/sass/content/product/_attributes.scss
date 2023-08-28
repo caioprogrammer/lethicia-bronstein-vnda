@@ -2,14 +2,14 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
-  gap: 3rem;
+  gap: 2rem;
 
   > .prod-option .option-title {
     font-weight: var(--font-weight-title);
     // font-size: var(--font-size-small);
     font-size: 1.45rem;
     margin-bottom: 0rem;
-    text-transform: lowercase;
+    text-transform: capitalize;
   }
 
   > .prod-option .inner {
@@ -19,11 +19,12 @@
   }
 
   > .prod-option .btn-medidas {
-    font-size: var(--font-size-small);
+    font-size: 1.45rem;
     font-weight: var(--font-weight-title);
-    margin-top: 1.5rem;
-    color: var(--highlight-1);
+    color: #333333;
+    margin-top: 2rem;
     padding: 0;
+    margin-bottom: 2rem;
 
     .arrow {
       &:after {
@@ -33,7 +34,7 @@
         transform: rotate(-45deg);
         border-width: 0 2px 2px 0;
         margin: 3px 3px 1px 8px;
-        border-color: var(--highlight-1);
+        border-color: #333333;
         border-style: solid;
         transition: var(--transition);
       }
@@ -220,10 +221,10 @@
   }
 
   > .prod-option .label .outside-color .tooltip {
-    background-color: var(--highlight-2);
+    background-color: #ffffff !important;
     border-radius: 4px;
     bottom: 120%;
-    color: var(--white);
+    color: #333333;
     font-size: 1rem;
     left: 50%;
     opacity: 0;

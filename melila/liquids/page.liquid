@@ -1,6 +1,10 @@
 {% head %}
   {% opengraphfor page %}
-  <link href="pages/page_above.css" inline rel="stylesheet" type="text/css">
+  <link
+    href="pages/page_above.css"
+    inline
+    rel="stylesheet"
+    type="text/css">
 {% endhead %}
 
 {% body %}
@@ -9,16 +13,16 @@
 
 {% comment %} ========== {% endcomment %}
 
-{% if page.slug == "onde_encontrar" %}
-  {% render "partials/pages/onde_encontrar", page: page, current_shop: current_shop %}
-{% if page.slug == "pagina_padrao" %}
-  {% render "partials/pages/pagina_padrao", page: page, current_shop: current_shop %}
-{% if page.slug == "fale_conosco" %}
-  {% render "partials/pages/fale_conosco", page: page, current_shop: current_shop %}
-{% if page.slug == "perguntas_frequentes" %}
-  {% render "partials/pages/perguntas_frequentes", page: page, current_shop: current_shop %}
-{% if page.slug == "sobre_nos" %}
-  {% render "partials/pages/sobre_nos", page: page, current_shop: current_shop %}
+{% if page.slug == "onde-encontrar" %}
+  {% render "partials/pages/stores", page: page, current_shop: current_shop %}
+{% else if page.slug == "pagina-padrao" %}
+  {% render "partials/pages/custom", page: page, current_shop: current_shop %}
+{% else if page.slug == "fale-conosco" %}
+  {% render "partials/pages/contact", page: page, current_shop: current_shop %}
+{% else if page.slug == "perguntas-frequentes" %}
+  {% render "partials/pages/faq", page: page, current_shop: current_shop %}
+{% else if page.slug == "sobre-nos" %}
+  {% render "partials/pages/about", page: page, current_shop: current_shop %}
 {% else %}
-    {% render "partials/pages/custom", page: page, current_shop: current_shop %}
+  {% render "partials/pages/custom", page: page, current_shop: current_shop %}
 {% endif %}

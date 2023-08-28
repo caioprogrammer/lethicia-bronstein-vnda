@@ -1,0 +1,36 @@
+{% head %}
+  <link href="/pages/institucional/termos.css" inline rel="stylesheet" type="text/css">
+{% endhead %}
+
+{% assign position_primary_full = page.slug | append: '-banner-principal' %}
+
+{% render 'partials/pages/components/page_fullbanner', page: page, position: position_primary_full, background: false, type: '-custom' %}
+
+{% load_banners position: 'termos-abas' %}
+{% for banner in loaded_banners %}  
+  {% assign class = '' %}
+  {% if forloop.first %}
+    {% assign class = 'active' %}
+  {% endif %}
+  
+  {% capture html_tabs %}
+    {{ html_tabs }}
+    <a class="btn {{ class }}" href="#{{ banner.url }}" data-tab>{{ banner.subtitle }}</a>
+  {% endcapture %}
+  
+  {% capture html_conteudo %}
+    {{ html_conteudo }}
+    <div class="conteudo {{ class }}" id="{{ banner.url }}">
+      {{ banner.description | replace:'<h1','<h4' | replace:'h1>','h4>' }}
+    </div>
+  {% endcapture %}
+{% endfor %}
+
+<div class="content-atendimento"> 
+  <div class="tabs">
+    {{ html_tabs }}
+  </div>
+  <div class="conteudos">
+    {{ html_conteudo }}
+  </div>
+</div>

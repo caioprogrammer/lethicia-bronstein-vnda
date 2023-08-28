@@ -1,5 +1,3 @@
-import ProductPurchase from '../components/productPurchase';
-
 const InfinityScroll = {
   params: window._pagination,
   priceProds: {
@@ -41,7 +39,7 @@ const InfinityScroll = {
     const doc = parser.parseFromString(data, 'text/html');
     const script = doc.querySelector('[data-product-variants]');
 
-    // Busca por scripts para compra rápida
+    // Busca por scripts para compra rÃ¡pida
     const scripts = doc.querySelectorAll('[data-variants-script]');
     if (scripts.length > 0)
       scripts.forEach((script) => {
@@ -70,7 +68,7 @@ const InfinityScroll = {
 
       this.setCurrentPage(currentPage + 1);
 
-      ProductPurchase.init(true);
+      window.ProductPurchase.init(true);
       lazyLoadInstance.update();
       this.updatePrice();
 

@@ -354,7 +354,10 @@ const ProductPurchase = {
           const attribute = attrToCheck.options[index];
           const value = attribute.getAttribute('data-attribute-value');
           const availableVariants = ProductPurchase.productVariants[`${productId}`].filter((variant) => {
-            if (variant.properties[attrToCheck.index].value == value && variant.available) return variant;
+            if (variant.properties[attrToCheck.index]
+                && variant.properties[attrToCheck.index].value
+              && variant.properties[attrToCheck.index].value   == value
+            && variant.available) return variant;
           });
 
           if (availableVariants.length > 0) {

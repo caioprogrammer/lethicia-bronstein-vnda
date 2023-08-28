@@ -1,7 +1,8 @@
-{% load_banners position: 'rodape-texto'  %}
+{% load_banners position: 'rodape-texto' %}
 
 {% for banner in loaded_banners limit: 1 %}
   <div class="paragraph">
     {{ banner.description }}
+    {% render "partials/content/footer/social", position: 'rodape-logo-secundario', current_shop: current_shop, home_url: home_url %}
   </div>
 {% endfor %}

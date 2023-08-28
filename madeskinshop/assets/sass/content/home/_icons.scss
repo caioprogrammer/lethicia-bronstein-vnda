@@ -1,0 +1,50 @@
+.section-icons{
+
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  background-color: var(--gray-4);
+  color: var(--white);
+}
+
+.icons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .item {
+    align-items: center;
+    display: flex;
+    flex: 1;
+    margin-bottom: 2rem;
+
+    @include media("sm") {
+      margin-bottom: 0;
+      margin-right: 4rem;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    .image-icon {
+      height: 100px;
+      margin-right: 1rem;
+      position: relative;
+      width: 35%;
+
+      img {
+        height: 100%;
+        object-fit: contain;
+        width: 100%;
+      }
+    }
+
+    .text {
+      width: 75%;
+    }
+  }
+
+  @include media("sm") {
+    flex-direction: row;
+  }
+}
