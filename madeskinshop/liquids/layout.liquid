@@ -1,67 +1,75 @@
 <!doctype html>
 <html lang="{{ language }}">
-  <head>
-    <meta charset="UTF-8"/>
-    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
-    <meta content="initial-scale=1, width=device-width, maximum-scale=1" name="viewport"/>
 
-    <link rel="shortcut icon" href="{{ 'favicon.ico' | favicon_path }}"/>
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ 'favicon/apple-touch-icon.png' | image_path }}"/>
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ 'favicon/favicon-32x32.png' | image_path }}"/>
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ 'favicon/favicon-16x16.png' | image_path }}"/>
-    <link rel="manifest" href="{{ 'favicon/manifest.json' | image_path }}"/>
+<head>
+  <meta charset="UTF-8" />
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="initial-scale=1, width=device-width, maximum-scale=1" name="viewport" />
 
-    <meta content="#000" name="msapplication-TileColor"/>
-    <meta name="msapplication-TileImage" content="{{ 'favicon/android-chrome-192x192.png' | image_path }}"/>
-    <meta content="#000" name="theme-color"/>
+  <link rel="shortcut icon" href="{{ 'favicon.ico' | favicon_path }}" />
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ 'favicon/apple-touch-icon.png' | image_path }}" />
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ 'favicon/favicon-32x32.png' | image_path }}" />
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ 'favicon/favicon-16x16.png' | image_path }}" />
+  <link rel="manifest" href="{{ 'favicon/manifest.json' | image_path }}" />
 
-    <link href="/main.css" inline rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="{{ 'style.css' | stylesheet_path }}" media="print" onload="this.media='all'"/>
+  <meta content="#000" name="msapplication-TileColor" />
+  <meta name="msapplication-TileImage" content="{{ 'favicon/android-chrome-192x192.png' | image_path }}" />
+  <meta content="#000" name="theme-color" />
 
-    {{ content_for_head }}
+  <link href="/main.css" inline rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="{{ 'style.css' | stylesheet_path }}" media="print" onload="this.media='all'" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <script>
-      var filterRange = [];
-      window.productVariants = {};
-      window.priceComponent = "{{ 'price.v9.js' | component_path }}"
-    </script>
-  </head>
+  {{ content_for_head }}
 
-  {% assign template_class = 'page-'| append: template | replace: '/','-' | replace: '_','-' %}
+  <script>
+    var filterRange = [];
+    window.productVariants = {};
+    window.priceComponent = "{{ 'price.v9.js' | component_path }}"
+  </script>
+</head>
 
-  {% assign img_logo = 'https://via.placeholder.com/410x210' %}
+{% assign template_class = 'page-'| append: template | replace: '/','-' | replace: '_','-' %}
 
-  {% load_shop_images  position: "logo" %}
+{% assign img_logo = 'https://via.placeholder.com/410x210' %}
 
-  {% if loaded_shop_images.size > 0 %}
-    {% assign img_logo = loaded_shop_images | first | map: 'url' | first %}
-  {% endif %}
+{% load_shop_images position: "logo" %}
 
-  <body class="{{ template_class }}" data-page="{{ template }}">
-    <div class="wrapper" id="wrapper">
-      {% render 'partials/common/header', home_url: home_url, template: template, search_url: search_url, account_url: account_url, current_shop: current_shop, img_logo: img_logo, mobile: mobile %}
+{% if loaded_shop_images.size > 0 %}
+{% assign img_logo = loaded_shop_images | first | map: 'url' | first %}
+{% endif %}
 
-      <main>
-        {{ yield }}
-      </main>
+<body class="{{ template_class }}" data-page="{{ template }}">
+  <div class="wrapper" id="wrapper">
+    {% render 'partials/common/header', home_url: home_url, template: template, search_url: search_url, account_url:
+    account_url, current_shop: current_shop, img_logo: img_logo, mobile: mobile %}
 
-      {% render 'partials/common/footer', current_shop: current_shop, img_logo: img_logo, home_url: home_url %}
-      {% render 'partials/common/popup_newsletter', current_shop: current_shop %}
-      {% render 'partials/common/cart_drawer' %}
-      {% render 'partials/common/icons' %}
-    </div>
+    <main>
+      {{ yield }}
+    </main>
 
-    {% comment %}
-      Renderiza popup de compra rápida
-      Retirar ou comentar caso não for utilizado
-    {% endcomment %}
-    {% render 'partials/common/popup_purchase' %}
+    {% render 'partials/common/footer', current_shop: current_shop, img_logo: img_logo, home_url: home_url %}
+    {% render 'partials/common/popup_newsletter', current_shop: current_shop %}
+    {% render 'partials/common/cart_drawer' %}
+    {% render 'partials/common/icons' %}
+  </div>
 
-    <script src="{{ 'jquery.min.js' | javascript_path }}"></script>
+  {% comment %}
+  Renderiza popup de compra rápida
+  Retirar ou comentar caso não for utilizado
+  {% endcomment %}
+  {% render 'partials/common/popup_purchase' %}
 
-    {{ content_for_body }}
+  <script src="{{ 'jquery.min.js' | javascript_path }}"></script>
 
-    <script src="{{ 'main.js' | javascript_path }}"></script>
-    <script async src="{{ 'lazyload.min.js' | javascript_path }}"></script>
-  </body>
+  {{ content_for_body }}
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <script src="{{ 'main.js' | javascript_path }}"></script>
+
+  <script async src="{{ 'lazyload.min.js' | javascript_path }}"></script>
+</body>
+
 </html>

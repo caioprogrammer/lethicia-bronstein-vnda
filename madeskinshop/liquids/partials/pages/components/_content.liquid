@@ -1,15 +1,122 @@
 {% load_banners position: position limit: 1 %}
 
 {% for banner in loaded_banners %}
-  <section class="section container content-text">
-    <div class="title-wrapper">
-      {% if banner.subtitle %}
-        <h2 class="title">
-          {{banner.subtitle}}
-        </h2>
-      {% endif %}
-    </div>
+<section class="section container content-text">
+  <div class="title-wrapper">
+    {% if banner.subtitle %}
+    <h2 class="title">
+      {{ banner.subtitle }}
+    </h2>
+    {% endif %}
+  </div>
 
-    {{ banner.description | replace: '<h1', '<h2 ' }}
-  </section>
-{% endfor %}
+  {{ banner.description | replace: '<h1', '<h2 ' }} </section>
+    {% endfor %}
+
+    {% if page.slug == "captura-de-leads" %}
+    <section>
+      <div class="captura-de-leads">
+        <style>
+          header,
+          footer,
+          .page-breadcrumbs,
+          .top-bar,
+          .side-by-side {
+            display: none !important;
+          }
+
+          section {
+            background-color: #f9dbc5;
+          }
+
+          .captura-de-leads {
+            max-width: 75rem;
+            margin: 0 auto;
+            padding: 5rem 0;
+            color: #DA6451;
+            font-family: "Rondal";
+            font-weight: 600;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+          }
+
+          .form-leads {
+            width: 100%;
+            max-width: 300px;
+          }
+
+          .form-leads .field {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+
+          }
+
+          .form-leads .field input {
+            padding: 10px 15px;
+            outline: none;
+            cursor: auto;
+          }
+
+          .form-leads .field button.btn-primary {
+            background: #ffffff;
+            max-width: 150px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 25px;
+            font-size: 16px;
+            font-family: "Gotham Book";
+          }
+        </style>
+        <a href="/">
+          <img data-aos="fade-up" data-aos-duration="1000" src="{{ 'logo-made-skin.png' | image_path }}" />
+        </a>
+        <h1 data-aos="fade" data-aos-duration="1000">TEXTOTEXTOTEXTOTEXTOTEXTOTEXTOTEXTOTEXTO</h1>
+
+        <form data-webform="leads" class="form form-leads" target="_blank" id="lead-form">
+          <fieldset form="leads-form">
+            <input type="hidden" name="key" value="{{ current_shop.subdomain }}-email-de-captura-de-leads">
+            <input type="hidden" name="reply_to" id="reply_to" value="">
+            <input type="text" name="vnda" tabindex="-1" autocomplete="off" required />
+
+            <div class="field">
+              <input data-aos="fade-left" data-aos-duration="1000" name="name" type="text" placeholder="Nome"
+                required />
+              <input data-aos="fade-right" data-aos-duration="1000" name="telefone" type="tel" placeholder="Telefone"
+                required />
+              <input data-aos="fade-left" data-aos-duration="1000" name="email" type="text" placeholder="E-mail"
+                required />
+              <input data-aos="fade-right" data-aos-duration="1000" name="cidade" type="text" placeholder="Cidade"
+                required />
+              <input data-aos="fade-left" data-aos-duration="1000" name="idade" type="number" placeholder="Idade"
+                required />
+              <button data-aos="fade" data-aos-duration="1000" class="btn-primary action" aria-label="Enviar"
+                type="button" data-webform-button>
+                ENVIAR
+                <svg class="icon">
+                  <use xlink:href="#icon-next"></use>
+                </svg>
+              </button>
+            </div>
+          </fieldset>
+
+          <div class="messages" data-msg-retorno>
+            <span class="msg-received" data-msg></span>
+            <span class="msg-received msg-sucess" data-msg-success>
+              Obrigado!
+            </span>
+            <span class="msg-received msg-error" data-msg-error>
+              Ocorreu um erro. Tente novamente.
+            </span>
+          </div>
+        </form>
+
+      </div>
+    </section>
+    {% endif %}
