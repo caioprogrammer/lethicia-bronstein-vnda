@@ -6,6 +6,12 @@
 .product-images {
   width: 100%;
   position: relative;
+  @media screen and (max-width: 768px) {
+    height: 520px;
+    .main-slider {
+      height: 100%;
+    }
+  }
   @include media('sm') {
     display: flex;
     height: 100%

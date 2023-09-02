@@ -16,13 +16,23 @@
     align-items: center;
     justify-content: space-between;
     gap: 3.2rem;
+    @media screen and (max-width: 1024px) {
+      flex-direction: column;
+    } 
     .text-content {
       width: 50%;
       font-family: "Gotham Book";
       font-size: 1.8rem;
+      @media screen and (max-width: 1024px) {
+        width: 100%;
+        font-size: 1.6rem;
+      } 
       h2 {
         font-family: "Rondal";
         font-size: 6.4rem;
+        @media screen and (max-width: 1024px) {
+          font-size: 4.2rem;
+        } 
       }
     }
   }
@@ -51,8 +61,8 @@
 
 
     .right-container {
-      padding: 0 0 0 2rem;
-
+      padding: 0 2rem 0 2rem;
+      
       @include media("md") {
         padding-top: 0;
         padding: 3rem 1rem 2rem 2rem;

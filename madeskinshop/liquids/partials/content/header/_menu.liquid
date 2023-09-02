@@ -1,41 +1,43 @@
 {% load_menus position: 'principal' %}
 
 {% if mobile %}
-  {% render "partials/content/header/menu_mobile", search_url: search_url, account_url: account_url, loaded_menus: loaded_menus, img_logo: img_logo, template: template, home_url: home_url %}
-  <nav class="menu">
-    <ul class="menu-list">
-      {% render "partials/content/header/logo", current_shop: current_shop, img_logo: img_logo, template: template, home_url: home_url %}
-    </ul>
-  </nav>
+<div class="hamburger-logo">
+  <button aria-label="Abrir menu" class="hamburger" data-action="open-menu-mobile">
+    <svg class="icon">
+      <use href="#icon-hamburger" />
+    </svg>
+  </button>
+</div>
+
+{% render "partials/content/header/menu_mobile", search_url: search_url, account_url: account_url, loaded_menus:
+loaded_menus, img_logo: img_logo, template: template, home_url: home_url %}
+{% comment %}
+<nav class="menu">
+  <ul class="menu-list">
+    {% render "partials/content/header/logo", current_shop: current_shop, img_logo: img_logo, template: template,
+    home_url: home_url %}
+  </ul>
+</nav>
+
+{% endcomment %}
 {% else %}
-  <nav class="menu">
-    <ul class="menu-list">
-      {% for menu in loaded_menus %}
-        {% if menu.title == blank %}
-          {% continue %}
-        {% endif %}
-        {% assign menu_half = forloop.length | divided_by: 2 %}
-        {% assign menu_break = menu_half | plus: 1 %}
+<nav class="menu">
+  <ul class="menu-list">
+    {% for menu in loaded_menus %}
+    {% if menu.title == blank %}
+    {% continue %}
+    {% endif %}
+    {% assign menu_half = forloop.length | divided_by: 2 %}
+    {% assign menu_break = menu_half | plus: 1 %}
 
-        {% if forloop.index < menu_break %}
-          {% render 'partials/content/header/menu_desktop', menu: menu %}
-        {% endif %}
-      {% endfor %}
-
-      {% render "partials/content/header/logo", current_shop: current_shop, img_logo: img_logo, template: template, home_url: home_url %}
-
-      {% for menu in loaded_menus %}
-        {% if menu.title == blank %}
-          {% continue %}
-        {% endif %}
-        {% assign menu_half = forloop.length | divided_by: 2 %}
-        {% assign menu_break = menu_half | plus: 1 %}
-
-        {% if forloop.index >= menu_break %}
-          {% render 'partials/content/header/menu_desktop', menu: menu %}
-        {% endif %}
+    {% if forloop.index < menu_break %} {% render 'partials/content/header/menu_desktop' , menu: menu %} {% endif %} {%
+      endfor %} {% for menu in loaded_menus %} {% if menu.title==blank %} {% continue %} {% endif %} {% assign
+      menu_half=forloop.length | divided_by: 2 %} {% assign menu_break=menu_half | plus: 1 %} {% if forloop.index>=
+      menu_break %}
+      {% render 'partials/content/header/menu_desktop', menu: menu %}
+      {% endif %}
 
       {% endfor %}
-    </ul>
-  </nav>
+  </ul>
+</nav>
 {% endif %}

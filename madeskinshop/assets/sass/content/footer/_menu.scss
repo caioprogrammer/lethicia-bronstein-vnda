@@ -10,7 +10,9 @@
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
-
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
     li {
       a {
         text-decoration: none;

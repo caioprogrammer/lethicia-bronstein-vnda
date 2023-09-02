@@ -25,6 +25,7 @@
             </div>
         </div>
     </div>
+
     {% assign fullbanner = product.slug | append: '-banner-full' %}
     {% load_banners position: fullbanner limit: 1 %}
     {% for banner in loaded_banners %}
@@ -42,7 +43,7 @@
     {% assign photoright = product.slug | append: '-photo-right' %}
     {% load_banners position: photoright limit: 1 %}
     {% for banner in loaded_banners %}
-    <section class="product-photo-right container">
+    <section class="product-photo-right container section">
         <div class="text-content">
             <h2>{{ banner.subtitle }}</h2>
             <p>{{ banner.description }}</p>
@@ -56,7 +57,7 @@
     {% assign photoleft = product.slug | append: '-photo-left' %}
     {% load_banners position: photoleft limit: 1 %}
     {% for banner in loaded_banners %}
-    <section class="product-photo-left container">
+    <section class="product-photo-left container section">
         <div class="">
             <img src="{{ banner.file_url }}" />
         </div>
