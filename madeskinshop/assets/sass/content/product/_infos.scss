@@ -2,20 +2,37 @@
 
 .product-section {
   width: 100%;
-  padding-top: 2rem;
+  padding-top: 0rem;
   padding-bottom: 2rem;
 
   @include media("md") {
-    padding-top: 2rem;
+    padding-top: 0rem;
     padding-bottom: 2rem;
   }
-
+  
+  .product-photo-right,
+  .product-photo-left {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3.2rem;
+    .text-content {
+      width: 50%;
+      font-family: "Gotham Book";
+      font-size: 1.8rem;
+      h2 {
+        font-family: "Rondal";
+        font-size: 6.4rem;
+      }
+    }
+  }
   .product-wrap {
     display: flex;
     flex-direction: column;
 
     @include media("md") {
       flex-direction: row;
+      min-height: 80vh;
     }
 
     .mobile-only {
@@ -32,19 +49,20 @@
       }
     }
 
+
     .right-container {
       padding: 0 0 0 2rem;
 
       @include media("md") {
         padding-top: 0;
-        padding: 0 1rem 2rem 2rem;
-        width: 45%;
+        padding: 3rem 1rem 2rem 2rem;
+        width: 40%;
       }
     }
 
     .left-container {
       @include media("md") {
-        width: 65%;
+        width: 60%;
       }
     }
   }
@@ -91,7 +109,7 @@
   > .infos-compra .actions-wrapper {
     display: flex;
     flex-direction: column;
-    margin-top: 3rem;
+    margin-top: 1.5rem;
 
     @include media("sm") {
       flex-direction: row;

@@ -8,20 +8,25 @@
   position: relative;
   @include media('sm') {
     display: flex;
+    height: 100%
   }
 
   @import "../../components/flag";
 
   > .slider-thumbs {
-    width: 18%;
+    width: 10%;
     height: 100%;
     margin-right: 1rem;
     position: absolute;
     top: 0;
-    left: 0;
-    display: none;
+    left: 2rem;
+    z-index: 2;
+    // display: none;
+    .swiper-wrapper {
+      justify-content: flex-end;
+    }
     @include media('sm') {
-      display: block;
+      // display: none;
     }
   }
 
@@ -31,21 +36,24 @@
     border: 1px solid transparent;
     opacity: 0.7;
     transition: opacity 0.2s, border-color 0.1s;
+    max-width: 90px;
     cursor: pointer;
     &.swiper-slide-thumb-active {
       opacity: 1;
-      border-color: var(--color-accent);
+      border: 3px solid #fff;
+      border-radius: 100%;
     }
   }
 
   > .slider-thumbs .image {
     pointer-events: none;
+    border-radius: 100%;
     img { pointer-events: none }
   }
 
   > .main-slider {
     @include media('sm') {
-      width: calc(82% - 1rem);
+      width: 100%;
       margin-left: auto;
       margin-right: 0;
     }

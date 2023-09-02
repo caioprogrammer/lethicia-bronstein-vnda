@@ -3,15 +3,15 @@
 
 {% for image in product_images %}
 
-  {% capture html_product_images %}
-    {{ html_product_images }}
-    {% render 'partials/content/product/images/item_main_image', image: image, product: product, forloop: forloop %}
-  {% endcapture %}
+{% capture html_product_images %}
+{{ html_product_images }}
+{% render 'partials/content/product/images/item_main_image', image: image, product: product, forloop: forloop %}
+{% endcapture %}
 
-  {% capture html_thumb %}
-    {{ html_thumb }}
-    {% render 'partials/content/product/images/item_image_thumb', image: image, product: product, forloop: forloop %}
-  {% endcapture %}
+{% capture html_thumb %}
+{{ html_thumb }}
+{% render 'partials/content/product/images/item_image_thumb', image: image, product: product, forloop: forloop %}
+{% endcapture %}
 
 {% endfor %}
 
@@ -20,15 +20,15 @@
 {% load_videos %}
 
 {% for video in loaded_videos %}
-  {% capture html_product_videos %}
-    {{ html_product_videos }}
-    {% render 'partials/content/product/images/item_main_video', video: video, qnt_images: qnt_images, product: product %}
-  {% endcapture %}
+{% capture html_product_videos %}
+{{ html_product_videos }}
+{% render 'partials/content/product/images/item_main_video', video: video, qnt_images: qnt_images, product: product %}
+{% endcapture %}
 
-  {% capture html_thumb_videos %}
-    {{ html_thumb_videos }}
-    {% render 'partials/content/product/images/item_video_thumb', video: video, qnt_images: qnt_images, product: product %}
-  {% endcapture %}
+{% capture html_thumb_videos %}
+{{ html_thumb_videos }}
+{% render 'partials/content/product/images/item_video_thumb', video: video, qnt_images: qnt_images, product: product %}
+{% endcapture %}
 {% endfor %}
 
 {% comment %} ========== {% endcomment %}
@@ -47,8 +47,10 @@
       {{ html_product_images }}
       {{ html_product_videos }}
     </div>
+    {% comment %}
     <button type="button" class="swiper-button-next"></button>
     <button type="button" class="swiper-button-prev"></button>
+    {% endcomment %}
     {% render 'partials/components/flag', product: product %}
   </div>
 

@@ -1,14 +1,17 @@
 {% assign descricao_curta = false %}
 {% assign descricao_parts = false %}
 
-{% if product.description contains '<hr/>' %}
-    {% assign descricao_curta = product.description | split: '<hr/>' | first %}
-    {% assign descricao_parts = product.description | split: '<hr/>' %}
+{% if product.description contains '
+<hr />' %}
+{% assign descricao_curta = product.description | split: '
+<hr />' | first %}
+{% assign descricao_parts = product.description | split: '
+<hr />' %}
 {% else %}
-    {% assign descricao_curta = product.description %}
+{% assign descricao_curta = product.description %}
 {% endif %}
 
-<section class="section product-section container" data-product-box data-section-product>
+<section class="section product-section" data-product-box data-section-product>
     <div class="product-wrap">
         <div class="left-container">
             {% render 'partials/content/product/images/images', product: product %}
@@ -16,8 +19,51 @@
 
         <div class="right-container">
             <div class="product-infos">
-                {% render 'partials/content/product/infos/infos', product: product, descricao_curta: descricao_curta, descricao_parts: descricao_parts, tag_medidas: tag_medidas, current_shop: current_shop, home_url: home_url %}
+                {% render 'partials/content/product/infos/infos', product: product, descricao_curta: descricao_curta,
+                descricao_parts: descricao_parts, tag_medidas: tag_medidas, current_shop: current_shop, home_url:
+                home_url %}
             </div>
         </div>
     </div>
+    {% assign fullbanner = product.slug | append: '-banner-full' %}
+    {% load_banners position: fullbanner limit: 1 %}
+    {% for banner in loaded_banners %}
+    <section class="product-first-fullbanner">
+        <div class="content-with-text">
+            <img src="{{ banner.file_url }}" />
+            <div class="text-content">
+                <h2>{{ banner.subtitle }}</h2>
+                <p>{{ banner.description }}</p>
+            </div>
+        </div>
+    </section>
+    {% endfor %}
+
+    {% assign photoright = product.slug | append: '-photo-right' %}
+    {% load_banners position: photoright limit: 1 %}
+    {% for banner in loaded_banners %}
+    <section class="product-photo-right container">
+        <div class="text-content">
+            <h2>{{ banner.subtitle }}</h2>
+            <p>{{ banner.description }}</p>
+        </div>
+        <div class="">
+            <img src="{{ banner.file_url }}" />
+        </div>
+    </section>
+    {% endfor %}
+
+    {% assign photoleft = product.slug | append: '-photo-left' %}
+    {% load_banners position: photoleft limit: 1 %}
+    {% for banner in loaded_banners %}
+    <section class="product-photo-left container">
+        <div class="">
+            <img src="{{ banner.file_url }}" />
+        </div>
+        <div class="text-content">
+            <h2>{{ banner.subtitle }}</h2>
+            <p>{{ banner.description }}</p>
+        </div>
+    </section>
+    {% endfor %}
 </section>

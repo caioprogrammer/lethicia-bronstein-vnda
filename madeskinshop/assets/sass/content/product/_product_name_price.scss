@@ -1,7 +1,7 @@
 @import "../../components/price";
 
 .product-name-price {
-  margin-bottom: 2rem;
+  // margin-bottom: 2rem;
 
   > .name-reference .reference {
     color: var(--secondary-color);
@@ -11,9 +11,10 @@
   }
 
   > .name-reference .name {
-    font-size: 3.5rem;
+    font-size: 4.2rem;
+    font-weight: 600;
     line-height: 1.2;
-    font-weight: var(--font-weight-title);
     margin-bottom: 1rem;
+    font-family: 'Rondal';
   }
 }

@@ -25,10 +25,11 @@ export default function setGallery(Product) {
     thumbs: {
       swiper: thumbs,
     },
-    navigation: {
-      nextEl: '[data-main-slider] .swiper-button-next',
-      prevEl: '[data-main-slider] .swiper-button-prev',
-    },
+    // navigation: {
+    //   nextEl: '[data-main-slider] .swiper-button-next',
+    //   prevEl: '[data-main-slider] .swiper-button-prev',
+    // },
+    navigation: false,
     pagination: {
       el: '.wrapper-slider .swiper-pagination',
       clickable: true,

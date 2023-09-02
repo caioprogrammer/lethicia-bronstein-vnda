@@ -5,8 +5,9 @@
 #header {
   display: flex;
   align-items: center;
-  background-color: var(--white);
-  position: sticky;
+  background-color: transparent;
+  // position: sticky;
+  position: fixed;
   top: 0;
   transition: var(--transition);
   width: 100%;

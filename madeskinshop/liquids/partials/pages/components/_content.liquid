@@ -26,29 +26,52 @@
           }
 
           section {
-            background-color: #f9dbc5;
+            background-color: #ffffff;
           }
 
           .captura-de-leads {
-            max-width: 75rem;
+            max-width: 100%;
             margin: 0 auto;
-            padding: 5rem 0;
             color: #DA6451;
             font-family: "Rondal";
             font-weight: 600;
             height: 100vh;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-evenly;
           }
 
-          .form-leads {
+          .captura-de-leads .content-right {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .captura-de-leads .content-right h2 {
+            max-width: 330px;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 3rem;
+          }
+
+          .captura-de-leads .logo-left {
+            background-color: #f9dbc5;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .captura-de-leads .logo-left img {
+            max-width: 300px;
+          }
+
+          .content-right .form-leads {
             width: 100%;
             max-width: 300px;
           }
 
-          .form-leads .field {
+          .content-right .form-leads .field {
             display: flex;
             flex-direction: column;
             gap: 12px;
@@ -56,15 +79,16 @@
 
           }
 
-          .form-leads .field input {
+          .content-right .form-leads .field input {
             padding: 10px 15px;
             outline: none;
             cursor: auto;
+            border: 1px solid;
           }
 
-          .form-leads .field button.btn-primary {
+          .content-right .form-leads .field button.btn-primary {
             background: #ffffff;
-            max-width: 150px;
+            max-width: 180px;
             margin: 0 auto;
             display: flex;
             align-items: center;
@@ -72,51 +96,77 @@
             padding: 10px 25px;
             font-size: 16px;
             font-family: "Gotham Book";
+            border: 1px solid;
+          }
+
+          @media screen and (max-width: 1024px) {
+            .captura-de-leads .logo-left {
+              padding: 4rem 0;
+              height: calc(100% - 50rem);
+            }
+
+            .captura-de-leads .logo-left img {
+              max-width: 180px;
+            }
+
+            .captura-de-leads .content-right {
+              height: 100%;
+            }
+
+            .captura-de-leads {
+              flex-direction: column;
+            }
           }
         </style>
-        <a href="/">
-          <img data-aos="fade-up" data-aos-duration="1000" src="{{ 'logo-made-skin.png' | image_path }}" />
-        </a>
-        <h1 data-aos="fade" data-aos-duration="1000">TEXTOTEXTOTEXTOTEXTOTEXTOTEXTOTEXTOTEXTO</h1>
+        <div class="logo-left">
+          <a href="/">
+            <img data-aos="fade-left" data-aos-duration="1000" src="{{ 'logo-made-skin.png' | image_path }}" />
+          </a>
+        </div>
+        <div class="content-right">
+          <h2 data-aos="fade" data-aos-duration="1000">
+            CADASTRE-SE ABAIXO
+            E TENHA ACESSO A
+            CONDIÇÕES ESPECIAIS
+          </h2>
 
-        <form data-webform="leads" class="form form-leads" target="_blank" id="lead-form">
-          <fieldset form="leads-form">
-            <input type="hidden" name="key" value="{{ current_shop.subdomain }}-email-de-captura-de-leads">
-            <input type="hidden" name="reply_to" id="reply_to" value="">
-            <input type="text" name="vnda" tabindex="-1" autocomplete="off" required />
+          <form data-webform="leads" class="form form-leads" target="_blank" id="lead-form">
+            <fieldset form="leads-form">
+              <input type="hidden" name="key" value="{{ current_shop.subdomain }}-email-de-captura-de-leads">
+              <input type="hidden" name="reply_to" id="reply_to" value="">
+              <input type="text" name="vnda" tabindex="-1" autocomplete="off" required />
 
-            <div class="field">
-              <input data-aos="fade-left" data-aos-duration="1000" name="name" type="text" placeholder="Nome"
-                required />
-              <input data-aos="fade-right" data-aos-duration="1000" name="telefone" type="tel" placeholder="Telefone"
-                required />
-              <input data-aos="fade-left" data-aos-duration="1000" name="email" type="text" placeholder="E-mail"
-                required />
-              <input data-aos="fade-right" data-aos-duration="1000" name="cidade" type="text" placeholder="Cidade"
-                required />
-              <input data-aos="fade-left" data-aos-duration="1000" name="idade" type="number" placeholder="Idade"
-                required />
-              <button data-aos="fade" data-aos-duration="1000" class="btn-primary action" aria-label="Enviar"
-                type="button" data-webform-button>
-                ENVIAR
-                <svg class="icon">
-                  <use xlink:href="#icon-next"></use>
-                </svg>
-              </button>
+              <div class="field">
+                <input data-aos="fade-left" data-aos-duration="1000" name="name" type="text" placeholder="Nome"
+                  required />
+                <input data-aos="fade-right" data-aos-duration="1000" name="telefone" type="tel" placeholder="Telefone"
+                  required />
+                <input data-aos="fade-left" data-aos-duration="1000" name="email" type="text" placeholder="E-mail"
+                  required />
+                <input data-aos="fade-right" data-aos-duration="1000" name="cidade" type="text" placeholder="Cidade"
+                  required />
+                <input data-aos="fade-left" data-aos-duration="1000" name="idade" type="number" placeholder="Idade"
+                  required />
+                <button class="btn-primary action" aria-label="Enviar" type="button" data-webform-button>
+                  ENVIAR
+                  <svg class="icon">
+                    <use xlink:href="#icon-next"></use>
+                  </svg>
+                </button>
+              </div>
+            </fieldset>
+
+            <div class="messages" data-msg-retorno>
+              <span class="msg-received" data-msg></span>
+              <span class="msg-received msg-sucess" data-msg-success>
+                Obrigado!
+              </span>
+              <span class="msg-received msg-error" data-msg-error>
+                Ocorreu um erro. Tente novamente.
+              </span>
             </div>
-          </fieldset>
-
-          <div class="messages" data-msg-retorno>
-            <span class="msg-received" data-msg></span>
-            <span class="msg-received msg-sucess" data-msg-success>
-              Obrigado!
-            </span>
-            <span class="msg-received msg-error" data-msg-error>
-              Ocorreu um erro. Tente novamente.
-            </span>
-          </div>
-        </form>
-
+          </form>
+        </div>
       </div>
     </section>
     {% endif %}
