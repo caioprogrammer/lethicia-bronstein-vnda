@@ -2,11 +2,25 @@
   <ul class="menu">
     {% load_menus position: 'rodape' %}
     {% for menu in loaded_menus %}
-      <li>
-        <a href="{{ menu.url }}" title="{{ menu.title }}">
-          {{ menu.title }}
-        </a>
-      </li>
+    <li>
+      <a class="link-is-title" href="{{ menu.url }}" title="{{ menu.title }}">
+        {{ menu.title }}
+      </a>
+      {% if menu.children %}
+      <ul>
+
+        {% for submenu in menu.children %}
+        <li>
+          <a class="only-link" href="{{ submenu.url }}" {% unless submenu.tooltip==blank %}class="{{ submenu.tooltip }}"
+            {% endunless %} {% if submenu.external %}target="_blank" {% endif %}>
+            {{ submenu.title }}
+          </a>
+        </li>
+        {% endfor %}
+
+      </ul>
+      {% endif %}
+    </li>
     {% endfor %}
   </ul>
 </div>

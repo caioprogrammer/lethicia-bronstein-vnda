@@ -24,12 +24,18 @@
 {% render 'partials/content/home/fullbanner', position: 'home-banner-principal-mobile', aux: '-principal', mobile:
 mobile %}
 {% else %}
-{% render 'partials/content/home/fullbanner', position: 'home-banner-principal', aux: '-principal', mobile: mobile %}
+{% render 'partials/content/home/fullbanner', position: 'home-banner-principal', aux: 'custom-fullbanner', mobile:
+mobile %}
 {% endif %}
 {% render 'partials/content/home/section_banners_apoio', position: 'home-banner-apoio', limit: 3 %}
+{% render 'partials/content/home/fullbanner', position: 'home-video-principal', aux: 'custom-fullbanner', mobile: mobile
+%}
 {% render 'partials/content/home/section_banners_horizontal' %}
 {% render 'partials/content/home/icons', position: 'home-icones' %}
 {% render 'partials/content/home/section_banners_posts', position: 'home-posts', position_title: 'home-titulo-posts',
 limit: 4 %}
+{% comment %}
 {% render 'partials/components/carousel', tag_name: 'home-produtos-listagem' %}
+{% endcomment %}
+{% render 'partials/components/sectionproduct', tag_name: 'home-produtos-listagem' %}
 {% render 'partials/content/home/instagram', environment: environment %}

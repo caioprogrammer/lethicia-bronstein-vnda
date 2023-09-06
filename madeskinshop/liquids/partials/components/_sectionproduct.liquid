@@ -1,0 +1,15 @@
+{% if tag_name and tag_name != blank %}
+{% load_tag name: tag_name %}
+{% assign tag = loaded_tag %}
+
+{% if tag and tag != blank %}
+{% load_products tag: tag.name per_page: 10 %}
+{% for product in products %}
+<section class="section-product">
+    <div class="item" data-item>
+        {% render 'partials/components/section_block', product: product, lazy: 'swiper-lazy' %}
+    </div>
+</section>
+{% endfor %}
+{% endif %}
+{% endif %}

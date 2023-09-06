@@ -1,0 +1,60 @@
+{% gtm product_impression: product %}
+
+{% assign image_urls = product.images | map: 'url' | uniq %}
+{% assign class_sold_out = '' %}
+
+{% unless product.available %}
+{% assign class_sold_out = 'sold-out' %}
+{% endunless %}
+
+{% if product.discount_rule != null and product.discount_rule.type == 'percentage' %}
+{% assign discount_amount = product.discount_rule.amount %}
+{% endif %}
+
+{% capture price_settings %}
+{
+"productId": {{ product.id }},
+"showInstallmentsWithoutInterest": true,
+"showInstallmentsWithInterest": false,
+"mode": "medium",
+"htmlTag": "p"
+}
+{% endcapture %}
+
+{% comment %} ========== {% endcomment %}
+
+<div class="intern-section" style="background-image: url({{product.image_url}});">
+
+    <div class="images">
+        {% render 'partials/components/flag', product: product %}
+    </div>
+
+    <div class="description">
+        <h3 class="name">
+            <a aria-label="Ir para o produto {{ product.name }}" href="{{ product.url }}">
+                {{ product.name }}
+            </a>
+        </h3>
+
+        <div class="price-wrapper">
+            <div class="product-price price {% if discount_amount %} -discount {% endif %}" data-was-processed="false"
+                data-sku="" data-init-price='{{ price_settings }}' data-price="{{ product.price }}"
+                data-discount-percent="{{ discount_amount | default: 0 }}"></div>
+        </div>
+
+        <p>
+            {{ product.description }}
+        </p>
+    </div>
+
+    {% if product.available %}
+    <button aria-label="Adicionar produto ao carrinho" class="button-default -outlined" data-open-popup-purchase
+        type="button">
+        <span class="text">COMPRAR</span>
+    </button>
+    {% else %}
+    <button aria-label="Produto indisponível" class="button-default -outlined -unavailable" type="button">
+        <span class="text">PRODUTO INDISPONÍVEL</span>
+    </button>
+    {% endif %}
+</div>

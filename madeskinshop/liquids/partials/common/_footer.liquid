@@ -1,13 +1,27 @@
 <footer class="footer" id="footer">
+  {% render 'partials/content/footer/newsletter', current_shop: current_shop %}
   <div class="container">
-    <div class="footer-inner">
-      {% render 'partials/content/footer/newsletter', current_shop: current_shop %}
-      {% render 'partials/content/footer/social' %}
+    <div class="footer-menus">
       {% render 'partials/content/footer/menu' %}
     </div>
+    <div class="footer-logo">
+      {% load_banners position: "logo-footer" limit: 1 %}
+      {% for banner in loaded_banners %}
+      <img src="{{ banner.file_url }}" alt="{{ banner.subtitle }}" />
+      {% endfor %}
+      {% render 'partials/content/footer/social' %}
+    </div>
+    {% comment %}
+    <div class="footer-inner">
+    </div>
+    {% endcomment %}
   </div>
-  <div class="bottom container">
+
+  <div class="bottom">
     {% render 'partials/content/footer/text' %}
+    {% comment %}
     <p><a href="//www.vnda.com.br" target="_blank" rel="noopener">Vnda - Tecnologia em E-commerce</a></p>
+    {% endcomment %}
   </div>
+
 </footer>

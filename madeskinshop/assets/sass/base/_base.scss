@@ -46,7 +46,12 @@ img {
 
 /* Section and Containers Formatter */
 .section {
-  margin-bottom: 6rem;
+  margin-bottom: 4rem;
+  // &.custom-fullbanner {
+  //   &:first-child {
+  //     margin-bottom: 2rem;
+  //   }
+  // }
 }
 
 .container {

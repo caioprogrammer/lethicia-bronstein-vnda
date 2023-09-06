@@ -17,12 +17,12 @@
     opacity: 0.5;
   }
 
-  > .images {
+  >.images {
     margin-bottom: 1rem;
     position: relative;
   }
 
-  > .images figure {
+  >.images figure {
     transition: var(--transition);
 
     img:nth-child(2) {
@@ -30,29 +30,73 @@
     }
   }
 
-  > .description .quantity {
+  >.description .quantity {
     font-size: var(--font-size-small);
     margin-top: 1rem;
   }
 
-  > .description .name {
+  >.description .name {
     min-height: 5.4rem;
     transition: var(--transition);
   }
 
-  > .description .name a {
+  >.description .name a {
     font-size: var(--font-size-big);
   }
 
-  > .button-default {
+  >.button-default {
     margin-top: 2rem;
     width: 100%;
   }
 
-  > .add-to-cart {
+  >.add-to-cart {
     display: none;
   }
 
   @import "./flag";
   @import "./price";
+}
+
+.section-product {
+  &:nth-child(odd) {
+    .intern-section {
+      background-position: right;
+      .description {
+        margin-left: unset;
+      }
+      button {
+        margin-left: unset;
+      }
+    }
+  }
+
+  .intern-section {
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 700px;
+    background-color: #f9dbc5;
+    padding: 6rem;
+    min-height: 60vh;
+
+    button {
+      width: 100%;
+      max-width: 40%;
+      border-radius: 1000px;
+      margin-left: auto;
+    }
+
+    .description {
+      max-width: 40%;
+      margin-left: auto;
+      .name {
+        font-family: 'Rondal';
+        font-size: 3.4rem;
+        font-weight: 600;
+      }
+
+      .price-wrapper {
+        font-size: 2.6rem;
+      }
+    }
+  }
 }

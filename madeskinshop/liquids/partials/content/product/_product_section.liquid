@@ -54,6 +54,21 @@
     </section>
     {% endfor %}
 
+
+    {% assign activeprinciples = product.slug | append: '-infos-principais' %}
+    {% load_banners position: activeprinciples limit: 4 %}
+    {% for banner in loaded_banners %}
+    <section class="product-infos-principais container section">
+        <div class="infos-title">
+            <h2>{{ banner.subtitle }}</h2>
+        </div>
+        <div class="description">
+            {{ banner.description }}
+        </div>
+    </section>
+    {% endfor %}
+
+
     {% assign photoleft = product.slug | append: '-photo-left' %}
     {% load_banners position: photoleft limit: 1 %}
     {% for banner in loaded_banners %}

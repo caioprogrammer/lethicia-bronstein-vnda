@@ -1,42 +1,46 @@
 <div class="wrap-newsletter">
-  {% load_banners position: 'geral-newsletter' %}
-  {% for banner in loaded_banners %}
+  <div class="left-content">
+    {% load_banners position: 'geral-newsletter' %}
+    {% for banner in loaded_banners %}
     <p class="title">
       {{ banner.subtitle }}
     </p>
-  {% endfor %}
-  
-  <form data-webform="newsletter" class="form form-newsletter" target="_blank" id="newsletter-form">
-    <fieldset form="newsletter-form">
-      <input type="hidden" name="key" value="{{ current_shop.subdomain }}-newsletter">
-      <input type="hidden" name="reply_to" id="reply_to" value="">
-      <input type="text" name="vnda" tabindex="-1" autocomplete="off" required />
-
-      <div class="field">
-        <input name="email" type="email" placeholder="E-mail" required/>
-        <button class="btn-primary action" aria-label="Enviar" type="button" data-webform-button>
-          <svg class="icon">
-            <use xlink:href="#icon-next"></use>
-          </svg>
-        </button>
-      </div>
-    </fieldset>
-    
-    <div class="messages" data-msg-retorno>
-      <span class="msg-received" data-msg></span>
-      <span class="msg-received msg-sucess" data-msg-success>
-        Obrigado!
-      </span>
-      <span class="msg-received msg-error" data-msg-error>
-        Ocorreu um erro. Tente novamente.
-      </span>
-    </div>         
-  </form>
-  
-  <p class="phrase">
-    {% load_banners position: 'geral-frase-rodape' %}
-    {% for banner in loaded_banners %}
-      {{ banner.subtitle }}
     {% endfor %}
-  </p>
+
+    <form data-webform="newsletter" class="form form-newsletter" target="_blank" id="newsletter-form">
+      <fieldset form="newsletter-form">
+        <input type="hidden" name="key" value="{{ current_shop.subdomain }}-newsletter">
+        <input type="hidden" name="reply_to" id="reply_to" value="">
+        <input type="text" name="vnda" tabindex="-1" autocomplete="off" required />
+
+        <div class="field">
+          <input name="email" type="email" placeholder="E-mail" required />
+          <button class="btn-primary action" aria-label="Enviar" type="button" data-webform-button>
+            <svg class="icon">
+              <use xlink:href="#icon-next"></use>
+            </svg>
+          </button>
+        </div>
+      </fieldset>
+
+      <div class="messages" data-msg-retorno>
+        <span class="msg-received" data-msg></span>
+        <span class="msg-received msg-sucess" data-msg-success>
+          Obrigado!
+        </span>
+        <span class="msg-received msg-error" data-msg-error>
+          Ocorreu um erro. Tente novamente.
+        </span>
+      </div>
+    </form>
+  </div>
+  <div class="right-content">
+    <p class="phrase">
+      {% load_banners position: 'geral-frase-rodape' %}
+      {% for banner in loaded_banners %}
+      {{ banner.subtitle }}
+      {{ banner.description }}
+      {% endfor %}
+    </p>
+  </div>
 </div>

@@ -18,14 +18,14 @@
     gap: 3.2rem;
     @media screen and (max-width: 1024px) {
       flex-direction: column;
-    } 
+    }
     .text-content {
       width: 50%;
       font-family: "Gotham Book";
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       @media screen and (max-width: 1024px) {
         width: 100%;
-        font-size: 1.6rem;
+        font-size: 1.4rem;
       } 
       h2 {
         font-family: "Rondal";
@@ -43,6 +43,7 @@
     @include media("md") {
       flex-direction: row;
       min-height: 80vh;
+      max-height: 100vh;
     }
 
     .mobile-only {
