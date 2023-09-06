@@ -6,6 +6,10 @@
   grid-template-columns: 1fr;
   margin-top: 4rem;
 
+  @media screen and (max-width: 768px) {
+    margin-top: 0;
+  }
+
   @include media("md") {
     grid-template-columns: 1fr 1fr;
   }

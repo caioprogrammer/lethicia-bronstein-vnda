@@ -4,12 +4,12 @@
 {% getparam 'q' as params_search %}
 
 {% head %}
-  <link href="/pages/tag_above.css" inline rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="{{ 'pages/tag.css' | stylesheet_path }}" media="print" onload="this.media='all'"/>
+<link href="/pages/tag_above.css" inline rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="{{ 'pages/tag.css' | stylesheet_path }}" media="print" onload="this.media='all'" />
 {% endhead %}
 
 {% body %}
-  <script src="{{ 'tag.js' | javascript_path }}"></script>
+<script src="{{ 'tag.js' | javascript_path }}"></script>
 {% endbody %}
 
 {% comment %} ========== {% endcomment %}
@@ -17,32 +17,32 @@
 {% load_products q: params_search per_page: 6 sort: params_sort %}
 
 {% capture html_products %}
-  {% for product in products %}
-    {% render 'partials/components/product_block', product: product, lazy: 'lazy' %}
-  {% endfor %}
+{% for product in products %}
+{% render 'partials/components/product_block', product: product, lazy: 'lazy' %}
+{% endfor %}
 {% endcapture %}
 
 <section class="section section-list-products">
   {% render 'partials/content/tag/topo_search', params_search: params_search, products: products %}
 
   {% if html_products == blank %}
-    {% render "partials/content/tag/empty", search: true, home_url: home_url, current_url: current_url %}
+  {% render "partials/content/tag/empty", search: true, home_url: home_url, current_url: current_url %}
   {% else %}
-    <div class="list-products container">
-      {{ html_products }}
-    </div>
+  <div class="list-products container">
+    {{ html_products }}
+  </div>
   {% endif %}
 
   {% if pagination.total_pages > 1 %}
-    {% render 'partials/content/tag/pagination', pagination: pagination, infinity: true, btn_txt: 'VEJA MAIS +' %}
+  {% render 'partials/content/tag/pagination', pagination: pagination, infinity: true, btn_txt: 'VEJA MAIS +' %}
   {% endif %}
 </section>
 
 {% comment %} Popula com as variants dos produtos para o comportamento de seleção de variants {% endcomment %}
 {% body %}
-  <script data-product-variants>
-    {% for product in products %}
-      productVariants['{{ product.id }}'] = {{ product.variants | to_json }};
-    {% endfor %}
-  </script>
+<script data-variants-script>
+  {% for product in products %}
+  productVariants['{{ product.id }}'] = {{ product.variants | to_json }};
+  {% endfor %}
+</script>
 {% endbody %}

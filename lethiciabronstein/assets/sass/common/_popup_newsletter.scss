@@ -85,6 +85,10 @@
 //   }
 // }
 
+.cmp-newsletter-popup-7uhFyoUtLY5MRJevX7QUE svg {
+  display: none !important;
+}
+
 #component-popup-newsletter-root {
   .cmp-newsletter-popup-1KYnHqC8aQxqE13k4D-QBm {
     width: 55vw !important;
@@ -139,7 +143,7 @@
     margin: 0;
     font-weight: 300;
     @media screen and (max-width: 768px){
-      font-size: 1.85rem;
+      font-size: 1.45rem;
     }
   }
   .cmp-newsletter-popup-24VucyBC37Z4CYwIpXpV5X>p,
@@ -188,6 +192,9 @@
       border-bottom: 1px solid #000;
       margin-left: 19px;
       transition: all .2s linear;
+      @media screen and (max-width: 768px) {
+        width: 15px;
+      }
     }
     &:hover {
       &::after {

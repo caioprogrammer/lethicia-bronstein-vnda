@@ -103,6 +103,11 @@
   > .content > .submenu-list .submenu-list-item {
     // margin-right: 3rem;
     min-width: 16rem;
+    &.has-submenu {
+      a.submenu-title {
+        font-weight: 700;
+      }
+    }
     .sub-list {
       column-count: 1;
       text-align: center;

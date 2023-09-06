@@ -1,61 +1,56 @@
 {% load_banners position: position limit: 1 %}
 
 {% for banner in loaded_banners %}
-  <section style="text-align: center;" class="section container content-text">
-    <div class="title-wrapper">
-      {% if banner.subtitle %}
-        <h2 class="title">
-          {{ banner.subtitle }}
-        </h2>
-      {% endif %}
-    </div>
-    {{ banner.description | replace: '<h1', '<h2 ' }}
-  </section>
-{% endfor %}
+<section style="text-align: left;" class="section container content-text">
+  <div class="title-wrapper">
+    {% if banner.subtitle %}
+    <h2 class="title">
+      {{ banner.subtitle }}
+    </h2>
+    {% endif %}
+  </div>
+  {{ banner.description | replace: '<h1', '<h2 ' }} </section>
+    {% endfor %}
 
 
-{% if page.slug == 'a-marca' %}
-  <section class="a-marca container">
-    {% load_banners position: "banner-a-marca-full" %}
-    <section class="a-marca__full-banner">
-      {% for banner in loaded_banners %}
+    {% if page.slug == 'a-marca' %}
+    <section class="a-marca container">
+      {% load_banners position: "banner-a-marca-full" %}
+      <section class="a-marca__full-banner">
+        {% for banner in loaded_banners %}
         <div class="full-banner">
           {% if banner.file_url %}
-            <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
+          <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
           {% endif %}
         </div>
         <div class="a-marca__content">
           <p>
-            {{ banner.description | replace: '<h1', '<h2 ' }}
-          </p>
+            {{ banner.description | replace: '<h1', '<h2 ' }} </p>
         </div>
-      {% endfor %}
-    </section>
-    {% load_banners position: "banner-a-marca-double" %}
-    <section class="a-marca__double-banner">
-      {% for banner in loaded_banners %}
+        {% endfor %}
+      </section>
+      {% load_banners position: "banner-a-marca-double" %}
+      <section class="a-marca__double-banner">
+        {% for banner in loaded_banners %}
         <div class="double-banner">
           {% if banner.file_url %}
-            <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
+          <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
           {% endif %}
         </div>
-      {% endfor %}
+        {% endfor %}
+      </section>
     </section>
-  </section>
-{% endif %}
+    {% endif %}
 
-{% if page.slug == 'special-projects' %}
-  <section class="special-projects">
-    <link
-      rel="stylesheet"
-      href="{{ 'special-projects.css' | stylesheet_path }}"
-      media="print"
-      onload="this.media='all'" />
-    <div class="special-projects__images">
-      <div class="special-projects__slider" data-special-banner>
-        <div class="swiper">
-          <div class="swiper-wrapper">
-            {% load_banners position: 'special-projects-banner-video' %}
+    {% if page.slug == 'special-projects' %}
+    <section class="special-projects">
+      <link rel="stylesheet" href="{{ 'special-projects.css' | stylesheet_path }}" media="print"
+        onload="this.media='all'" />
+      <div class="special-projects__images">
+        <div class="special-projects__slider" data-special-banner>
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              {% load_banners position: 'special-projects-banner-video' %}
               {% for banner in loaded_banners %}
               {% comment %} Config {% endcomment %}
               {% assign external = '' %}
@@ -64,327 +59,303 @@
               {% assign background = '' %}
 
               {% if banner.subtitle contains '|' %}
-                {% assign btn_text = banner.subtitle | split: '|' | first %}
-                {% assign position_text = banner.subtitle | split: '|' | last %}
+              {% assign btn_text = banner.subtitle | split: '|' | first %}
+              {% assign position_text = banner.subtitle | split: '|' | last %}
               {% endif %}
 
               {% if banner.description != blank %}
-                {% assign background = '-white' %}
+              {% assign background = '-white' %}
               {% endif %}
 
               <div class="swiper-slide video">
                 {% if banner.url contains "youtube" or banner.url contains "vimeo" %}
 
-                  {% if banner.url contains "youtube" %}
-                    {% assign video_address = banner.url | split: "?v=" | last %}
-                    {% assign video_code = video_address | split: '&' | first | strip %}
-                    {% assign video_url = video_code | prepend: "https://www.youtube.com/embed/" | append: "?autoplay=1&rel=0&mute=1&muted=1" %}
-                  {% elsif banner.url contains "vimeo" %}
-                    {% assign video_code = banner.url | split: "/" | last | strip %}
-                    {% assign video_url = video_code | prepend: "https://player.vimeo.com/video/" | append: "?autoplay=1&title=0&byline=0&portrait=0&&loop=1&background=1&muted=1" %}
-                  {% endif %}
-
-                  {% if video_url %}
-                    <div class="video {% if resolution contains 'mobile' %}-vertical {% else %} -horizontal {% endif %}">
-                      <iframe
-                        aria-label="{{ banner.title }}"
-                        alt="{{ banner.title }}"
-                        class="swiper-lazy"
-                        data-src="{{ video_url }}"
-                        src="{{ video_url }}"
-                        frameborder="0"
-                        allow="autoplay;  picture-in-picture"
-                        allowfullscreen></iframe>
-                    </div>
-                  {% endif %}
-                {% else %}
-                  {% capture data_srcset %}
-                    {{ banner.file_url | resize: '360x' }} 360w,
-                    {{ banner.file_url | resize: '600x' }} 767w,
-                    {{ banner.file_url | resize: '800x' }} 991w,
-                    {{ banner.file_url | resize: '1280x' }} 1280w,
-                    {{ banner.file_url | resize: '1440x' }} 1440w,
-                    {{ banner.file_url | resize: '1920x' }} 1920w,
-                    {{ banner.file_url }} 2000w
-                  {% endcapture %}
-
-                  {% capture data_sizes %}
-                    (max-width: 360px) 360px,
-                    (max-width: 767px) 767px,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      (max-width: 991px) 991px,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      (max-width: 1280px) 1280px,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      (max-width: 1440px) 1440px,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      (max-width: 1920px) 1920px,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      (min-width: 1921px) 2000px
-                  {% endcapture %}
-
-                  <figure class="image {% if resolution contains 'mobile' %}-vertical {% else %} -horizontal {% endif %}">
-                    <img
-                      class="swiper-lazy"
-                      alt="{{ banner.title }}"
-                      data-srcset="{{ data_srcset | strip_newlines | strip }}"
-                      sizes="{{ data_sizes | strip_newlines | strip }}" />
-                    <div class="skeleton"></div>
-                  </figure>
-
-                  <a
-                    href="{{ banner.url }}"
-                    class="text {{ position_text }} {{ background }}"
-                    {% if banner.color != blank %}style="--fb-color: {{ banner.color }}"{% endif %}>
-                    {% if banner.description != blank %}
-                      {{ banner.description | replace: '<h3', '<h3 class="upper-title"' | replace: '<h2', '<h2 class="title"' | replace: '<p', '<p class="description"' }}
-                    {% endif %}
-
-                    {% if banner.url != blank %}
-                      {% if banner.external %}
-                        {% assign external = "target='_blank'" %}
-                      {% endif %}
-                    {% endif %}
-                  </a>
+                {% if banner.url contains "youtube" %}
+                {% assign video_address = banner.url | split: "?v=" | last %}
+                {% assign video_code = video_address | split: '&' | first | strip %}
+                {% assign video_url = video_code | prepend: "https://www.youtube.com/embed/" | append:
+                "?autoplay=1&rel=0&mute=1&muted=1" %}
+                {% elsif banner.url contains "vimeo" %}
+                {% assign video_code = banner.url | split: "/" | last | strip %}
+                {% assign video_url = video_code | prepend: "https://player.vimeo.com/video/" | append:
+                "?autoplay=1&title=0&byline=0&portrait=0&&loop=1&background=1&muted=1" %}
                 {% endif %}
-              </div>
-            {% endfor %}
 
-            {% load_banners position: "banner-special-projects-banners" %}
-            {% for banner in loaded_banners %}
+                {% if video_url %}
+                <div class="video {% if resolution contains 'mobile' %}-vertical {% else %} -horizontal {% endif %}">
+                  <iframe aria-label="{{ banner.title }}" alt="{{ banner.title }}" class="swiper-lazy"
+                    data-src="{{ video_url }}" src="{{ video_url }}" frameborder="0"
+                    allow="autoplay;  picture-in-picture" allowfullscreen></iframe>
+                </div>
+                {% endif %}
+                {% else %}
+                {% capture data_srcset %}
+                {{ banner.file_url | resize: '360x' }} 360w,
+                {{ banner.file_url | resize: '600x' }} 767w,
+                {{ banner.file_url | resize: '800x' }} 991w,
+                {{ banner.file_url | resize: '1280x' }} 1280w,
+                {{ banner.file_url | resize: '1440x' }} 1440w,
+                {{ banner.file_url | resize: '1920x' }} 1920w,
+                {{ banner.file_url }} 2000w
+                {% endcapture %}
+
+                {% capture data_sizes %}
+                (max-width: 360px) 360px,
+                (max-width: 767px) 767px,
+                (max-width: 991px) 991px,
+                (max-width: 1280px) 1280px,
+                (max-width: 1440px) 1440px,
+                (max-width: 1920px) 1920px,
+                (min-width: 1921px) 2000px
+                {% endcapture %}
+
+                <figure class="image {% if resolution contains 'mobile' %}-vertical {% else %} -horizontal {% endif %}">
+                  <img class="swiper-lazy" alt="{{ banner.title }}"
+                    data-srcset="{{ data_srcset | strip_newlines | strip }}"
+                    sizes="{{ data_sizes | strip_newlines | strip }}" />
+                  <div class="skeleton"></div>
+                </figure>
+
+                <a href="{{ banner.url }}" class="text {{ position_text }} {{ background }}" {% if banner.color !=blank
+                  %}style="--fb-color: {{ banner.color }}" {% endif %}>
+                  {% if banner.description != blank %}
+                  {{ banner.description | replace: '<h3', '<h3 class="upper-title"' | replace: '<h2'
+                    , '<h2 class="title"' | replace: '<p' , '<p class="description"' }} {% endif %} {% if banner.url
+                    !=blank %} {% if banner.external %} {% assign external="target='_blank'" %} {% endif %} {% endif %}
+                    </a>
+                    {% endif %}
+              </div>
+              {% endfor %}
+
+              {% load_banners position: "banner-special-projects-banners" %}
+              {% for banner in loaded_banners %}
               <figure class="image -vertical swiper-slide">
-                <img
-                  class="swiper-lazy"
-                  alt="{{ banner.title }}"
-                  src="{{ banner.file_url }}" />
+                <img class="swiper-lazy" alt="{{ banner.title }}" src="{{ banner.file_url }}" />
               </figure>
-            {% endfor %}
+              {% endfor %}
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
           </div>
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
+        </div>
+
+        <div class="special-projects__grid">
+          {% load_banners position: "banner-special-projects-banners-2" %}
+          {% for banner in loaded_banners %}
+          <figure class="image -vertical swiper-slide">
+            <img class="swiper-lazy" alt="{{ banner.title }}" src="{{ banner.file_url }}" />
+          </figure>
+          {% endfor %}
         </div>
       </div>
 
-      <div class="special-projects__grid">
-        {% load_banners position: "banner-special-projects-banners-2" %}
+      {% load_banners position: "banner-special-projects-conteudo" %}
+      <div class="special-projects__texts">
         {% for banner in loaded_banners %}
-          <figure class="image -vertical swiper-slide">
-            <img
-              class="swiper-lazy"
-              alt="{{ banner.title }}"
-              src="{{ banner.file_url }}" />
-          </figure>
-        {% endfor %}
-      </div>
-    </div>
-
-    {% load_banners position: "banner-special-projects-conteudo" %}
-    <div class="special-projects__texts">
-      {% for banner in loaded_banners %}
         <div id="s{{forloop.index}}" class="content">
           <h2>{{ banner.title }}</h2>
           <p>
-            {{ banner.description | replace: '<h1', '<h2 ' }}
-          </p>
+            {{ banner.description | replace: '<h1', '<h2 ' }} </p>
         </div>
-      {% endfor %}
-    </div>
-  </section>
-{% endif %}
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
 
-{% if page.slug == 'campanhas' %}
-  <section class="left-right">
-    {% load_banners position: "banner-campanha-principal" %}
-    {% for banner in loaded_banners %}
+    {% if page.slug == 'campanhas' %}
+    <section class="left-right">
+      {% load_banners position: "banner-campanha-principal" %}
+      {% for banner in loaded_banners %}
       <section class="campanhas-lb container">
         <div class="campanhas-lb__image">
           {% if banner.file_url %}
-            <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
+          <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
           {% endif %}
         </div>
 
         <div class="campanhas-lb__content">
           <h2>{{ banner.title }}</h2>
           <p>
-            {{ banner.description | replace: '<h1', '<h2 ' }}
-          </p>
+            {{ banner.description | replace: '<h1', '<h2 ' }} </p>
         </div>
       </section>
-    {% endfor %}
+      {% endfor %}
 
-    {% load_banners position: "banner-campanha-triplo-1" %}
-    <section class="campanhas-lb__triple-banner">
-      {% for banner in loaded_banners %}
+      {% load_banners position: "banner-campanha-triplo-1" %}
+      <section class="campanhas-lb__triple-banner">
+        {% for banner in loaded_banners %}
         <div class="triple-banner">
           {% if banner.file_url %}
-            <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
+          <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
           {% endif %}
         </div>
-      {% endfor %}
-    </section>
+        {% endfor %}
+      </section>
 
-    {% load_banners position: "banner-campanha-full-1" %}
-    <section class="campanhas-lb__full-banner">
-      {% for banner in loaded_banners %}
+      {% load_banners position: "banner-campanha-full-1" %}
+      <section class="campanhas-lb__full-banner">
+        {% for banner in loaded_banners %}
         <div class="full-banner">
           {% if banner.file_url %}
-            <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
+          <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
           {% endif %}
         </div>
-      {% endfor %}
-    </section>
+        {% endfor %}
+      </section>
 
 
 
-    {% load_banners position: "banner-campanha-triplo-2" %}
-    <section class="campanhas-lb__triple-banner">
-      {% for banner in loaded_banners %}
+      {% load_banners position: "banner-campanha-triplo-2" %}
+      <section class="campanhas-lb__triple-banner">
+        {% for banner in loaded_banners %}
         <div class="triple-banner">
           {% if banner.file_url %}
-            <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
+          <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
           {% endif %}
         </div>
-      {% endfor %}
-    </section>
+        {% endfor %}
+      </section>
 
-    {% load_banners position: "banner-campanha-full-2" %}
-    <section class="campanhas-lb__full-banner">
-      {% for banner in loaded_banners %}
+      {% load_banners position: "banner-campanha-full-2" %}
+      <section class="campanhas-lb__full-banner">
+        {% for banner in loaded_banners %}
         <div class="full-banner">
           {% if banner.file_url %}
-            <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
+          <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
           {% endif %}
         </div>
-      {% endfor %}
+        {% endfor %}
+      </section>
     </section>
-  </section>
-{% endif %}
+    {% endif %}
 
-{% if page.slug == 'universo-lb' %}
-  {% load_banners position: position limit: 1 %}
-  {% for banner in loaded_banners %}
+    {% if page.slug == 'universo-lb' %}
+    {% load_banners position: position limit: 1 %}
+    {% for banner in loaded_banners %}
     <section class="left-right">
       {% load_banners position: "banner-universo-1" %}
       {% for banner in loaded_banners %}
-        <section class="universo-lb container">
-          <div class="universo-lb__content">
-            <p>
-              {{ banner.description | replace: '<h1', '<h2 ' }}
-            </p>
-          </div>
-          <div class="universo-lb__image">
-            {% if banner.file_url %}
-              <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
-            {% endif %}
-          </div>
-        </section>
+      <section class="universo-lb container">
+        <div class="universo-lb__content">
+          <p>
+            {{ banner.description | replace: '<h1', '<h2 ' }} </p>
+        </div>
+        <div class="universo-lb__image">
+          {% if banner.file_url %}
+          <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
+          {% endif %}
+        </div>
+      </section>
       {% endfor %}
     </section>
 
     <section class="right-left">
       {% load_banners position: "banner-universo-2" %}
       {% for banner in loaded_banners %}
-        <section class="universo-lb container">
-          <div class="universo-lb__content">
-            <p>
-              {{ banner.description | replace: '<h1', '<h2 ' }}
-            </p>
-          </div>
-          <div class="universo-lb__image">
-            {% if banner.file_url %}
-              <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
-            {% endif %}
-          </div>
-        </section>
+      <section class="universo-lb container">
+        <div class="universo-lb__content">
+          <p>
+            {{ banner.description | replace: '<h1', '<h2 ' }} </p>
+        </div>
+        <div class="universo-lb__image">
+          {% if banner.file_url %}
+          <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
+          {% endif %}
+        </div>
+      </section>
       {% endfor %}
     </section>
 
     <section class="left-right">
       {% load_banners position: "banner-universo-3" %}
       {% for banner in loaded_banners %}
-        <section class="universo-lb container">
-          <div class="universo-lb__content">
-            <p>
-              {{ banner.description | replace: '<h1', '<h2 ' }}
-            </p>
-          </div>
-          <div class="universo-lb__image">
-            {% if banner.file_url %}
-              <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
-            {% endif %}
-          </div>
-        </section>
+      <section class="universo-lb container">
+        <div class="universo-lb__content">
+          <p>
+            {{ banner.description | replace: '<h1', '<h2 ' }} </p>
+        </div>
+        <div class="universo-lb__image">
+          {% if banner.file_url %}
+          <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
+          {% endif %}
+        </div>
+      </section>
       {% endfor %}
     </section>
-  {% endfor %}
+    {% endfor %}
 
-{% endif %}
-{% if page.slug == 'get-the-look' %}
-  {% assign tagNameLoop = '' %}
-  {% load_banners position: "banner-lookbook-1" %}
-  {% for banner in loaded_banners %}
+    {% endif %}
+    {% if page.slug == 'get-the-look' %}
+    {% assign tagNameLoop = '' %}
+    {% load_banners position: "banner-lookbook-1" %}
+    {% for banner in loaded_banners %}
     <section class="lookbook-special container">
       <div class="lookbook-special__content">
         {% if banner.file_url %}
-          <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
+        <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
         {% endif %}
       </div>
       {% render 'partials/content/home/grid_products', tag_name: 'lookbook-showcase-1', per_page: 4, infinity: false %}
     </section>
-  {% endfor %}
+    {% endfor %}
 
-  {% load_banners position: "banner-lookbook-2" %}
-  {% for banner in loaded_banners %}
+    {% load_banners position: "banner-lookbook-2" %}
+    {% for banner in loaded_banners %}
     <section class="lookbook-special container">
       <div class="lookbook-special__content">
         {% if banner.file_url %}
-          <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
+        <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
         {% endif %}
       </div>
       {% render 'partials/content/home/grid_products', tag_name: 'lookbook-showcase-2', per_page: 4, infinity: false %}
     </section>
-  {% endfor %}
+    {% endfor %}
 
-  {% load_banners position: "banner-lookbook-3" %}
-  {% for banner in loaded_banners %}
+    {% load_banners position: "banner-lookbook-3" %}
+    {% for banner in loaded_banners %}
     <section class="lookbook-special container">
       <div class="lookbook-special__content">
         {% if banner.file_url %}
-          <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
+        <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
         {% endif %}
       </div>
       {% render 'partials/content/home/grid_products', tag_name: 'lookbook-showcase-3', per_page: 4, infinity: false %}
     </section>
-  {% endfor %}
+    {% endfor %}
 
-  {% load_banners position: "banner-lookbook-4" %}
-  {% for banner in loaded_banners %}
+    {% load_banners position: "banner-lookbook-4" %}
+    {% for banner in loaded_banners %}
     <section class="lookbook-special container">
       <div class="lookbook-special__content">
         {% if banner.file_url %}
-          <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
+        <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
         {% endif %}
       </div>
       {% render 'partials/content/home/grid_products', tag_name: 'lookbook-showcase-4', per_page: 4, infinity: false %}
     </section>
-  {% endfor %}
+    {% endfor %}
 
-  {% load_banners position: "banner-lookbook-5" %}
-  {% for banner in loaded_banners %}
+    {% load_banners position: "banner-lookbook-5" %}
+    {% for banner in loaded_banners %}
     <section class="lookbook-special container">
       <div class="lookbook-special__content">
         {% if banner.file_url %}
-          <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
+        <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
         {% endif %}
       </div>
       {% render 'partials/content/home/grid_products', tag_name: 'lookbook-showcase-5', per_page: 4, infinity: false %}
     </section>
-  {% endfor %}
+    {% endfor %}
 
-  {% load_banners position: "banner-lookbook-6" %}
-  {% for banner in loaded_banners %}
+    {% load_banners position: "banner-lookbook-6" %}
+    {% for banner in loaded_banners %}
     <section class="lookbook-special container">
       <div class="lookbook-special__content">
         {% if banner.file_url %}
-          <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
+        <img src="{{ banner.file_url }}" alt="{{ banner.title }}" />
         {% endif %}
       </div>
       {% render 'partials/content/home/grid_products', tag_name: 'lookbook-showcase-6', per_page: 4, infinity: false %}
     </section>
-  {% endfor %}
-{% endif %}
+    {% endfor %}
+    {% endif %}

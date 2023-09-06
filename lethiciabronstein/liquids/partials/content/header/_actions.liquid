@@ -1,14 +1,14 @@
 <div class="actions">
+
   <div class="search-opener">
-    <button
-      aria-label="Pesquisar"
-      class="action"
+    <button aria-label="Pesquisar" class="action"
       onclick="document.querySelector('.search').classList.toggle('search--open')">
       <svg class="icon">
         <use xlink:href="#icon-search"></use>
       </svg>
     </button>
   </div>
+  {% if mobile == false %}
   <div class="account">
     <a aria-label="Minha Conta" href="{{ account_url }}">
       <svg class="icon">
@@ -16,14 +16,12 @@
       </svg>
     </a>
   </div>
-
+  {% endif %}
   <div class="cart">
-    <button
-      type="button"
-      class="btn-cart"
-      aria-label="Abrir carrinho"
-      data-toggle-cart>
-      <svg class="icon"><use xlink:href="#icon-cart" /></svg>
+    <button type="button" class="btn-cart" aria-label="Abrir carrinho" data-toggle-cart>
+      <svg class="icon">
+        <use xlink:href="#icon-cart" />
+      </svg>
       <span class="count" data-cart-count>0</span>
     </button>
   </div>
