@@ -1,7 +1,9 @@
 {% comment %}
-para descrições de produto temos apenas um campo no admin da plataforma Vnda. por isso, utilizamos do markdown e filtros do liquid para separar e utilizar esse campo de diversas formas.
+para descrições de produto temos apenas um campo no admin da plataforma Vnda. por isso, utilizamos do markdown e filtros
+do liquid para separar e utilizar esse campo de diversas formas.
 
-esse é um exemplo de como podemos utilizar o campo de descrição para criarmos uma descrição curta e collapses de conteúdos.
+esse é um exemplo de como podemos utilizar o campo de descrição para criarmos uma descrição curta e collapses de
+conteúdos.
 
 o cadastro é feito da seguinte forma:
 
@@ -18,7 +20,7 @@ Texto da primeira tab
 
 ## Titulo da segunda tab
 
-Texto da segunda 
+Texto da segunda
 ```
 
 onde *** separa a descrição curta e os collapses (deve ter *** entre cada collapse)
@@ -30,37 +32,35 @@ sempre precisamos inicializar as variáveis, pois o liquid retorna erro caso uti
 {% endcomment %}{% assign shortDescription = product.description %}{% assign descriptionParts = false %}
 
 {% comment %}
-precisamos verificar de a nossa descrição contém o elemento que vamos utilizar o split, para que só façamos o split se realmente for necessário
+precisamos verificar de a nossa descrição contém o elemento que vamos utilizar o split, para que só façamos o split se
+realmente for necessário
 
-no cadastro informamos *** no markdown, e product.description irá retornar o html correspondente, <hr/>
+no cadastro informamos *** no markdown, e product.description irá retornar o html correspondente,
+<hr />
 
-o filtro split nos retorna um array com os valores, e iremos pegar o primeiro (first) e armazenaremos na variável shortDescription
+o filtro split nos retorna um array com os valores, e iremos pegar o primeiro (first) e armazenaremos na variável
+shortDescription
 
 e armazenaremos o array inteiro na variável descriptionParts, para depois montarmos os collapses
 {% endcomment %}{% if product.description contains 'Composição' %}
-  {% assign shortDescription = product.description | split: 'Composição' | first %}
+{% assign shortDescription = product.description | split: 'Composição' | first %}
 {% assign descriptionParts = product.description | split: 'Composição' %}
+{% endif %}
+{% if product.description contains 'COMPOSIÇÃO' %}
+{% assign shortDescription = product.description | split: 'COMPOSIÇÃO' | first %}
+{% assign descriptionParts = product.description | split: 'COMPOSIÇÃO' %}
 {% endif %}
 
 {% comment %}
 fazemos um loop na variável descriptionParts para montar os collapses
 lembrando que descriptionParts é um array
 {% endcomment %}
-  <ul class="m-d expand-list"> <li data-md-content="500">
-    <label
-      name="tab"
-      for="tab-descricao"
-      tabindex="-1"
-      class="tab_lab"
-      role="tab">
+<ul class="m-d expand-list">
+  <li data-md-content="500">
+    <label name="tab" for="tab-descricao" tabindex="-1" class="tab_lab" role="tab">
       <h2>Descrição</h2>
     </label>
-    <input
-      type="checkbox"
-      class="tab"
-      id="tab-descricao"
-      tabindex="0"
-      checked />
+    <input type="checkbox" class="tab" id="tab-descricao" tabindex="0" checked />
     <span class="open-close-icon">
       <i class="fas fa-plus"></i>
       <i class="fas fa-minus"></i>
@@ -72,19 +72,10 @@ lembrando que descriptionParts é um array
 
   </li>
   <li data-md-content="500">
-    <label
-      name="tab"
-      for="tab-composicao"
-      tabindex="-1"
-      class="tab_lab"
-      role="tab">
+    <label name="tab" for="tab-composicao" tabindex="-1" class="tab_lab" role="tab">
       <h2>Composição</h2>
     </label>
-    <input
-      type="checkbox"
-      class="tab"
-      id="tab-composicao"
-      tabindex="0" />
+    <input type="checkbox" class="tab" id="tab-composicao" tabindex="0" />
     <span class="open-close-icon">
       <i class="fas fa-plus"></i>
       <i class="fas fa-minus"></i>

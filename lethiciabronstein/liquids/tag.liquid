@@ -16,7 +16,6 @@
 {% comment %} ========== {% endcomment %}
 
 {% load_products tag: tag.name parent_tag: parent_tag.name per_page: 24 sort: params_sort %}
-
 {% capture html_products %}
 {% for product in products %}
 {% render 'partials/components/product_block', product: product, lazy: 'lazy' %}
@@ -43,19 +42,30 @@
     {% render "partials/content/tag/empty", tag: tag, search: false, home_url: home_url, current_url: current_url %}
     {% else %}
     <div class="list-products">
+      {% for product in products %}
+      {% assign quantity = forloop.length %}
+      {% endfor %}
+
       {% assign position_first_banner = tag.name | append: '-banner-first' %}
       {% assign position_second_banner = tag.name | append: '-banner-second' %}
       {% assign position_third_banner = tag.name | append: '-banner-third' %}
 
+      {% if quantity > 16 %}
       <figure class="bannersGrid__third">
         {% render 'partials/pages/components/category_banner', position: position_third_banner, background: false %}
       </figure>
+      {% endif %}
+      {% if quantity > 8 %}
       <figure class="bannersGrid__second">
         {% render 'partials/pages/components/category_banner', position: position_second_banner, background: false %}
       </figure>
+      {% endif %}
+      {% if quantity > 4 %}
       <figure class="bannersGrid__first">
         {% render 'partials/pages/components/category_banner', position: position_first_banner, background: false %}
       </figure>
+      {% endif %}
+
       {{ html_products }}
     </div>
     {% endif %}

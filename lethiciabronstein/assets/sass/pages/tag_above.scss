@@ -4,6 +4,8 @@
 @import "../content/tag/filters";
 @import "../content/tag/empty";
 
+
+
 .section-list-products {
   .list-content {
     display: flex;
@@ -101,6 +103,14 @@
 
     .bannersGrid__third.esconder {
       display: none !important
+    }
+  }
+}
+
+.page-search {
+  .section-list-products {
+    @include media("md") {
+      padding-left: 5%;
     }
   }
 }

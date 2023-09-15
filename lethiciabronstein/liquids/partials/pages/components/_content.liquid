@@ -1,7 +1,8 @@
 {% load_banners position: position limit: 1 %}
 
 {% for banner in loaded_banners %}
-<section style="text-align: left;" class="section container content-text">
+<section {% if page.slug=='get-the-look' or page.slug=='special-projects' %} style="text-align: center;" {% else %}
+  style="text-align: left;" {%endif%} class="section container content-text">
   <div class="title-wrapper">
     {% if banner.subtitle %}
     <h2 class="title">
