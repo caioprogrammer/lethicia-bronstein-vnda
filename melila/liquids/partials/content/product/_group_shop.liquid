@@ -6,7 +6,7 @@
   {% load_products tag: tag.name per_page: 3 %}
   {% assign products_count = products.size %}
 
-  {% if products_count >= 2 %}
+  {% if products_count > 1 %}
     <section class="section group-shop container">
       <h3 class="title">
         {{ tag.subtitle | default: 'Compre Junto' }}

@@ -11,8 +11,9 @@
             justify-content: flex-start;
             gap: 10px;
             margin: 16px 0;
+            flex-wrap: wrap;
             input[type="text"] {
-                border: 1px solid #f47e62;
+                border: 1px solid #000000;
                 border-radius: 0;
                 cursor: auto;
                 outline: none !important;

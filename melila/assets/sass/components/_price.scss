@@ -65,11 +65,14 @@
     }
 
     > p {
+      align-items: flex-start;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      font-weight: var(--font-size-base);
-      font-weight: var(--font-weight-base);
+      color: #5d5d5d;
+      font-size: 18px;
+      line-height: 30px;
+      font-weight: 700;
+      display: block;
     }
 
     > p .cmp-price-sale-price {
@@ -78,7 +81,7 @@
     }
 
     > p .cmp-price-price {
-      font-size: 2rem;
+      // font-size: 2rem;
       font-weight: bold;
     }
 
@@ -128,8 +131,9 @@
     }
 
     .cmp-price-installments {
-      font-size: var(--font-size-small);
       width: 100%;
+      color: #9a9a9a;
+      font-size: 14px;
     }
   }
 }

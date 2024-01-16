@@ -5,6 +5,7 @@
   flex-direction: column;
   position: relative;
   transition: var(--transition);
+  justify-content: space-between;
   width: 100%;
 
   &:hover .images figure img:nth-child(2) {
@@ -33,19 +34,24 @@
   > .description .quantity {
     font-size: var(--font-size-small);
     margin-top: 1rem;
+    display: none;
   }
 
   > .description .name {
-    min-height: 5.4rem;
+    min-height: 2rem;
     transition: var(--transition);
+    font-weight: 400;
+    color: #000;
+    font-size: 14px;
+    margin-bottom: 10px;
   }
 
   > .description .name a {
-    font-size: var(--font-size-big);
+    font-size: 14px;
   }
 
   > .button-default {
-    margin-top: 2rem;
+    margin-top: 1rem;
     width: 100%;
   }
 

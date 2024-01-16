@@ -1,13 +1,22 @@
 <footer class="footer">
   <div class="content">
-    {% comment %}  
-    {% render "partials/content/footer/banner", section: 'main-banner' position: 'rodape-logo-principal', type: '-square', limit: 1 %}
+    {% comment %}
+    {% render "partials/content/footer/banner", section: 'main-banner' position: 'rodape-logo-principal', type:
+    '-square', limit: 1 %}
     {% endcomment %}
     {% render "partials/content/footer/newsletter", current_shop: current_shop %}
     {% render "partials/content/footer/paragraph" %}
     {% render "partials/content/footer/categories" %}
     {% render "partials/content/footer/payment" %}
-    {% comment %} 
+    {% comment %}
     {% render "partials/content/footer/signature" %}
     {% endcomment %}</div>
+  <div class="container">
+    <span class="mahara-copy">
+      Desenvolvido por:
+      <a href="https://mahara.marketing" target="_blank">
+        <img src="{{ 'mahara.png' | image_path }}" />
+      </a>
+    </span>
+  </div>
 </footer>

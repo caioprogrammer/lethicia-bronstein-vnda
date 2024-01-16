@@ -3,7 +3,12 @@
   display: flex;
   justify-content: flex-end;
   width: 30%;
+  @media screen and (max-width: 768px) {
+    width: auto;
+  }
+  > .cart {
 
+  }
   > .account {
     padding-right: 1rem;
   }
@@ -11,6 +16,7 @@
   > .cart .btn-cart {
     position: relative;
     transition: opacity 0.1s;
+    display: flex;
     &.-loading { opacity: 0.4 }
   }
 

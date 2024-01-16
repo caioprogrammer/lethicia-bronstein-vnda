@@ -12,29 +12,14 @@
     "debug": "true"
   },
   "scripts": {
-    "wiki": "run-script-os",
-    "wiki:default": "git submodule add git@gitlab.com:vnda/templates/$npm_package_name.wiki.git",
-    "wiki:win32": "git submodule add git@gitlab.com:vnda/templates/%npm_package_name%.wiki.git",
-    "dev": "run-script-os",
-    "dev:default": "cd ../build && gulp default --store=$npm_package_name --liquid=$npm_package_config_liquid --debug=$npm_package_config_debug  --preview=$npm_config_preview",
-    "dev:win32": "cd ../build && gulp default --store=%npm_package_name% --liquid=%npm_package_config_liquid% --debug=%npm_package_config_debug% --preview=%npm_config_preview%",
-    "update": "git submodule init && git submodule update",
-    "sync": "run-script-os",
-    "sync:default": "cd ../build && gulp sync --store=$npm_package_name --liquid=$npm_package_config_liquid --debug=$npm_package_config_debug --preview=$npm_config_preview",
-    "sync:win32": "cd ../build && gulp sync --store=%npm_package_name% --liquid=%npm_package_config_liquid% --debug=%npm_package_config_debug% --preview=%npm_config_preview%",
-    "list-previews": "run-script-os",
-    "list-previews:default": "cd ../build && gulp listPreviews --store=$npm_package_name --liquid=$npm_package_config_liquid --name_prod=$npm_package_config_nameprod",
-    "list-previews:win32": "cd ../build && gulp listPreviews --store=%npm_package_name% --liquid=%npm_package_config_liquid% --name_prod=%npm_package_config_nameprod%",
-    "vndajs": "run-script-os",
-    "vndajs:default": "cd ../build && gulp getVndaJs --store=$npm_package_name --liquid=$npm_package_config_liquid",
-    "vndajs:win32": "cd ../build && gulp getVndaJs --store=%npm_package_name% --liquid=%npm_package_config_liquid%",
-    "deploy": "run-script-os",
-    "deploy:default": "cd ../build && gulp deploy --store=$npm_package_name --liquid=$npm_package_config_liquid --name_prod=$npm_package_config_nameprod",
-    "deploy:win32": "cd ../build && gulp deploy --store=%npm_package_name% --liquid=%npm_package_config_liquid% --name_prod=%npm_package_config_nameprod%"
+    "dev": "node scripts/dev",
+    "sync": "node scripts/sync",
+    "deploy": "node scripts/deploy"
   },
   "author": "Vnda - Tecnologia em Ecommerce",
   "license": "MIT",
   "devDependencies": {
+    "dotenv": "^16.3.1",
     "jquery": "^3.6.4",
     "mmenu-light": "^3.1.1",
     "prettier": "^2.5.1",

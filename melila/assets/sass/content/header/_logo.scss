@@ -2,6 +2,10 @@
   max-width: 16rem;
   margin: 2rem;
 
+  @media screen and (max-width: 768px) {
+    max-width: 10rem;
+  }
+
   @include media("md") {
     margin: 0rem 0;
   }
